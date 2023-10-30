@@ -1,0 +1,27 @@
+Applications:
+    salamander:
+        app_types:
+            - SALAMANDER
+        content_directory: ${ROOT_DIR}/doc/content
+        remove:
+            - ${MOOSE_DIR}/framework/doc/remove.yml
+        log_default: WARNING
+        show_warning: false
+
+Documents:
+    software_requirements_specification: sqa/salamander_srs.md
+    software_design_description: sqa/salamander_sdd.md
+    software_test_plan: sqa/salamander_stp.md
+    requirements_traceability_matrix: sqa/salamander_rtm.md
+    verification_validation_report: sqa/salamander_vvr.md
+    failure_analysis_report: sqa/salamander_far.md
+    software_library_list: sqa/salamander_sll.md
+    log_default: WARNING
+    show_warning: false
+
+Requirements:
+    salamander:
+        directories:
+            - ${ROOT_DIR}/test
+        log_default: WARNING
+        show_warning: false

@@ -1,0 +1,1 @@
+!template load file=sqa/app_cci.md.template app=SALAMANDER category=salamander
