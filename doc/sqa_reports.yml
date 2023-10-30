@@ -1,0 +1,42 @@
+Applications:
+    salamander:
+        app_types:
+            - SALAMANDER
+        content_directory: ${ROOT_DIR}/doc/content
+        remove:
+            - ${MOOSE_DIR}/framework/doc/remove.yml
+        show_warning: false
+
+Documents:
+    software_quality_plan: sqa/inl_records.md#software_quality_plan
+    enterprise_architecture_entry: sqa/inl_records.md#enterprise_architecture_entry
+    safety_software_determination: sqa/inl_records.md#safety_software_determination
+    quality_level_determination: sqa/inl_records.md#quality_level_determination
+    configuration_management_plan: sqa/inl_records.md#configuration_management_plan
+    asset_management_plan: sqa/inl_records.md#asset_management_plan
+    verification_validation_plan: sqa/inl_records.md#verification_and_validation_plan
+    software_requirements_specification: sqa/salamander_srs.md
+    software_design_description: sqa/salamander_sdd.md
+    software_test_plan: sqa/salamander_stp.md
+    requirements_traceability_matrix: sqa/salamander_rtm.md
+    verification_validation_report: sqa/salamander_vvr.md
+    failure_analysis_report: sqa/salamander_far.md
+    software_library_list: sqa/salamander_sll.md
+    communication_and_contact_information: sqa/salamander_cci.md
+    software_coding_standards: sqa/salamander_scs.md
+    log_default: WARNING
+    show_warning: false
+    working_dirs:
+        - ${ROOT_DIR}/doc/content
+        - ${MOOSE_DIR}/framework/doc/content
+
+Requirements:
+    salamander:
+        working_dirs:
+            - ${ROOT_DIR}/doc/content
+            - ${MOOSE_DIR}/framework/doc/content
+            - ${MOOSE_DIR}/modules/electromagnetics/doc/content
+            - ${MOOSE_DIR}/modules/ray_tracing/doc/content
+        directories:
+            - ${ROOT_DIR}/test
+        show_warning: false
