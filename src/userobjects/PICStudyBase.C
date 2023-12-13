@@ -11,8 +11,6 @@
 #include "PICStudyBase.h"
 #include "VelocityUpdaterBase.h"
 
-registerMooseObject("SalamanderApp", PICStudyBase);
-
 InputParameters
 PICStudyBase::validParams()
 {
