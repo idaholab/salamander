@@ -19,7 +19,7 @@ SalamanderApp::SalamanderApp(InputParameters parameters) : MooseApp(parameters)
 
 SalamanderApp::~SalamanderApp() {}
 
-void 
+void
 SalamanderApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
   ModulesApp::registerAllObjects<SalamanderApp>(f, af, s);
@@ -33,6 +33,7 @@ void
 SalamanderApp::registerApps()
 {
   registerApp(SalamanderApp);
+  ModulesApp::registerApps();
 }
 
 /***************************************************************************************************
