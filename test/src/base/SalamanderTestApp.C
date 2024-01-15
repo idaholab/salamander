@@ -42,8 +42,8 @@ SalamanderTestApp::registerAll(Factory & f, ActionFactory & af, Syntax & s, bool
 void
 SalamanderTestApp::registerApps()
 {
-  registerApp(SalamanderApp);
   registerApp(SalamanderTestApp);
+  SalamanderApp::registerApps();
 }
 
 /***************************************************************************************************
