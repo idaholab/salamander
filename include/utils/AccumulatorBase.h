@@ -17,7 +17,7 @@ class FEProblemBase;
 namespace SALAMANDER
 {
 /**
- * Base class for a uility that accumulates point values into a variable
+ * Base class for a utility that accumulates point values into a variable
  */
 class AccumulatorBase
 {
