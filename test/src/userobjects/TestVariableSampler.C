@@ -1,6 +1,6 @@
 #include "TestVariableSampler.h"
 
-registerMooseObject("SalamanderApp", TestVariableSampler);
+registerMooseObject("SalamanderTestApp", TestVariableSampler);
 
 InputParameters
 TestVariableSampler::validParams()
