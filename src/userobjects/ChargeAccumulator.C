@@ -35,7 +35,6 @@ ChargeAccumulator::execute()
 {
   if (_fe_problem.currentlyComputingResidual())
   {
-    // the nonlinear system is not strictly always 0 but this is good enough for now
     std::unique_ptr<SALAMANDER::AccumulatorBase> accumulator =
         std::make_unique<SALAMANDER::ResidualAccumulator>(_fe_problem, this, _var_name, 0);
 
