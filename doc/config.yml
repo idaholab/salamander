@@ -47,6 +47,11 @@ Extensions:
     MooseDocs.extensions.acronym:
         acronyms:
             framework: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
+            salamander:
+                SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research
+                PIC: particle-in-cell
+                CFD: computational fluid dynamics
+                CAD: computer-aided design
     MooseDocs.extensions.sqa:
         active: true
         categories:
