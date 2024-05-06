@@ -5,20 +5,15 @@
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
 
 !style halign=center
-As fusion energy gains traction internationally to enable a carbon-free future, designing components for fusion systems is a pressing challenge. During the planned lifetime of a fusion device, components evolve in extreme environments. Complex physical processes take place simultaneously, interact in intricate ways, and impose important constraints. Experimental data is rare and costly to obtain, making design particularly challenging. Predictive computational frameworks must be an integral part of an accelerated and cost-effective design process by modeling fusion system performance in simulated environments. To better understand component degradation and operational impacts on their performance, SALAMANDER is designed as an open-source, fully integrated, multiphysics, multiscale, Nuclear Quality Assurance, level 1 (NQA-1) compliant framework facilitating 3D, high-fidelity fusion system modeling.
+SALAMANDER is designed as an open-source, fully integrated, multiphysics, multiscale, Nuclear Quality Assurance, level 1 (NQA-1) compliant framework facilitating 3D, high-fidelity fusion system modeling.
+
+!style halign=center
 SALAMANDER is an application based on the
 [MOOSE framework](https://mooseframework.inl.gov) performing system-level, engineering scale (i.e., at the scale of
 centimeters and meters), and microstructure-scale (i.e., at the scale of microns) multiphysics
 calculations related to magnetic confinement fusion energy systems.
-These models often include highly coupled systems of equations related to plasma physics,
-electromagnetics, heat conduction, scalar transport, thermal hydraulics, [!ac](CFD),
-and thermomechanics, amongst others.
 Interfaces to other MOOSE-based codes, including tritium transport ([TMAP8](https://mooseframework.inl.gov/tmap8))
 and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)) are also included to support SALAMANDER simulations.
-SALAMANDER will enable high-fidelity modeling of irradiation levels and plasma exposure
-conditions of plasma facing components and their impact on heat and tritium distributions, as well
-as the resulting mechanical constraints experienced by the plasma facing components.
-SALAMANDER supports design, safety, engineering, and research projects.
 
 !row!
 !col! small=12 medium=4 large=4 icon=get_app
