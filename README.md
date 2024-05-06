@@ -1,5 +1,5 @@
 # SALAMANDER
-Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER Framwwork)
+Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) Framework
 =====
 
 SALAMANDER is an application for performing system-level, engineering scale (i.e., at the scale of
