@@ -1,5 +1,7 @@
 !config navigation breadcrumbs=False scrollspy=False
 
+&nbsp;
+
 
 
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
