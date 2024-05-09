@@ -50,6 +50,7 @@ Extensions:
                 Code Coverage: https://mooseframework.inl.gov/salamander/docs/coverage
             Help:
               SALAMANDER Issues Page: https://github.com/idaholab/SALAMANDER/issues
+              SALAMANDER Discussion Forum: https://github.com/idaholab/salamander/discussions
               MOOSE FAQ page: https://mooseframework.inl.gov/help/faq/index.html
               MOOSE Discussion Forum: https://github.com/idaholab/moose/discussions
     MooseDocs.extensions.appsyntax:

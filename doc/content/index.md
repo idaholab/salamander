@@ -68,7 +68,7 @@ throughout the world.
 ## SALAMANDER results from a collaboration across several institutions style=clear:both;
 
 !style halign=left
-SALAMANDER started as a project lead by Idaho National laboratory in collaboration with North Carolina State University, the University of Illinois Urbana-Champaign, and the United Kingdom Atomic Energy Authority. We are always looking for new collaborations and encourage everyone to [get started](getting_started/installation.html) and start [contributing](sqa/contributing.html).
+SALAMANDER started as a project lead by Idaho National laboratory in collaboration with North Carolina State University, the University of Illinois Urbana-Champaign, and the United Kingdom Atomic Energy Authority. We are always looking for new collaborations and encourage everyone to [get started](getting_started/installation.html), start [contributing](sqa/contributing.html), and connect with the team on [the SALAMANDER GitHub discussion](https://github.com/idaholab/salamander/discussions).
 
 !media large_media/framework/inl_blue.png style=display:block;margin-left:auto;margin-right:auto;width:30%;
 
