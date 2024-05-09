@@ -7,7 +7,7 @@
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
 
 !style halign=center
-SALAMANDER is designed as an open-source, fully integrated, multiphysics, multiscale, Nuclear Quality Assurance, level 1 (NQA-1) compliant framework facilitating 3D, high-fidelity fusion system modeling.
+SALAMANDER is designed as an open-source, fully integrated, multiphysics, multiscale, Nuclear Quality Assurance Level 1 (NQA-1) compliant framework facilitating 3D, high-fidelity fusion system modeling.
 
 !style halign=center
 SALAMANDER is an application based on the
