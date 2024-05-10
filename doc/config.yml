@@ -47,7 +47,7 @@ Extensions:
             Software Quality:
                 Software Quality Assurance (SQA) Information: /sqa/index.md
                 Code Standards: sqa/salamander_scs.md
-                Code Coverage: https://mooseframework.inl.gov/salamander/docs/coverage
+                #Code Coverage: https://mooseframework.inl.gov/salamander/docs/coverage
             Help:
               SALAMANDER Issues Page: https://github.com/idaholab/SALAMANDER/issues
               SALAMANDER Discussion Forum: https://github.com/idaholab/salamander/discussions
