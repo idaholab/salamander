@@ -9,13 +9,18 @@ supress_output = False
 
 
 
-num_particles = [1, 10, 100, 1000]
+num_particles = [10, 100, 1000, 10000]
 
 num_seeds = 10
 
+
 for i in range(num_seeds):
-     curr_dir = f"run_{num_seeds + i:d}"
-     os.mkdir(curr_dir)
+     curr_dir = f"run_{i:d}"
+
+     if not os.path.exists(curr_dir):
+          os.mkdir(curr_dir)
+
+
      for n in num_particles:
           a = ["-i", input_file,
                "--allow-test-objects",
