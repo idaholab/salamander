@@ -2,7 +2,7 @@
 
 # This script checks and can optionally update SALAMANDER source files.
 # You should always run this script without the "-u" option
-# first to make sure there is a clean dry run of the files that should
+# first to make sure there is a clean dry-run of the files that should
 # be updated
 # This is based on a script of the same name in the MOOSE Framework:
 # https://github.com/idaholab/moose/blob/master/framework/scripts/fixup_headers.py
@@ -10,7 +10,7 @@
 import os, string, re, shutil
 from optparse import OptionParser
 
-global_dir_ignores = ['contrib', '.svn', '.git', 'crane', 'moose', 'squirrel']
+global_dir_ignores = ['contrib', '.svn', '.git', 'moose']
 global_file_ignores = ['moosedocs.py']
 
 unified_header = """\
@@ -29,19 +29,19 @@ unified_header = """\
 //*"""
 
 python_header = """\
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
-//* A multiphysics application for modeling plasma facing components
-//* https://github.com/idaholab/salamander
-//*
-//* SALAMANDER is powered by the MOOSE Framework
-//* https://www.mooseframework.inl.gov
-//*
-//* Licensed under LGPL 2.1, please see LICENSE for details
-//* https://www.gnu.org/licenses/lgpl-2.1.html
-//*
-//* Copyright 2025, Battelle Energy Alliance, LLC
-//* ALL RIGHTS RESERVED
-//*"""
+#* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+#* A multiphysics application for modeling plasma facing components
+#* https://github.com/idaholab/salamander
+#*
+#* SALAMANDER is powered by the MOOSE Framework
+#* https://www.mooseframework.inl.gov
+#*
+#* Licensed under LGPL 2.1, please see LICENSE for details
+#* https://www.gnu.org/licenses/lgpl-2.1.html
+#*
+#* Copyright 2025, Battelle Energy Alliance, LLC
+#* ALL RIGHTS RESERVED
+#*"""
 
 global_options = {}
 
