@@ -13,13 +13,13 @@
 //* ALL RIGHTS RESERVED
 //*
 
-#include "SalamanderTestApp.h"
-#include "MooseMain.h"
+#pragma once
 
-int
-main(int argc, char * argv[])
+#include <string>
+
+namespace SalamanderHeader
 {
-  Moose::main<SalamanderTestApp>(argc, argv);
 
-  return 0;
-}
+std::string header();
+
+} // namespace SalamanderHeader
