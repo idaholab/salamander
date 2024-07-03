@@ -21,6 +21,7 @@
 
 // contribs
 #include "TMAP8App.h"
+#include "CardinalApp.h"
 
 InputParameters
 SalamanderApp::validParams()
@@ -46,6 +47,7 @@ SalamanderApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
   Registry::registerActionsTo(af, {"SalamanderApp"});
 
   TMAP8App::registerAll(f, af, s);
+  CardinalApp::registerAll(f, af, s);
 
   /* register custom execute flags, action syntax, etc. here */
 }
@@ -56,6 +58,7 @@ SalamanderApp::registerApps()
   registerApp(SalamanderApp);
   ModulesApp::registerApps();
   TMAP8App::registerApps();
+  CardinalApp::registerApps();
 }
 
 /***************************************************************************************************
