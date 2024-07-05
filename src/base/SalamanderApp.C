@@ -19,6 +19,9 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+// contribs
+#include "TMAP8App.h"
+
 InputParameters
 SalamanderApp::validParams()
 {
@@ -42,6 +45,8 @@ SalamanderApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
   Registry::registerObjectsTo(f, {"SalamanderApp"});
   Registry::registerActionsTo(af, {"SalamanderApp"});
 
+  TMAP8App::registerAll(f, af, s);
+
   /* register custom execute flags, action syntax, etc. here */
 }
 
@@ -50,6 +55,7 @@ SalamanderApp::registerApps()
 {
   registerApp(SalamanderApp);
   ModulesApp::registerApps();
+  TMAP8App::registerApps();
 }
 
 /***************************************************************************************************
