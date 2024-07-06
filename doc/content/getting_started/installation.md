@@ -71,6 +71,7 @@ Finally, Cardinal and its dependencies must be downloaded and pre-built. To perf
 the build script from the SALAMANDER clone directory:
 
 ```bash
+cd ~/projects/SALAMANDER
 scripts/update_and_rebuild_cardinal.sh
 ```
 
@@ -86,6 +87,12 @@ and subsequently set the location of those cross sections in your environment:
 ```bash
 export OPENMC_CROSS_SECTIONS=~/projects/SALAMANDER/cross_sections/cross_sections.xml
 ```
+
+!alert! warning
+This variable +must+ be set in your environment anytime you wish to run SALAMANDER input files that
+utilize the OpenMC functionality! This can be done either using `export` on the command line,
+or placing this command within a shell config file (`.bashrc`, `.zshrc`, etc.).
+!alert-end!
 
 !alert! note
 The copies of MOOSE, TMAP8, and Cardinal provided with SALAMANDER have been fully tested against the current
