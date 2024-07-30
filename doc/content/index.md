@@ -17,7 +17,6 @@ calculations related to magnetic confinement fusion energy systems.
 Interfaces to other MOOSE-based codes, including tritium transport ([TMAP8](https://mooseframework.inl.gov/tmap8))
 and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)) are also included to support SALAMANDER simulations.
 
-
 !row!
 !col! small=12 medium=4 large=4 icon=get_app
 ## [Getting Started](getting_started/installation.md) class=center style=font-weight:200;font-size:150%;
@@ -70,7 +69,7 @@ Learn more about SALAMANDER in this United States Department of Energy Office of
 
 !media https://www.youtube.com/embed/gMLr_ElY84A?si=mSBI28bnuu0dnKb7
        id=SALAMANDER-DOE-OTT
-       caption= SALAMANDER webinar for the United States Department of Energy Office of Technology Transition National Lab Discovery Series (June 2024).
+       caption=SALAMANDER webinar for the United States Department of Energy Office of Technology Transition National Lab Discovery Series (June 2024).
 
 ## SALAMANDER results from a collaboration across several institutions style=clear:both;
 
