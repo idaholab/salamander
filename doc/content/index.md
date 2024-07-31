@@ -65,6 +65,12 @@ including the [United States Department of Energy](http://energy.gov).  Developm
 of these codes is ongoing at [INL](https://www.inl.gov) and by collaborators
 throughout the world.
 
+Learn more about SALAMANDER in this United States Department of Energy Office of Technology Transition National Lab Discovery Series webinar from June 2024:
+
+!media https://www.youtube.com/embed/gMLr_ElY84A?si=mSBI28bnuu0dnKb7
+       id=SALAMANDER-DOE-OTT
+       caption=SALAMANDER webinar for the United States Department of Energy Office of Technology Transition National Lab Discovery Series (June 2024).
+
 ## SALAMANDER results from a collaboration across several institutions style=clear:both;
 
 !style halign=left
@@ -93,6 +99,4 @@ SALAMANDER started as a project lead by Idaho National laboratory in collaborati
 
 !col-end!
 !row-end!
-
-
 
