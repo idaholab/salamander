@@ -59,7 +59,7 @@ To compile SALAMANDER, first make sure that the conda MOOSE environment is activ
 conda activate moose
 ```
 
-Then navigate to the SALAMANDER clone directory and download the MOOSE and TMAP8 submodules:
+Then navigate to the SALAMANDER clone directory and download the MOOSE, TMAP8, and Cardinal submodules:
 
 ```bash
 cd ~/projects/SALAMANDER
