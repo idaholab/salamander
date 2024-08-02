@@ -59,16 +59,18 @@ To compile SALAMANDER, first make sure that the conda MOOSE environment is activ
 conda activate moose
 ```
 
-Then navigate to the SALAMANDER clone directory and download the MOOSE submodule:
+Then navigate to the SALAMANDER clone directory and download the MOOSE and TMAP8 submodules:
 
 ```bash
 cd ~/projects/SALAMANDER
 git submodule update --init moose
+git submodule update --init tmap8
 ```
 
-!alert note
-The copy of MOOSE provided with SALAMANDER has been fully tested against the current
+!alert! note
+The copies of MOOSE and TMAP8 provided with SALAMANDER have been fully tested against the current
 SALAMANDER version, and is guaranteed to work with all current SALAMANDER tests.
+!alert-end!
 
 Once all dependencies have been downloaded, SALAMANDER can be compiled and tested:
 
@@ -88,10 +90,10 @@ SALAMANDER is ready to be used and further developed.
 
 ## Update SALAMANDER
 
-SALAMANDER (and the underlying MOOSE Framework) is under heavy development and is updated on a continuous
-basis. Therefore, it is important that the local copy of SALAMANDER be periodically updated to obtain new
-capabilities, improvements, and bugfixes. Weekly updates are recommended as, at minimum, the MOOSE
-submodule within SALAMANDER is updated up to several times a week.
+SALAMANDER (and its underlying dependencies MOOSE and TMAP8) is under heavy development and is
+updated on a continuous basis. Therefore, it is important that the local copy of SALAMANDER be periodically
+updated to obtain new capabilities, improvements, and bugfixes. Weekly updates are recommended as,
+at minimum, the MOOSE submodule within SALAMANDER is updated up to several times a week.
 
 !alert note title=Always update SALAMANDER and the Conda packages together.
 There is a tight dependency between the libraries and applications provided by Conda, and the submodules that SALAMANDER depends on. Therefore, when you update one, you should always update the other.
@@ -131,6 +133,7 @@ git remote is labeled `upstream`. Use `git remote -v` in the SALAMANDER reposito
 this and change the commands as necessary. Finally, SALAMANDER can be re-compiled and re-tested.
 
 ```bash
+cd ~/projects/SALAMANDER
 make -j8
 ./run_tests -j8
 ```
