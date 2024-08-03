@@ -1,11 +1,17 @@
-//* This file is part of the MOOSE framework
-//* https://www.mooseframework.org
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* A multiphysics application for modeling plasma facing components
+//* https://github.com/idaholab/salamander
+//* https://mooseframework.inl.gov/salamander
 //*
-//* All rights reserved, see COPYRIGHT for full restrictions
-//* https://github.com/idaholab/moose/blob/master/COPYRIGHT
+//* SALAMANDER is powered by the MOOSE Framework
+//* https://www.mooseframework.inl.gov
 //*
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
+//*
+//* Copyright 2025, Battelle Energy Alliance, LLC
+//* ALL RIGHTS RESERVED
+//*
 
 #include "TestParticleDataVectorPostprocessor.h"
 #include "PICStudyBase.h"
@@ -29,9 +35,9 @@ TestParticleDataVectorPostprocessor::TestParticleDataVectorPostprocessor(
 void
 TestParticleDataVectorPostprocessor::execute()
 {
-  // this does end up looping over the rays twice
-  // but since it will only be for testing this is fine
-  // helps to test the behaviour of the object people will actually
+  // This does end up looping over the rays twice,
+  // but since it will only be for testing, this is fine.
+  // It helps to test the behaviour of the object people will actually
   // use without requiring it to store meta data that is not important for them.
   ParticleDataVectorPostprocessor::execute();
   const auto rays = _study.getBankedRays();
@@ -42,11 +48,11 @@ TestParticleDataVectorPostprocessor::execute()
 void
 TestParticleDataVectorPostprocessor::finalize()
 {
-  // this will communicate the data between procs
+  // This will communicate the data between processors
   ParticleDataVectorPostprocessor::finalize();
-  // now we will sort the data in the csv files by ray id
-  // this is only really needed for testing and also requires
-  // that we use a parallel consistent ray indexing scheme
+  // Now we will sort the data in the csv files by ray id.
+  // This is only really needed for testing and also requires
+  // that we use a parallel consistent ray indexing scheme.
   std::vector<size_t> indicies;
   indicies.resize(_data_values.front()->size());
   std::iota(indicies.begin(), indicies.end(), 0);

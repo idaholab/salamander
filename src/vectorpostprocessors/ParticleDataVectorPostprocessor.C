@@ -1,11 +1,17 @@
-//* This file is part of the MOOSE framework
-//* https://www.mooseframework.org
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* A multiphysics application for modeling plasma facing components
+//* https://github.com/idaholab/salamander
+//* https://mooseframework.inl.gov/salamander
 //*
-//* All rights reserved, see COPYRIGHT for full restrictions
-//* https://github.com/idaholab/moose/blob/master/COPYRIGHT
+//* SALAMANDER is powered by the MOOSE Framework
+//* https://www.mooseframework.inl.gov
 //*
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
+//*
+//* Copyright 2025, Battelle Energy Alliance, LLC
+//* ALL RIGHTS RESERVED
+//*
 
 #include "ParticleDataVectorPostprocessor.h"
 #include "PICStudyBase.h"
