@@ -1,6 +1,6 @@
 # SALAMANDER Verification, Validation, and Example Cases
 
-For [software quality assurance (SQA)](sqa/index.md) purposes, SALAMANDER undergoes verification, validation, and benchmarking. The SALAMANDER development team defines these terms as:
+For [software quality assurance (SQA)](sqa/index.md exact=True) purposes, SALAMANDER undergoes verification, validation, and benchmarking. The SALAMANDER development team defines these terms as:
 
 - +Verification+: Comparing SALAMANDER predictions against analytical solutions in different conditions, which are often simple cases.
 - +Validation+: Comparing SALAMANDER predictions against experimental data.

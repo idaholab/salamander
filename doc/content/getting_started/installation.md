@@ -59,22 +59,59 @@ To compile SALAMANDER, first make sure that the conda MOOSE environment is activ
 conda activate moose
 ```
 
-Then navigate to the SALAMANDER clone directory and download the MOOSE and TMAP8 submodules:
+Then navigate to the SALAMANDER clone directory and download the MOOSE, TMAP8, and Cardinal submodules:
 
 ```bash
 cd ~/projects/SALAMANDER
 git submodule update --init moose
 git submodule update --init tmap8
+git submodule update --init cardinal
 ```
 
+Next, some Cardinal dependencies need to be downloaded:
+
+```bash
+cd ~/projects/SALAMANDER/cardinal
+git submodule update --init --recursive contrib/openmc
+git submodule update --init --recursive contrib/DAGMC
+git submodule update --init contrib/moab
+```
+
+To download OpenMC cross sections needed for OpenMC-based Cardinal runs, run:
+
+```bash
+cd ~/projects/SALAMANDER/cardinal
+scripts/download-openmc-cross-sections.sh
+```
+
+and subsequently set the location of those cross sections in your environment:
+
+```bash
+export OPENMC_CROSS_SECTIONS=~/projects/SALAMANDER/cross_sections/cross_sections.xml
+```
+
+!alert! warning
+This variable +must+ be set in your environment anytime you wish to run SALAMANDER input files that
+utilize the OpenMC functionality within Cardinal! This can be done either using `export` on the
+command line, or placing this command within a shell config file (`.bashrc`, `.zshrc`, etc.).
+!alert-end!
+
 !alert! note
-The copies of MOOSE and TMAP8 provided with SALAMANDER have been fully tested against the current
+The copies of MOOSE, TMAP8, and Cardinal provided with SALAMANDER have been fully tested against the current
 SALAMANDER version, and is guaranteed to work with all current SALAMANDER tests.
+!alert-end!
+
+!alert! tip title=Disabling Cardinal
+Cardinal is an optional dependency of SALAMANDER and can be disabled to speed up build times, if Cardinal
+capabilities are not needed. This can be done by simply not downloading the Cardinal submodule
+(i.e., not performing the `git submodule update --init cardinal` command as well as the Cardinal
+dependency download commands above.)
 !alert-end!
 
 Once all dependencies have been downloaded, SALAMANDER can be compiled and tested:
 
 ```bash
+cd ~/projects/SALAMANDER
 make -j8
 ./run_tests -j8
 ```
@@ -85,12 +122,25 @@ build the code and run the tests. The number in that flag can be changed to the
 number of physical and virtual cores on the workstation being used to build SALAMANDER.
 !alert-end!
 
+!alert! note title=Speeding up OpenMC/DAGMC/MOAB builds
+If the build of Cardinal third-party libraries OpenMC, DAGMC, and MOAB is too slow on your machine,
+you can attempt to pass the number of `make` cores using the `MAKEFLAGS` variable. This can do a
+better job enabling proper parallelism in nested `make` builds (as is the case with Cardinal
+dependencies). To use this variable, simply perform:
+
+```bash
+make MAKEFLAGS=-j8
+```
+
+instead of the `make` commands highlighted above.
+!alert-end!
+
 If SALAMANDER is working correctly, all active tests will pass. This indicates that
 SALAMANDER is ready to be used and further developed.
 
 ## Update SALAMANDER
 
-SALAMANDER (and its underlying dependencies MOOSE and TMAP8) is under heavy development and is
+SALAMANDER (and its underlying dependencies MOOSE, TMAP8, and Cardinal) is under heavy development and is
 updated on a continuous basis. Therefore, it is important that the local copy of SALAMANDER be periodically
 updated to obtain new capabilities, improvements, and bugfixes. Weekly updates are recommended as,
 at minimum, the MOOSE submodule within SALAMANDER is updated up to several times a week.
@@ -115,6 +165,12 @@ git checkout main
 git fetch upstream
 git rebase upstream/main
 git submodule update moose
+git submodule update tmap8
+git submodule update cardinal
+cd cardinal
+git submodule update --recursive contrib/openmc
+git submodule update --recursive contrib/DAGMC
+git submodule update contrib/moab
 ```
 
 To update your SALAMANDER repository as a SALAMANDER developer who regularly makes modifications to the code, use the following commands,
@@ -126,7 +182,20 @@ git checkout devel
 git fetch upstream
 git rebase upstream/devel
 git submodule update moose
+git submodule update tmap8
+git submodule update cardinal
+cd cardinal
+git submodule update --recursive contrib/openmc
+git submodule update --recursive contrib/DAGMC
+git submodule update contrib/moab
 ```
+
+!alert! tip title=Disabling Cardinal
+Cardinal is an optional dependency of SALAMANDER and can be disabled to speed up build times, if Cardinal
+capabilities are not needed. This can be done by simply not downloading the Cardinal submodule
+(i.e., not performing the `git submodule update cardinal` command as well as the following Cardinal
+dependency update commands above.)
+!alert-end!
 
 Both sets of instructions assume that your copy of SALAMANDER is stored in `~/projects` and that the [idaholab/SALAMANDER](https://github.com/idaholab/SALAMANDER)
 git remote is labeled `upstream`. Use `git remote -v` in the SALAMANDER repository location to check for
