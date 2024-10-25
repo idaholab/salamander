@@ -19,7 +19,5 @@
 int
 main(int argc, char * argv[])
 {
-  Moose::main<SalamanderTestApp>(argc, argv);
-
-  return 0;
+  return Moose::main<SalamanderTestApp>(argc, argv);
 }
