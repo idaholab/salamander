@@ -42,12 +42,13 @@ pitch = ${units 28 mm -> m}
         smoothing_max_it = 3
     []
     [ccmg_extrude]
-        type = MeshExtruderGenerator
+        type = AdvancedExtruderGenerator
         input = ccmg
         num_layers = ${num_layer_mesh_thickness}
-        extrusion_vector = '0 0 ${thickness_monoblock}'
-        bottom_sideset = 'front'
-        top_sideset = 'back'
+        heights = '${thickness_monoblock}'
+        direction = '0 0 1'
+        bottom_boundary = 'front'
+        top_boundary = 'back'
     []
     [ssbsg1]
         type = SideSetsBetweenSubdomainsGenerator
@@ -242,6 +243,17 @@ pitch = ${units 28 mm -> m}
     []
     [Sc_S_total_CuCrZr]
         block = 2
+    []
+    ############################## AuxVariables for transferring heat
+    [T_fluid]
+        family = MONOMIAL
+        order = CONSTANT
+        initial_condition = 423
+    []
+    [htc]
+        family = MONOMIAL
+        order = CONSTANT
+        initial_condition = 100
     []
 []
 

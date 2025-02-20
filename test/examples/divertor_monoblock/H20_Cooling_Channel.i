@@ -15,13 +15,7 @@ mu =  0.00018379
 k = 0.6851
 cp = 4.29547e3
 
-#interp methods
-velocity_interp_method = 'rc'
-advected_interp_method = 'average'
-
-[GlobalParams]
-  rhie_chow_user_object = 'rc'
-[]
+num_axial_elements = 20
 
 [Mesh]
   [circle]
@@ -35,12 +29,13 @@ advected_interp_method = 'average'
     growth_r = 0.9
   []
   [extrude]
-    type = MeshExtruderGenerator
+    type = AdvancedExtruderGenerator
     input = circle
-    extrusion_vector = '0 0 0.006'
-    num_layers = 20
-    bottom_sideset = 'inlet'
-    top_sideset = 'outlet'
+    heights = '0.006'
+    direction = '0 0 1'
+    num_layers = '${num_axial_elements}'
+    bottom_boundary = 'inlet'
+    top_boundary = 'outlet'
   []
   construct_side_list_from_node_list=true
 []
@@ -80,7 +75,7 @@ advected_interp_method = 'average'
     type = MooseVariableFVReal
     initial_condition = 1e4
   []
-  [Hw]
+  [Hw_ak]
     type = MooseVariableFVReal
     initial_condition = 100
   []
@@ -88,64 +83,64 @@ advected_interp_method = 'average'
     type = MooseVariableFVReal
     initial_condition = ${T_in}
   []
+  [speed_ak]
+    type = MooseVariableFVReal
+  []
 []
 
 [AuxKernels]
-  [q]
-    type = ParsedAux
-    variable = power_density
-    coupled_variables = 'Hw T_wall T_fluid'
-    expression = 'Hw*(T_wall-T_fluid)'
-  []
   [Hw_ak]
-    type = ADMaterialRealAux
-    variable = Hw
-    property = 'Hw'
+    type = FunctorAux
+    variable = Hw_ak
+    functor = 'Hw'
+  []
+  [speed_ak]
+    type = FunctorAux
+    variable = speed_ak
+    functor = speed
+  []
+[]
+
+[FluidProperties]
+  [simple]
+    type = SimpleFluidProperties
+    viscosity = ${mu}
+    density0 = ${rho}
+    cp = ${cp}
+    thermal_conductivity = ${k}
   []
 []
 
 [FunctorMaterials]
-  [Enthalpy]
-    type = INSFVEnthalpyFunctorMaterial
-    rho = ${rho}
-    temperature = 'T_fluid'
+  [ad_converter]
+    type = FunctorADConverter
+    ad_props_in = 'pressure'
+    reg_props_out = 'nonad_pressure'
   []
-  [functor_constants]
-    type = ADGenericFunctorMaterial
-    prop_names = 'cp'
-    prop_values = '${cp}'
+  [fluid_props_avgd]
+    type = NonADGeneralFunctorFluidProps
+    T_fluid = T_uo
+    characteristic_length = ${radius}
+    fp = simple
+    porosity = 1
+    pressure = nonad_pressure
+    speed = speed_uo
   []
-[]
-
-[Materials]
-  [Hw_material]
-    type = ADWallHeatTransferCoefficient3EqnDittusBoelterMaterial
-    rho = ${rho}
-    vel = vel_Z
+  [Hw_avgd]
+    Hw = Hw
+    type = DittusBoelterFunctorMaterial
     D_h = ${D_h}
     k = ${k}
-    mu = ${mu}
-    cp = ${cp}
-    T = T_Fluid
-    T_wall = T_Wall
+    T_fluid = T_uo
+    T_wall = T_wall
+    Pr = Pr
+    Re = Re
   []
-  [mat_vel_z]
-    type = ADParsedMaterial
-    property_name = vel_Z
-    coupled_variables = vel_z
-    expression = vel_z
-  []
-  [mat_T_fluid]
-    type = ADParsedMaterial
-    property_name = T_Fluid
-    coupled_variables = T_fluid
-    expression = T_fluid
-  []
-  [mat_T_wall]
-    type = ADParsedMaterial
-    property_name = T_Wall
-    coupled_variables = T_wall
-    expression = T_wall
+  [q]
+    type = ParsedFunctorMaterial
+    expression = 'Hw * (T_wall - T_uo)'
+    property_name = 'q'
+    functor_names = 'Hw T_uo T_wall'
   []
 []
 
@@ -154,13 +149,19 @@ advected_interp_method = 'average'
     type = LayeredAverage
     direction = z
     variable = T_fluid
-    num_layers = 20
+    num_layers = ${num_axial_elements}
+  []
+  [speed_uo]
+    type = LayeredAverage
+    direction = z
+    variable = speed_ak
+    num_layers = ${num_axial_elements}
   []
   [Hw_uo]
     type = LayeredAverage
     direction = z
-    variable = Hw
-    num_layers = 20
+    variable = Hw_ak
+    num_layers = ${num_axial_elements}
   []
 []
 
@@ -173,14 +174,14 @@ advected_interp_method = 'average'
         velocity_variable = 'vel_x vel_y vel_z'
 
         density = 'rho'
-        dynamic_viscosity = 'mu'
+        dynamic_viscosity = '${mu}'
 
         initial_velocity = '0 0 ${v_in}'
         initial_pressure = '${p_out}'
 
         inlet_boundaries = 'inlet'
         momentum_inlet_types = 'fixed-velocity'
-        momentum_inlet_functors = '$0 0 ${v_in}'
+        momentum_inlet_functors = '0 0 ${v_in}'
 
         wall_boundaries = '1 2 3'
         momentum_wall_types = 'noslip symmetry symmetry'
@@ -189,8 +190,8 @@ advected_interp_method = 'average'
         momentum_outlet_types = 'fixed-pressure'
         pressure_functors = '${p_out}'
 
-        mass_advection_interpolation = 'average'
-        momentum_advection_interpolation = 'average'
+        mass_advection_interpolation = 'upwind'
+        momentum_advection_interpolation = 'upwind'
       []
     []
     [FluidHeatTransfer]
@@ -199,18 +200,15 @@ advected_interp_method = 'average'
 
         fluid_temperature_variable = 'T_fluid'
 
-        thermal_conductivity = 'k'
+        thermal_conductivity = ${k}
         specific_heat = 'cp'
 
         initial_temperature = '${T_in}'
 
         energy_inlet_types = 'fixed-temperature'
         energy_inlet_functors = '${T_in}'
-        energy_wall_types = 'heatflux'
-        energy_wall_functors = 'q'
-
-        #external_heat_source = 'power_density'
-        #energy_advection_interpolation = 'average'
+        energy_wall_types = 'heatflux heatflux heatflux'
+        energy_wall_functors = 'q q q'
       []
     []
     [Turbulence]
@@ -230,7 +228,7 @@ advected_interp_method = 'average'
   petsc_options_value = 'lu'
   line_search = 'none'
   nl_rel_tol = 1e-8
-  nl_abs_tol = 1e-10
+  nl_abs_tol = 1e-6
   nl_max_its = 10
   end_time = 15
   dtmax = 2e-2
@@ -242,6 +240,10 @@ advected_interp_method = 'average'
     optimal_iterations = 6
     growth_factor = 1.5
   []
+[]
+
+[Debug]
+  show_var_residual_norms = true
 []
 
 [Outputs]
