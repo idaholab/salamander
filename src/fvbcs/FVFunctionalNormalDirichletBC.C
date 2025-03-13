@@ -34,7 +34,8 @@ FVFunctionalNormalDirichletBC::FVFunctionalNormalDirichletBC(const InputParamete
 }
 
 ADReal
-FVFunctionalNormalDirichletBC::boundaryValue(const FaceInfo & fi) const
+FVFunctionalNormalDirichletBC::boundaryValue(const FaceInfo & fi,
+                                             const Moose::StateArg & /*state*/) const
 {
   return _function.value(_t, fi.faceCentroid()) * (-fi.normal()(_direction));
 }
