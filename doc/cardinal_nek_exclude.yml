@@ -1,5 +1,10 @@
-- source/**
+- bib/**
 - media/**
+- source/**
+- theory/**
+- tutorials/**
+- ~source/actions/DimensionalizeAction.md
+- ~source/auxkernels/HeatTransferCoefficientAux.md
 - ~source/auxkernels/NekSpatialBinComponentAux.md
 - ~source/timesteppers/NekTimeStepper.md
 - ~source/mesh/NekRSMesh.md
@@ -8,6 +13,8 @@
 - ~source/postprocessors/NekNumRanks.md
 - ~source/postprocessors/NekMassFluxWeightedSideAverage.md
 - ~source/postprocessors/NekMassFluxWeightedSideIntegral.md
+- ~source/postprocessors/NekMeshInfoPostprocessor.md
+- ~source/postprocessors/NekPointValue.md
 - ~source/postprocessors/NekPressureSurfaceForce.md
 - ~source/postprocessors/NekScalarValuePostprocessor.md
 - ~source/postprocessors/NekSideAverage.md
@@ -18,6 +25,7 @@
 - ~source/postprocessors/NekVolumeAverage.md
 - ~source/postprocessors/NekVolumeExtremeValue.md
 - ~source/postprocessors/NekVolumeIntegral.md
+- ~source/postprocessors/nondimensional.md
 - ~source/postprocessors/PecletNumber.md
 - ~source/postprocessors/ReynoldsNumber.md
 - ~source/problems/NekRSProblem.md
@@ -34,3 +42,19 @@
 - ~source/userobjects/NekBinnedVolumeIntegral.md
 - ~source/userobjects/NekScalarValue.md
 - ~source/userobjects/velocity_component.md
+- ~tutorials/cht.md
+- ~tutorials/cht1.md
+- ~tutorials/cht2.md
+- ~tutorials/cht3.md
+- ~tutorials/cht4.md
+- ~tutorials/cht5.md
+- ~tutorials/coupled.md # replaced in doc/content/cardinal_redirect
+- ~tutorials/gas_compact.md # replaced in doc/content/cardinal_redirect
+- ~tutorials/index.md
+- ~tutorials/msfr.md
+- ~tutorials/nek_intro.md
+- ~tutorials/nekrs_outputs.md
+- ~tutorials/nekrs_standalone.md
+- ~tutorials/nekrs_stochastic.md
+- ~tutorials/pincell_multiphysics.md
+- ~tutorials/triso_multiphysics.md
