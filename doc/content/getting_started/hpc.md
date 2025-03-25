@@ -31,7 +31,7 @@ A set of appropriate MOOSE dependency modules will be loaded for use. Note that 
 
 ## Step Three: Clone FENIX
 
-<!-- Re-use the clone instructions from the main getting started instructions here -->
+!! Re-use the clone instructions from the main getting started instructions here
 
 !style halign=left
 !include getting_started/installation.md start=FENIX is hosted on end=!alert-end! include-end=True
@@ -45,7 +45,7 @@ To compile FENIX, first make sure that the [!ac](HPC) environment is activated f
 module load use.moose moose-dev
 ```
 
-<!-- Re-use the bulk of the build and test section from the main getting started instructions here -->
+!! Re-use the bulk of the build and test section from the main getting started instructions here
 
 !include getting_started/installation.md start=Then navigate to the FENIX end=FENIX can be compiled and tested include-end=True
 
@@ -72,7 +72,7 @@ fellow users!
 
 ## Step Five: Keep FENIX Updated
 
-<!-- Re-use the bulk of the update section from the main getting started instructions here -->
+!! Re-use the bulk of the update section from the main getting started instructions here
 
 !style halign=left
 !include getting_started/installation.md start=FENIX (and the underlying MOOSE Framework) end=updated up to several times a week. include-end=True
@@ -115,7 +115,7 @@ paraview
 ParaView should open. From here, you can select `File`, `Open`, and navigate to the directory
 containing your Exodus results file, and open it.
 
-<!-- Include troubleshooting section from main getting started  -->
+!! Include troubleshooting section from main getting started
 
 !include getting_started/installation.md start=Troubleshooting end=non-FENIX issues and questions. include-end=True
 
