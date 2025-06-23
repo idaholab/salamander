@@ -22,7 +22,7 @@ class SalamanderApp : public MooseApp
 public:
   static InputParameters validParams();
 
-  SalamanderApp(InputParameters parameters);
+  SalamanderApp(const InputParameters & parameters);
   virtual ~SalamanderApp();
 
   static void registerApps();

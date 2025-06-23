@@ -37,7 +37,7 @@ SalamanderApp::validParams()
   return params;
 }
 
-SalamanderApp::SalamanderApp(InputParameters parameters) : MooseApp(parameters)
+SalamanderApp::SalamanderApp(const InputParameters & parameters) : MooseApp(parameters)
 {
   SalamanderApp::registerAll(_factory, _action_factory, _syntax);
 }
