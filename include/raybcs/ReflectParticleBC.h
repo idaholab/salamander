@@ -28,7 +28,7 @@ public:
   virtual void onBoundary(const unsigned int num_applying) override;
 
 protected:
-  /// the dimensions in which the particles are actually moving
+  /// the dimension(s) in which the particles are actually moving
   const unsigned int _mesh_dimension;
   /// the ray data indicies for the velocities stored on the ray
   const std::vector<RayDataIndex> _velocity_indicies;

@@ -22,6 +22,9 @@ InputParameters
 ReflectParticleBC::validParams()
 {
   auto params = ReflectRayBC::validParams();
+  params.addClassDescription(
+      "Relfective boundary condition for particles that ensures velocity data is consistent with "
+      "its direction after relfection.");
   return params;
 }
 
@@ -37,7 +40,7 @@ ReflectParticleBC::ReflectParticleBC(const InputParameters & params)
 void
 ReflectParticleBC::onBoundary(const unsigned int num_applying)
 {
-  // reflect the ray normally and then we will also update the data
+  // reflect the particle normally and then update velocity data
   ReflectRayBC::onBoundary(num_applying);
   // collect the components of the velocity that need to be consistent with the direction
   for (const auto i : make_range(_mesh_dimension))
