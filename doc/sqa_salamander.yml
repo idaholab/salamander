@@ -18,6 +18,7 @@ dependencies: # commented-out categories are not available
     - solid_mechanics
     - solid_properties
     - stochastic_tools
+    - subchannel
     - thermal_hydraulics
     - tmap8
     #- cardinal
