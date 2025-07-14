@@ -17,9 +17,25 @@ ifeq ($(ENABLE_CARDINAL),yes)
   # Add DagMC flags (-DDAGMC is used in OpenMC)
   libmesh_CXXFLAGS    += -DENABLE_DAGMC -DDAGMC
 
+  # Disable Double-Down (optional dependency of DagMC) by default for now
+  # (see https://github.com/neams-th-coe/cardinal/pull/1142). This also turns off Embree by default, below.
+  ENABLE_DOUBLE_DOWN ?= no
+
   # Configure and build MOAB, DagMC, and then OpenMC
   include          $(CARDINAL_DIR)/config/moab.mk
+         ifeq ($(ENABLE_DOUBLE_DOWN), yes)
+              include          $(CARDINAL_DIR)/config/embree.mk
+              include          $(CARDINAL_DIR)/config/double_down.mk
+          endif
   include          $(CARDINAL_DIR)/config/dagmc.mk
+
+  ifeq ($(ENABLE_DOUBLE_DOWN), no)
+  build_doubledown: build_moab
+	  $(info Skipping Double-Down build because ENABLE_DOUBLE_DOWN is not set to 'yes')
+
+  build_embree:
+	  $(info Skipping Embree build because ENABLE_DOUBLE_DOWN is not set to 'yes')
+  endif
 
   # autoconf-archive puts some arguments (e.g. -std=c++17) into the compiler
   # variable rather than the compiler flags variable.
@@ -45,6 +61,6 @@ ifeq ($(ENABLE_CARDINAL),yes)
 
   # app_objects are defined in moose.mk and built according to the rules in build.mk
   # We need to build these first so we get include dirs
-  $(app_objects): build_moab build_dagmc build_openmc
-  $(test_objects): build_moab build_dagmc build_openmc
+  $(app_objects): build_moab build_embree build_doubledown build_dagmc build_openmc
+  $(test_objects): build_moab build_embree build_doubledown build_dagmc build_openmc
 endif

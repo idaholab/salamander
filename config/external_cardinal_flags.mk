@@ -2,6 +2,10 @@ ifeq ($(ENABLE_CARDINAL),yes)
   # Cardinal contrib flags used in app.mk targets
   CARDINAL_EXTERNAL_FLAGS := -L$(CARDINAL_DIR)/lib $(CC_LINKER_SLFLAG)$(CARDINAL_DIR)/lib $(BLASLAPACK_LIB) $(PETSC_EXTERNAL_LIB_BASIC) -L$(OPENMC_LIBDIR)  -L$(HDF5_LIBDIR) -lopenmc -ldagmc -lMOAB $(CC_LINKER_SLFLAG)$(OPENMC_LIBDIR) $(CC_LINKER_SLFLAG)$(HDF5_LIBDIR)
 
+  ifeq ($(ENABLE_DOUBLE_DOWN),yes)
+    CARDINAL_EXTERNAL_FLAGS += -lembree4 -ldd
+  endif
+
   # EXTERNAL_FLAGS is used in rules for app.mk
   $(app_LIB): EXTERNAL_FLAGS := $(CARDINAL_EXTERNAL_FLAGS)
   $(app_test_LIB): EXTERNAL_FLAGS := $(CARDINAL_EXTERNAL_FLAGS)
