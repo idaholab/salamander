@@ -18,7 +18,7 @@ ifeq ($(ENABLE_CARDINAL),yes)
   libmesh_CXXFLAGS    += -DENABLE_DAGMC -DDAGMC
 
   # Disable Double-Down (optional dependency of DagMC) by default for now
-  # (see neams-th-coe/cardinal#1142). This also turns off Embree by default, below.
+  # (see https://github.com/neams-th-coe/cardinal/pull/1142). This also turns off Embree by default, below.
   ENABLE_DOUBLE_DOWN ?= no
 
   # Configure and build MOAB, DagMC, and then OpenMC
