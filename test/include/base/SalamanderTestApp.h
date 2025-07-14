@@ -22,7 +22,7 @@ class SalamanderTestApp : public MooseApp
 public:
   static InputParameters validParams();
 
-  SalamanderTestApp(InputParameters parameters);
+  SalamanderTestApp(const InputParameters & parameters);
   virtual ~SalamanderTestApp();
 
   /// Display the SALAMANDER copyright notice and header information

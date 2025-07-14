@@ -30,7 +30,7 @@ SalamanderTestApp::validParams()
   return params;
 }
 
-SalamanderTestApp::SalamanderTestApp(InputParameters parameters) : MooseApp(parameters)
+SalamanderTestApp::SalamanderTestApp(const InputParameters & parameters) : MooseApp(parameters)
 {
   SalamanderTestApp::registerAll(
       _factory, _action_factory, _syntax, getParam<bool>("allow_test_objects"));

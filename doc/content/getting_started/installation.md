@@ -82,6 +82,19 @@ git submodule update --init contrib/DAGMC
 git submodule update --init contrib/moab
 ```
 
+!alert! tip title=Using Cardinal/DAGMC with Double-Down and Embree
+Double-Down (and Embree) enable mixed precision ray tracing within DAGMC. While turned off by default
+for now, it can be enabled by adding the following to the above commands:
+
+```bash
+git submodule update --init contrib/embree
+git submodule update --init contrib/double-down
+```
+
+and simply running `export ENABLE_DOUBLE_DOWN=yes` in your terminal environment prior to compiling
+SALAMANDER.
+!alert-end!
+
 To download OpenMC cross sections needed for OpenMC-based Cardinal runs, run:
 
 ```bash

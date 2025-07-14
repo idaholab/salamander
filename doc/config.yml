@@ -31,11 +31,14 @@ Content:
         root_dir: ${MOOSE_DIR}/modules/solid_properties/doc/content
     stochastic_tools:
         root_dir: ${MOOSE_DIR}/modules/stochastic_tools/doc/content
+    subchannel:
+        root_dir: ${MOOSE_DIR}/modules/subchannel/doc/content
     thermal_hydraulics:
         root_dir: ${MOOSE_DIR}/modules/thermal_hydraulics/doc/content
     modules:
         root_dir: ${MOOSE_DIR}/modules/doc/content
         content:
+            - citing.md
             - help/development/VSCode.md
             - help/development/analyze_jacobian.md
             - help/finite_element_concepts/nodal_patch_recovery.md
@@ -123,6 +126,7 @@ Extensions:
             solid_mechanics: !include ${MOOSE_DIR}/modules/solid_mechanics/doc/sqa_solid_mechanics.yml
             solid_properties: !include ${MOOSE_DIR}/modules/solid_properties/doc/sqa_solid_properties.yml
             stochastic_tools: !include ${MOOSE_DIR}/modules/stochastic_tools/doc/sqa_stochastic_tools.yml
+            subchannel: !include ${MOOSE_DIR}/modules/subchannel/doc/sqa_subchannel.yml
             thermal_hydraulics: !include ${MOOSE_DIR}/modules/thermal_hydraulics/doc/sqa_thermal_hydraulics.yml
             tmap8: !include ${ROOT_DIR}/tmap8/doc/sqa_tmap8.yml
             #cardinal: !include ${ROOT_DIR}/cardinal/doc/sqa_cardinal.yml
@@ -137,3 +141,6 @@ Extensions:
             - kim_phase-field_1999
             - Incropera2002
             - petersen
+            - Simon2024PBNC # referenced here and in TMAP8
+            - todreas2021nuclear # referenced in both THM and Subchannel
+            - rhebergen2017analysis # referenced in both Navier Stokes and Framework
