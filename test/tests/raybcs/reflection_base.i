@@ -7,10 +7,15 @@
     type = TestSimpleStepper
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+  []
+
   [initializer]
     type = TestPlacedParticleInitializer
     charge = 1
     weight = 1
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

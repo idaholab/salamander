@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+//confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //*
@@ -33,8 +34,6 @@ public:
 protected:
   /// The starting points
   const std::vector<Point> & _start_points;
-  /// The starting velocities
-  const std::vector<Point> & _start_velocities;
   /// The mass of the particles being placed
   const Real _mass;
   /// The charge of the particles being placed

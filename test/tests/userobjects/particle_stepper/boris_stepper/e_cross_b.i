@@ -93,12 +93,11 @@
 
   [velocity_initializer]
     type = ConstantVelocityInitializer
-    velocities = '0 0 0'
+    velocities = '1 0 0'
   []
   [initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 1 0'
-    start_velocities = '1 0 0'
     velocity_initializer = 'velocity_initializer'
     mass = 1
     weight = 1

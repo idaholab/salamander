@@ -20,7 +20,6 @@
 
   [initializer]
     type = TestPlacedParticleInitializer
-    start_velocities = '0 0 0'
     velocity_initializer = 'velocity_initializer'
   []
 

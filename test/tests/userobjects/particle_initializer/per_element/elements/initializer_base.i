@@ -49,13 +49,6 @@ charge_density = 0
   []
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
   [velocity_initializer]
     type = ConstantVelocityInitializer

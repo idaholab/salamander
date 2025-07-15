@@ -21,13 +21,6 @@ charge_density = 2
   allow_renumbering = false
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
   [stepper]
     type = TestSimpleStepper

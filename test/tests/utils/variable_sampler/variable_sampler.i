@@ -36,13 +36,12 @@
 
   [velocity_initializer]
     type = ConstantVelocityInitializer
-    velocities = '0 0 0'
+    velocities = '1 1 1'
   []
 
   [initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 0 0'
-    start_velocities = '1 1 1'
     velocity_initializer = 'velocity_initializer'
   []
 

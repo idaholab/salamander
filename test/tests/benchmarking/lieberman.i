@@ -93,13 +93,6 @@ num_samples = ${fparse num_elem + 1}
   []
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0
-  []
-[]
-
 [UserObjects]
   [stepper]
     type = LeapFrogStepper

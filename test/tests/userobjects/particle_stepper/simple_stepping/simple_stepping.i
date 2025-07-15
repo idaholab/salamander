@@ -27,9 +27,6 @@
                     9.0 8.0 0.0
                     4.5 3.3 0.0'
     velocity_initializer = 'velocity_initializer'
-    start_velocities = '0.5 0.1 4.1
-                       -1.34 -1.63  6.3
-                        0.5 0.9 10.8'
   []
 
   [study]
