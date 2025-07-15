@@ -24,11 +24,12 @@ public:
   VelocityInitializerBase(const InputParameters & parameters);
 
   static InputParameters validParams();
+
   /**
-   * Gets the velocity of single particle based on the rules created by the initializer object
+   * Creates a vector of initial particle velocities for as many samples as were requested.
    * @returns a Point object containing the particle velocity
    */
-  virtual const Point getParticleVelocity() const = 0;
+  virtual const std::vector<Point> getParticleVelocities(const size_t num_samples) const = 0;
 
   /**
    * Unused methods

@@ -14,6 +14,7 @@
 //* ALL RIGHTS RESERVED
 //*
 #include "ConstantVelocityInitializer.h"
+#include <algorithm>
 
 registerMooseObject("SalamanderApp", ConstantVelocityInitializer);
 
@@ -23,17 +24,23 @@ ConstantVelocityInitializer::validParams()
   auto params = VelocityInitializerBase::validParams();
   params.addClassDescription(
       "Base class for defining how particles are given and initial velocity distribution.");
-  params.addRequiredParam<Point>("velocity", "The velocity which all particles will have.");
+  params.addRequiredParam<std::vector<Point>>(
+      "velocities", "The velocites which will be cycled through when initializing particles.");
   return params;
 }
 
 ConstantVelocityInitializer::ConstantVelocityInitializer(const InputParameters & parameters)
-  : VelocityInitializerBase(parameters), _velocity(getParam<Point>("velocity"))
+  : VelocityInitializerBase(parameters), _velocities(getParam<std::vector<Point>>("velocities"))
 {
 }
 
-const Point
-ConstantVelocityInitializer::getParticleVelocity() const
+const std::vector<Point>
+ConstantVelocityInitializer::getParticleVelocities(const size_t num_samples) const
 {
-  return _velocity;
+  auto velocities = std::vector<Point>();
+
+  std::generate(velocities.begin(),
+                velocities.end(),
+                [this, i = 0]() mutable { return _velocities[i % _velocities.size()]; });
+  return velocities;
 }
