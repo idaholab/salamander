@@ -13,9 +13,15 @@
     type = TestSimpleStepper
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '0 0 0'
+  []
+
   [initializer]
     type = TestPlacedParticleInitializer
     start_velocities = '0 0 0'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

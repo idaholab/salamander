@@ -90,10 +90,16 @@
     bfield_components = 'Bx By Bz'
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '10 10 0'
+  []
+
   [initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 0 0'
     start_velocities = '10 10 0'
+    velocity_initializer = 'velocity_initializer'
     mass = 1
     charge = 1
   []

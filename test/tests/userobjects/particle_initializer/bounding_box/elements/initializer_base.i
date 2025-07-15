@@ -33,6 +33,11 @@ charge_density = 2
     type = TestSimpleStepper
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '0 0 0'
+  []
+
   [initializer]
     type = BoundingBoxParticleInitializer
     # values are chosen to ensure the bounding box cuts elements
@@ -42,7 +47,7 @@ charge_density = 2
     mass = 1
     charge = 1
     number_density = ${charge_density}
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

@@ -45,6 +45,11 @@
     type = TestSimpleStepper
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '0 0 0'
+  []
+
   [initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 0 0
@@ -57,6 +62,7 @@
                         0 0 0
                         0 0 0
                         0 0 0'
+    velocity_initializer = 'velocity_initializer'
     charge = 0.5
     weight = 1
   []

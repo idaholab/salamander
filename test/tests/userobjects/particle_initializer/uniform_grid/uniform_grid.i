@@ -20,6 +20,10 @@
 []
 
 [UserObjects]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '0 0 0'
+  []
   [stepper]
     type = TestSimpleStepper
   []
@@ -30,7 +34,7 @@
     charge = 1
     total_particles = 4
     number_density = 1
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

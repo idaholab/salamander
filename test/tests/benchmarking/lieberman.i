@@ -106,13 +106,18 @@ num_samples = ${fparse num_elem + 1}
     field_components = 'Ex Ey Ez'
   []
 
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocity = '0 0 0'
+  []
+
   [initializer]
     type = UniformGridParticleInitializer
     mass = ${m}
     charge = ${q}
     total_particles = 100
     number_density = ${number_density}
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]
