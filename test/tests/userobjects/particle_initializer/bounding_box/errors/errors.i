@@ -24,7 +24,7 @@ charge_density = 2
 [UserObjects]
   [velocity_initializer]
     type = ConstantVelocityInitializer
-    velocity = '0 0 0'
+    velocities = '0 0 0'
   []
   [initializer]
     type = BoundingBoxParticleInitializer

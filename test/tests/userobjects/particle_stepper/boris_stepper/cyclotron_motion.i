@@ -93,7 +93,7 @@
 
   [velocity_initializer]
     type = ConstantVelocityInitializer
-    velocity = '1 0 0'
+    velocities = '1 0 0'
   []
 
   [initializer]
