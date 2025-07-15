@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -14,6 +15,7 @@
 //*
 
 #include "TestPlacedParticleInitializer.h"
+#include "VelocityInitializerBase.h"
 
 registerMooseObject("SalamanderTestApp", TestPlacedParticleInitializer);
 
@@ -51,6 +53,7 @@ TestPlacedParticleInitializer::getParticleData() const
 {
 
   std::vector<InitialParticleData> data = std::vector<InitialParticleData>(_start_points.size());
+  const auto & velocities = _velocity_initializer.getParticleVelocities(_start_points.size());
 
   for (unsigned int i = 0; i < _start_points.size(); ++i)
   {

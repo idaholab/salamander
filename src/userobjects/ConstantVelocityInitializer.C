@@ -37,10 +37,10 @@ ConstantVelocityInitializer::ConstantVelocityInitializer(const InputParameters &
 const std::vector<Point>
 ConstantVelocityInitializer::getParticleVelocities(const size_t num_samples) const
 {
-  auto velocities = std::vector<Point>();
+  auto velocities = std::vector<Point>(num_samples);
 
   std::generate(velocities.begin(),
                 velocities.end(),
-                [this, i = 0]() mutable { return _velocities[i % _velocities.size()]; });
+                [this, i = 0]() mutable { return _velocities[i++ % _velocities.size()]; });
   return velocities;
 }
