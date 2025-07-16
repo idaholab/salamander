@@ -1,3 +1,4 @@
+
 # SALAMANDER
 Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) Framework
 =====
