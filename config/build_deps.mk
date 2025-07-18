@@ -18,7 +18,8 @@ ifeq ($(ENABLE_CARDINAL),yes)
   libmesh_CXXFLAGS    += -DENABLE_DAGMC -DDAGMC
 
   # Disable Double-Down (optional dependency of DagMC) by default for now
-  # (see https://github.com/neams-th-coe/cardinal/pull/1142). This also turns off Embree by default, below.
+  # (see https://github.com/neams-th-coe/cardinal/pull/1142).
+  # This also turns off Embree by default, below.
   ENABLE_DOUBLE_DOWN ?= no
 
   # Configure and build MOAB, DagMC, and then OpenMC
@@ -49,7 +50,14 @@ ifeq ($(ENABLE_CARDINAL),yes)
   LIBMESH_F90_LIST := $(subst $(space),;,$(libmesh_F90))
 
   ENABLE_DAGMC     := ON
-  include            $(CARDINAL_DIR)/config/openmc.mk
+  # Query the HDF5_VERSION and pass into the OpenMC config Makefile.
+  # This is necessary because OpenMC currently has difficulties querying
+  # the HDF5 version from conda that SALAMANDER uses (See discussion in PR
+  # https://github.com/idaholab/salamander/pull/85). This dependency Makefile
+  # is derived from that in Cardinal. Once these issues are sorted out, we
+  # should return to that version of the Makefile for maintainability.
+  HDF5_VERSION       := $(shell  h5dump --version | sed -E 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  include            $(CURDIR)/config/openmc.mk
 
   # Cardinal
   libmesh_CXXFLAGS   += -DENABLE_CARDINAL
