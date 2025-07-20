@@ -23,8 +23,8 @@ ReflectParticleBC::validParams()
 {
   auto params = ReflectRayBC::validParams();
   params.addClassDescription(
-      "Relfective boundary condition for particles that ensures velocity data is consistent with "
-      "its direction after relfection.");
+      "Reflective boundary condition for particles that ensures velocity data is consistent with "
+      "its direction after reflection.");
   return params;
 }
 

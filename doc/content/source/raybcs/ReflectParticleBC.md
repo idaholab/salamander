@@ -2,7 +2,8 @@
 
 !syntax description /RayBCs/ReflectParticleBC
 
-Since particle velocity data is stored in RayData it will not be updated by the [ReflectRayBC.md]. This boundary condition performs the same operation as the [ReflectRayBC.md] and then updates the particles velocity data ensuring it is consistent with the particles direction after reflection.
+Since particle velocity data is stored in `RayData`, it will not be updated by [ReflectRayBC.md]. 
+This boundary condition performs the same operation as [ReflectRayBC.md] and then updates the particles velocity data ensuring it is consistent with the particles direction after reflection.
 
 # Example Input Syntax
 

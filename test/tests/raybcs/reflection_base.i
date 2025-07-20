@@ -32,7 +32,6 @@
   []
 []
 
-
 [RayKernels]
   [null]
     type = NullRayKernel

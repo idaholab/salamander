@@ -32,6 +32,6 @@ protected:
   const unsigned int _mesh_dimension;
   /// the ray data indicies for the velocities stored on the ray
   const std::vector<RayDataIndex> _velocity_indicies;
-  /// point used to store the components of the velocity which are needed for update during reflection
+  /// point used to store the components of the velocity which are needed during reflection
   Point _temporary_velocity;
 };

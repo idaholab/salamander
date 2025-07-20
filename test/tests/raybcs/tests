@@ -1,6 +1,6 @@
 [Tests]
   design = 'ReflectParticleBC.md'
-  issues = '#25'
+  issues = '#39'
   [reflection]
   requirement = "The system shall be capable of reflecting computational particles off of boundaries and maintain consistent velocity data"
     [1d]

@@ -11,7 +11,6 @@
   zmax = 1
 []
 
-
 [UserObjects]
   [initializer]
     start_points = '0.165 0.835 0.165
@@ -24,8 +23,6 @@
                         0 0 1'
   []
 []
-
-
 
 [RayBCs/reflect]
   boundary = 'left right top bottom front back'
