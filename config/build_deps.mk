@@ -57,7 +57,7 @@ ifeq ($(ENABLE_CARDINAL),yes)
   # is derived from that in Cardinal. Once these issues are sorted out, we
   # should return to that version of the Makefile for maintainability.
   HDF5_VERSION       := $(shell  h5dump --version | sed -E 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
-  include            $(CURDIR)/config/openmc.mk
+  include            $(SALAMANDER_DIR)/config/openmc.mk
 
   # Cardinal
   libmesh_CXXFLAGS   += -DENABLE_CARDINAL
