@@ -4,9 +4,9 @@ Below is a known list of publications supporting SALAMANDER development, and mig
 your work should be included on this list, please create an issue on
 [SALAMANDER GitHub](https://github.com/idaholab/salamander/issues).
 
-!! The below commented out sections should be added in as publications are created and available
+## Journal Articles
 
-!! ## Journal Articles
+!bibtex list bib_files=articles_using_salamander.bib
 
 ## Conference Proceedings
 
