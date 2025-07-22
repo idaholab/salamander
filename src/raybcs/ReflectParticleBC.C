@@ -29,8 +29,7 @@ ReflectParticleBC::validParams()
 }
 
 ReflectParticleBC::ReflectParticleBC(const InputParameters & params)
-  : ReflectRayBC(params),
-    _velocity_indicies(getStudy<PICStudyBase>().getVelocityIndicies(false))
+  : ReflectRayBC(params), _velocity_indicies(getStudy<PICStudyBase>().getVelocityIndicies(false))
 {
 }
 
