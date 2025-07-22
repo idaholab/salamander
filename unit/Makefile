@@ -35,6 +35,8 @@ endif
 FRAMEWORK_DIR      ?= $(MOOSE_DIR)/framework
 ###############################################################################
 
+SALAMANDER_DIR     := $(CURDIR)/..
+
 # Check for optional dependencies and, if found, configure for building.
 # Override default dependency directories for unit builds.
 TMAP8_DIR ?= $(CURDIR)/../tmap8
@@ -95,7 +97,7 @@ ADDITIONAL_INCLUDES := -I$(FRAMEWORK_DIR)/contrib/gtest
 ADDITIONAL_LIBS     := $(FRAMEWORK_DIR)/contrib/gtest/libgtest.la
 
 # Build optional dependencies
-include $(CURDIR)/../config/build_deps.mk
+include $(SALAMANDER_DIR)/config/build_deps.mk
 
 # SALAMANDER
 APPLICATION_DIR    := $(CURDIR)/..

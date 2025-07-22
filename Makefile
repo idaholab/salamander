@@ -34,6 +34,8 @@ else
 endif
 FRAMEWORK_DIR      := $(MOOSE_DIR)/framework
 
+SALAMANDER_DIR     := $(CURDIR)
+
 # Check for optional dependencies and, if found, configure for building.
 include config/check_deps.mk
 
@@ -94,7 +96,7 @@ include $(MOOSE_DIR)/modules/modules.mk
 include config/build_deps.mk
 
 # SALAMANDER
-APPLICATION_DIR    := $(CURDIR)
+APPLICATION_DIR    := $(SALAMANDER_DIR)
 APPLICATION_NAME   := salamander
 BUILD_EXEC         := yes
 GEN_REVISION       := yes
