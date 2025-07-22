@@ -30,7 +30,7 @@ ReflectParticleBC::validParams()
 
 ReflectParticleBC::ReflectParticleBC(const InputParameters & params)
   : ReflectRayBC(params),
-    _velocity_indicies(dynamic_cast<PICStudyBase *>(&_study)->getVelocityIndicies(false))
+    _velocity_indicies(getStudy<PICStudyBase>().getVelocityIndicies(false))
 {
 }
 
@@ -40,15 +40,11 @@ ReflectParticleBC::onBoundary(const unsigned int num_applying)
   // reflect the particle normally and then update velocity data
   ReflectRayBC::onBoundary(num_applying);
   // collect the components of the velocity that need to be consistent with the direction
-  for (const auto i : make_range(_velocity_indicies.size()))
-  {
+  for (const auto i : index_range(_velocity_indicies))
     _temporary_velocity(i) = currentRay()->data(_velocity_indicies[i]);
-  }
   // compute what the velocity data should be to be consistent with direction
   _temporary_velocity = _temporary_velocity.norm() * currentRay()->direction();
 
-  for (const auto i : make_range(_velocity_indicies.size()))
-  {
+  for (const auto i : index_range(_velocity_indicies))
     currentRay()->data(_velocity_indicies[i]) = _temporary_velocity(i);
-  }
 }

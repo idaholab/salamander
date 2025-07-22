@@ -155,7 +155,7 @@ PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialPa
 const std::vector<RayDataIndex>
 PICStudyBase::getVelocityIndicies(const bool all_components) const
 {
-  unsigned int vel_dim = all_components ? 3 : _mesh.dimension();
+  const unsigned int vel_dim = all_components ? 3 : _mesh.dimension();
 
   std::vector<RayDataIndex> indicies(vel_dim);
   for (const auto dim : make_range(vel_dim))
