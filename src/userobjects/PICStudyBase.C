@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -15,6 +16,7 @@
 
 #include "PICStudyBase.h"
 #include "ParticleStepperBase.h"
+#include "libmesh/int_range.h"
 
 InputParameters
 PICStudyBase::validParams()
@@ -148,4 +150,16 @@ PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialPa
   ray->data(_mass_index) = data.mass;
   ray->data(_weight_index) = data.weight;
   ray->data(_charge_index) = data.charge;
+}
+
+const std::vector<RayDataIndex>
+PICStudyBase::getVelocityIndicies(const bool all_components) const
+{
+  unsigned int vel_dim = all_components ? 3 : _mesh.dimension();
+
+  std::vector<RayDataIndex> indicies(vel_dim);
+  for (const auto dim : make_range(vel_dim))
+    indicies[dim] = getRayDataIndex(std::string("v_") + (dim == 0 ? "x" : (dim == 1 ? "y" : "z")));
+
+  return indicies;
 }

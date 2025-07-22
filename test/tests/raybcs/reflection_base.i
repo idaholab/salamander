@@ -21,6 +21,7 @@
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'
+    ray_kernel_coverage_check = false
   []
 []
 
@@ -29,12 +30,6 @@
     type = TestParticleDataVectorPostprocessor
     study = study
     execute_on = TIMESTEP_END
-  []
-[]
-
-[RayKernels]
-  [null]
-    type = NullRayKernel
   []
 []
 
