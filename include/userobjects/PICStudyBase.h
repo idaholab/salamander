@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -15,6 +16,7 @@
 
 #pragma once
 
+#include "Ray.h"
 #include "RayTracingStudy.h"
 
 #include "ParticleInitializerBase.h"
@@ -34,6 +36,15 @@ public:
    * useful for looking at the rays data if needed by another object
    */
   const std::vector<std::shared_ptr<Ray>> & getBankedRays() const;
+
+  /**
+   * Getter method for getting the ray data indicies which are needed to access the velocity
+   * components stored in ray data
+   * @param all_components if true all three data indicies will be provided if not then only the
+   * indicies consistent with the dimension of the mesh will be provided i.e. if the mesh being used
+   * is 1D then only the index for the x component will be provided if all_components is false
+   */
+  const std::vector<RayDataIndex> getVelocityIndicies(const bool all_components) const;
 
 protected:
   /// The banked rays to be used on the next timestep (restartable)
@@ -88,6 +99,11 @@ protected:
    */
   virtual void reinitializeParticles();
 
+  /**
+   * Sets up the given ray object with the contained with in the InitialParticleData struct
+   * @param ray the aquired ray to which the data will be assigned
+   * @param data the initial particle data that will be given to the day
+   */
   virtual void setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialParticleData & data);
 
 private:
