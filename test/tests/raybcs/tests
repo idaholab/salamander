@@ -1,0 +1,31 @@
+[Tests]
+  design = 'ReflectParticleBC.md'
+  issues = '#39'
+  [reflection]
+  requirement = "The system shall be capable of reflecting computational particles off of boundaries and maintain consistent velocity data"
+    [1d]
+      type = 'CSVDiff'
+      input = '1d.i'
+      csvdiff = '1d_out_particle_data_0001.csv
+                 1d_out_particle_data_0002.csv'
+      allow_test_objects = true
+      detail = 'in a 1D domain'
+    []
+    [2d]
+      type = 'CSVDiff'
+      input = '2d.i'
+      csvdiff = '2d_out_particle_data_0001.csv
+                 2d_out_particle_data_0002.csv'
+      allow_test_objects = true
+      detail = 'in a 2D domain'
+    []
+    [3d]
+      type = 'CSVDiff'
+      input = '3d.i'
+      csvdiff = '3d_out_particle_data_0001.csv
+                 3d_out_particle_data_0002.csv'
+      allow_test_objects = true
+      detail = 'in a 3D domain'
+    []
+  []
+[]

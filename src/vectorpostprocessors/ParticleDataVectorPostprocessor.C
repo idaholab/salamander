@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -35,9 +36,7 @@ ParticleDataVectorPostprocessor::validParams()
 ParticleDataVectorPostprocessor::ParticleDataVectorPostprocessor(const InputParameters & parameters)
   : GeneralVectorPostprocessor(parameters),
     _study(getUserObject<PICStudyBase>("study")),
-    _ray_data_indices({_study.getRayDataIndex("v_x"),
-                       _study.getRayDataIndex("v_y"),
-                       _study.getRayDataIndex("v_z")}),
+    _ray_data_indices(_study.getVelocityIndicies(true)),
     _data_values({&declareVector("t_pos"),
                   &declareVector("t_vel"),
                   &declareVector("x"),
