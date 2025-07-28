@@ -38,6 +38,7 @@ public:
   virtual void initialize() override final {}
   virtual void finalize() override final {}
   virtual void execute() override final {}
+  ///@}
 
 protected:
   /// a user specified seed for changing random number generator seeds

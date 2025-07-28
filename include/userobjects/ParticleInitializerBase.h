@@ -18,7 +18,6 @@
 
 #include "GeneralUserObject.h"
 
-class Distribution;
 class VelocityInitializerBase;
 
 struct InitialParticleData
@@ -59,6 +58,7 @@ public:
   virtual void initialize() override final {}
   virtual void finalize() override final {}
   virtual void execute() override final {}
+  ///@}
 
 protected:
   /// the mass of the particles being created

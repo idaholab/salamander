@@ -21,7 +21,7 @@ VelocityInitializerBase::validParams()
 {
   auto params = GeneralUserObject::validParams();
   params.addClassDescription(
-      "Base class for defining how particles are given and initial velocity distribution.");
+      "Base class for defining how particles are given an initial velocity distribution.");
   params.addParam<unsigned int>("seed",
                                 0,
                                 "An additional seed for the random number generators that may be "
