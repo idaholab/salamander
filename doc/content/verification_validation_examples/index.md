@@ -39,6 +39,6 @@ SALAMANDER is under active development and does not currently have any validatio
 
 # List of example cases
 
-!alert construction title=Under development - no example cases are available yet
-SALAMANDER is under active development and does not currently have any example cases available to users.
-
+| Case    | Title                                                                              |
+| ------- | ---------------------------------------------------------------------------------- |
+| 1 | [CAD-based Geometry Workflow for Multiphysics Fusion neutronics Problems Using SALAMANDER](cad_workflow.md) |
