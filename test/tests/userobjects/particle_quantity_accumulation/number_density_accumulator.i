@@ -31,7 +31,7 @@
   [stepper]
     type = TestSimpleStepper
   []
-  
+
   [velocity_initializer]
     type = ConstantVelocityInitializer
     velocities = '0 0 0'

@@ -55,7 +55,7 @@
     type = LeapFrogStepper
     field_components = 'Ex Ey Ez'
   []
-  
+
   [velocity_initializer]
     type = ConstantVelocityInitializer
     velocities = '10 10 0'
