@@ -10,13 +10,17 @@
 []
 
 [UserObjects]
+  [velocity_initializer]
+    velocities = '1 1 1
+                  1 0 1
+                  0 1 1'
+
+  []
+
   [initializer]
     start_points = '0.25 0.75 0
                     0.5 0.5 0
                     0.5 0.5 0'
-    start_velocities = '1 1 1
-                        1 0 1
-                        0 1 1'
   []
 []
 

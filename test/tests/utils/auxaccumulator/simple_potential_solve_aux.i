@@ -39,6 +39,11 @@
 []
 
 [UserObjects]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
   [stepper]
     type = TestSimpleStepper
   []
@@ -55,17 +60,7 @@
                     0.75 0 0
                     1 0 0
                     1 0 0'
-
-    start_velocities = '0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

@@ -93,17 +93,15 @@ num_samples = ${fparse num_elem + 1}
   []
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0
-  []
-[]
-
 [UserObjects]
   [stepper]
     type = LeapFrogStepper
     field_components = 'Ex Ey Ez'
+  []
+
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
   []
 
   [initializer]
@@ -112,7 +110,7 @@ num_samples = ${fparse num_elem + 1}
     charge = ${q}
     total_particles = 100
     number_density = ${number_density}
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]

@@ -13,20 +13,18 @@
   []
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
   [initializer]
     type = PerElementParticleInitializer
     mass = 1
     charge = 1
     number_density = 2
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [stepper]

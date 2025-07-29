@@ -21,16 +21,14 @@ charge_density = 2
   allow_renumbering = false
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
   [stepper]
     type = TestSimpleStepper
+  []
+
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
   []
 
   [initializer]
@@ -42,7 +40,7 @@ charge_density = 2
     mass = 1
     charge = 1
     number_density = ${charge_density}
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]
