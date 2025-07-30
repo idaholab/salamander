@@ -30,9 +30,9 @@
   volume_calculation = volume
 
   verbose = true
-  first_iteration_particles = 500
+  particles = 500
   batches = 5
-  relaxation = dufek_gudowski
+  # relaxation = dufek_gudowski
 
   skinner = moab
   [Tallies]
