@@ -1,6 +1,6 @@
 [Tests]
   design = 'ParticleStepperBase.md PICStudyBase.md'
-  issues = '#4 #19'
+  issues = '#4 #19 #23'
   [e_cross_b]
     requirement = 'The system shall be capable of accurately capturing the path of charged particles in both an electric and a magnetic field'
     [fields]
@@ -13,7 +13,7 @@
     [particle]
       type = 'CSVDiff'
       input = 'e_cross_b.i'
-      csvdiff = 'e_cross_b_out_particle_data_0011.csv'
+      csvdiff = 'e_cross_b_csv_particle_data_0011.csv'
       should_execute = False
       prereq = 'e_cross_b/fields'
       detail = 'and verify particle motion'
@@ -31,9 +31,27 @@
     [particle]
       type = 'CSVDiff'
       input = 'cyclotron_motion.i'
-      csvdiff = 'cyclotron_motion_out_particle_data_0011.csv'
+      csvdiff = 'cyclotron_motion_csv_particle_data_0011.csv'
       should_execute = False
       prereq = 'cyclotron_motion/fields'
+      detail = 'and verify particle motion'
+    []
+  []
+  [circular_e_field]
+    requirement = 'The system shall be capable of accurately capturing the path of charged particles in a time varrying electric field'
+    [fields]
+      type = 'Exodiff'
+      input = 'circular_e_field.i'
+      exodiff = 'circular_e_field_out.e'
+      allow_test_objects = true
+      detail = 'and verify the field'
+    []
+    [particle]
+      type = 'CSVDiff'
+      input = 'circular_e_field.i'
+      csvdiff = 'circular_e_field_csv_particle_data_0011.csv'
+      should_execute = False
+      prereq = 'circular_e_field/fields'
       detail = 'and verify particle motion'
     []
   []
@@ -41,15 +59,15 @@
     requirement = 'The system shall be capable of applying a linear impluse from a force field perpendicular to a particles initial velocity using the boris stepper when there is 0 magnetic field'
     [fields]
       type = 'Exodiff'
-      input = 'boris_projectile_motion.i'
-      exodiff = 'boris_projectile_motion_out.e'
+      input = 'projectile_motion.i'
+      exodiff = 'projectile_motion_out.e'
       allow_test_objects = true
       detail = 'and verify the field'
     []
     [particle]
       type = 'CSVDiff'
-      input = 'boris_projectile_motion.i'
-      csvdiff = 'boris_projectile_motion_out_particle_data_0011.csv'
+      input = 'projectile_motion.i'
+      csvdiff = 'projectile_motion_csv_particle_data_0011.csv'
       should_execute = False
       prereq = 'projectile_motion/fields'
       detail = 'and verify particle motion'
@@ -59,15 +77,15 @@
     requirement = 'The system shall be capable of applying a linear impluse from a force field parallel to a particles velocity using the boris stepper when there is 0 magnetic field'
     [fields]
       type = 'Exodiff'
-      input = 'boris_parallel_acceleration.i'
-      exodiff = 'boris_parallel_acceleration_out.e'
+      input = 'parallel_acceleration.i'
+      exodiff = 'parallel_acceleration_out.e'
       allow_test_objects = true
       detail = 'and verify the field'
     []
     [particle]
       type = 'CSVDiff'
-      input = 'boris_parallel_acceleration.i'
-      csvdiff = 'boris_parallel_acceleration_out_particle_data_0011.csv'
+      input = 'parallel_acceleration.i'
+      csvdiff = 'parallel_acceleration_csv_particle_data_0011.csv'
       should_execute = False
       prereq = 'parallel_acceleration/fields'
       detail = 'and verify particle motion'

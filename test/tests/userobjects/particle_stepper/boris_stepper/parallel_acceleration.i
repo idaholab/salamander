@@ -1,4 +1,4 @@
-!include boris_stepper_base.i
+!include boris_base.i
 
 [Mesh/gmg]
   nx = 120
