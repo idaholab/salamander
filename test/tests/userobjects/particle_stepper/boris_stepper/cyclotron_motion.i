@@ -1,3 +1,8 @@
+[Problem]
+  solve = false
+  kernel_coverage_check=false
+[]
+
 [Mesh/gmg]
   type = GeneratedMeshGenerator
   dim = 2
@@ -113,13 +118,7 @@
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'
-  []
-[]
-
-
-[RayKernels]
-  [null]
-    type = NullRayKernel
+    ray_kernel_coverage_check = false
   []
 []
 
@@ -129,14 +128,15 @@
   num_steps = 10
 []
 
-[Problem]
-  solve = false
-  kernel_coverage_check=false
+[VectorPostprocessors/particle_data]
+  type = TestSingleParticleDataVectorPostprocessor
+  study = study
+  additional_ray_data_outputs = 'charge mass'
+  execute_on = 'TIMESTEP_END'
 []
 
-[Outputs/rays]
-  type = RayTracingExodus
-  study = study
-  output_data_names='v_x v_y v_z charge mass'
-  execute_on = TIMESTEP_BEGIN
+[Outputs]
+  exodus = true
+  csv = true
+  execute_on = 'FINAL'
 []

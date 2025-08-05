@@ -1,10 +1,11 @@
+[Problem]
+  solve = false
+  kernel_coverage_check=false
+[]
+
 [Mesh/gmg]
   type = GeneratedMeshGenerator
   dim = 2
-  nx = 25
-  ny = 7
-  xmax = 22
-  ymax = 7
 []
 
 [Variables]
@@ -22,31 +23,24 @@
   []
 []
 
-
 [Functions]
   [E_x_ic]
     type = ParsedFunction
-    expression = '0'
   []
   [E_y_ic]
     type = ParsedFunction
-    expression = '-9.81'
   []
   [E_z_ic]
     type = ParsedFunction
-    expression = '0'
   []
   [B_x_ic]
     type = ParsedFunction
-    expression = '0'
   []
   [B_y_ic]
     type = ParsedFunction
-    expression = '0'
   []
   [B_z_ic]
     type = ParsedFunction
-    expression = '0'
   []
 []
 
@@ -84,29 +78,25 @@
 []
 
 [UserObjects]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+  []
+
   [stepper]
     type = BorisStepper
     efield_components = 'Ex Ey Ez'
     bfield_components = 'Bx By Bz'
   []
 
-  [velocity_initializer]
-    type = ConstantVelocityInitializer
-    velocities = '10 10 0'
-  []
-
-  [particle_initializer]
+  [initializer]
     type = TestPlacedParticleInitializer
-    start_points = '0 0 0'
     velocity_initializer = 'velocity_initializer'
-    mass = 1
-    charge = 1
   []
 
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    particle_initializer = particle_initializer
+    initializer = initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true
@@ -116,23 +106,16 @@
 []
 
 
-[Executioner]
-  type = Transient
-  dt = 1e-2
-  num_steps = 10
-[]
-
-[Problem]
-  solve = false
-  kernel_coverage_check = false
-[]
-
-
 [VectorPostprocessors/particle_data]
   type = TestSingleParticleDataVectorPostprocessor
   study = study
-  additional_ray_data_outputs = 'charge mass'
   execute_on = 'TIMESTEP_END'
+[]
+
+
+[Executioner]
+  type = Transient
+  num_steps = 10
 []
 
 [Outputs]

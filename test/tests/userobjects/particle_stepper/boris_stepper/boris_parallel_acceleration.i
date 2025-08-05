@@ -109,13 +109,7 @@
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'
-  []
-[]
-
-
-[RayKernels]
-  [null]
-    type = NullRayKernel
+    ray_kernel_coverage_check = false
   []
 []
 
@@ -130,10 +124,15 @@
   kernel_coverage_check=false
 []
 
-[Outputs/rays]
-  type = RayTracingExodus
+[VectorPostprocessors/particle_data]
+  type = TestSingleParticleDataVectorPostprocessor
   study = study
-  output_data_names='v_x v_y v_z charge mass'
-  execute_on = TIMESTEP_BEGIN
-  file_base = 'parallel_acceleration_rays'
+  additional_ray_data_outputs = 'charge mass'
+  execute_on = 'TIMESTEP_END'
+[]
+
+[Outputs]
+  exodus = true
+  csv = true
+  execute_on = 'FINAL'
 []
