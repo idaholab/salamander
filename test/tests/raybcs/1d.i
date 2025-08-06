@@ -12,7 +12,7 @@
     velocities = '1 1 1'
   []
 
-  [initializer]
+  [particle_initializer]
     start_points = '0.25 0 0'
   []
 []

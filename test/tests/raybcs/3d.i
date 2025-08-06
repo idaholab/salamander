@@ -18,7 +18,7 @@
                   0 1 0
                   0 0 1'
   []
-  [initializer]
+  [particle_initializer]
     start_points = '0.165 0.835 0.165
                     0.5 0.5 0.5
                     0.5 0.5 0.5

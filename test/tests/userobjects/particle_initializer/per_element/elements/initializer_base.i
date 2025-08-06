@@ -54,7 +54,7 @@ charge_density = 0
     type = ConstantVelocityInitializer
     velocities = '0 0 0'
   []
-  [initializer]
+  [particle_initializer]
     type = PerElementParticleInitializer
     mass = 1
     charge = 1
@@ -68,7 +68,7 @@ charge_density = 0
 
   [study]
     type = TestInitializedPICStudy
-    initializer = initializer
+    particle_initializer = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true

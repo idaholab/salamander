@@ -21,7 +21,7 @@
     type = TestSimpleStepper
   []
 
-  [initializer]
+  [particle_initializer]
     type = UniformGridParticleInitializer
     mass = 1
     charge = 1
@@ -33,7 +33,7 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     particles_per_element = 1
     always_cache_traces = true
     data_on_cache_traces = true

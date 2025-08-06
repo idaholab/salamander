@@ -21,7 +21,7 @@
                   0.5 0.9 10.8'
   []
 
-  [initializer]
+  [particle_initializer]
     type = TestPlacedParticleInitializer
     start_points = '1.0 1.0 0.0
                     9.0 8.0 0.0
@@ -32,7 +32,7 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true

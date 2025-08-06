@@ -31,7 +31,7 @@ charge_density = 2
     velocities = '0 0 0'
   []
 
-  [initializer]
+  [particle_initializer]
     type = BoundingBoxParticleInitializer
     # values are chosen to ensure the bounding box cuts elements
     # in some interesting ways
@@ -45,7 +45,7 @@ charge_density = 2
 
   [study]
     type = TestInitializedPICStudy
-    initializer = initializer
+    particle_initializer = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true
