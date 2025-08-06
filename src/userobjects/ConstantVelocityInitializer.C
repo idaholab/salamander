@@ -41,6 +41,6 @@ ConstantVelocityInitializer::getParticleVelocities(const size_t num_samples) con
 
   std::generate(velocities.begin(),
                 velocities.end(),
-                [this, i = 0]() mutable { return _velocities[i++ % _velocities.size()]; });
+                [this, i = size_t(0)]() mutable { return _velocities[i++ % _velocities.size()]; });
   return velocities;
 }
