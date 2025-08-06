@@ -1,4 +1,4 @@
-# Lieberman Ion Wall Losses
+#n Lieberman Ion Wall Losses
 
 This benchmark case is based on the example presented in [!cite](lieberman1994principles), chapter 1, pages 26-27. This case presents some basic particle-in-cell (PIC) simulation results from an unnamed finite-difference-based PIC code.
 
@@ -130,7 +130,7 @@ For this simulation, only the x component of the electric field is being used. I
 ### Particle Initialization and Updating
 
 The `UserObjects` block is where particles are created and the rules for how the particle velocity is updated by the fields are defined. The `stepper` is a [LeapFrogStepper.md] which updates a particles' velocity based on the value of the electric fields at the location at which the particle exists.
-The `initializer` defines the rules for how particles are placed in the mesh and the `velocity_initializer` defines how their velocities are initialized.
+The `particle_initializer` defines the rules for how particles are placed in the mesh and the `velocity_initializer` defines how their velocities are initialized.
 The [UniformGridParticleInitializer.md] places particles evenly throughout the mesh.
 In this case, 100 particles are placed on the mesh with uniform spacing between them, and they are weighted so that this particle distribution will approximate the specified argon ion number density, `n`.
 The final object is the `TestInitializedPICStudy`. This object and any other objects which inherit from [PICStudyBase.md] are responsible for managing the particles themselves.
