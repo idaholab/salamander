@@ -23,7 +23,7 @@ ConstantVelocityInitializer::validParams()
 {
   auto params = VelocityInitializerBase::validParams();
   params.addClassDescription(
-      "Provides particles with velocities sampled from a user provided list of velocities");
+      "Provides particles with velocities sampled from a user provided list of velocities.");
   params.addRequiredParam<std::vector<Point>>(
       "velocities", "The velocites which will be cycled through when initializing particles.");
   return params;
