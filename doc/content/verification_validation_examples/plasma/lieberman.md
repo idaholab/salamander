@@ -156,7 +156,7 @@ and the finite element test function, while the [NumberDensityAccumulator.md] ev
 and the finite element test function. These objects contribute to the residual of the electrostatic potential, `phi` and the projection of the particle density onto the finite element mesh, `n`, respectively.
 
 !listing test/tests/benchmarking/lieberman.i block=UserObjects
-                                                 remove=UserObjects/stepper UserObjects/initializer UserObjects/study
+                                                 remove=UserObjects/stepper UserObjects/particle_initializer UserObjects/study
 
 ## Results
 
