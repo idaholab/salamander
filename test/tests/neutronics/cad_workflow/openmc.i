@@ -36,7 +36,6 @@
   verbose = true
   particles = 500
   batches = 5
-  # relaxation = dufek_gudowski
 
   skinner = moab
   [Tallies]
