@@ -6,7 +6,7 @@ While the restriction to S$_2$ neutron transport would be considered overly simp
 
 This work was published in [!cite](eltawila2025) where more details can be found.
 
-# Problem description
+## Problem description
 
 A 1D slab [!cite](griesheimer2022analytical) with initial length $L_0$ and density $\rho_0$ has neutrons traveling with directions $\mu = \pm 1$ and with zero incoming neutron flux boundary conditions on both sides. The slab is mechanically constrained and perfectly insulated in the transverse dimensions (i.e., $y$ and $z$ axes) but free to expand via frictionless sliding along the $x$ axis as the temperature of the slab changes. Both ends of the slab are exposed to a convective heat sink at a fixed temperature $T_0$.
 
@@ -15,41 +15,47 @@ The neutron heating in the slab drives the temperature distribution and causes t
 !media figures/slab_benchmark_prbdesc.png
   id=fig:prbschematic
   caption=Schematic of the three coupled physics.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:50%;
 
 The benchmark uses a one-group assumption for neutron cross sections. The neutron flux distribution in the slab is governed by quasi-static transport in 1D. The resulting transport equation is
 
 \begin{equation}
+  \label{eqn:transport}
   \frac{d}{dx}\left[\frac{1}{\Sigma_t(x)}\frac{d\phi(x)}{dx} \right] + (\lambda -1 ) \Sigma_t(x)\phi(x) = 0,
 \end{equation}
 
 where we consider the vacuum flux boundary conditions
 
 \begin{equation}
+  \label{eqn:transportbcs}
   \pm \frac{d\phi}{dx}\biggr\rvert_{\pm L/2} + \Sigma_t\left(\pm \frac{L}{2}\right)\phi\left(\pm \frac{L}{2}\right) = 0,
 \end{equation}
 
 where $\phi$ is the neutron flux, $\Sigma_t$ is the macroscopic total cross section, and $\lambda$ is the combined in-scattering and (quasi-static) fission source term. $\lambda$ is defined as
 
 \begin{equation}
+  \label{eqn:lambdadef}
   \lambda \equiv \frac{1}{k_\text{eff}}\frac{\nu\Sigma_f}{\Sigma_t}+\frac{\Sigma_s}{\Sigma_t},
 \end{equation}
 
 where $\nu$ is the average number of neutrons released per fission, $k_\text{eff}$ is the multiplication factor, and $\Sigma_f/\Sigma_t$ and $\Sigma_s/\Sigma_t$ are the constant fractional probabilities of fission and scattering, respectively, per collision. The magnitude of the neutron flux is normalized to the total power of the slab, $P$, by
 
 \begin{equation}
+  \label{eqn:powerdef}
   P = \int_{-L/2}^{L/2} q \Sigma_t(x)\phi(x)dx,
 \end{equation}
 
 where $q$ is the energy released per neutron interaction. The Doppler-broadened total microscopic cross section is defined with an inverse square root behavior on temperature as
 
 \begin{equation}
+  \label{eqn:sigma_t}
   \sigma_t(x) \equiv \sigma_{t,0} \sqrt{\frac{T_0}{T(x)}},
 \end{equation}
 
 and the Doppler-broadened total macroscopic cross section is defined as
 
 \begin{equation}
+  \label{eqn:Sigma_t}
   \Sigma_t(x) = M\rho_0\sigma_{t,0} \frac{T_0}{T(x)} = \frac{\Sigma_{t,0}T_0}{T(x)},
 \end{equation}
 
@@ -58,12 +64,14 @@ where $\Sigma_{t,0}\equiv M\sigma_{t,0}\rho_0$ is the unheated macroscopic total
 The steady-state temperature distribution in the slab due to neutron heating is governed by the heat equation
 
 \begin{equation}
+  \label{eqn:heateqn}
   \frac{d}{dx}\Big[ \kappa(T)\frac{dT(x)}{dx} \Big] + q\Sigma_t(x)\phi(x) = 0,
 \end{equation}
 
 where there are convective boundary conditions at both ends given by
 
 \begin{equation}
+  \label{eqn:heateqnbcs}
   \pm \kappa\left(\pm \frac{L}{2}\right)\frac{dT}{dx}\biggr\rvert_{\pm L/2} + h \left[T\left(\pm \frac{L}{2}\right) - T_0 \right] = 0,
 \end{equation}
 
@@ -104,10 +112,11 @@ We use total mass preservation to get material density change from the initial t
 To get the relation
 
 \begin{equation}
+  \label{eqn:rho_t}
   \rho(x) = \rho_0\sqrt{\frac{T_0}{T(x)}}
 \end{equation}
 
-# Analytic solutions
+## Analytic solutions
 
 the reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) for full details on the derivation of these solution. Here we present the final formulas that we use later for comparison with our models.
 
@@ -175,18 +184,18 @@ Substituting [eqn:flux_solution] and [eqn:temperature] into [eqn:constraint] giv
 The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ cm with $P = 1.0\times10^{22}$ eV/s.
 
 !table id=tab:params caption=Example set of model parameters with two different power scenarios [!citep](griesheimer2022analytical).
-| **Parameter**                  | **Value**                   | **Unit**                              |
+| **Parameter                  | **Value                   | **Unit                              |
 | :- | :- | :- |
-| **$\rho_0$**                   | 1.2                         | [g.cm$^{-3}]                          |
-| **$L_0$**                      | 100                         | [cm]                                  |
-| **$A$**                        | 180                         | [g.mol$^{-1}$]                        |
-| **$T_0$**                      | 293                         | [K]                                   |
-| **$q$**                        | 1.0E8                       | [eV].                                 |
-| **$\kappa_0$**                 | 1.25E19.                    | [eV.s$^{-1}$.cm$^{-1}$.K$^{-2}$]      |
-| **$\phi_0$**                   | 2.5E14                      | [cm$^{-2}$.s$^{-1}$]                  |
-| **$\nu\Sigma_f/\Sigma_t$**     | 1.5                         | [-]                                   |
-| **$\Sigma_s/\Sigma_t$**        | 0.45                        | [-]                                   |
-| **$P$**                        | 1.0E22                      | [eV.s$^{-1}$]                         |
+| **$\rho_0$**                   | 1.2                         | `[g.cm`$^{-3}$`]`                          |
+| **$L_0$**                      | 100                         | `[cm]`                                  |
+| **$A$**                        | 180                         | `[g/mol`$^{-1}$`]`                        |
+| **$T_0$**                      | 293                         | `[K]`                                   |
+| **$q$**                        | 1.0E8                       | `[eV]`                                  |
+| **$\kappa_0$**                 | 1.25E19.                    | `[eV/s/cm/K`$^{-2}$`]`      |
+| **$\phi_0$**                   | 2.5E14                      | `[#/cm`$^2$`/s]`                  |
+| **$\nu\Sigma_f/\Sigma_t$**     | 1.5                         | `[-]`                                   |
+| **$\Sigma_s/\Sigma_t$**        | 0.45                        | `[-]`                                   |
+| **$P$**                        | 1.0E22                      | `[eV/s]`                         |
 
 # Problem model
 
@@ -199,7 +208,7 @@ Cardinal is used to couple OpenMC with MOOSE via Picard iteration. OpenMC tallie
 !media figures/slab_benchmark_prbschematic.png
   id=fig:schematic
   caption=Data transfers between OpenMC and MOOSE and conceptual depiction of the different meshes used.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:60%;
 
 We show the input files for a coarse mesh here with more details on results convergence shown in the next section.
 
@@ -219,37 +228,37 @@ It is important to note that incremental (hypoelastic) formulations of finite st
 
 The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 K $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
 
-# Results
+## Results
 
-We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for P=1.0E22 [eV.s$^{-1}$] and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agrees with the analytic solution within 3σ.
+We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for P=1.0E22 `[eV/s]` and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agrees with the analytic solution within 3σ.
 
 !media figures/slab_benchmark_heatingsol.png
   id=fig:heatingsol
   caption=Heating result from OpenMC for N = 100 mesh elements compared against the analytic solution.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
 !media figures/slab_benchmark_fluxsol.png
   id=fig:fluxsol
   caption=Flux result from OpenMC for N = 100 mesh elements compared against the analytic solution.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
 !media figures/slab_benchmark_tempsol.png
   id=fig:tempsol
   caption=Temperature result from MOOSE for N = 100 mesh elements compared against the analytic solution.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
+Table [tab:results] shows results convergence with mesh refinement.
 
-!table id=tab:results caption=k$_{eff}$ results for each mesh size and corresponding errors for P=1.0E22 [eV.s$^{-1}$] [!citep](eltawila2025).
-| **Resolution**        | **Heated length [cm]** | **Error [μm]** | **$k_{\text{eff}}$** | **Error [pcm]** |
-|-----------------------|------------------------|----------------|----------------------|-----------------|
-| **Analytic solution** | 106.47                 | --             | 0.29557              | --              |
-|-----------------------|------------------------|----------------|----------------------|-----------------|
-| **5**                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |
-| **10**                | 106.4382               | -318           | 0.29619 ± 0.00001    | 62 ± 1          |
-| **20**                | 106.4671               | -29            | 0.29557 ± 0.00001    | 0 ± 1           |
-| **50**                | 106.4730               | 30             | 0.29536 ± 0.00001    | -21 ± 1         |
-| **100**               | 106.4745               | 45             | 0.29549 ± 0.00001    | -8 ± 1          |
-| **200**               | 106.4748               | 48             | 0.29556 ± 0.00001    | -1 ± 1          |
+!table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](eltawila2025).
+| **Resolution        | **Heated length `[cm]` | **Error `[μm]` | **$k_{\text{eff}}$** | **Error `[pcm]` |
+| :- | :- | :- | :- | :- |
+| **Analytic solution | 106.47                 | --             | 0.29557              | --              |
+| **5                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |
+| **10                | 106.4382               | -318           | 0.29619 ± 0.00001    | 62 ± 1          |
+| **20                | 106.4671               | -29            | 0.29557 ± 0.00001    | 0 ± 1           |
+| **50                | 106.4730               | 30             | 0.29536 ± 0.00001    | -21 ± 1         |
+| **100               | 106.4745               | 45             | 0.29549 ± 0.00001    | -8 ± 1          |
+| **200               | 106.4748               | 48             | 0.29556 ± 0.00001    | -1 ± 1          |
 
 In [fig:fluxconv] and [fig:tempconv] convergence of flux and temperature relative L$^2$ norms, defined as
 
@@ -268,11 +277,15 @@ where $\phi_a$ is the analytic flux solution, $\phi_{sln.}$ is the Cardinal flux
 !media figures/slab_benchmark_fluxconv.png
   id=fig:fluxconv
   caption=Convergence of flux relative L$^2$ norm.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
 !media figures/slab_benchmark_tempconv.png
   id=fig:tempconv
   caption=Convergence of temperature relative L$^2$ norm.
-  style=display:block;margin-left:auto;margin-right:auto;width:80%;
+  style=display:block;margin-left:auto;margin-right:auto;width:40%;
+
+A first-order convergence of the temperature is achieved with mesh refinement, while the flux starts to converge following a first-order trend then stagnates where other error components dominate as discussed earlier. The stochastic noise error influence is highlighted by keeping the number of particles constant for each line, where we see further convergence when there is less stochastic noise.
+
+We hypothesize that the observed first-order convergence arises from the use of cell tallies in OpenMC, where heating results are tallied as constant monomials. This may be limiting the convergence rate of the coupled solve.
 
 More details and discussion can be found in [!citep](eltawila2025).
