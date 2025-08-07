@@ -1,12 +1,12 @@
 # CAD-based Geometry Workflow for Multiphysics Fusion neutronics Problems Using SALAMANDER
 
-This example describes a workflow for modeling fusion problems in SALAMANDER through Cardinal which wraps OpenMC Monte Carlo particle transport code within MOOSE framework. This example demonstrates using a computer aided design (CAD)-based geometry workflow. It is based on the work published in [!cite](Eltawila2024PBNC).
+This example describes a workflow for modeling fusion problems in SALAMANDER through [Cardinal](https://cardinal.cels.anl.gov/) which wraps OpenMC Monte Carlo particle transport code within [MOOSE framework](https://mooseframework.inl.gov) framework [!citep](giudicelli2024moose). This example demonstrates using a computer aided design (CAD)-based geometry workflow. It is based on the work published in [!cite](Eltawila2024PBNC).
 
-Fusion system designs are complex and require intricate and accurate models that can be best represented using CAD-based geometry. Fusion neutronics models frequently leverage on CAD based geometries. An example is the Paramak python package [!cite](shimwell2021paramak) which allows production of 3D CAD models of fusion reactors. The model shown in [paramak] is based on the same generic workflow described in this tutorial.
+Fusion system designs are complex and require intricate and accurate models that can be best represented using CAD-based geometry. Fusion neutronics models frequently leverage on CAD based geometries. An example is the Paramak python package [!citep](shimwell2021paramak) which allows production of 3D CAD models of fusion reactors. The model shown in [paramak] is based on the same generic workflow described in this tutorial.
 
 !media figures/cad_workflow_paramakmodel.png
   id=paramak
-  caption=Tokamak model based on CAD generated with Paramak package
+  caption=Tokamak model based on CAD generated with Paramak package.
   style=display:block;margin-left:auto;margin-right:auto;width:30%;
 
 The results of the coupled neutronics and heat transfer model are shown in [tokamak_temperatures] and [tokamak_tritium_production] for the temperature distribution and tritium production rate density.
@@ -15,7 +15,7 @@ The results of the coupled neutronics and heat transfer model are shown in [toka
 !col! small=12 medium=4 large=3
 !media figures/cad_workflow_tokamak_temps.png
   id=tokamak_temperatures
-  caption=Example Paramak tokamak model temperature distribution result
+  caption=Example Paramak tokamak model temperature distribution result.
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
@@ -23,22 +23,23 @@ The results of the coupled neutronics and heat transfer model are shown in [toka
 !col! small=12 medium=4 large=3
 !media figures/cad_workflow_tokamak_tritium_production.png
   id=tokamak_tritium_production
-  caption=Example Paramak tokamak model tritium production rate density result
+  caption=Example Paramak tokamak model tritium production rate density result.
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
 !row-end!
 
-This example demonstrates how to:
+This example demonstrates, on a simple but extensive mesh, how to:
+
 - Generate meshes for a coupled multiphysics SALAMANDER model.
-- Couple OpenMC [!cite](openmc) and SALAMANDER [!cite](giudicelli2024moose) using Cardinal for fixed source Monte Carlo calculations.
-- Use Cardinal [!cite](novak2022_cardinal) to tally values of interest such as tritium production and heating which would be used in SALAMANDER to solve for the temperature and tritium distributions.
+- Couple OpenMC [!citep](openmc) and SALAMANDER using Cardinal for fixed source Monte Carlo calculations.
+- Use Cardinal [!citep](novak2022_cardinal) to tally values of interest such as tritium production and heating which would be used in SALAMANDER to solve for the temperature and tritium distributions.
 
 We describe this workflow for a generic CAD model which is extremely simplified for the purpose of the demonstration. Nonetheless, the same workflow is applicable to more complex CAD geometries. This model was also used in [!cite](Eltawila2024PBNC) to perform mesh refinement studies to investigate how the mesh refinement level affects multiphysics results. The meshed geometry was prepared using direct accelerated geometry Monte Carlo (DAGMC) for particle transport, and a volumetric mesh was also prepared to be used in SALAMANDER’s finite element solver and to tally OpenMC results for heat source distribution and tritium production. Cardinal was used to run OpenMC Monte Carlo particle transport within SALAMANDER. The data transfer system transferred heat source and temperature distribution between OpenMC and SALAMANDER as shown in [transfers], with coupling between neutron transport and heat conduction achieved via Picard iteration.
 
 !media figures/cad_workflow_transfers.png
   id=transfers
-  caption=OpenMC and MOOSE Coupling
+  caption=Illustration of OpenMC and MOOSE coupling.
   style=display:block;margin-left:auto;margin-right:auto;width:80%;
 
 ## Generating the meshes
@@ -54,7 +55,7 @@ In this example, `tmesh_1.e` ([volumetric_mesh]) is the finite element mesh used
 
 !media figures/cad_workflow_mesh_1.png
   id=volumetric_mesh
-  caption=Model volumetric mesh
+  caption=Model volumetric mesh.
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
@@ -63,7 +64,7 @@ In this example, `tmesh_1.e` ([volumetric_mesh]) is the finite element mesh used
 
 !media figures/cad_workflow_d1.png
   id=DAGMC_mesh
-  caption=Model DAGMC mesh
+  caption=Model DAGMC mesh.
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
@@ -83,7 +84,7 @@ The Cardinal input files is shown below. The ([MoabSkinner](https://cardinal.cel
 
 ## SALAMANDER (MOOSE) Heat Transfer
 
-SALAMANDER input file is as follows:
+The SALAMANDER input file is as follows:
 
 !listing /test/tests/neutronics/cad_workflow/solid.i
 
@@ -110,7 +111,7 @@ This will run SALAMANDER with 2 MPI processes and 2 OpenMP threads per rank. To 
 
 &nbsp;
 
-The results of this simulation on the finest mesh are shown in [temperatures], [tritium_production], and [results]. More information - including a mesh sensitivity study - is available in [!cite](Eltawila2024PBNC).
+The results of this simulation on the finest mesh are shown in [temperatures], [tritium_production], and [results]. More information, including a mesh sensitivity study, is available in [!cite](Eltawila2024PBNC).
 
 &nbsp;
 
@@ -119,7 +120,7 @@ The results of this simulation on the finest mesh are shown in [temperatures], [
 
 !media figures/cad_workflow_Temps.png
   id=temperatures
-  caption=Temperature distribution result from [!cite](Eltawila2024PBNC)
+  caption=Temperature distribution result from [!cite](Eltawila2024PBNC).
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
@@ -128,7 +129,7 @@ The results of this simulation on the finest mesh are shown in [temperatures], [
 
 !media figures/cad_workflow_tritium_production.png
   id=tritium_production
-  caption=Tritium production rate density result from [!cite](Eltawila2024PBNC)
+  caption=Tritium production rate density result from [!cite](Eltawila2024PBNC).
   style=display:block;margin-left:auto;margin-right:auto;width:130%;
 
 !col-end!
