@@ -1,3 +1,7 @@
+# This test runs a coupled OpenMC and heat conduction model using a CAD-based geometry. The model
+# uses an exodus (tmesh_1.e to use in MOOSE) and DAGMC (tmesh_1.h5m to use in OpenMC) meshes.
+# solid.i solves heat conduction by taking heating results from OpenMC and sending back temperatures
+
 # Conditions
 initial_temperature = ${units 800.0 K}
 

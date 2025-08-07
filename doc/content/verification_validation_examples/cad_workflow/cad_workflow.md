@@ -136,13 +136,13 @@ The results of this simulation on the finest mesh are shown in [temperatures], [
 
 &nbsp;
 
-!table id=results caption=Results summary
-| Parameter (Units) | Value |
-| :- | :- |
-| Armor Max. Temp. (K)         | $1062.4$                   |
-| First Wall Max. Temp. (K)    | $1057.6$                   |
-| Breeder Max. Temp. (K)       | $987.4$                    |
-| Heat Source (W)              | $2.44 \times 10^5 \pm 3 \times 10^3$   |
-| Tritium Production (atoms/s) | $4.70 \times 10^{13} \pm 8 \times 10^{11}$ |
+!table id=results caption=Summary of the results from the coupled simulation published in [!cite](Eltawila2024PBNC).
+| Parameter (Units) | Value | Units |
+| :- | :- | :- |
+| Armor Max. Temp.          | $1062.4$                                   | `[K]`      |
+| First Wall Max. Temp.     | $1057.6$                                   | `[K]`      |
+| Breeder Max. Temp.        | $987.4$                                    | `[K]`      |
+| Heat Source               | $2.44 \times 10^5 \pm 3 \times 10^3$       | `[W]`      |
+| Tritium Production.       | $4.70 \times 10^{13} \pm 8 \times 10^{11}$ | `[atoms/s]`|
 
 &nbsp;

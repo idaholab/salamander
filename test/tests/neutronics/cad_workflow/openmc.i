@@ -1,3 +1,7 @@
+# This test runs a coupled OpenMC and heat conduction model using a CAD-based geometry. The model
+# uses an exodus (tmesh_1.e to use in MOOSE) and DAGMC (tmesh_1.h5m to use in OpenMC) meshes.
+# openmc.i runs OpenMC to tally heating and tritium production taking cells temperature from MOOSE.
+
 [Mesh]
   [file]
     type = FileMeshGenerator
