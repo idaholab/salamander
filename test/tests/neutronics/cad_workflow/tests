@@ -1,5 +1,5 @@
 [Tests]
-  design = 'CAD_workflow.md'
+  design = 'cad_workflow.md'
   issues = '#30'
   [solid_diff_heavy]
     type = CSVDiff
