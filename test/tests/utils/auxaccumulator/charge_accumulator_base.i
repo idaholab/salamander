@@ -1,4 +1,3 @@
-
 [Problem]
   solve = false
 []
@@ -13,16 +12,21 @@
     type = TestSimpleStepper
   []
 
-  [initializer]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
+  [particle_initializer]
     type = TestPlacedParticleInitializer
-    start_velocities = '0 0 0'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]
     type = TestChargeAccumulator
     variable = F
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true

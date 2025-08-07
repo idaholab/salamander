@@ -45,18 +45,19 @@
     type = TestSimpleStepper
   []
 
-  [initializer]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
+  [particle_initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 0 0
                     0.25 0 0
                     0.5 0 0
                     0.75 0 0
                     1 0 0'
-    start_velocities = '0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0
-                        0 0 0'
+    velocity_initializer = 'velocity_initializer'
     charge = 0.5
     weight = 1
   []
@@ -64,7 +65,7 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true

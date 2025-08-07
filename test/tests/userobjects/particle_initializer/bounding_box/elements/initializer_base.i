@@ -21,19 +21,17 @@ charge_density = 2
   allow_renumbering = false
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
   [stepper]
     type = TestSimpleStepper
   []
 
-  [initializer]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
+  [particle_initializer]
     type = BoundingBoxParticleInitializer
     # values are chosen to ensure the bounding box cuts elements
     # in some interesting ways
@@ -42,12 +40,12 @@ charge_density = 2
     mass = 1
     charge = 1
     number_density = ${charge_density}
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]
     type = TestInitializedPICStudy
-    initializer = initializer
+    particle_initializer = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true

@@ -8,9 +8,12 @@
 []
 
 [UserObjects]
-  [initializer]
+  [velocity_initializer]
+    velocities = '1 1 1'
+  []
+
+  [particle_initializer]
     start_points = '0.25 0 0'
-    start_velocities = '1 1 1'
   []
 []
 

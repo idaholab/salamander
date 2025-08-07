@@ -12,31 +12,28 @@
   kernel_coverage_check = false
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0
-  []
-[]
-
 [UserObjects]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
   [stepper]
     type = TestSimpleStepper
   []
 
-  [initializer]
+  [particle_initializer]
     type = UniformGridParticleInitializer
     mass = 1
     charge = 1
     total_particles = 4
     number_density = 1
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     particles_per_element = 1
     always_cache_traces = true
     data_on_cache_traces = true
