@@ -1,14 +1,14 @@
 # 1D Slab Benchmark: Neutron Transport Coupled With Thermal Conduction and Material Expansion
 
-This verification problem presents capabilities to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!cite](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The benchmark provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
+This verification problem presents capabilities to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!citep](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The benchmark provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
 
 While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport  simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (Displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study on the interactions between multiphysics with an analytic solution.
 
-This work was published in [!cite](eltawila2025) where more details can be found.
+This work was published in [!citep](eltawila2025) where more details can be found.
 
 ## Problem description
 
-A 1D slab [!cite](griesheimer2022analytical) with initial length $L_0$ and density $\rho_0$ has neutrons traveling with directions $\mu = \pm 1$ and with zero incoming neutron flux boundary conditions on both sides. The slab is mechanically constrained and perfectly insulated in the transverse dimensions (i.e., $y$ and $z$ axes) but free to expand via frictionless sliding along the $x$ axis as the temperature of the slab changes. Both ends of the slab are exposed to a convective heat sink at a fixed temperature $T_0$.
+A 1D slab [!citep](griesheimer2022analytical) with initial length $L_0$ and density $\rho_0$ has neutrons traveling with directions $\mu = \pm 1$ and with zero incoming neutron flux boundary conditions on both sides. The slab is mechanically constrained and perfectly insulated in the transverse dimensions (i.e., $y$ and $z$ axes) but free to expand via frictionless sliding along the $x$ axis as the temperature of the slab changes. Both ends of the slab are exposed to a convective heat sink at a fixed temperature $T_0$.
 
 The neutron heating in the slab drives the temperature distribution and causes thermal expansion. This slab elongation feeds back into neutronics and heat conduction by influencing the domain length and material density. A schematic of the problem domain and boundary conditions is shown in [fig:prbschematic].
 
