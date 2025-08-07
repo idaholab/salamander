@@ -44,7 +44,7 @@ We describe this workflow for a generic CAD model which is extremely simplified 
 
 ## Generating the meshes
 
-The CAD model was first developed in FUSION360 and was imported into Cubit to assign blocks, materials, and side sets and generate the mesh ([volumetric_mesh]). A corresponding DAGMC surface mesh ([DAGMC_mesh]) was exported directly from the meshed geometry in Cubit (by loading the volumetric meshed geometry in Cubit and exporting a DAGMC surface mesh).
+The CAD model was first developed in [Autodesk Fusion](https://www.autodesk.com/products/fusion-360/overview) (This step can be done in any generic CAD software) and was imported into [Coreform Cubit](https://coreform.com/coreform-cubit/) to assign blocks, materials, and side sets and generate the mesh ([volumetric_mesh]). A corresponding DAGMC surface mesh ([DAGMC_mesh]) was exported directly from the meshed geometry in Cubit (by loading the volumetric meshed geometry in Cubit and exporting a DAGMC surface mesh).
 
 In this example, `tmesh_1.e` ([volumetric_mesh]) is the finite element mesh used in SALAMANDER on which the heat transfer physics is solved. `tmesh_1.h5m` ([DAGMC_mesh]) is the DAGMC surface mesh used for particle transport in OpenMC (which bounds the surfaces between different materials). Cardinal also allows for mesh tallying for tallying OpenMC results directly on the mesh overlayed on the OpenMC geometry which `tmesh_1.e` ([volumetric_mesh]) could be used for as well as an unstructured volume mesh. This could be used by changing the tally type and adding a mesh template (`tally_type = mesh`, `mesh_template = tmesh_1.e`) in Cardinal Tally blocks.
 
