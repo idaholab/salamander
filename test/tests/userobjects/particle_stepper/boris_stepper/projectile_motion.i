@@ -1,4 +1,4 @@
-!include leapfrog_base.i
+!include boris_base.i
 
 [Mesh/gmg]
   nx = 25
@@ -17,6 +17,15 @@
   [E_z_ic]
     expression = '0'
   []
+  [B_x_ic]
+    expression = '0'
+  []
+  [B_y_ic]
+    expression = '0'
+  []
+  [B_z_ic]
+    expression = '0'
+  []
 []
 
 [UserObjects]
@@ -26,16 +35,11 @@
 
   [particle_initializer]
     start_points = '0 0 0'
+    mass = 1
     charge = 1
-    weight = 1
   []
 []
 
-[RayKernels]
-  [null]
-    type = NullRayKernel
-  []
-[]
 
 [Executioner]
   dt = 1e-2
