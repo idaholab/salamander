@@ -129,9 +129,13 @@ For this simulation, only the x component of the electric field is being used. I
 
 ### Particle Initialization and Updating
 
-The `UserObjects` block is where particles are created and the rules for how the particle velocity is updated by the fields are defined. The `stepper` is a [LeapFrogStepper.md] which updates a particles' velocity based on the value of the electric fields at the location at which the particle exists. The `initializer` defines the rules for how particles are placed in the mesh and the how their velocities are initialized. The [UniformGridParticleInitializer.md] places particles evenly throughout the mesh. In this case, 100 particles are placed on the mesh with uniform spacing between them, and they are weighted so that this particle distribution will approximate the specified argon ion number density, `n`. The last parameter, `velocity_distributions`, tells the system which distributions that should be sampled from when initializing particle velocity data. The final object is the `TestInitializedPICStudy`. This object and any other objects which inherit from [PICStudyBase.md] are responsible for managing the particles themselves.
+The `UserObjects` block is where particles are created and the rules for how the particle velocity is updated by the fields are defined. The `stepper` is a [LeapFrogStepper.md] which updates a particles' velocity based on the value of the electric fields at the location at which the particle exists.
+The `particle_initializer` defines the rules for how particles are placed in the mesh and the `velocity_initializer` defines how their velocities are initialized.
+The [UniformGridParticleInitializer.md] places particles evenly throughout the mesh.
+In this case, 100 particles are placed on the mesh with uniform spacing between them, and they are weighted so that this particle distribution will approximate the specified argon ion number density, `n`.
+The final object is the `TestInitializedPICStudy`. This object and any other objects which inherit from [PICStudyBase.md] are responsible for managing the particles themselves.
 
-!listing test/tests/benchmarking/lieberman.i block=Distributions UserObjects
+!listing test/tests/benchmarking/lieberman.i block=UserObjects
                                                  remove=UserObjects/charge_accumulator UserObjects/density_accumulator
                                                  UserObjects/study/particles_per_element
 
@@ -152,7 +156,7 @@ and the finite element test function, while the [NumberDensityAccumulator.md] ev
 and the finite element test function. These objects contribute to the residual of the electrostatic potential, `phi` and the projection of the particle density onto the finite element mesh, `n`, respectively.
 
 !listing test/tests/benchmarking/lieberman.i block=UserObjects
-                                                 remove=UserObjects/stepper UserObjects/initializer UserObjects/study
+                                                 remove=UserObjects/stepper UserObjects/particle_initializer UserObjects/study
 
 ## Results
 
