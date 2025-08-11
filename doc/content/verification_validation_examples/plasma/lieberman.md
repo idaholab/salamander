@@ -1,4 +1,4 @@
-#n Lieberman Ion Wall Losses
+# Lieberman Ion Wall Losses
 
 This benchmark case is based on the example presented in [!cite](lieberman1994principles), chapter 1, pages 26-27. This case presents some basic particle-in-cell (PIC) simulation results from an unnamed finite-difference-based PIC code.
 
