@@ -55,10 +55,14 @@
     field_components = 'Ex Ey Ez'
   []
 
-  [initializer]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+  [particle_initializer]
     type = TestPlacedParticleInitializer
     start_points = '0 10.5 0'
-    start_velocities = '0 0 0'
+    velocity_initializer = 'velocity_initializer'
     mass = 9.1093837015e-31
     charge = 1.602176634e-19
   []
@@ -66,7 +70,7 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    initializer = initializer
+    particle_initializer = particle_initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true

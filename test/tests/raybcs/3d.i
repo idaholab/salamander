@@ -12,15 +12,17 @@
 []
 
 [UserObjects]
-  [initializer]
+  [velocity_initializer]
+    velocities = '1 1 1
+                  1 0 0
+                  0 1 0
+                  0 0 1'
+  []
+  [particle_initializer]
     start_points = '0.165 0.835 0.165
                     0.5 0.5 0.5
                     0.5 0.5 0.5
                     0.5 0.5 0.5'
-    start_velocities = '1 1 1
-                        1 0 0
-                        0 1 0
-                        0 0 1'
   []
 []
 

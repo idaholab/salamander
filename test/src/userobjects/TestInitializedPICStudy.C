@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+//* confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -25,7 +26,7 @@ InputParameters
 TestInitializedPICStudy::validParams()
 {
   auto params = PICStudyBase::validParams();
-  params.addRequiredParam<UserObjectName>("initializer",
+  params.addRequiredParam<UserObjectName>("particle_initializer",
                                           "The initializer that will place particles");
   params.addParam<unsigned int>(
       "particles_per_element", 0, "The number of particles that will be placed in each element");
@@ -40,7 +41,7 @@ TestInitializedPICStudy::validParams()
 
 TestInitializedPICStudy::TestInitializedPICStudy(const InputParameters & parameters)
   : PICStudyBase(parameters),
-    _initializer(getUserObject<ParticleInitializerBase>("initializer")),
+    _initializer(getUserObject<ParticleInitializerBase>("particle_initializer")),
     _use_custom_id_scheme(getParam<bool>("use_custom_rayids")),
     _particles_per_element(getParam<unsigned int>("particles_per_element")),
     _curr_elem_id(0)
