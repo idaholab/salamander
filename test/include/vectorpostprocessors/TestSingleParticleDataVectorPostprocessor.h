@@ -25,4 +25,5 @@ public:
   TestSingleParticleDataVectorPostprocessor(const InputParameters & parameters);
 
   virtual void initialize() override {};
+  virtual void finalize() override;
 };
