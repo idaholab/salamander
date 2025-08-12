@@ -1,3 +1,5 @@
+# This includes the stepper_base.i file, adds the AuxVariables for the magnetic field, 
+# and tells the simulation to use the BorisStepper
 !include boris_base.i
 
 [Mesh/gmg]
