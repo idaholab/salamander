@@ -1,3 +1,4 @@
+# This includes the stepper_base.i file and the tells the simulation to use the leapfrog stepper
 !include leapfrog_base.i
 
 [Mesh/gmg]
