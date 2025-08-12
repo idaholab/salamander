@@ -14,6 +14,8 @@
 //* ALL RIGHTS RESERVED
 //*
 
+#include "Moose.h"
+#include "PICStudyBase.h"
 #include "TestSingleParticleDataVectorPostprocessor.h"
 
 registerMooseObject("SalamanderTestApp", TestSingleParticleDataVectorPostprocessor);
@@ -22,6 +24,7 @@ InputParameters
 TestSingleParticleDataVectorPostprocessor::validParams()
 {
   InputParameters params = TestParticleDataVectorPostprocessor::validParams();
+  params.set<bool>("contains_complete_history") = true;
   return params;
 }
 
@@ -29,4 +32,25 @@ TestSingleParticleDataVectorPostprocessor::TestSingleParticleDataVectorPostproce
     const InputParameters & parameters)
   : TestParticleDataVectorPostprocessor(parameters)
 {
+}
+
+void
+TestSingleParticleDataVectorPostprocessor::finalize()
+{
+  std::vector<double> rank_data = {};
+
+  if (!_study.getBankedRays().empty())
+    for (const auto & data : _data_values)
+      rank_data.push_back(data->back());
+
+  comm().gather(0, rank_data);
+
+  // if the rank is not 0 then it there is no work to be done
+  // if the rank is 0 and there is data on this rank then the most recent particle data is added to
+  // the vpp data
+  if (comm().rank() != 0 || !_study.getBankedRays().empty())
+    return;
+
+  for (const auto i : make_range(_data_values.size()))
+    _data_values[i]->push_back(rank_data[i]);
 }

@@ -13,7 +13,7 @@
     [particle]
       type = 'CSVDiff'
       input = 'circular_e_field.i'
-      csvdiff = 'circular_e_field_csv_particle_data_0011.csv'
+      csvdiff = 'circular_e_field_csv_particle_data.csv'
       should_execute = False
       prereq = 'circular_e_field/fields'
       detail = 'and verify particle motion'
@@ -31,7 +31,7 @@
     [particle]
       type = 'CSVDiff'
       input = 'projectile_motion.i'
-      csvdiff = 'projectile_motion_csv_particle_data_0011.csv'
+      csvdiff = 'projectile_motion_csv_particle_data.csv'
       should_execute = False
       prereq = 'projectile_motion/fields'
       detail = 'and verify particle motion'
@@ -49,7 +49,7 @@
     [particle]
       type = 'CSVDiff'
       input = 'parallel_acceleration.i'
-      csvdiff = 'parallel_acceleration_csv_particle_data_0011.csv'
+      csvdiff = 'parallel_acceleration_csv_particle_data.csv'
       should_execute = False
       prereq = 'parallel_acceleration/fields'
       detail = 'and verify particle motion'
