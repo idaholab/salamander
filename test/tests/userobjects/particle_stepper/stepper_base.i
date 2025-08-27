@@ -80,7 +80,6 @@
   additional_ray_data_outputs = 'charge mass'
 []
 
-
 [Executioner]
   type = Transient
   num_steps = 10

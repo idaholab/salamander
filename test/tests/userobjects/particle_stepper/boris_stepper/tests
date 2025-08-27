@@ -21,6 +21,30 @@
   []
   [cyclotron_motion]
     requirement = 'The system shall be capable of accurately capturing the path of charged particles in a perpendicular magnetic field'
+    [convergence]
+      type = PythonUnitTest
+      input = 'test.py'
+      heavy = True
+      test_case = BorisCyclotronMagneticTest
+      required_python_packages = 'pandas matplotlib'
+      installation_type = in_tree
+    []
+    [convergence_errors]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'cyclotron_motion_errors.csv'
+      should_execute = False
+      prereq = 'cyclotron_motion/convergence'
+    []
+    [convergence_orders]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'cyclotron_motion_orders.csv'
+      should_execute = False
+      prereq = 'cyclotron_motion/convergence'
+    []
     [fields]
       type = 'Exodiff'
       input = 'cyclotron_motion.i'
@@ -39,6 +63,30 @@
   []
   [circular_e_field]
     requirement = 'The system shall be capable of accurately capturing the path of charged particles in a time varrying electric field'
+    [convergence]
+      type = PythonUnitTest
+      input = 'test.py'
+      heavy = True
+      test_case = BorisCyclotronElectricTest
+      required_python_packages = 'pandas matplotlib'
+      installation_type = in_tree
+    []
+    [convergence_errors]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'circular_e_field_errors.csv'
+      should_execute = False
+      prereq = 'circular_e_field/convergence'
+    []
+    [convergence_orders]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'circular_e_field_orders.csv'
+      should_execute = False
+      prereq = 'circular_e_field/convergence'
+    []
     [fields]
       type = 'Exodiff'
       input = 'circular_e_field.i'

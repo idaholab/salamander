@@ -32,7 +32,7 @@ where $\vec{v}_{n + 1/2}$ is the particles' velocity at a time which is 1/2 of a
 
 where $\vec{r}_{n}$ is the particles position at the time corresponding to the $n^\text{th}$ time step and $\vec{r}_{n-1}$ is the particles position on the previous time step.
 
-The implementation of the leap frog scheme was verified using single particle motion tests: parallel acceleration in an electric field ([/parallel_acceleration.i]), and projectile motion ([/projectile_motion.i]).
+The implementation of the leap frog scheme was verified using single particle motion tests: parallel acceleration in an electric field ([leapfrog_stepper/parallel_acceleration.i]), and projectile motion ([leapfrog_stepper/projectile_motion.i]).
 
 # Example Input Syntax
 
