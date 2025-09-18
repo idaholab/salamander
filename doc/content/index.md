@@ -2,7 +2,7 @@
 
 &nbsp;
 
-
+!media figures/SALAMANDER_logo_blue.png dark_src=figures/SALAMANDER_logo_white.png style=display:block;margin-left:auto;margin-right:auto;width:50%;
 
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
 
