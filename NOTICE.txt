@@ -12,7 +12,6 @@ Licensed under LGPL 2.1
 
 
 © 2025 Battelle Energy Alliance, LLC
-
 ALL RIGHTS RESERVED
 
 Prepared by Battelle Energy Alliance, LLC
