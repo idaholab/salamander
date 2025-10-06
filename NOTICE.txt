@@ -11,7 +11,8 @@ Github URL https://github.com/idaholab/salamander
 Licensed under LGPL 2.1
 
 
-© 2025 Battelle Energy Alliance, LLC and North Carolina State University
+© 2025 Battelle Energy Alliance, LLC
+
 ALL RIGHTS RESERVED
 
 Prepared by Battelle Energy Alliance, LLC
@@ -48,8 +49,6 @@ The above copyright notice, this permission notice, and the non-endorsement noti
 The names “North Carolina State University”, “NCSU” and any trade‐name, personal name,
 trademark, trade device, service mark, symbol, image, icon, or any abbreviation, contraction or
 simulation thereof owned by North Carolina State University must not be used to endorse or promote products derived from this software without prior written permission.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
