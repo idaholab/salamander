@@ -10,7 +10,7 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 //*
-//* Copyright 2025, Battelle Energy Alliance, LLC
+//* Copyright 2025, Battelle Energy Alliance, LLC and North Carolina State University
 //* ALL RIGHTS RESERVED
 //*
 #include "ConstantVelocityInitializer.h"
