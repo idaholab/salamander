@@ -15,7 +15,7 @@ ifeq ($(ENABLE_CARDINAL),yes)
   libmesh_CXXFLAGS    += -DENABLE_OPENMC_COUPLING
 
   # Add DagMC flags (-DDAGMC is used in OpenMC)
-  libmesh_CXXFLAGS    += -DDAGMC_ENABLED -DOPENMC_DAGMC_ENABLED
+  libmesh_CXXFLAGS    += -DENABLE_DAGMC -DOPENMC_DAGMC_ENABLED
 
   # Add libmesh flags (-DOPENMC_LIBMESH_ENABLED is used in OpenMC)
 	libmesh_CXXFLAGS    += -DOPENMC_LIBMESH_ENABLED
