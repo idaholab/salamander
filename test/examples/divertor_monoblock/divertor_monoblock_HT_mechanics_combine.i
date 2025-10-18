@@ -1,7 +1,7 @@
 # This input file combines the input files required to run heat transfer coupled with thermomechanics
 
 # Outputs
-outputs_name = divertor_monoblock_heat_transfer_mechanistics/divertor_monoblock_heat_transfer_mechanistics
+outputs_name = divertor_monoblock_heat_transfer_mechanics/divertor_monoblock_heat_transfer_mechanics
 
 # Problem convergence set up
 problem_converge_on = 'disp_x disp_y disp_z temperature'
