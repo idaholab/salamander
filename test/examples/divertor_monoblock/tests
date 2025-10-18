@@ -1,0 +1,12 @@
+[Tests]
+  design = 'divertor_monoblock/index.md'
+  issues = '#54'
+  [divertor_monoblock_heat_transfer]
+    type = Exodiff
+    input = 'divertor_monoblock_HT_combine.i'
+    cli_args = "Executioner/num_steps=2"
+    exodiff = divertor_monoblock_heat_transfer/divertor_monoblock_heat_transfer.e
+    requirement = 'The system shall be able to model heat transfer in a 3D divertor monoblock.'
+  []
+[]
+
