@@ -35,20 +35,35 @@ The input file for this case, `divertor_monoblock_HT_TMAP8_mechanics_combine.i`,
 
 ## Heat Conduction, Tritium Transport, and Neutronics
 
-This case couples heat conduction and tritium transport with neutronics calculations via Cardinal/OpenMC. In this case, we use the MOOSE's multi-app system to couple neutronics to the other physics and transfer the desired information.
+This case couples heat conduction and tritium transport (TMAP8) with neutronics calculations via Cardinal/OpenMC. In this case, we use the MOOSE's multi-app system to couple neutronics to the other physics and transfer the desired information.
 
-`divertor_monoblock_main_HT_TMAP8_neutronics.i` is the main input file handling the multiapp between neutronics and heat transfer when neutronics is being coupled.
+`divertor_monoblock_main_HT_TMAP8_neutronics.i` is the main input file handling the multiapp for the coupling between neutronics and the other physics.
 It itself does not run a simulation, but calls the two subapps.
 The point of this input file structure (as opposed to have the heat transfer handle the multiapp) is that we call allocate different number of resources to each subapp.
-THis is key because why the Monte Carlo neutronics calculations greatly benefits from using several processors to perform calculations in parallel,
+This is key because why the Monte Carlo neutronics calculations greatly benefits from using several processors to perform calculations in parallel,
 using so many processors for the simulation handling heat conduction and tritium transport would increase inter-processor communication without accelerating the solve.
 
 `divertor_monoblock_main_HT_TMAP8_neutronics.i` threfore calls
 `divertor_monoblock_HT_TMAP8_neutronics_combine.i` for the heat conduction and tritium transport simulation
 and `divertor_monoblock_neutronics.i` for the neutronics calculations.
-The neutron flux calaculated in the neutronics calculation is transferred to the other multiphysics simulation as a volumetric heat source term.
+The neutron flux calculated in the neutronics calculation is transferred to the other multiphysics simulation as a volumetric heat source term.
 
 The input file `divertor_monoblock_HT_TMAP8_neutronics_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_neutronics.i`, and `divertor_monoblock_TMAP8.i` using the `!include` feature to combine input files.
+
+## Heat Conduction, Tritium Transport, Thermomechanics, and Neutronics
+
+This case couples heat conduction, tritium transport (TMAP8), thermomechanics with neutronics calculations via Cardinal/OpenMC. In this case, we use the MOOSE's multi-app system to couple neutronics to the other physics and transfer the desired information.
+
+`divertor_monoblock_main_HT_TMAP8_mechanics_neutronics.i` is the main input file handling the multiapp for the coupling between neutronics and the other physics.
+It itself does not run a simulation, but calls the two subapps.
+Just like in the previous case, the point of this input file structure (as opposed to have the heat transfer handle the multiapp) is that we call allocate different number of resources to each subapp.
+
+`divertor_monoblock_main_HT_TMAP8_mechanics_neutronics.i` threfore calls
+`divertor_monoblock_HT_TMAP8_mechanics_neutronics_combine.i` for the heat conduction, tritium transport, and thermomechanics simulation
+and `divertor_monoblock_neutronics.i` for the neutronics calculations.
+The neutron flux calculated in the neutronics calculation is transferred to the other multiphysics simulation as a volumetric heat source term.
+
+The input file `divertor_monoblock_HT_TMAP8_mechanics_neutronics_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_neutronics.i`, `divertor_monoblock_TMAP8.i`, and `divertor_monoblock_mechanics.i` using the `!include` feature to combine input files.
 
 
 
