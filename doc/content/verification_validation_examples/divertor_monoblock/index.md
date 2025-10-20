@@ -14,26 +14,32 @@ Although this effort is a demonstration case and these simulation are not valida
 `divertor_monoblock_mesh.i` and `divertor_monoblock_mesh.params`.
 
 
-## Operation History
+## Operation History and Boundary Conditions
+
+!include /ver-1ic.md start=We simulate a 20,000-second plasma discharge end=very fine mesh and increase computational costs show-end=true
 
 
-## Heat Conduction
+## Multiphysics configurations
+
+In the cases below, we model different configurations of the multiphysics simulations, building the case from simple heat conduction to including tritium transport via TMAP8, thermomechanics, and neutronics.
+
+### Heat Conduction
 
 The input file for this case, `divertor_monoblock_HT_combine.i`, calls on `divertor_monoblock_base.i` and `divertor_monoblock_HT_BC_no_neutronics.i` using the `!include` feature to combine input files.
 
-## Heat Conduction and Tritium Transport
+### Heat Conduction and Tritium Transport
 
 The input file for this case, `divertor_monoblock_HT_TMAP8_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_no_neutronics.i`, and `divertor_monoblock_TMAP8.i` using the `!include` feature to combine input files.
 
-## Heat Conduction and Thermomechanics
+### Heat Conduction and Thermomechanics
 
 The input file for this case, `divertor_monoblock_HT_mechanics_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_no_neutronics.i`, and `divertor_monoblock_mechanics.i` using the `!include` feature to combine input files.
 
-## Heat Conduction, Tritium Transport, and Thermomechanics
+### Heat Conduction, Tritium Transport, and Thermomechanics
 
 The input file for this case, `divertor_monoblock_HT_TMAP8_mechanics_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_no_neutronics.i`, `divertor_monoblock_TMAP8.i`, and `divertor_monoblock_mechanics.i` using the `!include` feature to combine input files.
 
-## Heat Conduction, Tritium Transport, and Neutronics
+### Heat Conduction, Tritium Transport, and Neutronics
 
 This case couples heat conduction and tritium transport (TMAP8) with neutronics calculations via Cardinal/OpenMC. In this case, we use the MOOSE's multi-app system to couple neutronics to the other physics and transfer the desired information.
 
@@ -50,7 +56,7 @@ The neutron flux calculated in the neutronics calculation is transferred to the 
 
 The input file `divertor_monoblock_HT_TMAP8_neutronics_combine.i`, calls on `divertor_monoblock_base.i`, `divertor_monoblock_HT_BC_neutronics.i`, and `divertor_monoblock_TMAP8.i` using the `!include` feature to combine input files.
 
-## Heat Conduction, Tritium Transport, Thermomechanics, and Neutronics
+### Heat Conduction, Tritium Transport, Thermomechanics, and Neutronics
 
 This case couples heat conduction, tritium transport (TMAP8), thermomechanics with neutronics calculations via Cardinal/OpenMC. In this case, we use the MOOSE's multi-app system to couple neutronics to the other physics and transfer the desired information.
 
