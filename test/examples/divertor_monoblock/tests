@@ -37,5 +37,14 @@
     exodiff = divertor_monoblock_heat_transfer_TMAP8_mechanics/divertor_monoblock_heat_transfer_TMAP8_mechanics.e
     requirement = 'The system shall be able to model coupled heat transfer, tritium transport, and thermomechanics in a 3D divertor monoblock.'
   []
+  [divertor_monoblock_heat_transfer_TMAP8_neutronics]
+    type = Exodiff
+    input = 'divertor_monoblock_main_HT_TMAP8_neutronics.i'
+    cli_args = "Executioner/num_steps=2
+                rings='1 4 3 10'
+                num_layer_mesh_thickness=2"
+    exodiff = divertor_monoblock_heat_transfer_TMAP8_neutronics/divertor_monoblock_heat_transfer_TMAP8_neutronics.e
+    requirement = 'The system shall be able to model coupled heat transfer, tritium transport, and neutronics in a 3D divertor monoblock.'
+  []
 []
 
