@@ -1,4 +1,4 @@
-# This is the main input file handling the muliapp between neutronics and heat transfer when neutronics is being coupled.
+# This is the main input file handling the multiapp between neutronics and heat transfer when neutronics is being coupled.
 # it itself does not run a simulation, but calls the two subapps.
 # The point of this input file structure (as opposed to have the heat transfer handle the multiapp)
 # is that we call allocate different number of resources to each subapp.
