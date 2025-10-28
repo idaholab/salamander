@@ -142,5 +142,6 @@ Extensions:
             - Incropera2002
             - petersen
             - Simon2024PBNC # referenced here and in TMAP8
+            - Franklin2025 # referenced here and in TMAP8
             - todreas2021nuclear # referenced in both THM and Subchannel
             - rhebergen2017analysis # referenced in both Navier Stokes and Framework
