@@ -25,7 +25,7 @@ Documents:
     communication_and_contact_information: sqa/salamander_cci.md
     software_coding_standards: sqa/salamander_scs.md
     user_manual: sqa/user_manual.md
-    theory_manual: sqa/theory_manual.md
+    theory_manual: sqa/salamander_theory.md
     show_warning: false
     working_dirs:
         - ${ROOT_DIR}/doc/content
