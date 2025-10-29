@@ -164,13 +164,13 @@ Results of the SALAMANDER simulation are directly compared to those reported in 
 
 !row! style=display:inline-flex;
 
-!media figures/lieberman_vdf_comparison.png style=width:90%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_vdf_comparison.png caption=$v_x - x$ ion phase space, showing ion trajectories. style=width:90%;display:block;margin-left:auto;margin-right:auto;
 
-!media figures/lieberman_population_comparison.png style=width:88%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_population_comparison.png caption=Number $\mathcal{N}$ of ion sheets versus time. style=width:88%;display:block;margin-left:auto;margin-right:auto;
 
 !row-end!
 
-!media figures/lieberman_potential_comparison.png style=width:50%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.5 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
 
 ## Running the Case
