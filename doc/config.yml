@@ -43,8 +43,9 @@ Content:
             - help/development/analyze_jacobian.md
             - help/finite_element_concepts/nodal_patch_recovery.md
             - application_development/performance_benchmarking.md
-            - application_usage/restart_recover.md
             - application_usage/command_line_usage.md
+            - application_usage/input_syntax.md
+            - application_usage/restart_recover.md
     python:
         root_dir: ${MOOSE_DIR}/python/doc/content
         content:
@@ -142,5 +143,6 @@ Extensions:
             - Incropera2002
             - petersen
             - Simon2024PBNC # referenced here and in TMAP8
+            - Franklin2025 # referenced here and in TMAP8
             - todreas2021nuclear # referenced in both THM and Subchannel
             - rhebergen2017analysis # referenced in both Navier Stokes and Framework

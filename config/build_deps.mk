@@ -14,8 +14,11 @@ ifeq ($(ENABLE_CARDINAL),yes)
   ADDITIONAL_CPPFLAGS += $(HDF5_INCLUDES) $(OPENMC_INCLUDES)
   libmesh_CXXFLAGS    += -DENABLE_OPENMC_COUPLING
 
-  # Add DagMC flags (-DDAGMC is used in OpenMC)
-  libmesh_CXXFLAGS    += -DENABLE_DAGMC -DDAGMC
+  # Add DagMC flags (-DOPENMC_DAGMC_ENABLED is used in OpenMC)
+  libmesh_CXXFLAGS    += -DENABLE_DAGMC -DOPENMC_DAGMC_ENABLED
+
+  # Add libmesh flags (-DOPENMC_LIBMESH_ENABLED is used in OpenMC)
+  libmesh_CXXFLAGS    += -DOPENMC_LIBMESH_ENABLED
 
   # Disable Double-Down (optional dependency of DagMC) by default for now
   # (see https://github.com/neams-th-coe/cardinal/pull/1142).
