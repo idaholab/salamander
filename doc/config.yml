@@ -89,25 +89,25 @@ Extensions:
               SALAMANDER Discussion Forum: https://github.com/idaholab/salamander/discussions
               MOOSE FAQ page: https://mooseframework.inl.gov/help/faq/index.html
               MOOSE Discussion Forum: https://github.com/idaholab/moose/discussions
-    MooseDocs.extensions.appsyntax:
-        executable: ${ROOT_DIR}
-        remove:
-            framework: !include ${MOOSE_DIR}/framework/doc/remove.yml
-            cardinal:
-                - /ICs/BulkEnergyConservationIC
-                - /Cardinal/ICs/BulkEnergyConservation/BulkEnergyConservationICAction
-                - /Cardinal/ICs/VolumetricHeatSource/VolumetricHeatSourceICAction
+    MooseDocs.extensions.appsyntax: disable
+#        executable: ${ROOT_DIR}
+#        remove:
+#            framework: !include ${MOOSE_DIR}/framework/doc/remove.yml
+#            cardinal:
+#                - /ICs/BulkEnergyConservationIC
+#                - /Cardinal/ICs/BulkEnergyConservation/BulkEnergyConservationICAction
+#                - /Cardinal/ICs/VolumetricHeatSource/VolumetricHeatSourceICAction
     MooseDocs.extensions.common:
         shortcuts: !include ${MOOSE_DIR}/framework/doc/globals.yml
-    MooseDocs.extensions.acronym:
-        acronyms:
-            framework: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
-            cardinal: !include ${ROOT_DIR}/cardinal/doc/acronyms.yml
-            salamander:
-                SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research
-                PIC: particle-in-cell
-                CFD: computational fluid dynamics
-                CAD: computer-aided design
+    MooseDocs.extensions.acronym: disable
+#        acronyms:
+#            framework: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
+#            cardinal: !include ${ROOT_DIR}/cardinal/doc/acronyms.yml
+#            salamander:
+#                SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research
+#                PIC: particle-in-cell
+#                CFD: computational fluid dynamics
+#                CAD: computer-aided design
     MooseDocs.extensions.sqa:
         active: true
         categories: # commented-out categories are not available
