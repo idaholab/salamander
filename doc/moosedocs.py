@@ -11,6 +11,12 @@ if not os.path.exists(MOOSE_DIR):
     raise Exception('Failed to locate MOOSE, specify the MOOSE_DIR environment variable.')
 os.environ['MOOSE_DIR'] = MOOSE_DIR
 
+# Locate submodule directories and set their DIR variables, if not defined.
+for submodule in ['tmap8', 'cardinal']:
+    env = '{}_DIR'.format(submodule.upper())
+    if env not in os.environ:
+        os.environ[env] = os.path.abspath(os.path.join(os.path.dirname(__name__), '..', submodule))
+
 # Append MOOSE python directory
 MOOSE_PYTHON_DIR = os.path.join(MOOSE_DIR, 'python')
 if MOOSE_PYTHON_DIR not in sys.path:
