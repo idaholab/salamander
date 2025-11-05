@@ -52,8 +52,8 @@ Requirements:
             - ${MOOSE_DIR}/modules/stochastic_tools/doc/content
             - ${MOOSE_DIR}/modules/subchannel/doc/content
             - ${MOOSE_DIR}/modules/thermal_hydraulics/doc/content
-            - ${ROOT_DIR}/tmap8/doc/content
-            - ${ROOT_DIR}/cardinal/doc/content
+            - ${TMAP8_DIR}/doc/content
+            - ${CARDINAL_DIR}/doc/content
         directories:
             - ${ROOT_DIR}/test
         show_warning: false
