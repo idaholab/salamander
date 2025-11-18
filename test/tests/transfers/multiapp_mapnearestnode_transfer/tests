@@ -8,5 +8,10 @@
         type = 'RunApp'
         input = 'transfer_per.i'
         requirement = 'A simple transfer input script should be able to run'
+        # Periodic system throws warning about not being able to find matching boundaries. This might
+        # be due to the fact that the boundaries are orthogonal (as is required by the system), but
+        # not facing one another. This is due to some bug in MOOSE, and new warnings were added to
+        # capture it - see idaholab/moose#22496.
+        allow_warnings = true
     []
 []
