@@ -14,7 +14,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
 
 [Closures]
   [my_closures]
-    type = Closures1PhaseNone
+    type = WallTemperature1PhaseClosures
   []
 []
 
@@ -34,7 +34,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
   []
 []
 
-[Modules/FluidProperties]
+[FluidProperties]
   [h2]
     type = IdealGasFluidProperties
     gamma = 1.667   # (cp/cv) cv: 3117.0, cp: 5195.0 (J/kg/K)

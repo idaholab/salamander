@@ -72,7 +72,7 @@
   [aux]
     type = ParsedAux
     variable = to_master
-    function = 'temp'
-    args = 'temp'
+    expression = 'temp'
+    coupled_variables = 'temp'
   []
 []
