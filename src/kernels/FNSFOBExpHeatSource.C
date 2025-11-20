@@ -12,7 +12,7 @@
 
 using namespace FNSF;
 
-registerMooseObject("FusionApp", FNSFOBExpHeatSource);
+registerMooseObject("SalamanderApp", FNSFOBExpHeatSource);
 
 InputParameters
 FNSFOBExpHeatSource::validParams()

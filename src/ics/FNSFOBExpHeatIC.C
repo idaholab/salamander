@@ -12,7 +12,7 @@
 
 using namespace FNSF;
 
-registerMooseObject("FusionApp", FNSFOBExpHeatIC);
+registerMooseObject("SalamanderApp", FNSFOBExpHeatIC);
 
 InputParameters
 FNSFOBExpHeatIC::validParams()

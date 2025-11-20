@@ -2,7 +2,7 @@
 #include "THMMesh.h"
 #include "DelimitedFileReader.h"
 
-registerMooseObject("FusionApp", FilePipe1Phase);
+registerMooseObject("SalamanderApp", FilePipe1Phase);
 
 InputParameters
 FilePipe1Phase::validParams()

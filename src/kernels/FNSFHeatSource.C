@@ -10,7 +10,7 @@
 #include "FNSFHeatSource.h"
 #include "FNSFUtils.h"
 
-registerMooseObject("FusionApp", FNSFHeatSource);
+registerMooseObject("SalamanderApp", FNSFHeatSource);
 
 InputParameters
 FNSFHeatSource::validParams()

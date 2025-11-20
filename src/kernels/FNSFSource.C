@@ -19,7 +19,7 @@ using namespace FNSF;
  *
  * So, does not need to be registered explicitly.
  */
-// registerMooseObject("FusionApp", FNSFSource);
+// registerMooseObject("SalamanderApp", FNSFSource);
 
 std::pair<int, int>
 FNSFSource::index_xi_depth(Real xi,

@@ -25,7 +25,7 @@
 // TIMPI includes
 #include "timpi/parallel_sync.h"
 
-registerMooseObject("FusionApp", MultiAppMapNearestNodeTransfer);
+registerMooseObject("SalamanderApp", MultiAppMapNearestNodeTransfer);
 
 InputParameters
 MultiAppMapNearestNodeTransfer::validParams()

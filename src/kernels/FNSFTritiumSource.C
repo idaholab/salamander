@@ -10,7 +10,7 @@
 #include "FNSFTritiumSource.h"
 #include "FNSFUtils.h"
 
-registerMooseObject("FusionApp", FNSFTritiumSource);
+registerMooseObject("SalamanderApp", FNSFTritiumSource);
 
 InputParameters
 FNSFTritiumSource::validParams()
