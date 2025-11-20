@@ -20,6 +20,10 @@ D_h = ${fparse (4*area)/wetted_perimeter}
   []
 []
 
+[Problem]
+  type = BlanketProblem
+[]
+
 [GlobalParams]
   gravity_vector = '0 0 -9.81'
   initial_T = ${T_in}

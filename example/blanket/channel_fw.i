@@ -19,6 +19,10 @@ roughness = 2e-4
   []
 []
 
+[Problem]
+  type = BlanketProblem
+[]
+
 [GlobalParams]
   gravity_vector = '0 0 -9.81'
   initial_T = ${T_in}

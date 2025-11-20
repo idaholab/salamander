@@ -7,6 +7,10 @@ Channels = 'CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10 CH11 CH12 CH13 CH14 CH15 CH
   []
 []
 
+[Problem]
+  type = BlanketProblem
+[]
+
 [Outputs]
   exodus = true
   csv = true
@@ -52,7 +56,7 @@ Channels = 'CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10 CH11 CH12 CH13 CH14 CH15 CH
     type = HeatSource
     variable = temp
     block = 'Shield'
-    value = 5.5088e6 #2.7544e07 original 
+    value = 5.5088e6 #2.7544e07 original
   []
   [pd_fw]
     type = HeatSource
@@ -81,7 +85,7 @@ Channels = 'CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10 CH11 CH12 CH13 CH14 CH15 CH
   [pd_ts2]
     type = HeatSource
     variable = temp
-    value = 8.4966e5 #4.2483e6 original 
+    value = 8.4966e5 #4.2483e6 original
     block = 'Toroidal_Plate2'
   []
 []
@@ -164,7 +168,7 @@ Channels = 'CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10 CH11 CH12 CH13 CH14 CH15 CH
     type = PiecewiseLinear
     x = '365.44 464.99 556.82 660.93 757.28 858.82 947.70 1115.15 1254.55 1343.22' #K
     y = '178.86 162.76 149.22 142.95 140.10 134.69 129.26 122.23 119.01 117.86' # W/mK
-  [../] 
+  [../]
 []
 
 [AuxVariables]

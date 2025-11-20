@@ -17,9 +17,10 @@ BZ = 'OB_BZ_0 OB_BZ_1 OB_BZ_2 OB_BZ_3 OB_BZ_4 OB_BZ_5 OB_BZ_6 OB_BZ_7 OB_BZ_8'
   nemesis = true
 []
 
-#[Problem]
+[Problem]
+  type = BlanketProblem
 #  solve = false
-#[]
+[]
 
 [Executioner]
   type = Steady

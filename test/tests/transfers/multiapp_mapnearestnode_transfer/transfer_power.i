@@ -9,6 +9,10 @@
   []
 []
 
+[Problem]
+  type = BlanketProblem
+[]
+
 [Variables]
   [temp][]
 []

@@ -61,6 +61,10 @@
   []
 []
 
+[Problem]
+  type = BlanketProblem
+[]
+
 [Variables]
   [u]
   []
