@@ -40,7 +40,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
   []
 []
 
-[Modules/FluidProperties]
+[FluidProperties]
   [h2]
     # TODO: to check whether or not we can use  HeliumFluidProperties
     type = IdealGasFluidProperties

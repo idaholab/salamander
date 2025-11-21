@@ -39,7 +39,7 @@ roughness = 2e-4
   []
 []
 
-[Modules/FluidProperties]
+[FluidProperties]
   [h2]
     # TODO: to check whether or not we can use  HeliumFluidProperties
     type = IdealGasFluidProperties
