@@ -65,7 +65,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
  #   roughness = ${roughness} # 200 um. Page 281, Multiphysics modeling of the FW/blanket of the US fusion nuclear science facility
   []
 
-  [Hw_material]
+  [Hw_nonscaled]
     type = ADWallHeatTransferCoefficient3EqnDittusBoelterMaterial
     rho = rho
     vel = vel
@@ -75,8 +75,17 @@ D_h = ${fparse (4*area)/wetted_perimeter}
     cp = cp
     T = T
     T_wall = T_wall
-#    Nu_scale = 1.6
+    # Hw = hw_nonscaled
   []
+
+  # [Hw_material] # This scaling of the Nusselt number is meant to account for roughness of the wall of the pipe
+  #   type = ADParsedMaterial
+  #   property_name = Hw
+  #   material_property_names = hw_nonscaled
+  #   constant_names = Nu_scale
+  #   constant_expressions = 1.6
+  #   expression = 'Nu_scale * hw_nonscaled'
+  # []
 []
 
 [AuxVariables]
