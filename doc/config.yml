@@ -46,6 +46,7 @@ Content:
             - application_usage/command_line_usage.md
             - application_usage/input_syntax.md
             - application_usage/restart_recover.md
+            - citing.md
     python:
         root_dir: ${MOOSE_DIR}/python/doc/content
         content:
@@ -84,6 +85,7 @@ Extensions:
                 Software Quality Assurance (SQA) Information: /sqa/index.md
                 Code Standards: sqa/salamander_scs.md
                 Code Coverage: https://mooseframework.inl.gov/salamander/docs/coverage
+            Citing: citing_salamander.md
             Help:
               SALAMANDER Issues Page: https://github.com/idaholab/SALAMANDER/issues
               SALAMANDER Discussion Forum: https://github.com/idaholab/salamander/discussions
