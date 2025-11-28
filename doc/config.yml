@@ -65,6 +65,7 @@ Content:
 
 Renderer:
     type: MooseDocs.base.MaterializeRenderer
+    favicon: figures/SALAMANDER_logo/SALAMANDER.ico
 Extensions:
     MooseDocs.extensions.navigation:
         name: SALAMANDER
