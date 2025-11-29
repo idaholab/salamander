@@ -1,0 +1,8 @@
+# This is a params input file providing the mesh size and monoblock thickness.
+# Since it is called by several input files, having a params file reduces duplication,
+# and makes changes to mesh size easier
+
+# Mesh
+thickness_monoblock = ${units 6e-3 m}
+rings = '1 10 5 28' #'1 30 20 110' #'1 6 4 20' # Number of rings in each circle or in the enclosing square of the mesh
+num_layer_mesh_thickness = 6 # 25 # 5
