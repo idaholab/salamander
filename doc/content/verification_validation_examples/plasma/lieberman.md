@@ -94,7 +94,7 @@ Since computational particles in SALAMANDER are assumed to be point particles, t
 
 ### Kernels
 
-Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [ADMatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
+Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [MatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
 
 !alert note title=
 Since SALAMANDER does not apply the factor $\varepsilon_0^{-1}$ directly when evaluating the inner product of the particle charge density and the test function, the quantity $\varepsilon_0$ is passed to the Laplacian operator via the `diffusivity` parameter.
