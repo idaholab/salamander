@@ -41,4 +41,4 @@ SALAMANDER is under active development and does not currently have any validatio
 
 | Case    | Title                                                                              |
 | ------- | ---------------------------------------------------------------------------------- |
-| 1 | [CAD-based Workflow for Multiphysics Fusion neutronics Problems Using SALAMANDER](cad_workflow.md) |
+| 1 | [CAD-based Workflow for Multiphysics Fusion Neutronics Problems Using SALAMANDER](cad_workflow.md) |

@@ -1,4 +1,4 @@
-# CAD-based Workflow for Multiphysics Fusion neutronics Problems Using SALAMANDER
+# CAD-based Workflow for Multiphysics Fusion Neutronics Problems Using SALAMANDER
 
 This example describes a workflow for modeling fusion problems in SALAMANDER through [Cardinal](https://cardinal.cels.anl.gov/) which wraps OpenMC Monte Carlo particle transport code within [MOOSE framework](https://mooseframework.inl.gov) [!citep](giudicelli2024moose). This example demonstrates using a computer aided design (CAD)-based geometry workflow. It is based on the work published in [!cite](Eltawila2024PBNC).
 
