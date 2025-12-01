@@ -35,10 +35,9 @@ SALAMANDER is under active development and does not currently have any validatio
 | 1 | [Lieberman Ion Wall Losses](lieberman.md) |
 
 
-
-
 # List of example cases
 
-!alert construction title=Under development - no example cases are available yet
-SALAMANDER is under active development and does not currently have any example cases available to users.
+| Case    | Title                                                                              |
+| ------- | ---------------------------------------------------------------------------------- |
+| 1 | [Divertor Monoblock Multiphysics](divertor_monoblock/index.md) |
 
