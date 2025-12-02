@@ -1,3 +1,5 @@
+# Cardinal input file for slab benchmark OpenMC model to couple with thermomechanics
+
 P = 1.0e22 # eV/s
 eV_to_J = 1.602e-19 # J/eV
 
@@ -40,9 +42,9 @@ eV_to_J = 1.602e-19 # J/eV
 []
 
 [ICs]
-  [temp]
+  [temperature]
     type = FunctionIC
-    variable = temp
+    variable = temperature
     function = 293
   []
 []
@@ -107,8 +109,8 @@ eV_to_J = 1.602e-19 # J/eV
   [temp_from_solid]
     type = MultiAppGeneralFieldNearestLocationTransfer
     from_multi_app = solid
-    variable = temp
-    source_variable = temp_praux
+    variable = temperature
+    source_variable = temperature_praux
     execute_on = timestep_end
     displaced_source_mesh = true
     displaced_target_mesh = true
@@ -146,9 +148,9 @@ eV_to_J = 1.602e-19 # J/eV
 []
 
 [VectorPostprocessors]
-  [temp]
+  [temperature]
     type = ElementValueSampler
-    variable = 'temp'
+    variable = 'temperature'
     sort_by = x
     execute_on = 'FINAL'
   []
@@ -163,7 +165,7 @@ eV_to_J = 1.602e-19 # J/eV
     type = MoabSkinner
     execute_on = 'timestep_begin'
     verbose = true
-    temperature = temp
+    temperature = temperature
     n_temperature_bins = 1.0
     temperature_min = 0.0
     temperature_max = 1000
