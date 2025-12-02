@@ -11,6 +11,6 @@
 
 
 
-[UserObjects/initializer]
+[UserObjects/particle_initializer]
   start_points = '0.5 0.5 0'
 []

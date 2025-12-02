@@ -13,20 +13,18 @@
   []
 []
 
-[Distributions]
-  [zero]
-    type = Constant
-    value = 0.0
-  []
-[]
-
 [UserObjects]
-  [initializer]
+  [velocity_initializer]
+    type = ConstantVelocityInitializer
+    velocities = '0 0 0'
+  []
+
+  [particle_initializer]
     type = PerElementParticleInitializer
     mass = 1
     charge = 1
     number_density = 2
-    velocity_distributions = 'zero zero zero'
+    velocity_initializer = 'velocity_initializer'
   []
 
   [stepper]
@@ -35,7 +33,7 @@
 
   [study]
     type = TestInitializedPICStudy
-    initializer = initializer
+    particle_initializer = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true

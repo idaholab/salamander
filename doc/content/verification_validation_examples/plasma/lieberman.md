@@ -94,7 +94,7 @@ Since computational particles in SALAMANDER are assumed to be point particles, t
 
 ### Kernels
 
-Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [ADMatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
+Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [MatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
 
 !alert note title=
 Since SALAMANDER does not apply the factor $\varepsilon_0^{-1}$ directly when evaluating the inner product of the particle charge density and the test function, the quantity $\varepsilon_0$ is passed to the Laplacian operator via the `diffusivity` parameter.
@@ -129,9 +129,13 @@ For this simulation, only the x component of the electric field is being used. I
 
 ### Particle Initialization and Updating
 
-The `UserObjects` block is where particles are created and the rules for how the particle velocity is updated by the fields are defined. The `stepper` is a [LeapFrogStepper.md] which updates a particles' velocity based on the value of the electric fields at the location at which the particle exists. The `initializer` defines the rules for how particles are placed in the mesh and the how their velocities are initialized. The [UniformGridParticleInitializer.md] places particles evenly throughout the mesh. In this case, 100 particles are placed on the mesh with uniform spacing between them, and they are weighted so that this particle distribution will approximate the specified argon ion number density, `n`. The last parameter, `velocity_distributions`, tells the system which distributions that should be sampled from when initializing particle velocity data. The final object is the `TestInitializedPICStudy`. This object and any other objects which inherit from [PICStudyBase.md] are responsible for managing the particles themselves.
+The `UserObjects` block is where particles are created and the rules for how the particle velocity is updated by the fields are defined. The `stepper` is a [LeapFrogStepper.md] which updates a particles' velocity based on the value of the electric fields at the location at which the particle exists.
+The `particle_initializer` defines the rules for how particles are placed in the mesh and the `velocity_initializer` defines how their velocities are initialized.
+The [UniformGridParticleInitializer.md] places particles evenly throughout the mesh.
+In this case, 100 particles are placed on the mesh with uniform spacing between them, and they are weighted so that this particle distribution will approximate the specified argon ion number density, `n`.
+The final object is the `TestInitializedPICStudy`. This object and any other objects which inherit from [PICStudyBase.md] are responsible for managing the particles themselves.
 
-!listing test/tests/benchmarking/lieberman.i block=Distributions UserObjects
+!listing test/tests/benchmarking/lieberman.i block=UserObjects
                                                  remove=UserObjects/charge_accumulator UserObjects/density_accumulator
                                                  UserObjects/study/particles_per_element
 
@@ -152,7 +156,7 @@ and the finite element test function, while the [NumberDensityAccumulator.md] ev
 and the finite element test function. These objects contribute to the residual of the electrostatic potential, `phi` and the projection of the particle density onto the finite element mesh, `n`, respectively.
 
 !listing test/tests/benchmarking/lieberman.i block=UserObjects
-                                                 remove=UserObjects/stepper UserObjects/initializer UserObjects/study
+                                                 remove=UserObjects/stepper UserObjects/particle_initializer UserObjects/study
 
 ## Results
 
@@ -160,13 +164,13 @@ Results of the SALAMANDER simulation are directly compared to those reported in 
 
 !row! style=display:inline-flex;
 
-!media figures/lieberman_vdf_comparison.png style=width:90%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_vdf_comparison.png caption=$v_x - x$ ion phase space, showing ion trajectories. style=width:90%;display:block;margin-left:auto;margin-right:auto;
 
-!media figures/lieberman_population_comparison.png style=width:88%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_population_comparison.png caption=Number $\mathcal{N}$ of ion sheets versus time. style=width:88%;display:block;margin-left:auto;margin-right:auto;
 
 !row-end!
 
-!media figures/lieberman_potential_comparison.png style=width:50%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.5 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
 
 ## Running the Case

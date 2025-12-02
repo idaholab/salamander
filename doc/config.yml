@@ -43,8 +43,10 @@ Content:
             - help/development/analyze_jacobian.md
             - help/finite_element_concepts/nodal_patch_recovery.md
             - application_development/performance_benchmarking.md
-            - application_usage/restart_recover.md
             - application_usage/command_line_usage.md
+            - application_usage/input_syntax.md
+            - application_usage/restart_recover.md
+            - citing.md
     python:
         root_dir: ${MOOSE_DIR}/python/doc/content
         content:
@@ -56,13 +58,14 @@ Content:
             - python/CSVDiff.md
             - python/TestHarness.md
     tmap8:
-        root_dir: ${ROOT_DIR}/tmap8/doc/content
+        root_dir: ${TMAP8_DIR}/doc/content
     cardinal:
-        root_dir: ${ROOT_DIR}/cardinal/doc/content
+        root_dir: ${CARDINAL_DIR}/doc/content
         content: !include ${ROOT_DIR}/doc/cardinal_nek_exclude.yml
 
 Renderer:
     type: MooseDocs.base.MaterializeRenderer
+    favicon: figures/SALAMANDER_logo/SALAMANDER.ico
 Extensions:
     MooseDocs.extensions.navigation:
         name: SALAMANDER
@@ -83,6 +86,7 @@ Extensions:
                 Software Quality Assurance (SQA) Information: /sqa/index.md
                 Code Standards: sqa/salamander_scs.md
                 Code Coverage: https://mooseframework.inl.gov/salamander/docs/coverage
+            Citing: citing_salamander.md
             Help:
               SALAMANDER Issues Page: https://github.com/idaholab/SALAMANDER/issues
               SALAMANDER Discussion Forum: https://github.com/idaholab/salamander/discussions
@@ -101,7 +105,7 @@ Extensions:
     MooseDocs.extensions.acronym:
         acronyms:
             framework: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
-            cardinal: !include ${ROOT_DIR}/cardinal/doc/acronyms.yml
+            cardinal: !include ${CARDINAL_DIR}/doc/acronyms.yml
             salamander:
                 SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research
                 PIC: particle-in-cell
@@ -128,8 +132,8 @@ Extensions:
             stochastic_tools: !include ${MOOSE_DIR}/modules/stochastic_tools/doc/sqa_stochastic_tools.yml
             subchannel: !include ${MOOSE_DIR}/modules/subchannel/doc/sqa_subchannel.yml
             thermal_hydraulics: !include ${MOOSE_DIR}/modules/thermal_hydraulics/doc/sqa_thermal_hydraulics.yml
-            tmap8: !include ${ROOT_DIR}/tmap8/doc/sqa_tmap8.yml
-            #cardinal: !include ${ROOT_DIR}/cardinal/doc/sqa_cardinal.yml
+            tmap8: !include ${TMAP8_DIR}/doc/sqa_tmap8.yml
+            #cardinal: !include ${CARDINAL_DIR}/doc/sqa_cardinal.yml
         reports: !include ${ROOT_DIR}/doc/sqa_reports.yml
         repos:
             default: https://github.com/idaholab/salamander
@@ -142,5 +146,6 @@ Extensions:
             - Incropera2002
             - petersen
             - Simon2024PBNC # referenced here and in TMAP8
+            - Franklin2025 # referenced here and in TMAP8
             - todreas2021nuclear # referenced in both THM and Subchannel
             - rhebergen2017analysis # referenced in both Navier Stokes and Framework

@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+//* confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -9,13 +10,14 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 //*
-//* Copyright 2025, Battelle Energy Alliance, LLC
+//* Copyright 2025, Battelle Energy Alliance, LLC and North Carolina State University
 //* ALL RIGHTS RESERVED
 //*
 
 #include "PerElementParticleInitializer.h"
 #include "MooseRandom.h"
 #include "ElementSampler.h"
+#include "VelocityInitializerBase.h"
 
 registerMooseObject("SalamanderApp", PerElementParticleInitializer);
 
@@ -71,6 +73,7 @@ PerElementParticleInitializer::getParticleData() const
     // now that all of the particle locations have been placed we need to
     // set up the data they will need to be made into actual rays
     const auto & physical_points = sampler.sampleElement(elem, _particles_per_element);
+    const auto & velocities = _velocity_initializer.getParticleVelocities(_particles_per_element);
     Real weight = _number_density * elem->volume() / (_particles_per_element);
     for (const auto i : make_range(_particles_per_element))
     {
@@ -81,9 +84,7 @@ PerElementParticleInitializer::getParticleData() const
       data[particle_index].mass = _mass;
       data[particle_index].charge = _charge;
       data[particle_index].position = physical_points[i];
-      data[particle_index].velocity = Point();
-      for (const auto i : make_range(uint(3)))
-        data[particle_index].velocity(i) = _velocity_distributions[i]->quantile(generator.rand());
+      data[particle_index].velocity = velocities[i];
     }
     elem_count++;
   }

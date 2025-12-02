@@ -12,7 +12,7 @@ Because this initializer divides the work based on the fraction of the total dom
 
 ## Example Input Syntax
 
-!listing test/tests/benchmarking/lieberman.i block=UserObjects/initializer
+!listing test/tests/benchmarking/lieberman.i block=UserObjects/particle_initializer
 
 !syntax parameters /UserObjects/UniformGridParticleInitializer
 

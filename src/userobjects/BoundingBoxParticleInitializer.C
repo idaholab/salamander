@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+//* confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -9,14 +10,14 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 //*
-//* Copyright 2025, Battelle Energy Alliance, LLC
+//* Copyright 2025, Battelle Energy Alliance, LLC and North Carolina State University
 //* ALL RIGHTS RESERVED
 //*
 
 #include "BoundingBoxParticleInitializer.h"
 #include "MooseRandom.h"
 #include "ElementSampler.h"
-#include "Distribution.h"
+#include "VelocityInitializerBase.h"
 
 registerMooseObject("SalamanderApp", BoundingBoxParticleInitializer);
 
@@ -136,15 +137,16 @@ BoundingBoxParticleInitializer::getParticleData() const
     // first sample points in the element like we would if this were a uniform initialization
     // across the whole domain
     const auto & physical_points = sampler.sampleElement(elem, _particles_per_element);
+    const auto & velocities = _velocity_initializer.getParticleVelocities(_particles_per_element);
     Real weight = _number_density * elem->volume() / (_particles_per_element);
-    for (const auto point : physical_points)
+    for (const auto i : make_range(_particles_per_element))
     {
       // we need to check to make sure that every point we have
       // created is actually in the bounding box as well
       unsigned int dim_valid = 0;
-      for (const auto i : make_range(_mesh_dimension))
+      for (const auto j : make_range(_mesh_dimension))
       {
-        if (point(i) >= _bottom_left(i) && point(i) <= _top_right(i))
+        if (physical_points[i](j) >= _bottom_left(j) && physical_points[i](j) <= _top_right(j))
           dim_valid++;
       }
       // if the point is in the box then we can add a particle for this point
@@ -156,9 +158,8 @@ BoundingBoxParticleInitializer::getParticleData() const
         particle.species = _species;
         particle.mass = _mass;
         particle.charge = _charge;
-        particle.position = point;
-        for (const auto i : make_range(uint(3)))
-          particle.velocity(i) = _velocity_distributions[0]->quantile(generator.rand());
+        particle.position = physical_points[i];
+        particle.velocity = velocities[i];
       }
     }
   }

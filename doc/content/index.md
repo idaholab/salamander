@@ -2,7 +2,7 @@
 
 &nbsp;
 
-
+!media figures/SALAMANDER_logo/SALAMANDER_vertical_blue.png dark_src=figures/SALAMANDER_logo/SALAMANDER_vertical_white.png alt=The SALAMANDER logo showing a crawling salamander whose tail morphs into two fusion devices, a tokamak and then a stellerator. style=display:block;margin-left:auto;margin-right:auto;width:50%;
 
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
 
@@ -70,26 +70,26 @@ throughout the world.
 !style halign=left
 SALAMANDER started as a project lead by Idaho National laboratory in collaboration with North Carolina State University, the University of Illinois Urbana-Champaign, and the United Kingdom Atomic Energy Authority. We are always looking for new collaborations and encourage everyone to [get started](getting_started/installation.html), start [contributing](getting_started/contributing.html), and connect with the team on [the SALAMANDER GitHub discussion](https://github.com/idaholab/salamander/discussions).
 
-!media large_media/framework/inl_blue.png link=https://www.inl.gov style=display:block;margin:auto;width:30%;
+!media large_media/framework/inl_blue.png link=https://www.inl.gov alt=The Idaho National Laboratory logo. style=display:block;margin:auto;width:30%;
 
 &nbsp;
 
 !row! style=display:inline-flex;
 !col! small=12 medium=4 large=3
 
-!media figures/ncstate-brick-2x2-red.png link=https://www.ncsu.edu/ style=width:100%;display:block;
+!media figures/ncstate-brick-2x2-red.png link=https://www.ncsu.edu/ alt=The North Carolina State University logo. style=width:100%;display:block;
 
 !col-end!
 
 !col! small=12 medium=4 large=3
 
-!media figures/University-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/University-Wordmark-Reversed-Orange-RGB.png style=width:100%;padding:20px 0;display:block;
+!media figures/University-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/University-Wordmark-Reversed-Orange-RGB.png alt=The University of Illinois at Urbana-Champaign logo. style=width:100%;padding:20px 0;display:block;
 
 !col-end!
 
 !col! small=12 medium=4 large=3
 
-!media figures/UK_Atomic_Energy_Authority_logo.svg link=https://ccfe.ukaea.uk/ dark_src=figures/UK-AEA_WHITE_SML_AW.png style=width:50%;display:block;
+!media figures/UK_Atomic_Energy_Authority_logo.svg link=https://ccfe.ukaea.uk/ dark_src=figures/UK-AEA_WHITE_SML_AW.png alt=The United Kingdom Atomic Energy Authority logo. style=width:50%;display:block;
 
 !col-end!
 !row-end!

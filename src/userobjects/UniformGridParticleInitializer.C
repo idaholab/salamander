@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+//* confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -9,12 +10,13 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 //*
-//* Copyright 2025, Battelle Energy Alliance, LLC
+//* Copyright 2025, Battelle Energy Alliance, LLC and North Carolina State University
 //* ALL RIGHTS RESERVED
 //*
 
 #include "UniformGridParticleInitializer.h"
 #include "MooseRandom.h"
+#include "VelocityInitializerBase.h"
 #include <limits>
 
 registerMooseObject("SalamanderApp", UniformGridParticleInitializer);
@@ -109,6 +111,7 @@ UniformGridParticleInitializer::getParticleData() const
   {
     // the particles that are currently in the element
     auto particle_idxs = std::vector<uint>();
+    const auto & velocities = _velocity_initializer.getParticleVelocities(local_particle_count);
     while (elem->contains_point(curr_point) && particle_count < local_particle_count)
     {
       particle_idxs.push_back(particle_count);
@@ -117,9 +120,7 @@ UniformGridParticleInitializer::getParticleData() const
       data[particle_count].mass = _mass;
       data[particle_count].charge = _charge;
       data[particle_count].position = curr_point;
-      data[particle_count].velocity = Point();
-      for (const auto j : make_range(uint(3)))
-        data[particle_count].velocity(j) = _velocity_distributions[j]->quantile(generator.rand());
+      data[particle_count].velocity = velocities[particle_count];
       particle_count++;
       curr_point = Point((particle_count + 0.5) * dx + local_xmin);
     }
