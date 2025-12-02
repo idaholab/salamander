@@ -1,3 +1,5 @@
+# MOOSE Thermomechanics model input file for the slab benchmark problem
+
 T0 = 293 # K
 L0 = 100 # cm
 L = 106.47 # cm
@@ -31,7 +33,7 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 []
 
 [Variables]
-  [temp]
+  [temperature]
   []
   [disp_x]
   []
@@ -45,16 +47,16 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
         add_variables = true
         eigenstrain_names = eigenstrain
         generate_output = 'strain_xx'
-        temperature = temp
+        temperature = temperature
       []
     []
   []
 []
 
 [ICs]
-  [temp]
+  [temperature]
     type = FunctionIC
-    variable = temp
+    variable = temperature
     function = 293
   []
 []
@@ -62,16 +64,16 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 [Kernels]
   [heat_conduction]
     type = HeatConduction
-    variable = temp
+    variable = temperature
   []
   [kappa_fission]
     type = CoupledForce
-    variable = temp
+    variable = temperature
     v = kappa_fission
   []
   [dt]
     type = HeatConductionTimeDerivative
-    variable = temp
+    variable = temperature
   []
 []
 
@@ -81,7 +83,7 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
     order = CONSTANT
     initial_condition = '${fparse P*eV_to_J/L0 }'
   []
-  [temp_praux]
+  [temperature_praux]
     family = MONOMIAL
     order = CONSTANT
   []
@@ -90,10 +92,10 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 []
 
 [AuxKernels]
-   [temp_projection]
+   [temperature_projection]
      type = ProjectionAux
-     variable = temp_praux
-     v = temp
+     variable = temperature_praux
+     v = temperature
    []
    [disp_projection]
      type = ProjectionAux
@@ -105,7 +107,7 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 [Materials]
   [thermal_parameters]
     type = HeatConductionMaterial
-    temp = temp
+    temp = temperature
     thermal_conductivity_temperature_function = conductivity
     specific_heat = 0.3
   []
@@ -127,7 +129,7 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
     stress_free_temperature = ${T0}
     thermal_expansion_function_reference_temperature = ${T0}
     thermal_expansion_function = cte_func_mean
-    temperature = temp
+    temperature = temperature
     eigenstrain_name = eigenstrain
   []
 []
@@ -136,7 +138,7 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
   [sides_convective_BC]
       type = ConvectiveFluxFunction
       T_infinity = ${T0}
-      variable = temp
+      variable = temperature
       boundary = 'left right'
       coefficient = ${h}
   []

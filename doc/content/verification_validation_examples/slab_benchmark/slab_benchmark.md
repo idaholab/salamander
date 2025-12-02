@@ -106,10 +106,10 @@ where the linear expansion coefficient $\alpha(T)$ is given by an inverse square
 We use total mass preservation to get material density change from the initial to the final state, starting from:
 
 \begin{equation}
-  \rho(x)\ell(x) = \rho_0\ell_0. \label{eqn:mass_conservation}
+  \rho(x)\ell(x) = \rho_0\ell_0, \label{eqn:mass_conservation}
 \end{equation}
 
-To get the relation
+to get the relation
 
 \begin{equation}
   \label{eqn:rho_t}
@@ -118,7 +118,7 @@ To get the relation
 
 ## Analytic solutions
 
-the reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) for full details on the derivation of these solution. Here we present the final formulas that we use later for comparison with our models.
+The reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) for full details on the derivation of these solutions. Here we present the final formulas that we use later for comparison with our models.
 
 The heating distribution is given by
 
@@ -181,21 +181,21 @@ Substituting [eqn:flux_solution] and [eqn:temperature] into [eqn:constraint] giv
   \label{eqn:power_condition}
 \end{equation}
 
-The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ cm with $P = 1.0\times10^{22}$ eV/s.
+The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ `cm` with $P = 1.0\times10^{22}$ `eV/s`.
 
 !table id=tab:params caption=Example set of model parameters with two different power scenarios [!citep](griesheimer2022analytical).
-| **Parameter                  | **Value                   | **Unit                              |
+| Parameter                  | Value                   | Unit                              |
 | :- | :- | :- |
-| **$\rho_0$**                   | 1.2                         | `[g.cm`$^{-3}$`]`                          |
-| **$L_0$**                      | 100                         | `[cm]`                                  |
-| **$A$**                        | 180                         | `[g/mol`$^{-1}$`]`                        |
-| **$T_0$**                      | 293                         | `[K]`                                   |
-| **$q$**                        | 1.0E8                       | `[eV]`                                  |
-| **$\kappa_0$**                 | 1.25E19.                    | `[eV/s/cm/K`$^{-2}$`]`      |
-| **$\phi_0$**                   | 2.5E14                      | `[#/cm`$^2$`/s]`                  |
-| **$\nu\Sigma_f/\Sigma_t$**     | 1.5                         | `[-]`                                   |
-| **$\Sigma_s/\Sigma_t$**        | 0.45                        | `[-]`                                   |
-| **$P$**                        | 1.0E22                      | `[eV/s]`                         |
+| $\rho_0$                   | $1.2$                         | `g.cm`$^{-3}$``                          |
+| $L_0$                      | $100$                         | `cm`                                  |
+| $A$                        | $180$                         | `g/mol`$^{-1}$``                        |
+| $T_0$                      | $293$                         | `K`                                   |
+| $q$                        | $1.0 \times 10^{8}$                       | `eV`                                  |
+| $\kappa_0$               | $1.25 \times 10^{19}$                    | `eV/s/cm/K`$^{-2}$``      |
+| $\phi_0$                  | $2.5\times 10^{14}$                      | `#/cm`$^2$`/s`                  |
+| $\nu\Sigma_f/\Sigma_t$     | $1.5$                         | `-`                                   |
+| $\Sigma_s/\Sigma_t$        | $0.45$                        | `-`                                   |
+| $P$                        | $1.0\times 10^{22}$                     | `eV/s`                         |
 
 # Problem model
 
@@ -226,11 +226,11 @@ The thermomechanics input file is as follows:
 
 It is important to note that incremental (hypoelastic) formulations of finite strain behavior inherently introduce inaccuracies arising from the time integration error. This limitation is inherent to this formulation and therefore exists in the MOOSE implementation and the implementations of other major commercial codes. The magnitude of these errors grows with increasing strain, so this typically becomes a practical issue only for very large strains, for which hyperelastic models are more appropriate [!citep](belytschko2003).
 
-The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 K $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
+The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 `K` $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
 
 ## Results
 
-We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for P=1.0E22 `[eV/s]` and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agrees with the analytic solution within 3σ.
+We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for $P=1.0 \times 10^{22}$ `eV/s` and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agrees with the analytic solution within 3$\sigma$.
 
 !media figures/slab_benchmark_heatingsol.png
   id=fig:heatingsol
@@ -247,20 +247,20 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
   caption=Temperature result from MOOSE for N = 100 mesh elements compared against the analytic solution.
   style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
-Table [tab:results] shows results convergence with mesh refinement.
+[tab:results] shows results convergence with mesh refinement.
 
 !table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](eltawila2025).
-| **Resolution        | **Heated length `[cm]` | **Error `[μm]` | **$k_{\text{eff}}$** | **Error `[pcm]` |
+| Resolution        | Heated length `[cm]` | Error `[μm]` | $k_{\text{eff}}$ | Error `[pcm]` |
 | :- | :- | :- | :- | :- |
-| **Analytic solution | 106.47                 | --             | 0.29557              | --              |
-| **5                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |
-| **10                | 106.4382               | -318           | 0.29619 ± 0.00001    | 62 ± 1          |
-| **20                | 106.4671               | -29            | 0.29557 ± 0.00001    | 0 ± 1           |
-| **50                | 106.4730               | 30             | 0.29536 ± 0.00001    | -21 ± 1         |
-| **100               | 106.4745               | 45             | 0.29549 ± 0.00001    | -8 ± 1          |
-| **200               | 106.4748               | 48             | 0.29556 ± 0.00001    | -1 ± 1          |
+| Analytic solution | 106.47                 | --             | 0.29557              | --              |
+| 5                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |
+| 10                | 106.4382               | -318           | 0.29619 ± 0.00001    | 62 ± 1          |
+| 20                | 106.4671               | -29            | 0.29557 ± 0.00001    | 0 ± 1           |
+| 50                | 106.4730               | 30             | 0.29536 ± 0.00001    | -21 ± 1         |
+| 100               | 106.4745               | 45             | 0.29549 ± 0.00001    | -8 ± 1          |
+| 200               | 106.4748               | 48             | 0.29556 ± 0.00001    | -1 ± 1          |
 
-In [fig:fluxconv] and [fig:tempconv] convergence of flux and temperature relative L$^2$ norms, defined as
+In [fig:fluxconv] and [fig:tempconv], convergence of flux and temperature relative L$^2$ norms, defined as
 
 \begin{equation}
   \varepsilon_\phi=\frac{||\phi_a-\phi_{sln.}||_2}{||\phi_a||_2}
@@ -288,4 +288,4 @@ A first-order convergence of the temperature is achieved with mesh refinement, w
 
 We hypothesize that the observed first-order convergence arises from the use of cell tallies in OpenMC, where heating results are tallied as constant monomials. This may be limiting the convergence rate of the coupled solve.
 
-More details and discussion can be found in [!citep](eltawila2025).
+More details and discussion can be found in [!citep](eltawila2025)

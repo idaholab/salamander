@@ -1,13 +1,16 @@
+# This script creates the OpenMC model for the slab benchmark with temperature-dependent
+# cross sections and uses DAGMC for geometry representation.
+
 import openmc
 import openmc.mgxs as mgxs
 import numpy as np
 import h5py
 
-T0 = 293
-Tmax = 393
-Tmin = 293
-L0 = 100
-L = 106.47
+T0 = 293 # K
+Tmax = 393 # K
+Tmin = 293 # K
+L0 = 100 # cm
+L = 106.47 # cm
 rho = 1.2 # g/cc
 N_A = 6.022e23 # Avagadro's number
 A = 180 # mass number for slab material
