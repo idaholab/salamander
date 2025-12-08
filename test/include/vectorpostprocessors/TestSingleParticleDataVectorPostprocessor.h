@@ -15,24 +15,15 @@
 //*
 
 #pragma once
-#include "ParticleDataVectorPostprocessor.h"
+#include "TestParticleDataVectorPostprocessor.h"
 
-class TestParticleDataVectorPostprocessor : public ParticleDataVectorPostprocessor
+class TestSingleParticleDataVectorPostprocessor : public TestParticleDataVectorPostprocessor
 {
 public:
   static InputParameters validParams();
 
-  TestParticleDataVectorPostprocessor(const InputParameters & parameters);
+  TestSingleParticleDataVectorPostprocessor(const InputParameters & parameters);
 
-  /**
-   * adds the ray id to the particle data for sorting results
-   * This will help ensure testability
-   */
-  virtual void execute() override;
-  /**
-   * In the testing version of this the finalize not only
-   * communicates between processors but also sorts the data by ray
-   * id so that it will be consistent in testing
-   */
+  virtual void initialize() override {};
   virtual void finalize() override;
 };
