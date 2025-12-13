@@ -30,9 +30,10 @@ SALAMANDER is under active development and does not currently have any validatio
 
 # List of benchmarking cases
 
-| Case    | Title                                                                              |
-| ------- | ---------------------------------------------------------------------------------- |
-| 1 | [Lieberman Ion Wall Losses](lieberman.md) |
+| Case    | Title                                                                                                      |
+| ------- | ---------------------------------------------------------------------------------------------------------- |
+| 1 | [Lieberman Ion Wall Losses](lieberman.md)                                                                        |
+| 2 | [1D Slab Benchmark: Neutron Transport Coupled With Thermal Conduction and Material Expansion](slab_benchmark.md) |
 
 
 
