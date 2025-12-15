@@ -77,7 +77,12 @@ Doing so yields the electric field
 
 ## Convergence Studies
 
-For the sake of simplicity all particle properties are set to unity, and the magnetic field magnitude $B_0$ is set to 1 T.
-Four time steps are used, each one an order of mangitude smaller than the last, $\Delta t \in [10^{-3}, 10^{-2}. 10^{-1}, 1]$ second.
+For the sake of simplicity all particle properties are set to unity, in S.I. units, and the magnetic field magnitude $B_0$ is set to 1 T.
+Four time steps are used, each one an order of mangitude smaller than the last, $\Delta t \in [1, 10$^{-1}$, 10$^{-2}$, 10$^{-3}$]$ seconds.
+After a simulation at a given time step is completed the relative $l_2$, and $l_\infty$ norms of the error between the analytic solution and simulated are taken.
+Plotting these errors on a log-log plot and then taking the slope reveals the order of accuracy of the time integration, both implemented steppers are second order accurate in time, so the slope of each line should be two.
 
+!media plot_stepper_errors.py
+       image_name=boris_circular_e_field_l2.png
+       style=width:50%;margin-bottom:2%;margin-left:auto;margin-right:auto
 

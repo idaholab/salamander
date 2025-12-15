@@ -3,7 +3,7 @@ import sys
 import unittest
 
 sys.path.append("../")
-from analysis import test_case
+from stepper_analysis import test_case
 
 
 class LeapFrogCyclotronElectricTest(unittest.TestCase):
