@@ -2,6 +2,8 @@
 
 !syntax description /UserObjects/LeapFrogStepper
 
+Verification of the Leapfrog stepper implementation is detailed [here](particle_stepping.md).
+
 When charged particles are only subjected to an electric field, a standard particle stepping scheme called the leapfrog scheme can be used to accurately calculate the motion of these particles through the field. This scheme can reproduce particle paths exactly, to machine precision, in the case of a constant uniform electric field. More information about this particle stepping scheme can be found in [!cite](Birdsall_Langdon_1991).
 
 On the first step that a particle takes the particle velocity is updated with a 1/2 time step as
