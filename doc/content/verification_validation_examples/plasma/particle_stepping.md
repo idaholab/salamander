@@ -9,9 +9,9 @@ In order to verify that these steppers work properly a convergence studies can b
 The example of single particle motion utilized in the verification of these capabilities is with a classic examples of single particle motion, cyclotron motion.
 While cycltron motion requires a magnetic field we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same praticle paths.
 
-## Cycltron Motion
+## Cyclotron Motion
 
-The problem setup of cycltron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
+The problem setup of cyclotron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
 For this example, the particle is traveling within the `XY` plane, and the magentic field is aligned along the positive `Z` direction.
 
 \begin{equation}
@@ -32,7 +32,7 @@ Starting from Newtons equation of motion
 
 Where $\vec{v}$ is the particle's velocity, $q$ is the particle's charge, and $m$ is the particle's mass.
 
-The analytic solution to this equations are given by
+The analytic solution to these equations are given by
 
 \begin{equation}
   x(t) = r_L \sin \left( \omega_c t \right)
@@ -41,14 +41,14 @@ The analytic solution to this equations are given by
   y(t) = r_L \cos \left( \omega_c t \right)
 \end{equation}
 
-Where $r_L$ is the whats called the Larmor radius and given by
+Where $r_L$ is the what is called the Larmor radius and given by
 
 \begin{equation}
   r_L = \frac{v_\perp}{\omega_c}
 \end{equation}
 
 Where $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyro frequency.
-The gyro frequency is defined as
+The gyrofrequency is defined as
 
 \begin{equation}
   \omega_c = \frac{q B_0}{m}.
@@ -66,7 +66,7 @@ Starting from the equations of motion for a particle in an electric field is giv
   \vec{E}.
 \end{equation}
 
-We can then plug in the solution for the particles path from the example of cycltron motion. to calculate the electric field which will reproduce the same particle motion.
+We can then plug in the solution for the particles path from the example of cycltron motion to calculate the electric field which will reproduce the same particle motion.
 Doing so yields the electric field
 
 \begin{equation}
