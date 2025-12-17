@@ -78,11 +78,65 @@ Doing so yields the electric field
 ## Convergence Studies
 
 For the sake of simplicity all particle properties are set to unity, in S.I. units, and the magnetic field magnitude $B_0$ is set to 1 T.
-Four time steps are used, each one an order of mangitude smaller than the last, $\Delta t \in [1, 10$^{-1}$, 10$^{-2}$, 10$^{-3}$]$ seconds.
+Four time steps are used, each one an order of mangitude smaller than the last, $\Delta t \in [1, 10^{-1}, 10^{-2}, 10^{-3}]$ seconds.
 After a simulation at a given time step is completed the relative $l_2$, and $l_\infty$ norms of the error between the analytic solution and simulated are taken.
 Plotting these errors on a log-log plot and then taking the slope reveals the order of accuracy of the time integration, both implemented steppers are second order accurate in time, so the slope of each line should be two.
 
-!media plot_stepper_errors.py
-       image_name=boris_circular_e_field_l2.png
-       style=width:50%;margin-bottom:2%;margin-left:auto;margin-right:auto
+### Boris Stepper: Cyclotron Motion
 
+!row! style=display:inline-flex;
+!col! small=12 medium=6 large=6
+
+!media plot_stepper_errors.py
+       image_name=boris_cyclotron_l2.png style=width:100%;display:block;
+       caption=Relative $l_2$ error for particle position and velocity for a particle subject to cyclotron motion being pushed via the Boris Stepper for four different time step sizes.
+
+!col-end!
+
+!col! small=12 medium=6 large=6
+
+!media figures/boris_cyclotron_linf.png style=width:100%;display:block;
+       caption=Relative $l_\infty$ error for particle position and velocity for a particle subject to cyclotron motion being pushed via the Boris Stepper for four different time step sizes.
+
+!col-end!
+!row-end!
+
+
+### Boris Stepper: Time Varrying Electric Field
+
+!row! style=display:inline-flex;
+!col! small=12 medium=6 large=6
+
+!media figures/boris_circular_e_field_l2.png
+       style=width:100%;display:block
+       caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Boris Stepper for four different time step sizes.
+
+!col-end!
+
+!col! small=12 medium=6 large=6
+
+!media figures/boris_circular_e_field_linf.png
+       style=width:100%;display:block
+       caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Boris Stepper for four different time step sizes.
+
+!col-end!
+!row-end!
+
+### Leapfrog Stepper: Time Varrying Electric Field
+
+
+!row! style=display:inline-flex;
+!col! small=12 medium=6 large=6
+
+!media figures/leapfrog_circular_e_field_l2.png style=width:100%;display:block;
+       caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Leapfrog Stepper for four different time step sizes.
+
+!col-end!
+
+!col! small=12 medium=6 large=6
+
+!media figures/leapfrog_circular_e_field_linf.png style=width:100%;display:block;
+       caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Leapfrog Stepper for four different time step sizes.
+
+!col-end!
+!row-end!

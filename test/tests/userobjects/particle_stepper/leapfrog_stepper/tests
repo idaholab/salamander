@@ -7,7 +7,7 @@
       type = PythonUnitTest
       input = 'test.py'
       heavy = True
-      test_case = LeapFrogCyclotronElectricTest
+      test_case = LeapFrogTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
       installation_type = in_tree
     []
