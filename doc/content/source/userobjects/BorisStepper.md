@@ -2,7 +2,7 @@
 
 !syntax description /UserObjects/BorisStepper
 
-Results of the verification of the BorisStepper can be found in [!cite](gall2024verification).
+Verification of the Boris stepper implementation is detailed [here](particle_stepping.md).
 
 In magnetized (or electromagnetic) PIC simulations, the de facto standard particle stepping algorithm is commonly known as the Boris algorithm [!cite](boris1970relativistic,Birdsall_Langdon_1991, qin2013boris). This algorithm is similar to a [Leap Frog method](userobjects/LeapFrogStepper.md) and has second order accuracy in time when solving the equations of motion for a charged particle, given by
 
