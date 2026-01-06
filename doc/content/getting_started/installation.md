@@ -105,7 +105,7 @@ scripts/download-openmc-cross-sections.sh
 and subsequently set the location of those cross sections in your environment:
 
 ```bash
-export OPENMC_CROSS_SECTIONS=~/projects/SALAMANDER/cross_sections/cross_sections.xml
+export OPENMC_CROSS_SECTIONS=~/projects/SALAMANDER/cross_sections/endfb-vii.1-hdf5/cross_sections.xml
 ```
 
 !alert! warning
