@@ -1,4 +1,4 @@
-# List of Publications using SALAMANDER
+# List of Publications supporting SALAMANDER
 
 Below is a known list of publications supporting SALAMANDER development, and might be incomplete. If
 your work should be included on this list, please create an issue on
