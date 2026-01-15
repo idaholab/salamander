@@ -59,10 +59,14 @@ MOAB_INSTALL_DIR := $(CARDINAL_CONTRIB_INSTALL_DIR)
 
 # Set default values for all third party dependencies
 OPENMC_DIR          ?= $(CARDINAL_CONTRIB_DIR)/openmc
+NUCLEARDATA_DIR     ?= $(CARDINAL_CONTRIB_DIR)/nuclear_data
 DAGMC_DIR           ?= $(CARDINAL_CONTRIB_DIR)/DAGMC
 EMBREE_DIR          ?= $(CARDINAL_CONTRIB_DIR)/embree
 DOUBLEDOWN_DIR      ?= $(CARDINAL_CONTRIB_DIR)/double-down
 MOAB_DIR            ?= $(CARDINAL_CONTRIB_DIR)/moab
+
+# Make sure nuclear data header is findable by SALAMANDER
+ADDITIONAL_INCLUDES += -I$(NUCLEARDATA_DIR)
 
 # Use compiler info discovered by PETSC
 ifeq ($(PETSC_ARCH),)

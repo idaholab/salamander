@@ -78,6 +78,7 @@ Next, some Cardinal dependencies need to be downloaded:
 ```bash
 cd ~/projects/SALAMANDER/cardinal
 git submodule update --init --recursive contrib/openmc
+git submodule update --init contrib/nuclear_data
 git submodule update --init contrib/DAGMC
 git submodule update --init contrib/moab
 ```
