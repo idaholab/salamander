@@ -2,7 +2,7 @@
   design = 'ParticleStepperBase.md PICStudyBase.md'
   issues = '#4 #19 #23'
   [circular_e_field]
-    requirement = 'The system shall be capable of accurately capturing the path of charged particles in a time varrying electric field'
+    requirement = 'The system shall be capable of usin the Leapfrog stepper to accurately calculate the path of charged particles in a time varrying electric field'
     [convergence]
       type = PythonUnitTest
       input = 'test.py'
@@ -10,6 +10,7 @@
       test_case = LeapFrogTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
       installation_type = in_tree
+      detail = 'and perform a convergence study for particle motion'
     []
     [convergence_errors]
       type = 'CSVDiff'
@@ -18,6 +19,7 @@
       csvdiff = 'circular_e_field_errors.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that errors are consistent'
     []
     [convergence_orders]
       type = 'CSVDiff'
@@ -26,6 +28,7 @@
       csvdiff = 'circular_e_field_orders.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that the stepper demonstrates the proper order of accuracy'
     []
     [fields]
       type = 'Exodiff'
