@@ -21,7 +21,7 @@ SALAMANDER couples with other MOOSE-based applications, such as [TMAP8](https://
 
 | Case    | Title                                                                              |
 | ------- | ---------------------------------------------------------------------------------- |
-| 1 | [Particle Stepper](particle_stepping.md) |
+| 1 | [Particle in Cell - Particle Stepper](particle_stepping.md) |
 
 
 # List of validation cases
