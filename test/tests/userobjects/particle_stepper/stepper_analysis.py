@@ -212,8 +212,8 @@ def test_case(input_file : str) -> None:
         order_data[f"{component:s}_l_2_order"] = [ l_2_orders[i] ]
         order_data[f"{component:s}_l_inf_order"] = [ l_inf_orders[i] ]
     # write results to csv files for comparison
-    error_df = pd.DataFrame(error_data)
+    error_df = pd.DataFrame(error_data, dtype=float)
     error_df.to_csv(f"{input_file.split(".i")[0]:s}_errors.csv",index=False, index_label=False, float_format="%.4E")
 
-    order_df = pd.DataFrame(order_data)
+    order_df = pd.DataFrame(order_data, dtype=float)
     order_df.to_csv(f"{input_file.split(".i")[0]:s}_orders.csv",index=False, index_label=False, float_format="%.4E")

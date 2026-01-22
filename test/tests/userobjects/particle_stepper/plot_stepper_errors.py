@@ -45,35 +45,22 @@ def plot_motion_error(error_data_path : str, order_data_path : str, save_locatio
 
     _, ax = plt.subplots(figsize=(6,6))
     for i, name in enumerate(names):
-      ax.loglog(error_data["dt"], error_data[name + "_l_2_error"], linestyles[i] + markerstyles[i],  label=f"${name:s}$ Order$\\,$: {order_data[name + "_l_2_order"][0]:0.3f}")
+      ax.loglog(1 / error_data["dt"], error_data[name + "_l_2_error"], linestyles[i] + markerstyles[i],  label=f"${name:s}$ Order$\\,$: {order_data[name + "_l_2_order"][0]:0.3f}")
     ax.minorticks_on()
     ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=np.arange(2, 10), numticks=100))
     ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=np.arange(2, 10), numticks=100))
     plt.xlabel("$\\omega_c / \\Delta t$ (rad)")
     plt.ylabel("Relative $l_2$ Error")
     plt.legend()
-    plt.savefig(f"{save_location:s}_l2.png", format='png', bbox_inches='tight', dpi=600)
+    plt.savefig(f"{save_location:s}_l2.png", format='png', bbox_inches='tight', dpi=300)
 
     _, ax = plt.subplots(figsize=(6,6))
     for i, name in enumerate(names):
-      ax.loglog(error_data["dt"], error_data[name + "_l_inf_error"], linestyles[i] + markerstyles[i],  label=f"${name:s}$ Order$\\,$: {order_data[name + "_l_2_order"][0]:0.3f}")
+      ax.loglog(1 / error_data["dt"], error_data[name + "_l_inf_error"], linestyles[i] + markerstyles[i],  label=f"${name:s}$ Order$\\,$: {order_data[name + "_l_2_order"][0]:0.3f}")
     ax.minorticks_on()
     ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=np.arange(2, 10), numticks=100))
     ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=np.arange(2, 10), numticks=100))
     plt.xlabel("$\\omega_c / \\Delta t$ (rad)")
     plt.ylabel("Relative $l_\\infty$ Error")
     plt.legend()
-    plt.savefig(f"{save_location:s}_linf.png", format='png', bbox_inches='tight', dpi=600)
-
-
-plot_motion_error(data_folder + "boris_stepper/gold/circular_e_field_errors.csv",
-                  data_folder + "boris_stepper/gold/circular_e_field_orders.csv",
-                  "boris_circular_e_field")
-
-plot_motion_error(data_folder + "boris_stepper/gold/cyclotron_motion_errors.csv",
-                  data_folder + "boris_stepper/gold/cyclotron_motion_orders.csv",
-                  "boris_cyclotron")
-
-plot_motion_error(data_folder + "leapfrog_stepper/gold/circular_e_field_errors.csv",
-                  data_folder + "leapfrog_stepper/gold/circular_e_field_orders.csv",
-                  "leapfrog_circular_e_field")
+    plt.savefig(f"{save_location:s}_linf.png", format='png', bbox_inches='tight', dpi=300)
