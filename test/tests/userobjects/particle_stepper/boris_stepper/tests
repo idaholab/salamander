@@ -20,7 +20,7 @@
     []
   []
   [cyclotron_motion]
-    requirement = 'The system shall be capable of accurately capturing the path of charged particles in a perpendicular magnetic field'
+    requirement = 'The system shall be capable of using the Boris stepper to accurately calculate the path of charged particles in a perpendicular magnetic field'
     [convergence]
       type = PythonUnitTest
       input = 'test.py'
@@ -28,6 +28,7 @@
       test_case = BorisCyclotronMagneticTest
       required_python_packages = 'pandas matplotlib'
       installation_type = in_tree
+      detail = 'and perform a convergence study for particle motion'
     []
     [convergence_errors]
       type = 'CSVDiff'
@@ -36,6 +37,7 @@
       csvdiff = 'cyclotron_motion_errors.csv'
       should_execute = False
       prereq = 'cyclotron_motion/convergence'
+      detail = 'and ensure that errors are consistent'
     []
     [convergence_orders]
       type = 'CSVDiff'
@@ -44,6 +46,7 @@
       csvdiff = 'cyclotron_motion_orders.csv'
       should_execute = False
       prereq = 'cyclotron_motion/convergence'
+      detail = 'and ensure that the stepper demonstrates the proper order of accuracy'
     []
     [fields]
       type = 'Exodiff'
@@ -62,7 +65,7 @@
     []
   []
   [circular_e_field]
-    requirement = 'The system shall be capable of accurately capturing the path of charged particles in a time varrying electric field'
+    requirement = 'The system shall be capable of using the Boris stepper to accurately calculate the path of charged particles in an electric field'
     [convergence]
       type = PythonUnitTest
       input = 'test.py'
@@ -70,6 +73,7 @@
       test_case = BorisTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
       installation_type = in_tree
+      detail = 'and perform a convergence study for particle motion'
     []
     [convergence_errors]
       type = 'CSVDiff'
@@ -78,6 +82,7 @@
       csvdiff = 'circular_e_field_errors.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that errors are consistent'
     []
     [convergence_orders]
       type = 'CSVDiff'
@@ -86,6 +91,7 @@
       csvdiff = 'circular_e_field_orders.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that the stepper demonstrates the proper order of accuracy'
     []
     [fields]
       type = 'Exodiff'
@@ -141,7 +147,6 @@
   []
   [errors]
     requirement = 'The system shall report a reasonable error from the particle stepper when'
-
     [too_few_efield_components]
       type = RunException
       input = 'cyclotron_motion.i'
@@ -150,7 +155,6 @@
       detail = 'the user does not provide 3 components of the electric field'
       expect_err = 'You must provide 3 components representing the electric field'
     []
-
     [too_few_bfield_components]
       type = RunException
       input = 'cyclotron_motion.i'
