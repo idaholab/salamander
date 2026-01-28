@@ -92,7 +92,6 @@ ax.imshow(im, extent=[xmin, xmax, ymin, ymax], aspect='auto',  cmap='gray')
 ax.plot(df["time"] * 1e8, df["ray_count"], '--')
 ax.tick_params(axis='both', which='major', pad=10)
 plt.savefig('lieberman_population_comparison.png', format='png', bbox_inches='tight')
-# plt.show()
 
 
 
@@ -145,10 +144,8 @@ ax.set_xlim(left=xmin, right=xmax)
 ax.set_title('Phase Space', y=1)
 df = pd.read_csv(initial_ray_data_file)
 ax.plot(df["x"], df["v_x"], '.', markersize=3,  label="t = 0 [s]")
-# ax.plot(df["mesh_model_coordinates:0"], df["phi"], label="t = 0 [s]")
 df = pd.read_csv(final_ray_data_file)
 ax.plot(df["x"], df["v_x"], '.', markersize=3, label="$t=2.5\\times 10^{-8}$ [s]")
-# ax.set_title('Potential')
 ax.set_ylabel("$v_x$ [m/s]", rotation=0)
 ax.set_xlabel("$x$", labelpad=-20)
 ax.imshow(im, extent=[xmin, xmax, ymin, ymax], aspect='auto', cmap='gray')
@@ -156,5 +153,4 @@ ax.tick_params(axis='both', which='major', pad=10)
 
 ax.legend(markerscale=5, handletextpad=0.05)
 plt.savefig('lieberman_vdf_comparison.png', format='png', bbox_inches='tight')
-# plt.show()
 

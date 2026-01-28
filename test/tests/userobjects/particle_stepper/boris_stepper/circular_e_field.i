@@ -11,24 +11,42 @@
   ymax = 2
 []
 
+[AuxKernels]
+  [E_x]
+    type = FunctionAux
+    variable = Ex
+    function = E_x_ic
+  []
+  [E_y]
+    type = FunctionAux
+    variable = Ey
+    function = E_y_ic
+  []
+  [E_z]
+    type = FunctionAux
+    variable = Ez
+    function = E_z_ic
+  []
+[]
+
 [Functions]
   [E_x_ic]
-    expression = '0'
+    expression = '-sin(t)'
   []
   [E_y_ic]
-    expression = '0'
+    expression = '-cos(t)'
   []
   [E_z_ic]
     expression = '0'
   []
-  [B_x_ic]
+    [B_x_ic]
     expression = '0'
   []
   [B_y_ic]
     expression = '0'
   []
   [B_z_ic]
-    expression = '1'
+    expression = '0'
   []
 []
 
@@ -40,10 +58,10 @@
   [particle_initializer]
     start_points = '0 1 0'
     mass = 1
-    weight = 1
     charge = 1
   []
 []
+
 
 [Executioner]
   dt = 1e-1
