@@ -2,7 +2,7 @@
   design = 'ParticleStepperBase.md PICStudyBase.md'
   issues = '#4 #19 #23'
   [circular_e_field]
-    requirement = 'The system shall be capable of usin the Leapfrog stepper to accurately calculate the path of charged particles in a time varrying electric field'
+    requirement = 'The system shall be capable of using the Leapfrog stepper to accurately calculate the path of charged particles in a time varying electric field'
     [convergence]
       type = PythonUnitTest
       input = 'test.py'

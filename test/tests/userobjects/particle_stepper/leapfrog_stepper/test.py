@@ -8,7 +8,7 @@ from stepper_analysis import test_case
 
 class LeapFrogTimeVarryingElectricTest(unittest.TestCase):
     """
-    This test case tests the Boris stepper using a time varrying electric field that
+    This test case tests the Leap Frog stepper using a time varying electric field that
     is spatially uniform.
     The exact form of the electric field is calculated by propagating the solution for
     the particles path that is provided by the cyclotron motion case through Newtons

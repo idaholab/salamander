@@ -3,7 +3,7 @@ This file provides all of the functions required for testing the Boris and Leapf
 steppers.
 The test case is designed around the canonical example of single particle motion, cyclotron motion.
 The functions in this file provide everything required to calculate the analytic solution and compare
-the actual path provided by the system to the analytic.
+the actual path provided by the system to the analytical solution.
 There is additional functionality to perform convergence studies, calculate and output the error at each refinement level,
 and calculate and output the order of accuracy for the implementation of the stepper tested.
 """

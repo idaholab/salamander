@@ -1,52 +1,52 @@
 # Particle Steppers
 
-Within SALAMANDER two main particle steppers are provided, the [Leapfrog](LeapFrogStepper.md) stepper and the [Boris](BorisStepper.md) stepper. Both of these particle steppers are second order accurate in time.
-In order to verify that these steppers work properly a convergence studies can be utilized to ensure that second order accuracy is observed.
+Within the particle-in-cell capabilities in SALAMANDER, two main particle steppers are provided, the [Leapfrog](LeapFrogStepper.md) stepper and the [Boris](BorisStepper.md) stepper. Both of these particle steppers are second order accurate in time.
+In order to verify that these steppers work properly, a convergence studies can be utilized to ensure that second order accuracy is observed.
 
-# Demonstration Problem
+# Demonstration Problems
 
 The example of single particle motion utilized in the verification of these capabilities is with a classic examples of single particle motion, cyclotron motion.
-While cycltron motion requires a magnetic field we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same praticle paths.
+While cyclotron motion requires a magnetic field, we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same particle paths.
 
 ## Cyclotron Motion
 
 The problem setup of cyclotron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
-For this example, the particle is traveling within the `XY` plane, and the magentic field is aligned along the positive `Z` direction.
+For this example, the particle is traveling within the `XY` plane, and the magentic field is aligned along the positive `Z` direction:
 
 \begin{equation}
   \vec{B} \left(\vec{r}, t \right)
   =
-  B_0 \hat{z}
+  B_0 \hat{z},
 \end{equation}
 
-Where $B$ represents the magnetic field and $B_0$ denotes the magnitude of the magnetic field.
+where $B$ represents the magnetic field and $B_0$ denotes the magnitude of the magnetic field.
 Starting from Newtons equation of motion
 
 \begin{equation}
   \frac{d\vec{v}}{dt}
   =
   \frac{q}{m}
-  \vec{v} \times \vec{B}
+  \vec{v} \times \vec{B},
 \end{equation}
 
-Where $\vec{v}$ is the particle's velocity, $q$ is the particle's charge, and $m$ is the particle's mass.
+where $\vec{v}$ is the particle's velocity, $q$ is the particle's charge, and $m$ is the particle's mass.
 
 The analytic solution to these equations are given by
 
 \begin{equation}
-  x(t) = r_L \sin \left( \omega_c t \right)
+  x(t) = r_L \sin \left( \omega_c t \right),
 \end{equation}
 \begin{equation}
-  y(t) = r_L \cos \left( \omega_c t \right)
+  y(t) = r_L \cos \left( \omega_c t \right),
 \end{equation}
 
-Where $r_L$ is the what is called the Larmor radius and given by
+where $r_L$ is the what is called the Larmor radius and given by
 
 \begin{equation}
-  r_L = \frac{v_\perp}{\omega_c}
+  r_L = \frac{v_\perp}{\omega_c},
 \end{equation}
 
-Where $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyro frequency.
+where $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyro frequency.
 The gyrofrequency is defined as
 
 \begin{equation}
@@ -56,7 +56,7 @@ The gyrofrequency is defined as
 ## Time Varying Electric Field
 
 The leapfrog stepper is designed to move particles through an electric field.
-Starting from the equations of motion for a particle in an electric field is given by
+Starting from the equations of motion for a particle in an electric field, the particle velocity is given by
 
 \begin{equation}
   \frac{d\vec{v}}{dt}
@@ -66,25 +66,25 @@ Starting from the equations of motion for a particle in an electric field is giv
 \end{equation}
 
 We can then plug in the solution for the particles path from the example of cycltron motion to calculate the electric field which will reproduce the same particle motion.
-Doing so yields the electric field
+Doing so yields the electric field:
 
 \begin{equation}
   \vec{E} \left( \vec{r}, t \right) =
   - \frac{m}{q} \omega_c^2 r_L \sin \left( \omega_c t \right) \hat{x} +
-  - \frac{m}{q} \omega_c^2 r_L \cos \left( \omega_c t \right) \hat{y}
+  - \frac{m}{q} \omega_c^2 r_L \cos \left( \omega_c t \right) \hat{y}.
 \end{equation}
 
 ## Convergence Studies
 
 For the sake of simplicity, all particle properties are set to unity, in S.I. units, and the magnetic field magnitude $B_0$ is set to 1 T.
-Four time steps are used, each one an order of mangitude smaller than the last, $\Delta t \in [1, 10^{-1}, 10^{-2}, 10^{-3}]$ seconds.
-After a simulation at a given time step is completed the relative $l_2$, and $l_\infty$ norms of the error between the analytic solution and simulated are taken.
+Four time steps are used, each one an order of magnitude smaller than the last, $\Delta t \in [1, 10^{-1}, 10^{-2}, 10^{-3}]$ seconds.
+After a simulation at a given time step is completed, the relative $l_2$ and $l_\infty$ norms of the error between the analytic solution and simulated are taken.
 Plotting these errors on a log-log plot and then calculating the slope reveals the order of accuracy of the time integration, both implemented steppers are second order accurate in time, so the slope of each line should be two.
 
 ### Boris Stepper: Cyclotron Motion
 
 This test specifically tests the part of the stepper which calculates the force on the particle due to the magnetic field.
-In examing the errors from the figures below it can be seen that the implementatio of the Boris Stepper utilized achieves the expected second order accuracy in time for both $x$, and $y$ particle positions as well as the $x$, and $y$ componenets of the particles velocity.
+In examining the errors from the figures below it can be seen that the implementation of the Boris Stepper achieves the expected second order accuracy in time for both $x$ and $y$ particle positions as well as the $x$ and $y$ components of the particles velocity.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
@@ -132,9 +132,9 @@ In the figures below it clearly demonstrated that this part of the stepper also 
 
 ### Leapfrog Stepper: Time Varrying Electric Field
 
-Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magentic field is present the resulting errors should be the same as those produced in the previous test.
-If the figures and calculated orders of accuracy in the above section are compared with the figures and orders of accuracy in this section they should be the same.
-In doing this comparison it is clear that this is the case and the two steppers, as expected, produce the same results.
+Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magnetic field is present, the resulting errors should be the same as those produced in the previous test.
+If the figures and calculated orders of accuracy in the above section are compared with the figures and orders of accuracy in this section, they should be the same.
+In doing this comparison, it is clear that this is the case and the two steppers, as expected, produce the same results.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
@@ -155,5 +155,5 @@ In doing this comparison it is clear that this is the case and the two steppers,
 !row-end!
 
 Through this verification test both the Boris and the Leapfrog steppers have been verified.
-Both portions of the Boris stepper, the one that handles the acceleration due to a magnetic field and the one that handles the acceleration due to an electric field produce results which second order accurate in time.
-Additionally, the Leapfrog stepper produces these results as well.
+Both portions of the Boris stepper, the one that handles the acceleration due to a magnetic field and the one that handles the acceleration due to an electric field produce results which are, as expected, second order accurate in time.
+Additionally, the Leapfrog stepper produces these expected results as well.
