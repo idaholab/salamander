@@ -3,17 +3,15 @@
 !include boris_base.i
 
 [Mesh/gmg]
-  nx = 5
-  ny = 5
-  xmin = -2
-  xmax = 2
-  ymin = -2
-  ymax = 2
+  nx = 120
+  ny = 20
+  xmax = 120
+  ymax = 20
 []
 
 [Functions]
   [E_x_ic]
-    expression = '0'
+    expression = '5e-7'
   []
   [E_y_ic]
     expression = '0'
@@ -28,23 +26,23 @@
     expression = '0'
   []
   [B_z_ic]
-    expression = '1'
+    expression = '0'
   []
 []
 
+
 [UserObjects]
   [velocity_initializer]
-    velocities = '1 0 0'
+    velocities = '0 0 0'
   []
 
   [particle_initializer]
-    start_points = '0 1 0'
-    mass = 1
-    weight = 1
-    charge = 1
+    start_points = '0 10.5 0'
+    mass = 9.1093837015e-31
+    charge = 1.602176634e-19
   []
 []
 
 [Executioner]
-  dt = 1e-1
+  dt = 1e-4
 []

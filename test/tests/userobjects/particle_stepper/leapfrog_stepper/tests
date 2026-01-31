@@ -1,37 +1,86 @@
 [Tests]
   design = 'ParticleStepperBase.md PICStudyBase.md'
-  issues = '#4 #19'
+  issues = '#4 #19 #23'
+  [circular_e_field]
+    requirement = 'The system shall be capable of using the Leapfrog stepper to accurately calculate the path of charged particles in a time varying electric field'
+    [convergence]
+      type = PythonUnitTest
+      input = 'test.py'
+      heavy = True
+      test_case = LeapFrogTimeVarryingElectricTest
+      required_python_packages = 'pandas matplotlib'
+      installation_type = in_tree
+      detail = 'and perform a convergence study for particle motion'
+    []
+    [convergence_errors]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'circular_e_field_errors.csv'
+      should_execute = False
+      prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that errors are consistent'
+    []
+    [convergence_orders]
+      type = 'CSVDiff'
+      input = 'test.py'
+      heavy = True
+      csvdiff = 'circular_e_field_orders.csv'
+      should_execute = False
+      prereq = 'circular_e_field/convergence'
+      detail = 'and ensure that the stepper demonstrates the proper order of accuracy'
+    []
+    [fields]
+      type = 'Exodiff'
+      input = 'circular_e_field.i'
+      exodiff = 'circular_e_field_out.e'
+      allow_test_objects = true
+      detail = 'and verify the field'
+    []
+    [particle]
+      type = 'CSVDiff'
+      input = 'circular_e_field.i'
+      csvdiff = 'circular_e_field_csv_particle_data.csv'
+      should_execute = False
+      prereq = 'circular_e_field/fields'
+      detail = 'and verify particle motion'
+    []
+  []
   [projectile_motion]
-    type = 'Exodiff'
-    input = 'projectile_motion.i'
-    exodiff = 'projectile_motion_rays.e
-               projectile_motion_rays.e-s0001
-               projectile_motion_rays.e-s0002
-               projectile_motion_rays.e-s0003
-               projectile_motion_rays.e-s0004
-               projectile_motion_rays.e-s0005
-               projectile_motion_rays.e-s0006
-               projectile_motion_rays.e-s0007
-               projectile_motion_rays.e-s0008
-               projectile_motion_rays.e-s0009'
-    allow_test_objects = true
     requirement = "The system shall be capable of applying a linear impulse from a force field perpendicular to a particle\'s initial velocity"
+    [fields]
+      type = 'Exodiff'
+      input = 'projectile_motion.i'
+      exodiff = 'projectile_motion_out.e'
+      allow_test_objects = true
+      detail = 'and verify the field'
+    []
+    [particle]
+      type = 'CSVDiff'
+      input = 'projectile_motion.i'
+      csvdiff = 'projectile_motion_csv_particle_data.csv'
+      should_execute = False
+      prereq = 'projectile_motion/fields'
+      detail = 'and verify particle motion'
+    []
   []
   [parallel_acceleration]
-    type = 'Exodiff'
-    input = 'parallel_acceleration.i'
-    exodiff = 'parallel_acceleration_rays.e
-               parallel_acceleration_rays.e-s0001
-               parallel_acceleration_rays.e-s0002
-               parallel_acceleration_rays.e-s0003
-               parallel_acceleration_rays.e-s0004
-               parallel_acceleration_rays.e-s0005
-               parallel_acceleration_rays.e-s0006
-               parallel_acceleration_rays.e-s0007
-               parallel_acceleration_rays.e-s0008
-               parallel_acceleration_rays.e-s0009'
-    allow_test_objects = true
     requirement = "The system shall be capable of applying a linear impulse from a force field parallel to a particle's velocity"
+    [fields]
+      type = 'Exodiff'
+      input = 'parallel_acceleration.i'
+      exodiff = 'parallel_acceleration_out.e'
+      allow_test_objects = true
+      detail = 'and verify the field'
+    []
+    [particle]
+      type = 'CSVDiff'
+      input = 'parallel_acceleration.i'
+      csvdiff = 'parallel_acceleration_csv_particle_data.csv'
+      should_execute = False
+      prereq = 'parallel_acceleration/fields'
+      detail = 'and verify particle motion'
+    []
   []
   [errors]
     requirement = 'The system shall report a reasonable error from the particle stepper when'
