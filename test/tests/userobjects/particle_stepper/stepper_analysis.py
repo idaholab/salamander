@@ -50,7 +50,7 @@ def analytic_r_L(v_perp: float, m: float, q: float, B: float) -> float:
 
 
 def analytic_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray) -> np.ndarray:
-    """ Computes the analytic solution for x component of a particles position subject to cyclotron motion given a positive magnetic along the z diretion
+    """ Computes the analytic solution for x component of a particles position subject to cyclotron motion given a positive magnetic along the z direction
 
     Args:
         v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
@@ -68,7 +68,7 @@ def analytic_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray) -> np
 
 
 def analytic_v_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
-    """ Computes the analytic solution for x component of a particles velocity subject to cyclotron motion given a positive magnetic along the z diretion
+    """ Computes the analytic solution for x component of a particles velocity subject to cyclotron motion given a positive magnetic along the z direction
 
     Args:
         v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
@@ -85,7 +85,7 @@ def analytic_v_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
 
 
 def analytic_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
-    """ Computes the analytic solution for y component of a particles position subject to cyclotron motion given a positive magnetic along the z diretion
+    """ Computes the analytic solution for y component of a particles position subject to cyclotron motion given a positive magnetic along the z direction
 
     Args:
         v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
@@ -102,7 +102,7 @@ def analytic_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
 
 
 def analytic_v_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
-    """ Computes the analytic solution for y component of a particles velocity subject to cyclotron motion given a positive magnetic along the z diretion
+    """ Computes the analytic solution for y component of a particles velocity subject to cyclotron motion given a positive magnetic along the z direction
 
     Args:
         v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field

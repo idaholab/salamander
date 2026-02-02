@@ -139,9 +139,9 @@ The errors show that the implementation of of the Boris stepper achieves the exp
 
 ### Leapfrog Stepper: Time Varrying Electric Field
 
-Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magnetic field is present, the resulting errors should be the same as those produced in the previous test, [boris_efield_l2], and $l_\infty$, [boris_efield_linf].
-In fact the errors and order of accuracy of the stepper implementation should be same in both tests.
-In examining the relative $l_2$, [leap_efield_l2], and $l_\infty$, [leap_efield_linf], errors for this test case it can be seen that they are infact the same as those observed in [boris_efield_l2], and $l_\infty$, [boris_efield_linf].
+Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magnetic field is present, the resulting errors should be the same as those produced in the previous test shown in [boris_efield_l2] and [boris_efield_linf].
+In fact, the errors and order of accuracy of the stepper implementation should be the same in both tests.
+In examining the relative $l_2$, [leap_efield_l2], and $l_\infty$, [leap_efield_linf], errors for this test case it can be seen that they are infact the same as those observed in [boris_efield_l2] for $l_2$ and [boris_efield_linf] for $l_\infty$.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
@@ -172,7 +172,7 @@ Additionally, the Leapfrog stepper produces these expected results as well.
 There are several input files used for this verification case.
 The two for the Boris stepper can be found at [/boris_stepper/cyclotron_motion.i] and [/boris_stepper/circular_e_field.i].
 The one for the Leapfrog stepper can be found at [/leapfrog_stepper/circular_e_field.i]
-Since the majority of the input files content is same for all cases the files are broken up into several files.
+Since the majority of the input files content is the same for all cases the files are broken up into several files.
 
 - [/stepper_base.i] disables the field solver, so that particle motion tests are only conducted in fields that are known exactly, and sets up the PICStudy.
 - [/boris_base.i] adds magnetic field components to the list of AuxVariables and selects the [BorisStepper.md] as the particle stepper.
