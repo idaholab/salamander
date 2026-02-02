@@ -5,13 +5,13 @@ In order to verify that these steppers work properly, a convergence studies can 
 
 # Demonstration Problems
 
-The example of single particle motion utilized in the verification of these capabilities is with a classic examples of single particle motion, cyclotron motion.
+The problem utilized to verify the implementation of the particle steppers is based on a classic example of single particle motion, cyclotron motion.
 While cyclotron motion requires a magnetic field, we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same particle paths.
 
 ## Cyclotron Motion
 
 The problem setup of cyclotron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
-For this example, the particle is traveling within the `XY` plane, and the magentic field is aligned along the positive `Z` direction:
+For this example, the particle is traveling within the `xy` plane, and the magentic field is aligned along the positive `z` direction:
 
 \begin{equation}
   \vec{B} \left(\vec{r}, t \right)
@@ -84,12 +84,15 @@ Plotting these errors on a log-log plot and then calculating the slope reveals t
 ### Boris Stepper: Cyclotron Motion
 
 This test specifically tests the part of the stepper which calculates the force on the particle due to the magnetic field.
-In examining the errors from the figures below it can be seen that the implementation of the Boris Stepper achieves the expected second order accuracy in time for both $x$ and $y$ particle positions as well as the $x$ and $y$ components of the particles velocity.
+The relative $l_2$ and $l_\infty$ errors seen in [boris_cyclotron_l2] and [boris_cyclotron_linf] respectively show the error over the course of the convergence study.
+Both errors indicate that the implementation of the Boris Stepper achieves the expected second order accuracy in time when moving a particle through a magnetic field.
+Second order accuracy is observed for both particle position and velocity.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
 
 !media plot_cyclotron_boris.py
+       id=boris_cyclotron_l2
        image_name=boris_cyclotron_l2.png style=width:100%;display:block;
        caption=Relative $l_2$ error for particle position and velocity for a particle subject to cyclotron motion being pushed via the Boris Stepper for four different time step sizes.
 
@@ -98,6 +101,7 @@ In examining the errors from the figures below it can be seen that the implement
 !col! small=12 medium=6 large=6
 
 !media plot_cyclotron_boris.py
+       id=boris_cyclotron_linf
        image_name=boris_cyclotron_linf.png style=width:100%;display:block;
        caption=Relative $l_\infty$ error for particle position and velocity for a particle subject to cyclotron motion being pushed via the Boris Stepper for four different time step sizes.
 
@@ -108,14 +112,16 @@ In examining the errors from the figures below it can be seen that the implement
 ### Boris Stepper: Time Varrying Electric Field
 
 In this example, the part of the Boris stepper which handles the acceleration on the particle due to the electric field is tested.
-In the figures below it clearly demonstrated that this part of the stepper also achieves the second order accuracy expected.
+Both the relative $l_2$, [boris_efield_l2], and $l_\infty$, [boris_efield_linf], errors are examined.
+The errors show that the implementation of of the Boris stepper achieves the expected second order accuracy in time when moving a particle through an electric field.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
 
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_l2.png
-       style=width:100%;display:block
+       id=boris_efield_l2
+       style=width:100
        caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!
@@ -124,7 +130,8 @@ In the figures below it clearly demonstrated that this part of the stepper also 
 
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_linf.png
-       style=width:100%;display:block
+       id=boris_efield_linf
+       style=width:100
        caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!
@@ -132,15 +139,16 @@ In the figures below it clearly demonstrated that this part of the stepper also 
 
 ### Leapfrog Stepper: Time Varrying Electric Field
 
-Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magnetic field is present, the resulting errors should be the same as those produced in the previous test.
-If the figures and calculated orders of accuracy in the above section are compared with the figures and orders of accuracy in this section, they should be the same.
-In doing this comparison, it is clear that this is the case and the two steppers, as expected, produce the same results.
+Since the Leapfrog stepper can be thought of as a special case of the Boris stepper where no magnetic field is present, the resulting errors should be the same as those produced in the previous test, [boris_efield_l2], and $l_\infty$, [boris_efield_linf].
+In fact the errors and order of accuracy of the stepper implementation should be same in both tests.
+In examining the relative $l_2$, [leap_efield_l2], and $l_\infty$, [leap_efield_linf], errors for this test case it can be seen that they are infact the same as those observed in [boris_efield_l2], and $l_\infty$, [boris_efield_linf].
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
 
 !media plot_circular_e_field_leapfrog.py
        image_name=leapfrog_circular_e_field_l2.png style=width:100%;display:block;
+       id=leap_efield_l2
        caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Leapfrog Stepper for four different time step sizes.
 
 !col-end!
@@ -149,6 +157,7 @@ In doing this comparison, it is clear that this is the case and the two steppers
 
 !media plot_circular_e_field_leapfrog.py
        image_name=leapfrog_circular_e_field_linf.png style=width:100%;display:block;
+       id=leap_efield_linf
        caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time varrying electric field via the Leapfrog Stepper for four different time step sizes.
 
 !col-end!
@@ -157,3 +166,20 @@ In doing this comparison, it is clear that this is the case and the two steppers
 Through this verification test both the Boris and the Leapfrog steppers have been verified.
 Both portions of the Boris stepper, the one that handles the acceleration due to a magnetic field and the one that handles the acceleration due to an electric field produce results which are, as expected, second order accurate in time.
 Additionally, the Leapfrog stepper produces these expected results as well.
+
+## Input Files
+
+There are several input files used for this verification case.
+The two for the Boris stepper can be found at [/boris_stepper/cyclotron_motion.i] and [/boris_stepper/circular_e_field.i].
+The one for the Leapfrog stepper can be found at [/leapfrog_stepper/circular_e_field.i]
+Since the majority of the input files content is same for all cases the files are broken up into several files.
+
+- [/stepper_base.i] disables the field solver, so that particle motion tests are only conducted in fields that are known exactly, and sets up the PICStudy.
+- [/boris_base.i] adds magnetic field components to the list of AuxVariables and selects the [BorisStepper.md] as the particle stepper.
+- [/leapfrog_base.i] selects the [LeapFrogStepper.md] as the particle stepper.
+- [/boris_stepper/cyclotron_motion.i], [/boris_stepper/circular_e_field.i], and [/leapfrog_stepper/circular_e_field.i] setup the initial conditions for the particles and fields for each case.
+
+To combine them into one input file when running the simulation, the `!include` feature is utilized.
+
+!alert tip title=Input file include syntax information
+To learn more about the `!include` feature, refer to the [application_usage/input_syntax.md] page.
