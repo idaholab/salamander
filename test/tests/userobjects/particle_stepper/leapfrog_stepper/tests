@@ -2,7 +2,7 @@
   design = 'ParticleStepperBase.md PICStudyBase.md'
   issues = '#4 #19 #23'
   [circular_e_field]
-    requirement = 'The system shall be capable of using the Leapfrog stepper to accurately calculate the path of charged particles in a time varying electric field'
+    requirement = 'The system shall be capable of using the Leapfrog stepper to accurately calculate the path of charged particles in a time-varying electric field,'
     [convergence]
       type = PythonUnitTest
       input = 'test.py'
@@ -10,7 +10,7 @@
       test_case = LeapFrogTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
       installation_type = in_tree
-      detail = 'and perform a convergence study for particle motion'
+      detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]
       type = 'CSVDiff'
@@ -19,7 +19,7 @@
       csvdiff = 'circular_e_field_errors.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
-      detail = 'and ensure that errors are consistent'
+      detail = 'ensuring that errors are consistent,'
     []
     [convergence_orders]
       type = 'CSVDiff'
@@ -28,14 +28,14 @@
       csvdiff = 'circular_e_field_orders.csv'
       should_execute = False
       prereq = 'circular_e_field/convergence'
-      detail = 'and ensure that the stepper demonstrates the proper order of accuracy'
+      detail = 'ensuring that the stepper demonstrates the proper order of accuracy,'
     []
     [fields]
       type = 'Exodiff'
       input = 'circular_e_field.i'
       exodiff = 'circular_e_field_out.e'
       allow_test_objects = true
-      detail = 'and verify the field'
+      detail = 'verifying the field calculation, and'
     []
     [particle]
       type = 'CSVDiff'
@@ -43,17 +43,17 @@
       csvdiff = 'circular_e_field_csv_particle_data.csv'
       should_execute = False
       prereq = 'circular_e_field/fields'
-      detail = 'and verify particle motion'
+      detail = 'verifying particle motion.'
     []
   []
   [projectile_motion]
-    requirement = "The system shall be capable of applying a linear impulse from a force field perpendicular to a particle\'s initial velocity"
+requirement = "The system shall be capable of applying a linear impulse from a force field perpendicular to a particle\'s initial velocity,"
     [fields]
       type = 'Exodiff'
       input = 'projectile_motion.i'
       exodiff = 'projectile_motion_out.e'
       allow_test_objects = true
-      detail = 'and verify the field'
+      detail = 'verifying the field calculation, and'
     []
     [particle]
       type = 'CSVDiff'
@@ -61,17 +61,17 @@
       csvdiff = 'projectile_motion_csv_particle_data.csv'
       should_execute = False
       prereq = 'projectile_motion/fields'
-      detail = 'and verify particle motion'
+      detail = 'verifying particle motion.'
     []
   []
   [parallel_acceleration]
-    requirement = "The system shall be capable of applying a linear impulse from a force field parallel to a particle's velocity"
+requirement = "The system shall be capable of applying a linear impulse from a force field parallel to a particle's velocity,"
     [fields]
       type = 'Exodiff'
       input = 'parallel_acceleration.i'
       exodiff = 'parallel_acceleration_out.e'
       allow_test_objects = true
-      detail = 'and verify the field'
+      detail = 'verifying the field calculation, and'
     []
     [particle]
       type = 'CSVDiff'
@@ -79,7 +79,7 @@
       csvdiff = 'parallel_acceleration_csv_particle_data.csv'
       should_execute = False
       prereq = 'parallel_acceleration/fields'
-      detail = 'and verify particle motion'
+      detail = 'verifying particle motion.'
     []
   []
   [errors]
