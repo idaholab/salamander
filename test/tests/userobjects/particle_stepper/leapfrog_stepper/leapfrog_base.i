@@ -1,7 +1,8 @@
 # The stepper base file provides the basic objects that are required for both
 # the LeapFrogStepper and the BorisSteper tests
-# this includes the AuxVariabels for the electric fields and UserObjects
 !include ../stepper_base.i
+# The rest of this file simply sets the type of stepper to be the LeapFrogStepper
+# and tells the stepper which field variables to sample.
 
 [UserObjects]
   [stepper]

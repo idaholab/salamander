@@ -1,5 +1,8 @@
-# This includes the stepper_base.i file and the tells the simulation to use the leapfrog stepper
+# The boris_base.i file sets up everything that the simulation needs to utilize
+# the LeapFrogStepper and sample the proper field variables.
 !include leapfrog_base.i
+# This file gives the field variables the proper time-dependent values for the
+# time varying electric field case, and creates a particle with the proper initial conditions.
 
 [Mesh/gmg]
   nx = 5

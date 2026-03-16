@@ -1,6 +1,8 @@
-# This includes the stepper_base.i file, adds the AuxVariables for the magnetic field,
-# and tells the simulation to use the BorisStepper
+# The boris_base.i file sets up everything that the simulation needs to utilize
+# the BorisStepper and sample the proper field variables.
 !include boris_base.i
+# This file gives the field variables the proper state to demonstrate a simple case of
+# an impulse parallel to the particle velocity.
 
 [Mesh/gmg]
   nx = 120

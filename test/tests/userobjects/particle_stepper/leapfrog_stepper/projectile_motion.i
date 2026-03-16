@@ -1,5 +1,8 @@
-# This includes the stepper_base.i file and tells the simulation to use the Leapfrog stepper.
+# The leapfrog_base.i file sets up everything that the simulation needs to utilize
+# the LeapFrogStepper and sample the proper field variables.
 !include leapfrog_base.i
+# This file gives the field variables the proper state to demonstrate a simple case of
+# projectile motion.
 
 [Mesh/gmg]
   nx = 25
