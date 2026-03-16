@@ -4,12 +4,12 @@
   [circular_e_field]
     requirement = 'The system shall be capable of using the Leapfrog stepper to accurately calculate the path of charged particles in a time-varying electric field,'
     [convergence]
-      type = PythonUnitTest
+      type = MMSTest
       input = 'test.py'
       heavy = True
       test_case = LeapFrogTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
-      installation_type = in_tree
+      capabilities = 'installation_type=in_tree'
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]

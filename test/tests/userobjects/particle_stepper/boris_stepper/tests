@@ -22,12 +22,12 @@
   [cyclotron_motion]
     requirement = 'The system shall be capable of using the Boris stepper to accurately calculate the path of charged particles in a perpendicular magnetic field,'
     [convergence]
-      type = PythonUnitTest
+      type = MMSTest
       input = 'test.py'
       heavy = True
       test_case = BorisCyclotronMagneticTest
       required_python_packages = 'pandas matplotlib'
-      installation_type = in_tree
+      capabilities = 'installation_type=in_tree'
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]
@@ -67,12 +67,12 @@
   [circular_e_field]
     requirement = 'The system shall be capable of using the Boris stepper to accurately calculate the path of charged particles in an electric field,'
     [convergence]
-      type = PythonUnitTest
+      type = MMSTest
       input = 'test.py'
       heavy = True
+      capabilities = 'installation_type=in_tree'
       test_case = BorisTimeVarryingElectricTest
       required_python_packages = 'pandas matplotlib'
-      installation_type = in_tree
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]
