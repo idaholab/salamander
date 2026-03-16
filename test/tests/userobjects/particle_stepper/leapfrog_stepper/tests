@@ -47,7 +47,7 @@
     []
   []
   [projectile_motion]
-requirement = "The system shall be capable of applying a linear impulse from a force field perpendicular to a particle\'s initial velocity,"
+    requirement = "The system shall be capable of applying a linear impulse from a force field perpendicular to a particle\'s initial velocity,"
     [fields]
       type = 'Exodiff'
       input = 'projectile_motion.i'
@@ -65,7 +65,7 @@ requirement = "The system shall be capable of applying a linear impulse from a f
     []
   []
   [parallel_acceleration]
-requirement = "The system shall be capable of applying a linear impulse from a force field parallel to a particle's velocity,"
+    requirement = "The system shall be capable of applying a linear impulse from a force field parallel to a particle's velocity,"
     [fields]
       type = 'Exodiff'
       input = 'parallel_acceleration.i'

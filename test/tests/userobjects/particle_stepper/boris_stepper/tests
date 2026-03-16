@@ -116,7 +116,7 @@
       input = 'projectile_motion.i'
       exodiff = 'projectile_motion_out.e'
       allow_test_objects = true
-      detail = 'verifying the field calculation and'
+      detail = 'verifying the field calculation, and'
     []
     [particle]
       type = 'CSVDiff'
@@ -134,7 +134,7 @@
       input = 'parallel_acceleration.i'
       exodiff = 'parallel_acceleration_out.e'
       allow_test_objects = true
-      detail = 'verifying the field and'
+      detail = 'verifying the field, and'
     []
     [particle]
       type = 'CSVDiff'
