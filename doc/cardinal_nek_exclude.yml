@@ -31,6 +31,7 @@
 - ~source/postprocessors/NekVolumeAverage.md
 - ~source/postprocessors/NekVolumeExtremeValue.md
 - ~source/postprocessors/NekVolumeIntegral.md
+- ~source/postprocessors/NekYPlus.md
 - ~source/postprocessors/nondimensional.md
 - ~source/postprocessors/PecletNumber.md
 - ~source/postprocessors/ReynoldsNumber.md
@@ -60,6 +61,7 @@
 - ~tutorials/index.md
 - ~tutorials/msfr.md
 - ~tutorials/nek_intro.md
+- ~tutorials/nek_turbulence.md
 - ~tutorials/nekrs_outputs.md
 - ~tutorials/nekrs_standalone.md
 - ~tutorials/nekrs_stochastic.md
