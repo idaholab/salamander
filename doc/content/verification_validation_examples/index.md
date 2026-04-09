@@ -19,9 +19,10 @@ SALAMANDER couples with other MOOSE-based applications, such as [TMAP8](https://
 
 # List of verification cases
 
-!alert construction title=Under development - no verification cases are available yet
-SALAMANDER is under active development and does not currently have any verification cases fully documented for users.
-However, several verification cases are already available in the `salamander/test/tests` folder.
+| Case    | Title                                                                              |
+| ------- | ---------------------------------------------------------------------------------- |
+| 1 | [Particle in Cell - Particle Stepper](particle_stepping.md) |
+
 
 # List of validation cases
 
