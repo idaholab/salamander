@@ -8,8 +8,6 @@
       input = 'test.py'
       heavy = True
       test_case = LeapFrogTimeVarryingElectricTest
-      required_python_packages = 'pandas matplotlib'
-      capabilities = 'installation_type=in_tree'
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]

@@ -26,8 +26,6 @@
       input = 'test.py'
       heavy = True
       test_case = BorisCyclotronMagneticTest
-      required_python_packages = 'pandas matplotlib'
-      capabilities = 'installation_type=in_tree'
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]
@@ -70,9 +68,7 @@
       type = MMSTest
       input = 'test.py'
       heavy = True
-      capabilities = 'installation_type=in_tree'
       test_case = BorisTimeVarryingElectricTest
-      required_python_packages = 'pandas matplotlib'
       detail = 'performing a convergence study for particle motion,'
     []
     [convergence_errors]
