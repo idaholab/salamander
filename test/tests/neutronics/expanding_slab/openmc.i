@@ -1,7 +1,7 @@
 # Cardinal input file for slab benchmark OpenMC model to couple with thermomechanics
 
 P = 1.0e22 # eV/s
-eV_to_J = 1.602e-19 # J/eV
+eV_to_J = 1.602176634e-19 # J/eV
 
 [Mesh]
   [file]
@@ -45,7 +45,7 @@ eV_to_J = 1.602e-19 # J/eV
   [temperature]
     type = FunctionIC
     variable = temperature
-    function = 293
+    function = 293 # K
   []
 []
 
@@ -106,7 +106,7 @@ eV_to_J = 1.602e-19 # J/eV
     displaced_source_mesh = true
     displaced_target_mesh = true
   []
-  [temp_from_solid]
+  [temperature_from_solid]
     type = MultiAppGeneralFieldNearestLocationTransfer
     from_multi_app = solid
     variable = temperature

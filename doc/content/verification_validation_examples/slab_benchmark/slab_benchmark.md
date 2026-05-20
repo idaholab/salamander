@@ -2,7 +2,7 @@
 
 This verification problem presents capabilities to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!citep](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The benchmark provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
 
-While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport  simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (Displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study on the interactions between multiphysics with an analytic solution.
+While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport  simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study on the interactions between multiphysics with an analytic solution.
 
 This work was published in [!citep](eltawila2025) where more details can be found.
 
@@ -113,12 +113,12 @@ to get the relation
 
 \begin{equation}
   \label{eqn:rho_t}
-  \rho(x) = \rho_0\sqrt{\frac{T_0}{T(x)}}
+  \rho(x) = \rho_0\sqrt{\frac{T_0}{T(x)}}.
 \end{equation}
 
 ## Analytic solutions
 
-The reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) for full details on the derivation of these solutions. Here we present the final formulas that we use later for comparison with our models.
+The reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) and the updates made in [!citep](eltawila2025) for full details on the derivation of these solutions. Here we present the final formulas that we use later for comparison with our models.
 
 The heating distribution is given by
 
@@ -183,7 +183,7 @@ Substituting [eqn:flux_solution] and [eqn:temperature] into [eqn:constraint] giv
 
 The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ `cm` with $P = 1.0\times10^{22}$ `eV/s`.
 
-!table id=tab:params caption=Example set of model parameters with two different power scenarios [!citep](griesheimer2022analytical).
+!table id=tab:params caption=Example set of model parameters [!citep](griesheimer2022analytical).
 | Parameter                  | Value                   | Unit                              |
 | :- | :- | :- |
 | $\rho_0$                   | $1.2$                         | `g.cm`$^{-3}$``                          |
@@ -203,7 +203,10 @@ The example set of model parameter values shown in [tab:params] are the suggeste
 This model is using S$_2$ neutron transport to compare with the 1D Analytic benchmark. To replicate
 the results, you have build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC.
 
-Cardinal is used to couple OpenMC with MOOSE via Picard iteration. OpenMC tallies neutron flux, heating, and the multiplication factor. A conceptual depiction of the meshes used as well as the data transfers that occur on each Picard iteration is shown in [fig:schematic]. Three different meshes/geometries are involved. The thermomechanics mesh is a simple 1D mesh of $N$ EDGE2 elements; the thermomechanical physics do not require higher dimensional (e.g. 2D or 3D) meshes for this problem. The OpenMC geometry is represented using DAGMC, where cells are bounded by a triangulated surface (TRI3 elements). To facilitate data transfers between OpenMC and MOOSE thermomechanics, there is also an intermediate volumetric data transfer mesh composed of TET4 elements; no physics solves happen on this intermediate mesh. [fig:schematic] highlights one element (for MOOSE and the Cardinal intermediate data transfer mesh) and one OpenMC cell each in blue, with adjacent portions of the geometry shown in gray for context.
+Cardinal is used to couple OpenMC with MOOSE via Picard iteration. OpenMC tallies neutron flux, heating, and the multiplication factor. A conceptual depiction of the meshes used as well as the data transfers that occur on each Picard iteration is shown in [fig:schematic].
+Three different meshes/geometries are involved. The thermomechanics mesh is a simple 1D mesh of $N$ EDGE2 elements; the thermomechanical physics do not require higher dimensional (e.g. 2D or 3D) meshes for this problem. The OpenMC geometry is represented using DAGMC, where cells are bounded by a triangulated surface (TRI3 elements).
+To facilitate data transfers between OpenMC and MOOSE thermomechanics, there is also an intermediate volumetric data transfer mesh composed of TET4 elements; no physics solves happen on this intermediate mesh.
+[fig:schematic] highlights one element (for MOOSE and the Cardinal intermediate data transfer mesh) and one OpenMC cell each in blue, with adjacent portions of the geometry shown in gray for context.
 
 !media figures/slab_benchmark_prbschematic.png
   id=fig:schematic
@@ -250,7 +253,7 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
 [tab:results] shows results convergence with mesh refinement.
 
 !table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](eltawila2025).
-| Resolution        | Heated length `[cm]` | Error `[μm]` | $k_{\text{eff}}$ | Error `[pcm]` |
+| Resolution        | Heated length [cm] | Error [μm] | $k_{\text{eff}}$ | Error [pcm] |
 | :- | :- | :- | :- | :- |
 | Analytic solution | 106.47                 | --             | 0.29557              | --              |
 | 5                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |

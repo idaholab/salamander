@@ -27,6 +27,12 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
   []
 []
 
+[Problem]
+  type = ReferenceResidualProblem
+  extra_tag_vectors = 'ref'
+  reference_vector = 'ref'
+[]
+
 [GlobalParams]
   displacements = 'disp_x'
   use_displaced_mesh = true
@@ -210,10 +216,4 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
     function = 1
     execute_on = 'TIMESTEP_BEGIN LINEAR TIMESTEP_END'
   []
-[]
-
-[Problem]
-  type = ReferenceResidualProblem
-  extra_tag_vectors = 'ref'
-  reference_vector = 'ref'
 []
