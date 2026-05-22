@@ -7,8 +7,8 @@ import numpy as np
 import h5py
 
 T0 = 293 # K
-Tmax = 393 # K
-Tmin = 293 # K
+Tmax = 390 # K
+Tmin = 290 # K
 L0 = 100 # cm
 L = 106.47 # cm
 rho = 1.2 # g/cc
@@ -28,18 +28,18 @@ sig_t0 = Sig_t0/num_dens # cm^2
 N = 20
 infdim = 0.5
 
+model = openmc.Model()
+
 dagmc_univ = openmc.DAGMCUniverse(filename="slab20v.h5m")
-geom = openmc.Geometry(root=dagmc_univ)
+model.geometry = openmc.Geometry(root=dagmc_univ)
 cells = dagmc_univ.get_all_cells().values()
-geom.export_to_xml()
 
 slab = openmc.Material(1, "slab")
 slab.set_density('macro',1.)
 slab.add_macroscopic('slab_xs')
 
-materials = openmc.Materials([slab])
-materials.cross_sections = 'one_group.h5'
-materials.export_to_xml()
+model.materials = openmc.Materials([slab])
+model.materials.cross_sections = 'one_group.h5'
 
 groups = mgxs.EnergyGroups(group_edges=[0.0, 20.0e6])
 NT = 100
@@ -64,35 +64,25 @@ one_g_XS_file = openmc.MGXSLibrary(groups)
 one_g_XS_file.add_xsdata(xsdata)
 one_g_XS_file.export_to_hdf5('one_group.h5')
 
-mesh = openmc.RegularMesh()
-mesh.dimension = (N,1,1)
-mesh.lower_left = (-L/2,-infdim,-infdim)
-mesh.upper_right = (L/2,infdim,infdim)
-
-mesh_filter = openmc.MeshFilter(mesh)
-tally_global = openmc.Tally()
-tally_global.scores = ['kappa-fission']
-mgxs_tallies = openmc.Tallies([tally_global])
-mgxs_tallies.export_to_xml()
-
-settings = openmc.Settings()
+model.settings = openmc.Settings()
 batches = 150
 inactive = 50
 particles = 50000
-settings.energy_mode = 'multi-group'
-settings.batches = batches
-settings.inactive = inactive
-settings.particles = particles
-settings.output = {'tallies': True,'summary':False}
+model.settings.energy_mode = 'multi-group'
+model.settings.batches = batches
+model.settings.inactive = inactive
+model.settings.particles = particles
+model.settings.output = {'tallies': True,'summary':False}
 
 bounds = [-60, -infdim, -infdim, 60, infdim, infdim]
 uniform_dist = openmc.stats.Box(bounds[:3], bounds[3:])
 mu = openmc.stats.Discrete([0.0],[1.0])
 phi = openmc.stats.Discrete([0,np.pi],[0.5,0.5])
 bidirectional_x = openmc.stats.PolarAzimuthal(mu=mu,phi=phi)
-settings.source = openmc.IndependentSource(space=uniform_dist,angle=bidirectional_x)
-settings.temperature = {'default': (Tmin+Tmax)/2,
-                        'method': 'nearest',
-                        'tolerance': 50,
+model.settings.source = openmc.IndependentSource(space=uniform_dist,angle=bidirectional_x)
+model.settings.temperature = {'default': (Tmin+Tmax)/2,
+                        'method': 'interpolation',
+                        'tolerance': 1,
                         'range': (Tmin, Tmax)}
-settings.export_to_xml()
+
+model.export_to_model_xml()

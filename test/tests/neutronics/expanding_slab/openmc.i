@@ -55,9 +55,10 @@ eV_to_J = 1.602176634e-19 # J/eV
   source_rate_normalization = 'kappa_fission'
   inactive_batches = 150
   batches = 300
-  particles = 1000000
-  power = ${fparse P*eV_to_J}
+  particles = 100000
+  power = '${fparse P*eV_to_J}'
   cell_level = 0
+  temperature_variables = 'temperature'
   temperature_blocks = '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20'
   volume_calculation = vol
   skinner = moab
@@ -65,14 +66,14 @@ eV_to_J = 1.602176634e-19 # J/eV
     [kappa_fission]
       type = CellTally
       estimator = collision
-      blocks = '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20'
+      block = '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20'
       name = kappa_fission
       output = unrelaxed_tally_std_dev
     []
     [flux]
       type = CellTally
       estimator = collision
-      blocks = '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20'
+      block = '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20'
       score = flux
       output = unrelaxed_tally_std_dev
     []
@@ -82,7 +83,7 @@ eV_to_J = 1.602176634e-19 # J/eV
 [Executioner]
   type = Transient
   start_time = 0.0
-  end_time = 1e6
+  end_time = 1e5
   dt = 500
 []
 
@@ -126,11 +127,8 @@ eV_to_J = 1.602176634e-19 # J/eV
 []
 
 [Outputs]
-  exodus = true
-  [final]
-    type = CSV
-    execute_on = 'FINAL'
-  []
+  exodus = false
+  csv = true
 []
 
 [Postprocessors]
@@ -143,7 +141,8 @@ eV_to_J = 1.602176634e-19 # J/eV
     type = KEigenvalue
   []
   [k_std_dev]
-    type = KStandardDeviation
+    type = KEigenvalue
+    output = 'std_dev'
   []
 []
 
@@ -172,6 +171,5 @@ eV_to_J = 1.602176634e-19 # J/eV
     build_graveyard = true
     graveyard_scale_inner = 1.5
     graveyard_scale_outer = 1.6
-    output_skins = true
   []
 []

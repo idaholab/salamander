@@ -5,11 +5,11 @@ L0 = 100 # cm
 L = 106.47 # cm
 P = 1.0e22 # eV/s
 q = 1e8 # eV
-k0= 1.25e19 # eV/(s-cm-K^2) k(T) = k0 T(x)
+k0 = 1.25e19 # eV/(s-cm-K^2) k(T) = k0 T(x)
 phi0 = 2.5e14 # 1/s-cm^2 (flux at the origin)
 eV_to_J = 1.602e-19 # J/eV
-lam = ${fparse 0.5*(1+sqrt(1+(16*q*q*phi0*phi0)/(P*P)))} # eigenvalue solution
-h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
+lam = '${fparse 0.5*(1+sqrt(1+(16*q*q*phi0*phi0)/(P*P)))}' # eigenvalue solution
+h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
 
 [Mesh]
   [generated]
@@ -98,29 +98,29 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 []
 
 [AuxKernels]
-   [temperature_projection]
-     type = ProjectionAux
-     variable = temperature_praux
-     v = temperature
-   []
-   [disp_projection]
-     type = ProjectionAux
-     variable = disp_praux
-     v = disp_x
-   []
+  [temperature_projection]
+    type = ProjectionAux
+    variable = temperature_praux
+    v = temperature
+  []
+  [disp_projection]
+    type = ProjectionAux
+    variable = disp_praux
+    v = disp_x
+  []
 []
 
 [Materials]
   [thermal_parameters]
     type = HeatConductionMaterial
-    temp = temperature
+    temperature = temperature
     thermal_conductivity_temperature_function = conductivity
     specific_heat = 0.3
   []
   [density]
-    type = Density
-    density = 20.0
-    use_displaced_mesh = false
+    type = ParsedMaterial
+    property_name = density
+    expression = '20.0'
   []
   [elasticity_tensor]
     type = ComputeIsotropicElasticityTensor
@@ -142,11 +142,11 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 
 [BCs]
   [sides_convective_BC]
-      type = ConvectiveFluxFunction
-      T_infinity = ${T0}
-      variable = temperature
-      boundary = 'left right'
-      coefficient = ${h}
+    type = ConvectiveFluxFunction
+    T_infinity = ${T0}
+    variable = temperature
+    boundary = 'left right'
+    coefficient = ${h}
   []
   [pin_x]
     type = DirichletBC
@@ -198,7 +198,8 @@ h = ${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J } # W/cm^2-K
 []
 
 [Outputs]
-  exodus = true
+  exodus = false
+  csv = true
 []
 
 [Postprocessors]
