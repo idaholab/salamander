@@ -223,15 +223,15 @@ We show the input files for a coarse mesh here with more details on results conv
 
 The OpenMC input files is as follows:
 
-!listing /doc/content/verification_validation_examples/slab_benchmark/model/make_openmc_model_dagmc.py language=python
+!listing /test/tests/neutronics/expanding_slab/model.py language=python
 
 The neutronics input file is as follows:
 
-!listing /doc/content/verification_validation_examples/slab_benchmark/model/openmc.i
+!listing /test/tests/neutronics/expanding_slab/openmc.i
 
 The thermomechanics input file is as follows:
 
-!listing /doc/content/verification_validation_examples/slab_benchmark/model/solid.i
+!listing /test/tests/neutronics/expanding_slab/solid.i
 
 It is important to note that incremental (hypoelastic) formulations of finite strain behavior inherently introduce inaccuracies arising from the time integration error. This limitation is inherent to this formulation and therefore exists in the MOOSE implementation and the implementations of other major commercial codes. The magnitude of these errors grows with increasing strain, so this typically becomes a practical issue only for very large strains, for which hyperelastic models are more appropriate [!citep](belytschko2003).
 
