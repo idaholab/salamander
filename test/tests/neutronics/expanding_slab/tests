@@ -7,7 +7,7 @@
     csvdiff = 'openmc_out.csv'
     # This test has very few particles, and OpenMC will error if there aren't enough source particles
     # in the fission bank on a process
-    max_parallel = 4
+    max_parallel = 1
     mesh_mode = 'replicated'
     requirement = "The system shall correctly run coupled neutronics and thermomechanics model reinitializing tallies when the mesh is moving."
                   "This is tested by applying the displacement field solution over the geometry and rerunning MC solve."
