@@ -259,7 +259,7 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
 [tab:results] shows results convergence with mesh refinement.
 
 !table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](eltawila2025).
-| Resolution        | Heated length [cm] | Error [μm] | $k_{\text{eff}}$ | Error [pcm] |
+| Resolution        | Heated length (cm) | Error (μm) | $k_{\text{eff}}$ | Error (pcm) |
 | :- | :- | :- | :- | :- |
 | Analytic solution | 106.47                 | --             | 0.29557              | --              |
 | 5                 | 106.3298               | -1402          | 0.29608 ± 0.00001    | 51 ± 1          |
