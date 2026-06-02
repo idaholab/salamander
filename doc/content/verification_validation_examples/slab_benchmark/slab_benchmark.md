@@ -199,15 +199,16 @@ The example set of model parameter values shown in [tab:params] are the suggeste
 
 # Problem model
 
-!alert construction title=To run this model you need to build your application with the S$_2$ OpenMC patch
+!alert! construction title=To run this model you need to build your application with the S$_2$ OpenMC patch
 This model is using S$_2$ neutron transport to compare with the 1D Analytic benchmark. To replicate
-the results, you have build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC. you can do this simply with:
-```
+the results, you have to build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC. you can do this simply with:
+
+!listing language=bash
 cd cardinal/contrib/openmc
 git remote add s2patch https://github.com/meltawila/openmc_S2transport.git
-git fetch s2 patch
+git fetch s2patch
 git cherry-pick d34189845b394895ed210008218c40bc754bce25
-```
+!alert-end!
 
 Cardinal is used to couple OpenMC with MOOSE via Picard iteration. OpenMC tallies neutron flux, heating, and the multiplication factor. A conceptual depiction of the meshes used as well as the data transfers that occur on each Picard iteration is shown in [fig:schematic].
 Three different meshes/geometries are involved. The thermomechanics mesh is a simple 1D mesh of $N$ EDGE2 elements; the thermomechanical physics do not require higher dimensional (e.g. 2D or 3D) meshes for this problem. The OpenMC geometry is represented using DAGMC, where cells are bounded by a triangulated surface (TRI3 elements).
