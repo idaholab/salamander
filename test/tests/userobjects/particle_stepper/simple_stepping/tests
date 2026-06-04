@@ -2,18 +2,18 @@
   design = 'ParticleStepperBase.md PICStudyBase.md'
   issues = '#4'
   [simple_stepping]
-    type = 'Exodiff'
+    type = 'CSVDiff'
     input = 'simple_stepping.i'
-    exodiff = 'simple_stepping_rays.e
-               simple_stepping_rays.e-s0001
-               simple_stepping_rays.e-s0002
-               simple_stepping_rays.e-s0003
-               simple_stepping_rays.e-s0004
-               simple_stepping_rays.e-s0005
-               simple_stepping_rays.e-s0006
-               simple_stepping_rays.e-s0007
-               simple_stepping_rays.e-s0008
-               simple_stepping_rays.e-s0009'
+    csvdiff = 'simple_stepping_csv_particle_data_0001.csv
+               simple_stepping_csv_particle_data_0002.csv
+               simple_stepping_csv_particle_data_0003.csv
+               simple_stepping_csv_particle_data_0004.csv
+               simple_stepping_csv_particle_data_0005.csv
+               simple_stepping_csv_particle_data_0006.csv
+               simple_stepping_csv_particle_data_0007.csv
+               simple_stepping_csv_particle_data_0008.csv
+               simple_stepping_csv_particle_data_0009.csv
+               simple_stepping_csv_particle_data_0010.csv'
     allow_test_objects = true
     requirement = 'The system shall be capable of tracking 3 velocity components within the PIC capability while propagating rays in lower dimensions'
   []

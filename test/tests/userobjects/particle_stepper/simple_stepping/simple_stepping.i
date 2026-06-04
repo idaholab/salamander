@@ -54,6 +54,13 @@
   []
 []
 
+[VectorPostprocessors/particle_data]
+  type = TestParticleDataVectorPostprocessor
+  study = study
+  execute_on = 'TIMESTEP_END'
+  additional_ray_data_outputs = 'charge mass'
+[]
+
 [Executioner]
   type = Transient
   num_steps = 10
@@ -63,9 +70,11 @@
   solve = false
 []
 
-[Outputs/rays]
-  type = RayTracingExodus
-  study = study
-  output_data_names='v_x v_y v_z weight'
-  execute_on = TIMESTEP_BEGIN
+[Outputs]
+  exodus = false
+  [csv]
+    type = CSV
+    start_step = 1
+    execute_on = 'TIMESTEP_END'
+  []
 []
