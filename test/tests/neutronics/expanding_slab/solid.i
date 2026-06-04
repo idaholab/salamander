@@ -1,13 +1,13 @@
 # MOOSE Thermomechanics model input file for the slab benchmark problem
 
-T0 = 293 # K
-L0 = 100 # cm
-L = 106.47 # cm
-P = 1.0e22 # eV/s
-q = 1e8 # eV
-k0 = 1.25e19 # eV/(s-cm-K^2) k(T) = k0 T(x)
-phi0 = 2.5e14 # 1/s-cm^2 (flux at the origin)
-eV_to_J = 1.602e-19 # J/eV
+T0 = ${units 293 K}
+L0 = ${units 100 cm}
+L = ${units 106.47 cm}
+P = ${units 1.0e22 eV/s}
+q = ${units 1e8 eV}
+k0 = ${units 1.25e19 eV/s/cm/K^2} # k(T) = k0 T(x)
+phi0 = ${units 2.5e14 1/s/cm^2} # (flux at the origin)
+eV_to_J = ${units 1.602176634e-19 J/eV}
 lam = '${fparse 0.5*(1+sqrt(1+(16*q*q*phi0*phi0)/(P*P)))}' # eigenvalue solution
 h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
 
@@ -63,7 +63,7 @@ h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
   [temperature]
     type = FunctionIC
     variable = temperature
-    function = 293
+    function = ${T0}
   []
 []
 
@@ -163,9 +163,7 @@ h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
   []
   [cte_func_mean]
     type = ParsedFunction
-    symbol_names = 'T0'
-    symbol_values = '293'
-    expression = '1 / (2*sqrt(T0*t))'
+    expression = '1 / (2*sqrt(${T0}*t))'
   []
 []
 

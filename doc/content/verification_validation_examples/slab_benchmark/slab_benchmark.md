@@ -1,10 +1,10 @@
 # 1D Slab Benchmark: Neutron Transport Coupled With Thermal Conduction and Material Expansion
 
-This verification problem presents capabilities to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!citep](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The benchmark provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
+This verification problem demonstrates the ability to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!citep](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The verification provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
 
 While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport  simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study on the interactions between multiphysics with an analytic solution.
 
-This work was published in [!citep](eltawila2025) where more details can be found.
+This work was published in [!cite](ELTAWILA2026112068), where more details can be found.
 
 ## Problem description
 
@@ -118,7 +118,7 @@ to get the relation
 
 ## Analytic solutions
 
-The reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) and the updates made in [!citep](eltawila2025) for full details on the derivation of these solutions. Here we present the final formulas that we use later for comparison with our models.
+The reader is referred to the original benchmark publication [!citep](griesheimer2022analytical) and the updates made in [!cite](ELTAWILA2026112068) for full details on the derivation of these analytical solutions for verification. Here we present the final formulas that we use later for comparison with our models.
 
 The heating distribution is given by
 
@@ -152,7 +152,7 @@ The solution for the eigenvalue, $\lambda$, is given by
 
 Using manufactured parameters for the benchmark specifications (e.g., $L_0$, $P$), the values for the microscopic total cross section $\sigma_{t,0}$ and convective heat transfer coefficient $h$ are determined such that the temperature distribution also satisfies the manufactured scenario where the flux and temperature distributions have the same shape as given by [eqn:temperature].
 
-The final length of the heated slab was evaluated using the flux and temperature solutions [eqn:flux_solution],[eqn:temperature], which were substituted into the mass conservation equation, [eqn:mass_conservation]. Integrating both sides gives the total length of the heated slab implicitly by preserving the total mass from the initial to the final state resulting
+The final length of the heated slab was evaluated using the flux and temperature solutions [eqn:flux_solution] and [eqn:temperature], which were substituted into the mass conservation equation, [eqn:mass_conservation]. Integrating both sides gives the total length of the heated slab implicitly by preserving the total mass from the initial to the final state, resulting in
 
 \begin{equation}
   \rho_0\int_{-L/2}^{L/2}\sqrt{\frac{T_0}{T(x)}}dx=\rho_0L_0.
@@ -167,7 +167,7 @@ The final length of the heated slab $L$ is then given by
 
 where $_2F_1$ is the Gauss hypergeometric function.
 
-To ensure a physically meaningful solution (i.e., the heat flux leaving the slab is consistent with the $T(\pm L/2)-T_0$), there is an additional constraint on the manufactured temperature distribution
+To ensure a physically meaningful solution (i.e., the heat flux leaving the slab is consistent with the $T(\pm L/2)-T_0$), there is an additional constraint on the manufactured temperature distribution:
 
 \begin{equation}
   T\left(\pm\frac{L}{2}\right)\geq T_0.
@@ -181,27 +181,27 @@ Substituting [eqn:flux_solution] and [eqn:temperature] into [eqn:constraint] giv
   \label{eqn:power_condition}
 \end{equation}
 
-The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ `cm` with $P = 1.0\times10^{22}$ `eV/s`.
+The example set of model parameter values shown in [tab:params] are the suggested benchmark parameters [!citep](griesheimer2022analytical), resulting in $k_\text{eff} = 0.29557$ and a heated slab length of $L = 106.47$ cm with $P = 1.0\times10^{22}$ eV/s.
 
 !table id=tab:params caption=Example set of model parameters [!citep](griesheimer2022analytical).
 | Parameter                  | Value                   | Unit                              |
 | :- | :- | :- |
-| $\rho_0$                   | $1.2$                         | `g.cm`$^{-3}$``                          |
-| $L_0$                      | $100$                         | `cm`                                  |
-| $A$                        | $180$                         | `g/mol`$^{-1}$``                        |
-| $T_0$                      | $293$                         | `K`                                   |
-| $q$                        | $1.0 \times 10^{8}$                       | `eV`                                  |
-| $\kappa_0$               | $1.25 \times 10^{19}$                    | `eV/s/cm/K`$^{-2}$``      |
-| $\phi_0$                  | $2.5\times 10^{14}$                      | `#/cm`$^2$`/s`                  |
-| $\nu\Sigma_f/\Sigma_t$     | $1.5$                         | `-`                                   |
-| $\Sigma_s/\Sigma_t$        | $0.45$                        | `-`                                   |
-| $P$                        | $1.0\times 10^{22}$                     | `eV/s`                         |
+| $\rho_0$                   | $1.2$                         | g.cm$^{-3}$                          |
+| $L_0$                      | $100$                         | cm                                  |
+| $A$                        | $180$                         | g/mol$^{-1}$                        |
+| $T_0$                      | $293$                         | K                                   |
+| $q$                        | $1.0 \times 10^{8}$                       | eV                                  |
+| $\kappa_0$               | $1.25 \times 10^{19}$                    | eV/s/cm/K$^{-2}$      |
+| $\phi_0$                  | $2.5\times 10^{14}$                      | #/cm$^2$/s                  |
+| $\nu\Sigma_f/\Sigma_t$     | $1.5$                         | -                                   |
+| $\Sigma_s/\Sigma_t$        | $0.45$                        | -                                   |
+| $P$                        | $1.0\times 10^{22}$                     | eV/s                         |
 
 # Problem model
 
 !alert! construction title=To run this model you need to build your application with the S$_2$ OpenMC patch
 This model is using S$_2$ neutron transport to compare with the 1D Analytic benchmark. To replicate
-the results, you have to build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC. you can do this simply with:
+the results, you have to build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC. You can do this simply with:
 
 !listing language=bash
 cd cardinal/contrib/openmc
@@ -236,11 +236,11 @@ The thermomechanics input file is as follows:
 
 It is important to note that incremental (hypoelastic) formulations of finite strain behavior inherently introduce inaccuracies arising from the time integration error. This limitation is inherent to this formulation and therefore exists in the MOOSE implementation and the implementations of other major commercial codes. The magnitude of these errors grows with increasing strain, so this typically becomes a practical issue only for very large strains, for which hyperelastic models are more appropriate [!citep](belytschko2003).
 
-The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 `K` $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
+The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 K $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
 
 ## Results
 
-We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for $P=1.0 \times 10^{22}$ `eV/s` and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agrees with the analytic solution within 3$\sigma$.
+We see the heating result in [fig:heatingsol] compared against the analytic solution, as well as flux and temperature solutions in [fig:fluxsol] and [fig:tempsol]. Figures are only included for $P=1.0 \times 10^{22}$ eV/s and on a fine mesh where the number of OpenMC and mesh elements is $N = 100$, since all results have a similar shape. Both the heating and flux tally everywhere agree with the analytic solution within 3$\sigma$.
 
 !media figures/slab_benchmark_heatingsol.png
   id=fig:heatingsol
@@ -259,7 +259,7 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
 
 [tab:results] shows results convergence with mesh refinement.
 
-!table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](eltawila2025).
+!table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](ELTAWILA2026112068).
 | Resolution        | Heated length (cm) | Error (μm) | $k_{\text{eff}}$ | Error (pcm) |
 | :- | :- | :- | :- | :- |
 | Analytic solution | 106.47                 | --             | 0.29557              | --              |
@@ -298,4 +298,4 @@ A first-order convergence of the temperature is achieved with mesh refinement, w
 
 We hypothesize that the observed first-order convergence arises from the use of cell tallies in OpenMC, where heating results are tallied as constant monomials. This may be limiting the convergence rate of the coupled solve.
 
-More details and discussion can be found in [!citep](eltawila2025)
+More details and discussion can be found in [!cite](ELTAWILA2026112068).

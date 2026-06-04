@@ -22,6 +22,7 @@ SALAMANDER couples with other MOOSE-based applications, such as [TMAP8](https://
 | Case    | Title                                                                              |
 | ------- | ---------------------------------------------------------------------------------- |
 | 1 | [Particle in Cell - Particle Stepper](particle_stepping.md) |
+| 2 | [1D Slab verification: Neutron Transport Coupled With Thermal Conduction and Material Expansion](slab_benchmark.md) |
 
 
 # List of validation cases
@@ -34,7 +35,6 @@ SALAMANDER is under active development and does not currently have any validatio
 | Case    | Title                                                                                                      |
 | ------- | ---------------------------------------------------------------------------------------------------------- |
 | 1 | [Lieberman Ion Wall Losses](lieberman.md)                                                                        |
-| 2 | [1D Slab Benchmark: Neutron Transport Coupled With Thermal Conduction and Material Expansion](slab_benchmark.md) |
 
 
 

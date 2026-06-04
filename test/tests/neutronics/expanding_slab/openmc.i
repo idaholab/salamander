@@ -1,7 +1,8 @@
 # Cardinal input file for slab benchmark OpenMC model to couple with thermomechanics
 
-P = 1.0e22 # eV/s
-eV_to_J = 1.602176634e-19 # J/eV
+P = ${units 1.0e22 eV/s}
+eV_to_J = ${units 1.602176634e-19 J/eV}
+initial_temperature = ${units 293 K}
 
 [Mesh]
   [file]
@@ -45,7 +46,7 @@ eV_to_J = 1.602176634e-19 # J/eV
   [temperature]
     type = FunctionIC
     variable = temperature
-    function = 293 # K
+    function = ${initial_temperature}
   []
 []
 
