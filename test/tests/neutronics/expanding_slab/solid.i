@@ -11,6 +11,11 @@ eV_to_J = ${units 1.602176634e-19 J/eV}
 lam = '${fparse 0.5*(1+sqrt(1+(16*q*q*phi0*phi0)/(P*P)))}' # eigenvalue solution
 h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
 
+E = ${units 1e6 N/m^2}
+nu = 0.0
+rho = ${units 20 g/cm^3}
+c_p = ${units 0.3 J/g/K}
+
 [Mesh]
   [generated]
     type = GeneratedMeshGenerator
@@ -115,17 +120,17 @@ h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
     type = HeatConductionMaterial
     temperature = temperature
     thermal_conductivity_temperature_function = conductivity
-    specific_heat = 0.3
+    specific_heat = ${c_p}
   []
   [density]
     type = ParsedMaterial
     property_name = density
-    expression = '20.0'
+    expression = ${rho}
   []
   [elasticity_tensor]
     type = ComputeIsotropicElasticityTensor
-    youngs_modulus = 1e6
-    poissons_ratio = 0.0
+    youngs_modulus = ${E}
+    poissons_ratio = ${nu}
   []
   [stress]
     type = ComputeFiniteStrainElasticStress
@@ -171,8 +176,8 @@ h = '${fparse 1/(sqrt(L*(lam-1)/(k0*P)) - (2*T0)/(P))*eV_to_J }' # W/cm^2-K
   type = Transient
   solve_type = 'PJFNK'
   verbose = true
-  nl_abs_tol = 5e-6
-  nl_rel_tol = 5e-6
+  nl_abs_tol = 1e-9
+  nl_rel_tol = 1e-9
   petsc_options = '-ksp_snes_ew'
   petsc_options_iname = '-pc_type -pc_factor_mat_solver_package'
   petsc_options_value = 'lu       superlu_dist'
