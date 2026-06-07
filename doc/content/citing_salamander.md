@@ -9,10 +9,10 @@ For all publications that use SALAMANDER, please cite the following.
 
 ```tex
 @misc{SALAMANDER,
-    title = {{Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER). https://github.com/idaholab/salamander}},
-    author = {Pierre-Clément A. Simon and Casey T. Icenhour and Logan Harbour, Guillaume Giudicelli, Corey DeChant, Lin Yang, Derek Gaston, Masashi Shimada, Helen Brooks, April J. Novak, Mahmoud Eltawila, Amanda M. Lietz, and Grayson Gall},
+    title = {{Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering \& Research (SALAMANDER)}},
+    author = {Pierre-Clément A. Simon and Casey T. Icenhour and Logan Harbour and Guillaume Giudicelli and Corey DeChant and Lin Yang and Derek Gaston and Masashi Shimada and Helen Brooks and April J. Novak and Mahmoud Eltawila and Amanda M. Lietz and and Grayson Gall},
     url = {https://github.com/idaholab/salamander},
-    institution = {{Idaho National Laboratory and United States Department of Energy, Office of Science (DOE-OS)}}
+    institution = {{Idaho National Laboratory and United States Department of Energy, Office of Science (DOE-OS)}},
     year = {2025},
     month = {June}
 }
