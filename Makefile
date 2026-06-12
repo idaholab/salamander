@@ -7,12 +7,6 @@
 # MOOSE_DIR        - Root directory of MOOSE
 # TMAP8_DIR        - Root directory of TMAP8
 # CARDINAL_DIR     - Root directory of Cardinal
-# OPENMC_DIR       - Root directory of OpenMC
-# DAGMC_DIR        - Root directory of DagMC
-# MOAB_DIR         - Root directory of MOAB
-#
-# EIGEN3_DIR       - Root directory of Eigen3 (should contain FindEigen3.cmake).
-#                    This is needed for DagMC.
 #
 # OpenMC uses HDF5; below are influential environment variables for that
 # installation. None of these need to be set if HDF5 is being pulled from
@@ -41,7 +35,18 @@ include config/check_deps.mk
 
 # ENABLE_CARDINAL = yes by default, but is set to "no" automatically if Cardinal is not found via CARDINAL_DIR.
 ifeq ($(ENABLE_CARDINAL),yes)
-  include config/configure_cardinal.mk
+  # Make sure nuclear data header is findable by SALAMANDER
+  ADDITIONAL_INCLUDES += -I$(CARDINAL_DIR)/contrib/nuclear_data
+
+  PETSC_DIR           ?= $(MOOSE_DIR)/petsc
+  PETSC_ARCH          ?= arch-moose
+
+  # Use compiler info discovered by PETSC
+  ifeq ($(PETSC_ARCH),)
+    include $(PETSC_DIR)/$(PETSC_ARCH)/lib/petsc/conf/petscvariables
+  else
+    include $(PETSC_DIR)/lib/petsc/conf/petscvariables
+  endif
 endif
 
 # framework
@@ -86,14 +91,59 @@ STOCHASTIC_TOOLS            := yes
 THERMAL_HYDRAULICS          := no
 XFEM                        := no
 
-# Enable modules required by optional dependencies
-include config/dep_modules.mk
+# TMAP8 modules
+ifeq ($(ENABLE_TMAP8),yes)
+  CHEMICAL_REACTIONS          := yes
+  FLUID_PROPERTIES            := yes
+  HEAT_TRANSFER               := yes
+  MISC                        := yes
+  NAVIER_STOKES               := yes
+  PHASE_FIELD                 := yes
+  RAY_TRACING                 := yes
+  RDG                         := yes
+  SCALAR_TRANSPORT            := yes
+  SOLID_PROPERTIES            := yes
+  SOLID_MECHANICS             := yes
+  THERMAL_HYDRAULICS          := yes
+endif
+
+# Cardinal modules
+ifeq ($(ENABLE_CARDINAL),yes)
+  FLUID_PROPERTIES    := yes
+  HEAT_TRANSFER       := yes
+  NAVIER_STOKES       := yes
+  RAY_TRACING         := yes
+  REACTOR             := yes
+  SOLID_MECHANICS     := yes
+  SOLID_PROPERTIES    := yes
+  STOCHASTIC_TOOLS    := yes
+  SUBCHANNEL          := yes
+  THERMAL_HYDRAULICS  := yes
+endif
 
 include $(MOOSE_DIR)/modules/modules.mk
 ###############################################################################
 
-# Build optional dependencies
-include config/build_deps.mk
+# TMAP8
+ifeq ($(ENABLE_TMAP8),yes)
+  libmesh_CXXFLAGS   += -DENABLE_TMAP8
+  APPLICATION_DIR    := $(TMAP8_DIR)
+  APPLICATION_NAME   := tmap8
+  BUILD_EXEC         := no
+  GEN_REVISION       := yes
+  include            $(FRAMEWORK_DIR)/app.mk
+endif
+
+# Cardinal
+ifeq ($(ENABLE_CARDINAL),yes)
+  # Cardinal
+  libmesh_CXXFLAGS   += -DENABLE_CARDINAL
+  APPLICATION_DIR    := $(CARDINAL_DIR)
+  APPLICATION_NAME   := cardinal
+  BUILD_EXEC         := no
+  GEN_REVISION       := yes
+  include            $(FRAMEWORK_DIR)/app.mk
+endif
 
 # SALAMANDER
 APPLICATION_DIR    := $(SALAMANDER_DIR)
@@ -104,13 +154,8 @@ GEN_REVISION       := yes
 # Cardinal dependency libraries needed for SALAMANDER linking
 ifeq ($(ENABLE_CARDINAL),yes)
   ADDITIONAL_LIBS := -L$(CARDINAL_DIR)/lib $(CC_LINKER_SLFLAG)$(CARDINAL_DIR)/lib \
-                     -L$(OPENMC_LIBDIR) -lopenmc -lhdf5_hl -ldagmc -lMOAB \
-                     $(CC_LINKER_SLFLAG)$(OPENMC_LIBDIR)
+                     -L$(CARDINAL_DIR)/install/lib -lopenmc -lhdf5_hl -ldagmc -lMOAB \
+                     $(CC_LINKER_SLFLAG)$(CARDINAL__DIR)/install/lib
 endif
 
 include            $(FRAMEWORK_DIR)/app.mk
-
-# External flags
-ifeq ($(ENABLE_CARDINAL),yes)
-  include config/external_cardinal_flags.mk
-endif
