@@ -4,7 +4,7 @@ ifeq ($(ENABLE_TMAP8),yes)
   APPLICATION_DIR    := $(TMAP8_DIR)
   APPLICATION_NAME   := tmap8
   BUILD_EXEC         := no
-  GEN_REVISION       := no
+  GEN_REVISION       := yes
   include            $(FRAMEWORK_DIR)/app.mk
 endif
 
