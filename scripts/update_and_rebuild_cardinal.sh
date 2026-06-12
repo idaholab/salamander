@@ -34,6 +34,8 @@ do
 
   if [ "$i" == "--skip-submodule-update" ]; then
     skip_sub_update=1;
+  elif [ "$i" == "--download-cross-sections" ]; then
+    download_xs=1;
   elif [ "$i" == "--quiet-build" ]; then
     quiet_build=1;
     quiet_build_logfile="$SCRIPT_DIR/cardinal_build_$(date +%Y-%m-%d.%H:%M:%S).log"
@@ -54,15 +56,17 @@ fi
 
 # Display help
 if [[ -n "$help" ]]; then
-  echo "Usage: $0 [-h | --help | --skip-submodule-update | --quiet-build | <make options> ]"
+  echo "Usage: $0 [-h | --help | --skip-submodule-update | --download-cross-sections | --quiet-build | <make options> ]"
   echo
   echo "Builds the Cardinal library (and its OpenMC/MOAB/DagMC contrib libraries)"
   echo "for use as a SALAMANDER dependency. Does NOT build the cardinal-opt executable."
   echo
-  echo "-h | --help              Display this message"
-  echo "--skip-submodule-update  Do not fetch/update Cardinal and its contrib submodules,"
-  echo "                         use whatever is currently checked out (fast rebuild)"
-  echo "--quiet-build            Only output the build to screen on failure"
+  echo "-h | --help                Display this message"
+  echo "--skip-submodule-update    Do not fetch/update Cardinal and its contrib submodules,"
+  echo "                           use whatever is currently checked out (fast rebuild)"
+  echo "--download-cross-sections  Download the OpenMC ENDF/B-VII.1 cross section data"
+  echo "                           (a large, one-time download needed to run OpenMC)"
+  echo "--quiet-build              Only output the build to screen on failure"
   echo
   echo "Any other arguments are passed directly to Cardinal's 'make'."
   echo "Influential environment variables (see cardinal/doc/content/with_conda.md):"
@@ -73,6 +77,8 @@ if [[ -n "$help" ]]; then
   echo "  HDF5_ROOT      Root HDF5 directory (defaults to CONDA_PREFIX when in a conda env)"
   echo "  METHOD         Optimization method to build (opt, oprof, dbg)"
   echo "  MOOSE_JOBS     Number of parallel build jobs (default: 1)"
+  echo "  CROSS_SECTIONS_DIR  Target dir for --download-cross-sections data"
+  echo "                      (default: <parent-of-salamander>/cross_sections)"
   echo "*************************************************************************************"
   exit 0
 fi
@@ -136,6 +142,25 @@ if [ -z "$skip_sub_update" ]; then
   cd ${CARDINAL_DIR}
   git submodule update --init contrib/nuclear_data contrib/DAGMC contrib/moab && \
     git submodule update --init --recursive contrib/openmc || exit 1
+fi
+
+# Optionally download the OpenMC cross section data (ENDF/B-VII.1) needed at runtime.
+# This is a large, one-time download, so it is opt-in via --download-cross-sections.
+# We reuse Cardinal's downloader, which is idempotent (it skips if the data already
+# exists) and prints the OPENMC_CROSS_SECTIONS value to set afterward.
+#
+# By default the data is placed in <parent-of-salamander>/cross_sections, i.e. OUTSIDE
+# the SALAMANDER repository, so it is not disturbed by git operations such as
+# 'git clean'. Set CROSS_SECTIONS_DIR to choose a different location.
+if [[ -n "$download_xs" ]]; then
+  CROSS_SECTIONS_DIR=${CROSS_SECTIONS_DIR:-$( cd "${SALAMANDER_DIR}/.." && pwd )/cross_sections}
+  if [ -x "${CARDINAL_DIR}/scripts/download-openmc-cross-sections.sh" ]; then
+    "${CARDINAL_DIR}/scripts/download-openmc-cross-sections.sh" "$CROSS_SECTIONS_DIR" || exit 1
+  else
+    echo "Error: cannot find Cardinal's download-openmc-cross-sections.sh."
+    echo "Make sure the Cardinal submodule is checked out (omit --skip-submodule-update)."
+    exit 1
+  fi
 fi
 
 cd ${CARDINAL_DIR}
