@@ -154,8 +154,9 @@ GEN_REVISION       := yes
 # Cardinal dependency libraries needed for SALAMANDER linking
 ifeq ($(ENABLE_CARDINAL),yes)
   ADDITIONAL_LIBS := -L$(CARDINAL_DIR)/lib $(CC_LINKER_SLFLAG)$(CARDINAL_DIR)/lib \
-                     -L$(CARDINAL_DIR)/install/lib -lopenmc -lhdf5_hl -ldagmc -lMOAB \
-                     $(CC_LINKER_SLFLAG)$(CARDINAL__DIR)/install/lib
+                     -L$(CARDINAL_DIR)/install/lib -lopenmc -ldagmc -lMOAB \
+                     -L$(PETSC_DIR)/lib -lhdf5_hl \
+		     $(CC_LINKER_SLFLAG)$(CARDINAL_DIR)/install/lib
 endif
 
 include            $(FRAMEWORK_DIR)/app.mk
