@@ -1,0 +1,27 @@
+[Tests]
+  design = 'slab_benchmark.md'
+  issues = '#98'
+  [run_snmodel]
+    type = CSVDiff
+    input = openmc.i
+    csvdiff = 'openmc_out.csv'
+    # This test has very few particles, and OpenMC will error if there aren't enough source particles
+    # in the fission bank on a process
+    max_parallel = 4
+    mesh_mode = 'replicated'
+    requirement = "The system shall correctly run coupled neutronics and thermomechanics model reinitializing tallies when the mesh is moving."
+                  "This is tested by applying the displacement field solution over the geometry and rerunning MC solve."
+    heavy = true
+    cli_args = 'Problem/particles=2000 Problem/batches=20 Problem/inactive_batches=10 Executioner/end_time=0.225'
+  []
+  [slab_thermomechanics]
+    type = CSVDiff
+    input = solid.i
+    should_execute = False
+    prereq = run_snmodel
+    csvdiff = 'openmc_out_solid0.csv'
+    requirement = "The system shall correctly run coupled neutronics and thermomechanics model."
+                  "The thermomechanics solve shall receive volumetric heat source and solve for temperatures and displacements correctly."
+    heavy = true
+  []
+[]
