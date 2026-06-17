@@ -59,8 +59,10 @@ Content:
             - python/TestHarness.md
     tmap8:
         root_dir: ${TMAP8_DIR}/doc/content
+        external: true # optional dependency
     cardinal:
         root_dir: ${CARDINAL_DIR}/doc/content
+        external: true # optional dependency
         content: !include ${ROOT_DIR}/doc/cardinal_nek_exclude.yml
 
 Renderer:
