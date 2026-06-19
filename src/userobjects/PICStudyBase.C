@@ -17,6 +17,8 @@
 #include "PICStudyBase.h"
 #include "ParticleInitializerBase.h"
 #include "ParticleStepperBase.h"
+#include "json.h"
+#include <libmesh/fuzzy_equals.h>
 
 InputParameters
 PICStudyBase::validParams()
@@ -53,6 +55,48 @@ PICStudyBase::PICStudyBase(const InputParameters & parameters)
     _stepper(getUserObject<ParticleStepperBase>("stepper")),
     _has_generated(declareRestartableData<bool>("has_generated", false))
 {
+  std::set<std::string_view> name_set;
+  std::vector<std::string_view> initializer_names;
+  for (const auto & name : getParam<std::vector<UserObjectName>>("particle_initializers"))
+  {
+    const auto & initializer = getUserObjectByName<ParticleInitializerBase>(name);
+    const auto & species = initializer.species();
+    const auto mass = initializer.mass();
+    const auto charge = initializer.charge();
+
+    if (name_set.count(species) == 0)
+    {
+      name_set.emplace(species);
+      initializer_names.emplace_back(initializer.name());
+      _species_names.emplace_back(species);
+      _species_masses.emplace_back(mass);
+      _species_charges.emplace_back(charge);
+      continue;
+    }
+
+    const auto it = std::find(_species_names.begin(), _species_names.end(), species);
+    const auto species_index = std::distance(_species_names.begin(), it);
+
+    if (!libMesh::absolute_fuzzy_equals(_species_masses[species_index], mass))
+    {
+      paramError(
+          "particle_initializers",
+          static_cast<std::string>(initializer_names[species_index]) + ", and " +
+              initializer.name() + " provided different masses for species " + species,
+          ". If there are multiple initializers for a single species they must provide consistent "
+          "physical properties.");
+    }
+
+    if (!libMesh::absolute_fuzzy_equals(_species_charges[species_index], charge))
+    {
+      paramError(
+          "particle_initializers",
+          static_cast<std::string>(initializer_names[species_index]) + ", and " +
+              initializer.name() + " provided different charges for species " + species,
+          ". If there are multiple initializers for a single species they must provide consistent "
+          "physical properties.");
+    }
+  }
 }
 
 void
