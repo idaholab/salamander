@@ -33,8 +33,6 @@ TestPlacedParticleInitializer::validParams()
 TestPlacedParticleInitializer::TestPlacedParticleInitializer(const InputParameters & parameters)
   : ParticleInitializerBase(parameters),
     _start_points(getParam<std::vector<Point>>("start_points")),
-    _mass(getParam<Real>("mass")),
-    _charge(getParam<Real>("charge")),
     _weight(getParam<Real>("weight"))
 {
 }
@@ -43,19 +41,48 @@ std::vector<InitialParticleData>
 TestPlacedParticleInitializer::getParticleData() const
 {
 
-  std::vector<InitialParticleData> data = std::vector<InitialParticleData>(_start_points.size());
+  std::vector<InitialParticleData> particle_data;
+  particle_data.reserve(_start_points.size());
+
   const auto & velocities = _velocity_initializer.getParticleVelocities(_start_points.size());
 
   for (unsigned int i = 0; i < _start_points.size(); ++i)
   {
-    data[i].position = _start_points[i];
-    data[i].velocity = velocities[i];
-    data[i].mass = _mass;
-    data[i].charge = _charge;
-    data[i].weight = _weight;
-    data[i].elem = nullptr;
-    data[i].species = "";
+    const Elem * particle_elem = nullptr;
+    // we'll check to see if this processor owns any of the points
+    // where we want to put particles. We coudl do this with replicated rays
+    // however we don't want to have to use replicated rays everytime we need
+    // a new ray during the transient study
+    for (auto elem : *_fe_problem.mesh().getActiveLocalElementRange())
+    {
+      if (elem->contains_point(_start_points[i]))
+      {
+        particle_elem = elem;
+      }
+    }
+    // the pointer will be null in the case that the processor doesn't own the point
+    if (particle_elem == nullptr)
+      continue;
+
+    auto & data = particle_data.emplace_back();
+
+    data.position = _start_points[i];
+    data.velocity = velocities[i];
+    data.mass = _mass;
+    data.charge = _charge;
+    data.weight = _weight;
+    data.elem = particle_elem;
   }
 
-  return data;
+  size_t total_particles_created = particle_data.size();
+
+  comm().sum(total_particles_created);
+
+  if (total_particles_created != _start_points.size())
+    mooseError(std::to_string(_start_points.size()) +
+               " particles were supposed to be created but only " +
+               std::to_string(total_particles_created) +
+               " were created. You may have tried to place a particle outside of the domain and it "
+               "could not be created.");
+  return particle_data;
 }
