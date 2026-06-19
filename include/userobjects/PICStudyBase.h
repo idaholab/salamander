@@ -47,6 +47,15 @@ public:
   const std::vector<RayDataIndex> getVelocityIndicies(const bool all_components) const;
 
 protected:
+  /// the list of all of the species ids that map to the species names
+  std::vector<unsigned int> _species_ids;
+  /// the names that the user assigned to each of the species in the system
+  std::vector<std::string> _species_names;
+  /// a list of the masses of each unique species in the system
+  std::vector<Real> _species_masses;
+  /// a list of the charge of each unique species in the system
+  std::vector<Real> _species_charges;
+
   /// The banked rays to be used on the next timestep (restartable)
   std::vector<std::shared_ptr<Ray>> & _banked_rays;
 
