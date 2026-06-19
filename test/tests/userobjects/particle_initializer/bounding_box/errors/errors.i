@@ -42,7 +42,7 @@ charge_density = 2
 
   [study]
     type = TestInitializedPICStudy
-    particle_initializer = particle_initializer
+    particle_initializers = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true

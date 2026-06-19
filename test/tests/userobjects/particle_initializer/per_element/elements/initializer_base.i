@@ -68,11 +68,12 @@ charge_density = 0
 
   [study]
     type = TestInitializedPICStudy
-    particle_initializer = particle_initializer
+    particle_initializers = particle_initializer
     stepper = stepper
     always_cache_traces = true
     data_on_cache_traces = true
-    execute_on=TIMESTEP_BEGIN
+    use_custom_rayids = true
+    execute_on = TIMESTEP_BEGIN
   []
 
   [potential_accumulator]
@@ -125,6 +126,13 @@ charge_density = 0
   [h]
     type = AverageElementSize
   []
+[]
+
+[VectorPostprocessors/particle_data]
+  type = TestParticleDataVectorPostprocessor
+  study = study
+  execute_on = 'TIMESTEP_END'
+  additional_ray_data_outputs = 'charge mass'
 []
 
 [Executioner]
