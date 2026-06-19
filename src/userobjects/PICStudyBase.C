@@ -15,8 +15,8 @@
 //*
 
 #include "PICStudyBase.h"
+#include "ParticleInitializerBase.h"
 #include "ParticleStepperBase.h"
-#include "libmesh/int_range.h"
 
 InputParameters
 PICStudyBase::validParams()
@@ -32,6 +32,8 @@ PICStudyBase::validParams()
       "velocities should be updated");
   // We're not going to use registration because we don't care to name our rays because
   // we will have a lot of them
+  params.addRequiredParam<std::vector<UserObjectName>>(
+      "particle_initializers", "The initializers that will place particles");
   params.set<bool>("_use_ray_registration") = false;
 
   return params;
@@ -60,7 +62,7 @@ PICStudyBase::generateRays()
   // pull from the bank and update velocities/max distances
   if (!_has_generated)
   {
-    this->initializeParticles();
+    initializeParticles();
     _has_generated = true;
   }
   else
@@ -70,6 +72,25 @@ PICStudyBase::generateRays()
     moveRaysToBuffer(_banked_rays);
     _banked_rays.clear();
   }
+}
+
+void
+PICStudyBase::initializeParticles()
+{
+  std::vector<const ParticleInitializerBase *> initializers;
+  for (const auto & name : getParam<std::vector<UserObjectName>>("particle_initializers"))
+  {
+    initializers.push_back(&getUserObjectByName<ParticleInitializerBase>(name));
+  }
+
+  for (const auto & initializer : initializers)
+  {
+    for (const auto & initial_data : initializer->getParticleData())
+    {
+      _banked_rays.push_back(createParticle(initial_data));
+    }
+  }
+  moveRaysToBuffer(_banked_rays);
 }
 
 void
@@ -162,4 +183,15 @@ PICStudyBase::getVelocityIndicies(const bool all_components) const
     indicies[dim] = getRayDataIndex(std::string("v_") + (dim == 0 ? "x" : (dim == 1 ? "y" : "z")));
 
   return indicies;
+}
+
+std::shared_ptr<Ray>
+PICStudyBase::createParticle(const InitialParticleData & data)
+{
+  auto ray = acquireRay();
+  setInitialParticleData(ray, data);
+  getVelocity(*ray, _temporary_velocity);
+  _stepper.setupStep(*ray, _temporary_velocity, ray->data(_charge_index) / ray->data(_mass_index));
+  setVelocity(*ray, _temporary_velocity);
+  return ray;
 }
