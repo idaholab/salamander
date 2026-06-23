@@ -2,7 +2,7 @@
   design = 'PICStudyBase.md'
   issues = '#144'
   [errors]
-    requirement = "The system return a useful error when the user attempts to provide two initializers for the same species that provide inconsistent"
+    requirement = "The system shall return a useful error when the user attempts to provide two initializers for the same species that provide inconsistent"
     [conflicting_masses]
       type = 'RunException'
       input = 'errors.i'

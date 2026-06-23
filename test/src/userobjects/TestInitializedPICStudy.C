@@ -56,7 +56,7 @@ std::shared_ptr<Ray>
 TestInitializedPICStudy::createParticle(const InitialParticleData & data)
 {
   // this assumes that particles will be placed on an element by element basis
-  // in order without repeating elements this is fine for all of the tests we have
+  // in order without repeating elements. This is fine for all of the tests we have
   // now but we may get id collisions if we were to test multi specieds initializations
   // and want to use custom ray ids.
   if (data.elem->id() != _curr_elem_id)

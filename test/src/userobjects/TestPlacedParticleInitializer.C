@@ -50,7 +50,7 @@ TestPlacedParticleInitializer::getParticleData() const
   {
     const Elem * particle_elem = nullptr;
     // we'll check to see if this processor owns any of the points
-    // where we want to put particles. We coudl do this with replicated rays
+    // where we want to put particles. We could do this with replicated rays
     // however we don't want to have to use replicated rays everytime we need
     // a new ray during the transient study
     for (auto elem : *_fe_problem.mesh().getActiveLocalElementRange())
