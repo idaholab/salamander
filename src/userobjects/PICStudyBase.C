@@ -17,7 +17,6 @@
 #include "PICStudyBase.h"
 #include "ParticleInitializerBase.h"
 #include "ParticleStepperBase.h"
-#include "json.h"
 #include <libmesh/fuzzy_equals.h>
 
 InputParameters
@@ -57,12 +56,22 @@ PICStudyBase::PICStudyBase(const InputParameters & parameters)
 {
   std::set<std::string_view> name_set;
   std::vector<std::string_view> initializer_names;
+  std::set<std::string_view> initializer_name_set;
+
   for (const auto & name : getParam<std::vector<UserObjectName>>("particle_initializers"))
   {
     const auto & initializer = getUserObjectByName<ParticleInitializerBase>(name);
     const auto & species = initializer.species();
     const auto mass = initializer.mass();
     const auto charge = initializer.charge();
+
+    if (initializer_name_set.count(name) != 0)
+    {
+      paramError("particle_initializers",
+                 "Particle initializer " + name +
+                     " was provided multiple times. Each initializer may only be provided once.");
+    }
+    initializer_name_set.emplace(name);
 
     if (name_set.count(species) == 0)
     {
