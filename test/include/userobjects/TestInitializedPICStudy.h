@@ -44,6 +44,8 @@ protected:
    * a given number of particles per element.
    */
   std::shared_ptr<Ray> createParticle(const InitialParticleData & data) override;
+  /// wether or not this test is for single particle motion cases
+  const bool _single_particle;
   /// wether or not the id generation scheme from raytracing study will be used or the one in this user object will be
   const bool _use_custom_id_scheme;
   /// the number of particles that will be placed in each element
