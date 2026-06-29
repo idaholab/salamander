@@ -35,18 +35,20 @@ TestInitializedPICStudy::validParams()
       "use_custom_rayids",
       true,
       "Wether or not to use the implemented ray id generation scheme or the default one");
-
+  params.addParam<bool>(
+      "single_particle", false, "Wether or not this is a single particle motion test");
   return params;
 }
 
 TestInitializedPICStudy::TestInitializedPICStudy(const InputParameters & parameters)
   : PICStudyBase(parameters),
+    _single_particle(getParam<bool>("single_particle")),
     _use_custom_id_scheme(getParam<bool>("use_custom_rayids")),
     _particles_per_element(getParam<unsigned int>("particles_per_element")),
     _curr_elem_id(0),
     _curr_elem_ray_count(0)
 {
-  if (_use_custom_id_scheme && _particles_per_element == 0)
+  if (!_single_particle && (_use_custom_id_scheme && _particles_per_element == 0))
     paramError(
         "particles_per_element",
         "particles per element cannot be zero when using the custom ray id generation scheme");
@@ -70,6 +72,9 @@ TestInitializedPICStudy::createParticle(const InitialParticleData & data)
 RayID
 TestInitializedPICStudy::generateUniqueRayID(const THREAD_ID tid)
 {
+  if (_single_particle)
+    return 0;
+
   if (_use_custom_id_scheme)
     return _curr_elem_id * _particles_per_element + _curr_elem_ray_count++;
 
