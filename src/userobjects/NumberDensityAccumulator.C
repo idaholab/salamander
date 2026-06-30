@@ -17,7 +17,6 @@
 #include "NumberDensityAccumulator.h"
 #include "ResidualAccumulator.h"
 #include "PICStudyBase.h"
-#include "MooseMesh.h"
 
 registerMooseObject("SalamanderApp", NumberDensityAccumulator);
 
@@ -41,11 +40,11 @@ NumberDensityAccumulator::execute()
     std::unique_ptr<SALAMANDER::AccumulatorBase> accumulator =
         std::make_unique<SALAMANDER::ResidualAccumulator>(_fe_problem, this, _var_name, 0);
 
-    auto particles = _study.getBankedRays();
+    auto particles = _study.particles();
 
     for (auto & p : particles)
     {
-      accumulator->add(*p->currentElem(), p->currentPoint(), p->data(_weight_index));
+      accumulator->add(*p->currentElem(), p->currentPoint(), _study.weight(*p));
     }
 
     accumulator->finalize();

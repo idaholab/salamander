@@ -39,7 +39,7 @@ TestSingleParticleDataVectorPostprocessor::finalize()
 {
   std::vector<double> rank_data = {};
 
-  if (!_study.getBankedRays().empty())
+  if (!_study.particles().empty())
     for (const auto & data : _data_values)
       rank_data.push_back(data->back());
 
@@ -48,7 +48,7 @@ TestSingleParticleDataVectorPostprocessor::finalize()
   // if the rank is not 0 then it there is no work to be done
   // if the rank is 0 and there is data on this rank then the most recent particle data
   // was already added to the VPP data during the execute function
-  if (comm().rank() != 0 || !_study.getBankedRays().empty())
+  if (comm().rank() != 0 || !_study.particles().empty())
     return;
 
   for (const auto i : make_range(_data_values.size()))
