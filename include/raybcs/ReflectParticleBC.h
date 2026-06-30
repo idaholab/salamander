@@ -18,6 +18,8 @@
 
 #include "ReflectRayBC.h"
 
+class PICStudyBase;
+
 class ReflectParticleBC : public ReflectRayBC
 {
 public:
@@ -28,8 +30,10 @@ public:
   virtual void onBoundary(const unsigned int num_applying) override;
 
 protected:
-  /// the ray data indicies for the velocities stored on the ray
-  const std::vector<RayDataIndex> _velocity_indicies;
+  /// the instance of the pic study to get access the particle data accessor methods
+  const PICStudyBase & _pic_study;
+  /// the dimension of the actual mesh
+  const unsigned int _mesh_dimension;
   /// point used to store the components of the velocity which are needed during reflection
   Point _temporary_velocity;
 };

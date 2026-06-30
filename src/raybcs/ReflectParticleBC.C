@@ -16,6 +16,7 @@
 
 #include "ReflectParticleBC.h"
 #include "PICStudyBase.h"
+#include <libmesh/int_range.h>
 registerMooseObject("SalamanderApp", ReflectParticleBC);
 
 InputParameters
@@ -29,21 +30,28 @@ ReflectParticleBC::validParams()
 }
 
 ReflectParticleBC::ReflectParticleBC(const InputParameters & params)
-  : ReflectRayBC(params), _velocity_indicies(getStudy<PICStudyBase>().getVelocityIndicies(false))
+  : ReflectRayBC(params),
+    _pic_study(getStudy<PICStudyBase>()),
+    _mesh_dimension(_fe_problem.mesh().dimension())
 {
 }
 
 void
 ReflectParticleBC::onBoundary(const unsigned int num_applying)
 {
+  const auto particle = currentRay();
   // reflect the particle normally and then update velocity data
   ReflectRayBC::onBoundary(num_applying);
+  for (const auto i : make_range(3))
+    _temporary_velocity(i) = 0;
   // collect the components of the velocity that need to be consistent with the direction
-  for (const auto i : index_range(_velocity_indicies))
-    _temporary_velocity(i) = currentRay()->data(_velocity_indicies[i]);
+  for (const auto i : make_range(_mesh_dimension))
+    _temporary_velocity(i) = _pic_study.velocityComponent(*particle, i);
   // compute what the velocity data should be to be consistent with direction
-  _temporary_velocity = _temporary_velocity.norm() * currentRay()->direction();
+  _temporary_velocity = _temporary_velocity.norm() * particle->direction();
 
-  for (const auto i : index_range(_velocity_indicies))
-    currentRay()->data(_velocity_indicies[i]) = _temporary_velocity(i);
+  for (const auto i : make_range(int(_mesh_dimension), 3))
+    _temporary_velocity(i) = _pic_study.velocityComponent(*particle, i);
+
+  _pic_study.setVelocity(*particle, _temporary_velocity);
 }
