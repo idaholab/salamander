@@ -1,12 +1,15 @@
-[Mesh/gmg]
-  type = GeneratedMeshGenerator
-  dim = 3
-  nx = 5
-  ny = 5
-  nz = 5
-  xmax = 10
-  ymax = 10
-  zmax = 10
+[Mesh]
+  [gmg]
+    type = GeneratedMeshGenerator
+    dim = 3
+    nx = 5
+    ny = 5
+    nz = 5
+    xmax = 10
+    ymax = 10
+    zmax = 10
+  []
+  allow_renumbering = false
 []
 
 [AuxVariables]
@@ -50,7 +53,8 @@
     field = F
     stepper = stepper
     particle_initializers = particle_initializer
-    use_custom_rayids = false
+    use_custom_rayids = true
+    particles_per_element = 1
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'
