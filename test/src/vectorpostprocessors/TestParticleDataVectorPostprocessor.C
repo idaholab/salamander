@@ -41,7 +41,7 @@ TestParticleDataVectorPostprocessor::execute()
   // It helps to test the behaviour of the object people will actually
   // use without requiring it to store meta data that is not important for them.
   ParticleDataVectorPostprocessor::execute();
-  const auto rays = _study.getBankedRays();
+  const auto rays = _study.particles();
   for (const auto & ray : rays)
     _data_values.back()->push_back(ray->id());
 }
