@@ -48,6 +48,7 @@ TestPlacedParticleInitializer::getParticleData() const
 
   for (unsigned int i = 0; i < _start_points.size(); ++i)
   {
+    const auto & start_point = _start_points[i];
     const Elem * particle_elem = nullptr;
     // we'll check to see if this processor owns any of the points
     // where we want to put particles. We could do this with replicated rays
@@ -55,11 +56,23 @@ TestPlacedParticleInitializer::getParticleData() const
     // a new ray during the transient study
     for (auto elem : *_fe_problem.mesh().getActiveLocalElementRange())
     {
-      if (elem->contains_point(_start_points[i]))
-      {
-        particle_elem = elem;
-      }
+      if (!elem->contains_point(_start_points[i]))
+        continue;
+      // This check is a bit hacky but since this is only for a few simple tests it should be fine.
+      // On some of the test cases we have particles placed at nodes this means that in parallel
+      // two processors will determine that the particle is in their element
+      // to get around this we just add a check that looks to see if the point on the right most
+      // side of the element and only the elements that are on the boundary are allowed to claim the
+      // particles on the right most node. Since the tests cases this check is for are 1D this is
+      // fine for this but is not a general solution.
+      if (elem->get_nodes()[elem->n_nodes() - 1]->absolute_fuzzy_equals(start_point) &&
+          !elem->on_boundary())
+        continue;
+
+      particle_elem = elem;
+      break;
     }
+
     // the pointer will be null in the case that the processor doesn't own the point
     if (particle_elem == nullptr)
       continue;
@@ -80,9 +93,9 @@ TestPlacedParticleInitializer::getParticleData() const
 
   if (total_particles_created != _start_points.size())
     mooseError(std::to_string(_start_points.size()) +
-               " particles were supposed to be created but only " +
+               " particles were supposed to be created but " +
                std::to_string(total_particles_created) +
                " were created. You may have tried to place a particle outside of the domain and it "
-               "could not be created.");
+               "could not be created or on an element boundary and it was created twice.");
   return particle_data;
 }

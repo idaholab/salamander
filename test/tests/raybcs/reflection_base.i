@@ -2,6 +2,10 @@
   solve = false
 []
 
+[Mesh]
+  allow_renumbering = false
+[]
+
 [UserObjects]
   [stepper]
     type = TestSimpleStepper
@@ -22,7 +26,8 @@
     type = TestInitializedPICStudy
     stepper = stepper
     particle_initializers = particle_initializer
-    use_custom_rayids = false
+    use_custom_rayids = true
+    particles_per_element = 1
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'

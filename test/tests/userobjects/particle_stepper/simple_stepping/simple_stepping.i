@@ -9,6 +9,7 @@
     ymax = 10
     zmax = 10
   []
+  allow_renumbering = false
 []
 
 [UserObjects]
