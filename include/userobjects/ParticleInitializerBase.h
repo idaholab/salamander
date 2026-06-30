@@ -60,6 +60,17 @@ public:
   virtual void execute() override final {}
   ///@}
 
+  /**
+   * Methods to allow the main pic study to inspect all of the different particles that are being
+   * created and to make sure that if there are multiple initializers provided for a single species
+   * that they all provide consistent data.
+   */
+  ///@{
+  const Real mass() const;
+  const Real charge() const;
+  const std::string & species() const;
+  ///@}
+
 protected:
   /// the mass of the particles being created
   const Real _mass;

@@ -33,7 +33,7 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    particle_initializer = particle_initializer
+    particle_initializers = particle_initializer
     particles_per_element = 1
     always_cache_traces = true
     data_on_cache_traces = true
