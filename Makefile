@@ -114,3 +114,10 @@ include            $(FRAMEWORK_DIR)/app.mk
 ifeq ($(ENABLE_CARDINAL),yes)
   include config/external_cardinal_flags.mk
 endif
+
+# need special flag when using MOOSE's conda environment for OpenMC's dependencies
+ifeq ($(wildcard $(CONDA_PREFIX)/share/moose-compilers),)
+    USE_OPENMC_VENDORED_LIBS := ON
+else
+    USE_OPENMC_VENDORED_LIBS := OFF
+endif
