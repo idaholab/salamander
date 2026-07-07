@@ -22,6 +22,16 @@
 #include "ParticleInitializerBase.h"
 class ParticleStepperBase;
 
+struct AssignedParticleData
+{
+  /// the charge of the particles being created by the current initializer
+  Real charge;
+  /// the charge of the particles being created by the current initializer
+  Real mass;
+  /// the numeric value associated with a specific species this is managed by the study and not the initializers
+  unsigned int species_id;
+};
+
 class PICStudyBase : public RayTracingStudy
 {
 public:
@@ -45,6 +55,14 @@ public:
    * is 1D then only the index for the x component will be provided if all_components is false
    */
   const std::vector<RayDataIndex> getVelocityIndicies(const bool all_components) const;
+
+  /**
+   * Provides the numeric value assigned to a given species name provided the species name
+   * @param species_name the name of the species for which you want the id
+   * @returns the id that the study has assigned to the species name
+   * @throws mooseError if the species_name is unknown to the study
+   */
+  unsigned int speciesId(const std::string & species_name) const noexcept(false);
 
 protected:
   /// the list of all of the species ids that map to the species names
@@ -111,17 +129,24 @@ protected:
   /**
    * Sets up the given ray object with the contained with in the InitialParticleData struct
    * @param ray the aquired ray to which the data will be assigned
+   * @param assigned_data the data that will be set by the study and not directly stored in the
+   * InitialParticleData struct
    * @param data the initial particle data that will be given to the day
    */
-  virtual void setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialParticleData & data);
+  virtual void setInitialParticleData(std::shared_ptr<Ray> & ray,
+                                      const AssignedParticleData & assigned_data,
+                                      const InitialParticleData & data);
 
   /**
    * Takes in the data required to initialize a particle and then returns the shared pointer
    * that is created using acquireRay
+   * @param assigned_data the data that will be set by the study and not directly stored in the
+   * InitialParticleData struct
    * @param data The initial particle data provided by a ParticleInitializer
    * @returns a shared pointer to a ray that is ready to be propagated.
    */
-  virtual std::shared_ptr<Ray> createParticle(const InitialParticleData & data);
+  virtual std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
+                                              const InitialParticleData & data);
 
 private:
   /// Whether or not we've generated rays yet (restartable)

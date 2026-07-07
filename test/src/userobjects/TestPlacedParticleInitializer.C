@@ -81,8 +81,6 @@ TestPlacedParticleInitializer::getParticleData() const
 
     data.position = _start_points[i];
     data.velocity = velocities[i];
-    data.mass = _mass;
-    data.charge = _charge;
     data.weight = _weight;
     data.elem = particle_elem;
   }

@@ -43,7 +43,8 @@ protected:
    * This is overriden to ensure that we are able to get consistent ray ids based on element ids and
    * a given number of particles per element.
    */
-  std::shared_ptr<Ray> createParticle(const InitialParticleData & data) override;
+  std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
+                                      const InitialParticleData & data) override;
   /// wether or not this test is for single particle motion cases
   const bool _single_particle;
   /// wether or not the id generation scheme from raytracing study will be used or the one in this user object will be
