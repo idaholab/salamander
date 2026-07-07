@@ -55,7 +55,8 @@ TestInitializedPICStudy::TestInitializedPICStudy(const InputParameters & paramet
 }
 
 std::shared_ptr<Ray>
-TestInitializedPICStudy::createParticle(const InitialParticleData & data)
+TestInitializedPICStudy::createParticle(const AssignedParticleData & assigned_data,
+                                        const InitialParticleData & data)
 {
   // this assumes that particles will be placed on an element by element basis
   // in order without repeating elements. This is fine for all of the tests we have
@@ -67,7 +68,7 @@ TestInitializedPICStudy::createParticle(const InitialParticleData & data)
     _curr_elem_ray_count = 0;
   }
 
-  return PICStudyBase::createParticle(data);
+  return PICStudyBase::createParticle(assigned_data, data);
 }
 RayID
 TestInitializedPICStudy::generateUniqueRayID(const THREAD_ID tid)

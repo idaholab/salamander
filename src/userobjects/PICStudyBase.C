@@ -136,11 +136,15 @@ PICStudyBase::initializeParticles()
     initializers.push_back(&getUserObjectByName<ParticleInitializerBase>(name));
   }
 
+  AssignedParticleData assigned_data;
   for (const auto & initializer : initializers)
   {
+    assigned_data.charge = initializer->charge();
+    assigned_data.mass = initializer->mass();
+    assigned_data.species_id = speciesId(initializer->species());
     for (const auto & initial_data : initializer->getParticleData())
     {
-      _banked_rays.push_back(createParticle(initial_data));
+      _banked_rays.push_back(createParticle(assigned_data, initial_data));
     }
   }
   moveRaysToBuffer(_banked_rays);
@@ -192,6 +196,18 @@ PICStudyBase::postExecuteStudy()
                      _banked_rays.end());
 }
 
+unsigned int
+PICStudyBase::speciesId(const std::string & species_name) const
+{
+  const auto it = std::find(_species_names.begin(), _species_names.end(), species_name);
+  if (it == _species_names.end())
+  {
+    mooseError("The requested species " + species_name + " does not exist in the PIC Study.");
+  }
+
+  return std::distance(_species_names.begin(), it);
+}
+
 void
 PICStudyBase::getVelocity(const Ray & ray, Point & v) const
 {
@@ -215,15 +231,19 @@ PICStudyBase::getBankedRays() const
 }
 
 void
-PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialParticleData & data)
+PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray,
+                                     const AssignedParticleData & assigned_data,
+                                     const InitialParticleData & data)
+
 {
   ray->setStart(data.position, data.elem);
   ray->data(_v_x_index) = data.velocity(0);
   ray->data(_v_y_index) = data.velocity(1);
   ray->data(_v_z_index) = data.velocity(2);
-  ray->data(_mass_index) = data.mass;
   ray->data(_weight_index) = data.weight;
-  ray->data(_charge_index) = data.charge;
+  ray->data(_mass_index) = assigned_data.mass;
+  ray->data(_charge_index) = assigned_data.charge;
+  ray->data(_species_index) = assigned_data.species_id;
 }
 
 const std::vector<RayDataIndex>
@@ -239,10 +259,11 @@ PICStudyBase::getVelocityIndicies(const bool all_components) const
 }
 
 std::shared_ptr<Ray>
-PICStudyBase::createParticle(const InitialParticleData & data)
+PICStudyBase::createParticle(const AssignedParticleData & assigned_data,
+                             const InitialParticleData & data)
 {
   auto ray = acquireRay();
-  setInitialParticleData(ray, data);
+  setInitialParticleData(ray, assigned_data, data);
   getVelocity(*ray, _temporary_velocity);
   _stepper.setupStep(*ray, _temporary_velocity, ray->data(_charge_index) / ray->data(_mass_index));
   setVelocity(*ray, _temporary_velocity);
