@@ -128,3 +128,10 @@ endif
 salamander_unit_srcfiles := $(shell find $(CURDIR)/src -name "*.C")
 salamander_unit_deps := $(patsubst %.C, %.$(obj-suffix).d, $(salamander_unit_srcfiles))
 -include $(salamander_unit_deps)
+
+# need special flag when using MOOSE's conda environment for OpenMC's dependencies
+ifeq ($(wildcard $(CONDA_PREFIX)/share/moose-compilers),)
+    USE_OPENMC_VENDORED_LIBS := ON
+else
+    USE_OPENMC_VENDORED_LIBS := OFF
+endif
