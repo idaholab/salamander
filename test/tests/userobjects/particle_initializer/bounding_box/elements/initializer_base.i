@@ -23,7 +23,7 @@ charge_density = 2
 
 [UserObjects]
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [velocity_initializer]

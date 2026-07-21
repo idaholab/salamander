@@ -37,7 +37,7 @@ charge_density = 2
   []
 
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [study]
