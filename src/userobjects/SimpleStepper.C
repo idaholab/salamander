@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -13,12 +14,12 @@
 //* ALL RIGHTS RESERVED
 //*
 
-#include "TestSimpleStepper.h"
+#include "SimpleStepper.h"
 
-registerMooseObject("SalamanderTestApp", TestSimpleStepper);
+registerMooseObject("SalamanderApp", SimpleStepper);
 
 InputParameters
-TestSimpleStepper::validParams()
+SimpleStepper::validParams()
 {
   auto params = ParticleStepperBase::validParams();
   params.addClassDescription("Simple test stepper which does not modify the particle velocity just "
@@ -26,16 +27,15 @@ TestSimpleStepper::validParams()
   return params;
 }
 
-TestSimpleStepper::TestSimpleStepper(const InputParameters & parameters)
-  : ParticleStepperBase(parameters)
+SimpleStepper::SimpleStepper(const InputParameters & parameters) : ParticleStepperBase(parameters)
 {
 }
 
 void
-TestSimpleStepper::setupStep(Ray & ray,
-                             Point & v,
-                             const Real /*q_m_ratio*/,
-                             const Real /*disatnce*/) const
+SimpleStepper::setupStep(Ray & ray,
+                         Point & v,
+                         const Real /*q_m_ratio*/,
+                         const Real /*disatnce*/) const
 {
   setMaxDistanceAndDirection(ray, v, _dt);
 }
