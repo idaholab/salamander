@@ -22,8 +22,9 @@ InputParameters
 SimpleStepper::validParams()
 {
   auto params = ParticleStepperBase::validParams();
-  params.addClassDescription("Simple test stepper which does not modify the particle velocity just "
-                             "updates the direction and maximum distance");
+  params.addClassDescription(
+      "This stepper does not modify the particle velocity just "
+      "updates the direction and maximum distance based on the currently velocity and timestep.");
   return params;
 }
 
