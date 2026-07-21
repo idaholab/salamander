@@ -8,8 +8,8 @@
   ny = 2
   nz = 2
   xmax = 1
-  ymax=1
-  zmax=1
+  ymax = 1
+  zmax = 1
   []
   allow_renumbering = false
 []

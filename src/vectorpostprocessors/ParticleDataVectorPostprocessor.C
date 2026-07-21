@@ -36,7 +36,6 @@ ParticleDataVectorPostprocessor::validParams()
 ParticleDataVectorPostprocessor::ParticleDataVectorPostprocessor(const InputParameters & parameters)
   : GeneralVectorPostprocessor(parameters),
     _study(getUserObject<PICStudyBase>("study")),
-    _ray_data_indices(_study.getVelocityIndicies(true)),
     _data_values({&declareVector("t_pos"),
                   &declareVector("t_vel"),
                   &declareVector("x"),
@@ -52,9 +51,7 @@ ParticleDataVectorPostprocessor::ParticleDataVectorPostprocessor(const InputPara
   if (additional_ray_data.empty())
     return;
 
-  const auto & additional_data_indicies = _study.getRayDataIndices(additional_ray_data);
-  _ray_data_indices.insert(
-      _ray_data_indices.end(), additional_data_indicies.begin(), additional_data_indicies.end());
+  _ray_data_indices = _study.getRayDataIndices(additional_ray_data);
 
   for (const auto & data_name : additional_ray_data)
     _data_values.push_back(&declareVector(data_name));
@@ -71,7 +68,7 @@ void
 ParticleDataVectorPostprocessor::execute()
 {
 
-  const auto rays = _study.getBankedRays();
+  const auto rays = _study.particles();
   for (const auto & ray : rays)
   {
     // storing the time at which the particle position is known
@@ -82,8 +79,11 @@ ParticleDataVectorPostprocessor::execute()
     for (const auto i : make_range(2, 5))
       _data_values[i]->push_back(point(i - 2));
 
-    for (const auto i : make_range(5, int(5 + _ray_data_indices.size())))
-      _data_values[i]->push_back(ray->data(_ray_data_indices[i - 5]));
+    for (const auto i : make_range(0, 3))
+      _data_values[5 + i]->push_back(_study.velocityComponent(*ray, i));
+
+    for (const auto i : make_range(0, int(_ray_data_indices.size())))
+      _data_values[8 + i]->push_back(ray->data(_ray_data_indices[i]));
   }
 }
 
