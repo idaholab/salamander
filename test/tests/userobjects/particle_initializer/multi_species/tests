@@ -6,6 +6,6 @@
       input = 'multi_species.i'
       csvdiff = 'multi_species_csv_particle_data_0001.csv'
       allow_test_objects = true
-      requirement = "The system shall support particle initializers for multiple species and assign a unique id to each species type"
+      requirement = "The system shall support particle initializers for multiple species and assign a unique id to each species type."
   []
 []

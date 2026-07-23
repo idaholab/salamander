@@ -40,14 +40,14 @@ protected:
    */
   virtual RayID generateUniqueRayID(const THREAD_ID tid) override;
   /**
-   * This is overriden to ensure that we are able to get consistent ray ids based on element ids and
+   * This is overridden to ensure that we are able to get consistent ray ids based on element ids and
    * a given number of particles per element.
    */
   std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
                                       const InitialParticleData & data) override;
-  /// wether or not this test is for single particle motion cases
+  /// whether or not this test is for single particle motion cases
   const bool _single_particle;
-  /// wether or not the id generation scheme from raytracing study will be used or the one in this user object will be
+  /// whether or not the id generation scheme from raytracing study will be used or the one in this user object will be
   const bool _use_custom_id_scheme;
   /// the number of particles that will be placed in each element
   unsigned int _particles_per_element;

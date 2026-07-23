@@ -92,7 +92,7 @@ PICStudyBase::PICStudyBase(const InputParameters & parameters)
           "particle_initializers",
           static_cast<std::string>(initializer_names[species_index]) + ", and " +
               initializer.name() + " provided different masses for species " + species,
-          ". If there are multiple initializers for a single species they must provide consistent "
+          ". If there are multiple initializers for a single species, they must provide consistent "
           "physical properties.");
     }
 
@@ -102,7 +102,7 @@ PICStudyBase::PICStudyBase(const InputParameters & parameters)
           "particle_initializers",
           static_cast<std::string>(initializer_names[species_index]) + ", and " +
               initializer.name() + " provided different charges for species " + species,
-          ". If there are multiple initializers for a single species they must provide consistent "
+          ". If there are multiple initializers for a single species, they must provide consistent "
           "physical properties.");
     }
   }
