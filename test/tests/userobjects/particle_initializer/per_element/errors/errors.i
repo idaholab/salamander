@@ -28,7 +28,7 @@
   []
 
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [study]

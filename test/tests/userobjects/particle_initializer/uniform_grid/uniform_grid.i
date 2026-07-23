@@ -18,7 +18,7 @@
     velocities = '0 0 0'
   []
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [particle_initializer]

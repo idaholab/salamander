@@ -45,7 +45,7 @@
   []
 
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [particle_initializer]
