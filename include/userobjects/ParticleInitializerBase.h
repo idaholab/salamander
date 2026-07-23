@@ -55,9 +55,9 @@ public:
   ///@}
 
   /**
-   * Methods to allow the main particle-in-cell study to inspect all of the different particles that are being
-   * created and to make sure that if there are multiple initializers provided for a single species
-   * that they all provide consistent data.
+   * Methods to allow the main particle-in-cell study to inspect all of the different particles that
+   * are being created and to make sure that if there are multiple initializers provided for a
+   * single species that they all provide consistent data.
    */
   ///@{
   const Real mass() const;

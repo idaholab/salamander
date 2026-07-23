@@ -40,8 +40,8 @@ protected:
    */
   virtual RayID generateUniqueRayID(const THREAD_ID tid) override;
   /**
-   * This is overridden to ensure that we are able to get consistent ray ids based on element ids and
-   * a given number of particles per element.
+   * This is overridden to ensure that we are able to get consistent ray ids based on element ids
+   * and a given number of particles per element.
    */
   std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
                                       const InitialParticleData & data) override;
