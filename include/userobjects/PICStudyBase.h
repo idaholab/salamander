@@ -128,7 +128,7 @@ protected:
 
   /**
    * Sets up the given ray object with the contained with in the InitialParticleData struct
-  * @param ray The acquired ray to which the data will be assigned
+   * @param ray The acquired ray to which the data will be assigned
    * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
    * @param data the initial particle data that will be given to the day
