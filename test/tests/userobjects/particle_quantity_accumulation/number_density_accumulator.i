@@ -29,7 +29,7 @@
 
 [UserObjects]
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [velocity_initializer]

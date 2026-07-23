@@ -1,5 +1,5 @@
 [Tests]
-  design = 'ParticleStepperBase.md PICStudyBase.md'
+  design = 'SimpleStepper.md ParticleStepperBase.md PICStudyBase.md'
   issues = '#4'
   [simple_stepping]
     type = 'CSVDiff'

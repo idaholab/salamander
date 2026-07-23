@@ -328,3 +328,6 @@ salamander-unit.yaml
 
 # Cardinal
 cross_sections
+
+# Salamander
+doc/content/verification_validation_examples/plasma/figures/*.png
