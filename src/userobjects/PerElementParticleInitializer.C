@@ -80,9 +80,6 @@ PerElementParticleInitializer::getParticleData() const
       uint particle_index = elem_count * _particles_per_element + i;
       data[particle_index].elem = elem;
       data[particle_index].weight = weight;
-      data[particle_index].species = _species;
-      data[particle_index].mass = _mass;
-      data[particle_index].charge = _charge;
       data[particle_index].position = physical_points[i];
       data[particle_index].velocity = velocities[i];
     }

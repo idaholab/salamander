@@ -15,8 +15,9 @@
 //*
 
 #include "PICStudyBase.h"
+#include "ParticleInitializerBase.h"
 #include "ParticleStepperBase.h"
-#include "libmesh/int_range.h"
+#include <libmesh/fuzzy_equals.h>
 
 InputParameters
 PICStudyBase::validParams()
@@ -32,6 +33,8 @@ PICStudyBase::validParams()
       "velocities should be updated");
   // We're not going to use registration because we don't care to name our rays because
   // we will have a lot of them
+  params.addRequiredParam<std::vector<UserObjectName>>(
+      "particle_initializers", "The initializers that will place particles");
   params.set<bool>("_use_ray_registration") = false;
 
   return params;
@@ -51,6 +54,58 @@ PICStudyBase::PICStudyBase(const InputParameters & parameters)
     _stepper(getUserObject<ParticleStepperBase>("stepper")),
     _has_generated(declareRestartableData<bool>("has_generated", false))
 {
+  std::set<std::string_view> name_set;
+  std::vector<std::string_view> initializer_names;
+  std::set<std::string_view> initializer_name_set;
+
+  for (const auto & name : getParam<std::vector<UserObjectName>>("particle_initializers"))
+  {
+    const auto & initializer = getUserObjectByName<ParticleInitializerBase>(name);
+    const auto & species = initializer.species();
+    const auto mass = initializer.mass();
+    const auto charge = initializer.charge();
+
+    if (initializer_name_set.count(name) != 0)
+    {
+      paramError("particle_initializers",
+                 "Particle initializer " + name +
+                     " was provided multiple times. Each initializer may only be provided once.");
+    }
+    initializer_name_set.emplace(name);
+
+    if (name_set.count(species) == 0)
+    {
+      name_set.emplace(species);
+      initializer_names.emplace_back(initializer.name());
+      _species_names.emplace_back(species);
+      _species_masses.emplace_back(mass);
+      _species_charges.emplace_back(charge);
+      continue;
+    }
+
+    const auto it = std::find(_species_names.begin(), _species_names.end(), species);
+    const auto species_index = std::distance(_species_names.begin(), it);
+
+    if (!libMesh::absolute_fuzzy_equals(_species_masses[species_index], mass))
+    {
+      paramError(
+          "particle_initializers",
+          static_cast<std::string>(initializer_names[species_index]) + ", and " +
+              initializer.name() + " provided different masses for species " + species,
+          ". If there are multiple initializers for a single species, they must provide consistent "
+          "physical properties.");
+    }
+
+    if (!libMesh::absolute_fuzzy_equals(_species_charges[species_index], charge))
+    {
+      paramError(
+          "particle_initializers",
+          static_cast<std::string>(initializer_names[species_index]) + ", and " +
+              initializer.name() + " provided different charges for species " + species,
+          ". If there are multiple initializers for a single species, they must provide consistent "
+          "physical properties.");
+    }
+  }
 }
 
 void
@@ -60,7 +115,7 @@ PICStudyBase::generateRays()
   // pull from the bank and update velocities/max distances
   if (!_has_generated)
   {
-    this->initializeParticles();
+    initializeParticles();
     _has_generated = true;
   }
   else
@@ -70,6 +125,29 @@ PICStudyBase::generateRays()
     moveRaysToBuffer(_banked_rays);
     _banked_rays.clear();
   }
+}
+
+void
+PICStudyBase::initializeParticles()
+{
+  std::vector<const ParticleInitializerBase *> initializers;
+  for (const auto & name : getParam<std::vector<UserObjectName>>("particle_initializers"))
+  {
+    initializers.push_back(&getUserObjectByName<ParticleInitializerBase>(name));
+  }
+
+  AssignedParticleData assigned_data;
+  for (const auto & initializer : initializers)
+  {
+    assigned_data.charge = initializer->charge();
+    assigned_data.mass = initializer->mass();
+    assigned_data.species_id = speciesId(initializer->species());
+    for (const auto & initial_data : initializer->getParticleData())
+    {
+      _banked_rays.push_back(createParticle(assigned_data, initial_data));
+    }
+  }
+  moveRaysToBuffer(_banked_rays);
 }
 
 void
@@ -118,6 +196,18 @@ PICStudyBase::postExecuteStudy()
                      _banked_rays.end());
 }
 
+unsigned int
+PICStudyBase::speciesId(const std::string & species_name) const
+{
+  const auto it = std::find(_species_names.begin(), _species_names.end(), species_name);
+  if (it == _species_names.end())
+  {
+    mooseError("The requested species " + species_name + " does not exist in the PIC Study.");
+  }
+
+  return std::distance(_species_names.begin(), it);
+}
+
 void
 PICStudyBase::getVelocity(const Ray & ray, Point & v) const
 {
@@ -141,15 +231,19 @@ PICStudyBase::getBankedRays() const
 }
 
 void
-PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialParticleData & data)
+PICStudyBase::setInitialParticleData(std::shared_ptr<Ray> & ray,
+                                     const AssignedParticleData & assigned_data,
+                                     const InitialParticleData & data)
+
 {
   ray->setStart(data.position, data.elem);
   ray->data(_v_x_index) = data.velocity(0);
   ray->data(_v_y_index) = data.velocity(1);
   ray->data(_v_z_index) = data.velocity(2);
-  ray->data(_mass_index) = data.mass;
   ray->data(_weight_index) = data.weight;
-  ray->data(_charge_index) = data.charge;
+  ray->data(_mass_index) = assigned_data.mass;
+  ray->data(_charge_index) = assigned_data.charge;
+  ray->data(_species_index) = assigned_data.species_id;
 }
 
 const std::vector<RayDataIndex>
@@ -162,4 +256,16 @@ PICStudyBase::getVelocityIndicies(const bool all_components) const
     indicies[dim] = getRayDataIndex(std::string("v_") + (dim == 0 ? "x" : (dim == 1 ? "y" : "z")));
 
   return indicies;
+}
+
+std::shared_ptr<Ray>
+PICStudyBase::createParticle(const AssignedParticleData & assigned_data,
+                             const InitialParticleData & data)
+{
+  auto ray = acquireRay();
+  setInitialParticleData(ray, assigned_data, data);
+  getVelocity(*ray, _temporary_velocity);
+  _stepper.setupStep(*ray, _temporary_velocity, ray->data(_charge_index) / ray->data(_mass_index));
+  setVelocity(*ray, _temporary_velocity);
+  return ray;
 }
