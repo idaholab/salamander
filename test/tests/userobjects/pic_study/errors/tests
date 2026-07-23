@@ -9,7 +9,7 @@
       cli_args = 'UserObjects/initializer_2/mass=2'
       allow_test_objects = true
       expect_err = 'provided different masses for species A'
-      detail = 'multiple initializers for the same species that provide inconsistent masses.'
+      detail = 'multiple initializers for the same species that provide inconsistent masses,'
     []
     [conflicting_charges]
       type = 'RunException'
@@ -17,7 +17,7 @@
       cli_args = 'UserObjects/initializer_2/charge=2'
       allow_test_objects = true
       expect_err = 'provided different charges for species A'
-      detail = 'multiple initializers for the same species that provide inconsistent charges.'
+      detail = 'multiple initializers for the same species that provide inconsistent charges, and'
     []
     [initializer_multiple_times]
       type = 'RunException'

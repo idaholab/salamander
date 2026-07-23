@@ -26,9 +26,9 @@ struct AssignedParticleData
 {
   /// the charge of the particles being created by the current initializer
   Real charge;
-  /// the charge of the particles being created by the current initializer
+  /// the mass of the particles being created by the current initializer
   Real mass;
-  /// the numeric value associated with a specific species this is managed by the study and not the initializers
+  /// the numeric value associated with a specific species; this is managed by the study and not the initializers
   unsigned int species_id;
 };
 
@@ -57,7 +57,7 @@ public:
   const std::vector<RayDataIndex> getVelocityIndicies(const bool all_components) const;
 
   /**
-   * Provides the numeric value assigned to a given species name provided the species name
+   * Provides the numeric value assigned to a given species' name when provided the species' name
    * @param species_name the name of the species for which you want the id
    * @returns the id that the study has assigned to the species name
    * @throws mooseError if the species_name is unknown to the study
@@ -65,7 +65,7 @@ public:
   unsigned int speciesId(const std::string & species_name) const noexcept(false);
 
 protected:
-  /// the list of all of the species ids that map to the species names
+  /// the list of all of the species ids that map to the species' names
   std::vector<unsigned int> _species_ids;
   /// the names that the user assigned to each of the species in the system
   std::vector<std::string> _species_names;
@@ -128,8 +128,8 @@ protected:
 
   /**
    * Sets up the given ray object with the contained with in the InitialParticleData struct
-   * @param ray the aquired ray to which the data will be assigned
-   * @param assigned_data the data that will be set by the study and not directly stored in the
+  * @param ray The acquired ray to which the data will be assigned
+   * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
    * @param data the initial particle data that will be given to the day
    */
@@ -140,7 +140,7 @@ protected:
   /**
    * Takes in the data required to initialize a particle and then returns the shared pointer
    * that is created using acquireRay
-   * @param assigned_data the data that will be set by the study and not directly stored in the
+   * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
    * @param data The initial particle data provided by a ParticleInitializer
    * @returns a shared pointer to a ray that is ready to be propagated.

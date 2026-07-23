@@ -1,8 +1,8 @@
-# the number of computational particles to be put in each element
+# The number of computational particles to be put in each element
 particles_per_element = 1
-# the analytic solution for the charge density
-# set by cli args for each case since it is needed by all
-# tests but changes based on the dimension of the problem
+# The analytic solution for the charge density.
+# This is set by cli arguments for each case since it is needed by all
+# tests, but it changes based on the dimension of the problem.
 charge_density = 1
 
 [GlobalParams]
