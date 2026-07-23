@@ -23,8 +23,8 @@ SimpleStepper::validParams()
 {
   auto params = ParticleStepperBase::validParams();
   params.addClassDescription(
-      "This stepper does not modify the particle velocity just "
-      "updates the direction and maximum distance based on the currently velocity and timestep.");
+      "This stepper does not modify the particle velocity; it simply "
+      "updates the direction and maximum distance based on the current velocity and timestep.");
   return params;
 }
 
@@ -36,7 +36,7 @@ void
 SimpleStepper::setupStep(Ray & ray,
                          Point & v,
                          const Real /*q_m_ratio*/,
-                         const Real /*disatnce*/) const
+                         const Real /*distance*/) const
 {
   setMaxDistanceAndDirection(ray, v, _dt);
 }
