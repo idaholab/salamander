@@ -70,7 +70,7 @@ protected:
   /// a user specified seed for changing random number generator seeds
   const unsigned int _seed;
   /// the dimension of the finite element mesh
-  const Real _mesh_dimension;
+  const unsigned int _mesh_dimension;
   /// The velocity initializer which will give all particles their initial velocity distribution
   const VelocityInitializerBase & _velocity_initializer;
 };
