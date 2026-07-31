@@ -80,5 +80,5 @@ protected:
    */
   Point linearImpulse(const Point & v, const Point & F, const Real q_m_ratio, const Real dt) const;
   /// the dimension of the mesh being using used for dimension-dependent velocity updates
-  const Real _mesh_dimension;
+  const unsigned int _mesh_dimension;
 };
