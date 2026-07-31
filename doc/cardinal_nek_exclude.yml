@@ -3,6 +3,7 @@
 - source/**
 - theory/**
 - tutorials/**
+- vv/doppler_slab.md
 - ~source/actions/AddScalarTransferAction.md
 - ~source/actions/AddFieldTransferAction.md
 - ~source/actions/DimensionalizeAction.md
