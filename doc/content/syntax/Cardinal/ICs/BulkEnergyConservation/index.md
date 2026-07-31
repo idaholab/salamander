@@ -1,1 +1,1 @@
-!include BulkEnergyConservationIC.md
+!include BulkEnergyConservationIC.md optional=True

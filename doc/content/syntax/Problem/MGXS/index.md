@@ -1,1 +1,1 @@
-!include source/actions/SetupMGXSAction.md
+!include source/actions/SetupMGXSAction.md optional=True
