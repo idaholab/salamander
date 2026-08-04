@@ -1,6 +1,6 @@
 #imports
 import pandas as pd
-import gmsh 
+import gmsh
 import sys
 
 sys.path.append('../Meshes/')

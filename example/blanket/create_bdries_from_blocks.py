@@ -12,7 +12,7 @@ with open('create_bdries_from_blocks.i', 'w') as f:
    # FW channels
    f.write("[Mesh]\n")
    input = "fmg"
-   # construct a deletion input block for each block 
+   # construct a deletion input block for each block
    for block in block_names:
        f.write("  ["+ block +"]\n")
        f.write("    type = SideSetsBetweenSubdomainsGenerator \n")

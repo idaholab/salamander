@@ -4,31 +4,31 @@
       file = 'Meshes/Blanket_OneRow.msh'
     []
 []
-  
+
 [Outputs]
     exodus = true
 []
-  
+
 [Preconditioning]
     [smp]
       type = SMP
       full = true
     []
 []
-  
+
 [Executioner]
   type = Steady
   solve_type = 'PJFNK'
   petsc_options_iname = '-pc_type'
   petsc_options_value = 'hypre'
 []
-  
+
 [Variables]
     [tritium]
       initial_condition = 0
     []
 []
-  
+
 [Kernels]
     [diffusion]
       type = ADDiffusion
@@ -41,8 +41,8 @@
       block = 'Breeder'
     []
 []
-  
-[BCs] 
+
+[BCs]
   [FW_BC]
     type = NeumannBC
     variable = tritium
@@ -64,7 +64,7 @@
     value = 0
   []
 []
-  
+
 [AuxVariables]
     [temperature]
     []
@@ -131,5 +131,5 @@
     type = PiecewiseLinear
     x = '365.44 464.99 556.82 660.93 757.28 858.82 947.70 1115.15 1254.55 1343.22' #K
     y = '178.86 162.76 149.22 142.95 140.10 134.69 129.26 122.23 119.01 117.86' # W/mK
-  [../] 
+  [../]
 []
