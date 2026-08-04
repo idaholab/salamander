@@ -415,11 +415,11 @@ MultiAppMapNearestNodeTransfer::execute()
                       std::make_pair(_to_local2global_map[i_to], point + _to_positions[i_to]));
                   local_elems_found.insert(elem);
                 } // if distance
-              }   // for i_from
-            }     // for i_proc
+              } // for i_from
+            } // for i_proc
             offset++;
           } // point
-        }   // for elem
+        } // for elem
 
         // Verify that we found at least one candidate bounding
         // box for each local element with dofs for the current
@@ -774,8 +774,8 @@ MultiAppMapNearestNodeTransfer::execute()
                 _cached_from_inds[point_id] = pid;
                 _cached_qp_inds[point_id] = qp_ind;
               } // if _fixed_meshes
-            }   // i_from
-          }     //
+            } // i_from
+          } //
           else
           {
             best_val = incoming_evals[_cached_from_inds[point_id]][_cached_qp_inds[point_id]];
