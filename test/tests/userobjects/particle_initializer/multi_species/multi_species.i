@@ -62,7 +62,7 @@ charge_density = 1
     velocity_initializer = 'velocity_initializer'
   []
   [stepper]
-    type = TestSimpleStepper
+    type = SimpleStepper
   []
 
   [study]
