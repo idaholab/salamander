@@ -157,6 +157,7 @@
      Problem/master_bdry_name=boundary_interface_3;BCs/left/value=60;BCs/right/value=100'
     max_procs_per_app = 1
     keep_solution_during_restore = true
+    update_old_solution_when_keeping_solution_during_restore = true
     output_in_position = true
     execute_on = 'timestep_end'
   []
