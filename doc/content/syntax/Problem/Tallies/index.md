@@ -1,1 +1,1 @@
-!include source/actions/AddTallyAction.md
+!include source/actions/AddTallyAction.md optional=True
