@@ -1,4 +1,5 @@
-//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research,
+//* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
+// confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -39,12 +40,13 @@ protected:
    */
   virtual RayID generateUniqueRayID(const THREAD_ID tid) override;
   /**
-   * This implementation simply gets particles based on the initializer
-   * and then creates the ray objects which represent the particles
+   * This is overriden to ensure that we are able to get consistent ray ids based on element ids and
+   * a given number of particles per element.
    */
-  virtual void initializeParticles() override final;
-  /// the object that will supply initial data needed for rays
-  const ParticleInitializerBase & _initializer;
+  std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
+                                      const InitialParticleData & data) override;
+  /// wether or not this test is for single particle motion cases
+  const bool _single_particle;
   /// wether or not the id generation scheme from raytracing study will be used or the one in this user object will be
   const bool _use_custom_id_scheme;
   /// the number of particles that will be placed in each element

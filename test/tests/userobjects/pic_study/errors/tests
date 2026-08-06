@@ -1,0 +1,31 @@
+[Tests]
+  design = 'PICStudyBase.md'
+  issues = '#144'
+  [errors]
+    requirement = "The system shall return a useful error when the user attempts to provide"
+    [conflicting_masses]
+      type = 'RunException'
+      input = 'errors.i'
+      cli_args = 'UserObjects/initializer_2/mass=2'
+      allow_test_objects = true
+      expect_err = 'provided different masses for species A'
+      detail = 'multiple initializers for the same species that provide inconsistent masses.'
+    []
+    [conflicting_charges]
+      type = 'RunException'
+      input = 'errors.i'
+      cli_args = 'UserObjects/initializer_2/charge=2'
+      allow_test_objects = true
+      expect_err = 'provided different charges for species A'
+      detail = 'multiple initializers for the same species that provide inconsistent charges.'
+    []
+    [initializer_multiple_times]
+      type = 'RunException'
+      input = 'errors.i'
+      cli_args = "UserObjects/study/particle_initializers='initializer_1 initializer_1'"
+      allow_test_objects = true
+      expect_err = 'initializer_1 was provided multiple times'
+      detail = 'the same initializer multiple times.'
+    []
+  []
+[]
