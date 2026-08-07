@@ -155,9 +155,6 @@ BoundingBoxParticleInitializer::getParticleData() const
         auto & particle = data.emplace_back();
         particle.elem = elem;
         particle.weight = weight;
-        particle.species = _species;
-        particle.mass = _mass;
-        particle.charge = _charge;
         particle.position = physical_points[i];
         particle.velocity = velocities[i];
       }

@@ -1,0 +1,11 @@
+[Tests]
+  design = 'ParticleInitializerBase.md PerElementParticleInitializer.md ElementSampler.md'
+  issues = '#36'
+  [mutli_species_ids]
+      type = 'CSVDiff'
+      input = 'multi_species.i'
+      csvdiff = 'multi_species_csv_particle_data_0001.csv'
+      allow_test_objects = true
+      requirement = "The system shall support particle initializers for multiple species and assign a unique id to each species type."
+  []
+[]

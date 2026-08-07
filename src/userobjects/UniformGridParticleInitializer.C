@@ -116,9 +116,6 @@ UniformGridParticleInitializer::getParticleData() const
     {
       particle_idxs.push_back(particle_count);
       data[particle_count].elem = elem;
-      data[particle_count].species = _species;
-      data[particle_count].mass = _mass;
-      data[particle_count].charge = _charge;
       data[particle_count].position = curr_point;
       data[particle_count].velocity = velocities[particle_count];
       particle_count++;

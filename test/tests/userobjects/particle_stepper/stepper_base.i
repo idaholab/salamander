@@ -74,8 +74,8 @@
   [study]
     type = TestInitializedPICStudy
     stepper = stepper
-    particle_initializer = particle_initializer
-    use_custom_rayids = false
+    particle_initializers = particle_initializer
+    single_particle = true
     always_cache_traces = true
     data_on_cache_traces = true
     execute_on = 'TIMESTEP_BEGIN'

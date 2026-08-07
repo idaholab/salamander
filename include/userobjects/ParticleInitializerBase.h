@@ -26,14 +26,8 @@ struct InitialParticleData
   Point position;
   /// the velocity that the particle will be given
   Point velocity;
-  /// the type of physical particle this particle represents
-  std::string species;
   /// the number of physical particles that this particle represents
   Real weight;
-  /// the charge of the physical particle this computational particle represents
-  Real charge;
-  /// the mass of the physical particle this computational particle represents
-  Real mass;
   /// the element that this particle will be placed into
   const Elem * elem;
 };
@@ -58,6 +52,17 @@ public:
   virtual void initialize() override final {}
   virtual void finalize() override final {}
   virtual void execute() override final {}
+  ///@}
+
+  /**
+   * Methods to allow the main particle-in-cell study to inspect all of the different particles that
+   * are being created and to make sure that if there are multiple initializers provided for a
+   * single species that they all provide consistent data.
+   */
+  ///@{
+  const Real mass() const;
+  const Real charge() const;
+  const std::string & species() const;
   ///@}
 
 protected:
