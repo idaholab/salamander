@@ -22,6 +22,16 @@
 #include "ParticleInitializerBase.h"
 class ParticleStepperBase;
 
+struct AssignedParticleData
+{
+  /// the charge of the particles being created by the current initializer
+  Real charge;
+  /// the mass of the particles being created by the current initializer
+  Real mass;
+  /// the numeric value associated with a specific species; this is managed by the study and not the initializers
+  unsigned int species_id;
+};
+
 class PICStudyBase : public RayTracingStudy
 {
 public:
@@ -46,7 +56,24 @@ public:
    */
   const std::vector<RayDataIndex> getVelocityIndicies(const bool all_components) const;
 
+  /**
+   * Provides the numeric value assigned to a given species' name when provided the species' name
+   * @param species_name the name of the species for which you want the id
+   * @returns the id that the study has assigned to the species name
+   * @throws mooseError if the species_name is unknown to the study
+   */
+  unsigned int speciesId(const std::string & species_name) const noexcept(false);
+
 protected:
+  /// the list of all of the species ids that map to the species' names
+  std::vector<unsigned int> _species_ids;
+  /// the names that the user assigned to each of the species in the system
+  std::vector<std::string> _species_names;
+  /// a list of the masses of each unique species in the system
+  std::vector<Real> _species_masses;
+  /// a list of the charge of each unique species in the system
+  std::vector<Real> _species_charges;
+
   /// The banked rays to be used on the next timestep (restartable)
   std::vector<std::shared_ptr<Ray>> & _banked_rays;
 
@@ -92,7 +119,7 @@ protected:
    *  Method that users should override for their custom particle initialization
    *  This is only called when the study first starts up
    */
-  virtual void initializeParticles() = 0;
+  virtual void initializeParticles();
   /**
    * Method that defines how to reuse particles this will be called on
    * every step after the initialization has been called
@@ -101,10 +128,25 @@ protected:
 
   /**
    * Sets up the given ray object with the contained with in the InitialParticleData struct
-   * @param ray the aquired ray to which the data will be assigned
+   * @param ray The acquired ray to which the data will be assigned
+   * @param assigned_data The data that will be set by the study and not directly stored in the
+   * InitialParticleData struct
    * @param data the initial particle data that will be given to the day
    */
-  virtual void setInitialParticleData(std::shared_ptr<Ray> & ray, const InitialParticleData & data);
+  virtual void setInitialParticleData(std::shared_ptr<Ray> & ray,
+                                      const AssignedParticleData & assigned_data,
+                                      const InitialParticleData & data);
+
+  /**
+   * Takes in the data required to initialize a particle and then returns the shared pointer
+   * that is created using acquireRay
+   * @param assigned_data The data that will be set by the study and not directly stored in the
+   * InitialParticleData struct
+   * @param data The initial particle data provided by a ParticleInitializer
+   * @returns a shared pointer to a ray that is ready to be propagated.
+   */
+  virtual std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
+                                              const InitialParticleData & data);
 
 private:
   /// Whether or not we've generated rays yet (restartable)

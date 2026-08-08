@@ -45,3 +45,21 @@ ParticleInitializerBase::ParticleInitializerBase(const InputParameters & paramet
     _velocity_initializer(getUserObject<VelocityInitializerBase>("velocity_initializer"))
 {
 }
+
+const Real
+ParticleInitializerBase::mass() const
+{
+  return _mass;
+}
+
+const Real
+ParticleInitializerBase::charge() const
+{
+  return _charge;
+}
+
+const std::string &
+ParticleInitializerBase::species() const
+{
+  return _species;
+}

@@ -67,7 +67,7 @@
     type = TestChargeAccumulator
     variable = rho
     stepper = stepper
-    particle_initializer = particle_initializer
+    particle_initializers = particle_initializer
     use_custom_rayids = false
     always_cache_traces = true
     data_on_cache_traces = true
