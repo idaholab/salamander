@@ -73,9 +73,9 @@ public:
    */
   const Real velocityComponent(const Ray & particle, const unsigned int component) const;
   /**
-   * Method for updating the rays velocity data given a new velocity
+   * Method for updating the particle's velocity data given a new velocity
    * @param particle the particle that will have its velocity updated
-   * @param v the new velocity to give the ray
+   * @param v the new velocity to give the particle
    */
   void setVelocity(Ray & particle, const Point & v) const;
 
@@ -118,7 +118,7 @@ protected:
   /// particles velocities are updated
   const ParticleStepperBase & _stepper;
 
-  /// temporary variable used when resetting rays
+  /// temporary variable used when resetting particles
   Point _temporary_velocity;
 
   /**
@@ -134,12 +134,12 @@ protected:
 
   /**
    * Sets up the given ray object with the contained with in the InitialParticleData struct
-   * @param ray The acquired ray to which the data will be assigned
+   * @param particle The acquired ray to which the data will be assigned
    * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
    * @param data the initial particle data that will be given to the day
    */
-  virtual void setInitialParticleData(std::shared_ptr<Ray> & ray,
+  virtual void setInitialParticleData(std::shared_ptr<Ray> & particle,
                                       const AssignedParticleData & assigned_data,
                                       const InitialParticleData & data);
 
@@ -149,7 +149,7 @@ protected:
    * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
    * @param data The initial particle data provided by a ParticleInitializer
-   * @returns a shared pointer to a ray that is ready to be propagated.
+   * @returns a shared pointer to a particle that is ready to be propagated.
    */
   virtual std::shared_ptr<Ray> createParticle(const AssignedParticleData & assigned_data,
                                               const InitialParticleData & data);
