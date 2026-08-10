@@ -56,18 +56,18 @@ public:
   ///@}
 
   /**
-   * Method for getting a particles velocity as a Point
+   * Method for getting a particle's velocity as a Point.
    * Each component is retrieved from ray data and given
-   * back to user to make calculations easier
+   * back to the user to make calculations easier.
    * @param particle the particle
-   * @param velocity the point where the particles velocity will be stored
+   * @param velocity the point where the particle's velocity will be stored
    */
   void velocity(const Ray & particle, Point & velocity) const;
   /**
-   * Method for getting a single velocity component for a particle
+   * Method for getting a single velocity component for a particle.
    * Each component is retrieved from ray data and given
-   * back to user to make calculations easier
-   * the value of component must be < 3
+   * back to the user to make calculations easier.
+   * The value of component must be < 3.
    * @param particle the particle
    * @returns the velocity component
    */

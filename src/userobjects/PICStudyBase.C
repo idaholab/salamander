@@ -154,13 +154,13 @@ PICStudyBase::reinitializeParticles()
   // Reset each ray
   for (auto & particle : _banked_rays)
   {
-    // Store off the ray's info before we reset it
+    // Store off the particle's info before we reset it
     const auto elem = particle->currentElem();
     const auto point = particle->currentPoint();
     const auto distance = particle->distance();
 
     velocity(*particle, _temporary_velocity);
-    // Reset it (this is required to reuse a ray)
+    // Reset it (this is required to reuse a particle)
     particle->resetCounters();
     particle->clearStartingInfo();
 

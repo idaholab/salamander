@@ -30,7 +30,7 @@ public:
   virtual void onBoundary(const unsigned int num_applying) override;
 
 protected:
-  /// the instance of the pic study to get access the particle data accessor methods
+  /// the instance of the PIC study to use to access the particle data accessor methods
   const PICStudyBase & _pic_study;
   /// the dimension of the actual mesh
   const unsigned int _mesh_dimension;
