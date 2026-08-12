@@ -36,7 +36,6 @@ ParticleDataVectorPostprocessor::validParams()
 ParticleDataVectorPostprocessor::ParticleDataVectorPostprocessor(const InputParameters & parameters)
   : GeneralVectorPostprocessor(parameters),
     _study(getUserObject<PICStudyBase>("study")),
-    _ray_data_indices(_study.getVelocityIndicies(true)),
     _data_values({&declareVector("t_pos"),
                   &declareVector("t_vel"),
                   &declareVector("x"),
@@ -52,9 +51,7 @@ ParticleDataVectorPostprocessor::ParticleDataVectorPostprocessor(const InputPara
   if (additional_ray_data.empty())
     return;
 
-  const auto & additional_data_indicies = _study.getRayDataIndices(additional_ray_data);
-  _ray_data_indices.insert(
-      _ray_data_indices.end(), additional_data_indicies.begin(), additional_data_indicies.end());
+  _ray_data_indices = _study.getRayDataIndices(additional_ray_data);
 
   for (const auto & data_name : additional_ray_data)
     _data_values.push_back(&declareVector(data_name));
@@ -71,19 +68,29 @@ void
 ParticleDataVectorPostprocessor::execute()
 {
 
-  const auto rays = _study.getBankedRays();
+  const auto rays = _study.particles();
   for (const auto & ray : rays)
   {
     // storing the time at which the particle position is known
     _data_values[0]->push_back(_t);
     // storing the time at which the particle velocity is known
     _data_values[1]->push_back(_t - _dt / 2);
+    // storing each of the coordinates of the particle's current position as seperate columns;
+    // the indexing into _data_values starts at 2 since there are 2 columns, one for each of the
+    // times already
     const auto & point = ray->currentPoint();
     for (const auto i : make_range(2, 5))
       _data_values[i]->push_back(point(i - 2));
-
-    for (const auto i : make_range(5, int(5 + _ray_data_indices.size())))
-      _data_values[i]->push_back(ray->data(_ray_data_indices[i - 5]));
+    // storing each of the components of the particle's velocity as seperate columns as well;
+    // the indexing into _data_values starts at 5 since there are 2 columns for the different times,
+    // and 3 columns for the particle's position in physical space
+    for (const auto i : make_range(0, 3))
+      _data_values[5 + i]->push_back(_study.velocityComponent(*ray, i));
+    // at this point, we will store each of the additional pieces of data requested by the user;
+    // the offest into _data_values starts at 8 since we have 2 columns for the different times, 3
+    // columns for the particles position, and 3 columns for the particle's velocity.
+    for (const auto i : make_range(0, int(_ray_data_indices.size())))
+      _data_values[8 + i]->push_back(ray->data(_ray_data_indices[i]));
   }
 }
 
