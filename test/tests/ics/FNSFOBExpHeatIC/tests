@@ -1,8 +1,13 @@
 [Tests]
+  design = 'FNSFOBExpHeatIC.md'
+  issues = '#112'
   [FNSFOBExpHeatIC]
     type = 'Exodiff'
     input = 'FNSFOBExpHeatIC.i'
     exodiff = 'FNSFOBExpHeatIC_out.e'
     rel_err = 9e-05
+    requirement = 'The system shall be able to initialize a field using an analytic
+                   exponential-decay approximation to the nuclear heating profile of the
+                   outboard blanket of the Fusion Nuclear Science Facility.'
   []
 []

@@ -1,12 +1,11 @@
 [Tests]
+  design = 'FilePipe1Phase.md'
+  issues = '#112'
   [flow_channel]
     type = 'Exodiff'
     input = 'file_channel.i'
     exodiff = 'file_channel_out.e'
-  []
-  [channel_run]
-    type = 'RunApp'
-    input = 'file_channel.i'
-    requirement = 'An input file calling the flow channel should be able to run'
+    requirement = 'The system shall be able to build a 1D pipe flow channel mesh from a list of
+                   node coordinates read from a CSV file.'
   []
 []

@@ -1,7 +1,12 @@
 [Tests]
+  design = 'FNSFOBExpHeatSource.md'
+  issues = '#112'
   [FNSFOBExpHeatSource]
     type = 'Exodiff'
-    input = 'FNSFOBEXPHeatSource.i'
-    exodiff = 'FNSFOBEXPHeatSource_out.e'
+    input = 'FNSFOBExpHeatSource.i'
+    exodiff = 'FNSFOBExpHeatSource_out.e'
+    requirement = 'The system shall be able to apply a volumetric heat source using an analytic
+                   exponential-decay approximation to the nuclear heating profile of the outboard
+                   blanket of the Fusion Nuclear Science Facility.'
   []
 []

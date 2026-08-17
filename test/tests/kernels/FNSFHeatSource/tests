@@ -1,7 +1,12 @@
 [Tests]
+  design = 'FNSFHeatSource.md'
+  issues = '#112'
   [FNSFHeatSource]
     type = 'Exodiff'
     input = 'FNSFHeatSource.i'
     exodiff = 'FNSFHeatSource_out.e'
+    requirement = 'The system shall be able to apply a volumetric nuclear heating source,
+                   projected from a gridded neutronics data set, to a heat conduction model of
+                   the outboard blanket of the Fusion Nuclear Science Facility.'
   []
 []

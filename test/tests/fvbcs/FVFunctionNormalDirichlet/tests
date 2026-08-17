@@ -1,7 +1,12 @@
 [Tests]
+  design = 'FVFunctionalNormalDirichletBC.md'
+  issues = '#112'
   [FVFunctionNormalDirichlet]
     type = 'Exodiff'
     input = 'FVFunctionNormalDirichlet.i'
     exodiff = 'FVFunctionNormalDirichlet_out.e'
+    requirement = 'The system shall be able to impose a boundary value equal to a scalar function
+                   projected onto the face outward normal direction for a finite-volume
+                   porous-media flow model.'
   []
 []

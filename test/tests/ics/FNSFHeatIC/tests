@@ -1,7 +1,12 @@
 [Tests]
+  design = 'FNSFHeatIC.md'
+  issues = '#112'
   [FNSFHeatIC]
     type = 'Exodiff'
     input = 'FNSFHeatIC.i'
     exodiff = 'FNSFHeatIC_out.e'
+    requirement = 'The system shall be able to initialize a field directly from a gridded
+                   neutronics heating data set projected onto the outboard blanket of the Fusion
+                   Nuclear Science Facility.'
   []
 []
