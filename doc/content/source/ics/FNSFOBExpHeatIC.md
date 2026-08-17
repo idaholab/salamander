@@ -12,7 +12,8 @@ q(d) = A \, e^{-k d},
 \end{equation}
 
 where $d$ is the depth measured from the last closed flux surface in meters, and $A$ and $k$ are
-the scaling term and decay rate, defaulting to $A = 2.6464\times10^7$ and $k = 8.8698$. The depth
+the scaling term ([!param](/ICs/FNSFOBExpHeatIC/A)) and decay rate
+([!param](/ICs/FNSFOBExpHeatIC/k)), defaulting to $A = 2.6464\times10^7$ and $k = 8.8698$. The depth
 $d$ is computed from the quadrature point's cylindrical $(r, z)$ position using the
 `find_xi_depth` method described on the [FNSFUtils.md] page (the poloidal-angle coordinate $\xi$
 is unused by this exponential fit).

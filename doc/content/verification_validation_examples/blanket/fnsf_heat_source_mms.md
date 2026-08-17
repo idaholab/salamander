@@ -12,7 +12,7 @@ The manufactured temperature solution is
 T(x, y, z) = \sin(\pi x) \sin(\pi z) \cos(\pi y),
 \end{equation}
 
-imposed on all boundaries of a unit cube mesh via a `FunctionDirichletBC`. The steady-state heat
+imposed on all boundaries of a unit cube mesh via a [FunctionDirichletBC.md]. The steady-state heat
 conduction equation solved is
 
 \begin{equation}
@@ -30,14 +30,14 @@ forcing term gives
 f(x, y, z) = 3\pi^2 \sin(\pi x) \sin(\pi z) \cos(\pi y) - 1,
 \end{equation}
 
-which is applied as a `BodyForce` alongside `FNSFHeatSource`; together they reproduce the exact
+which is applied as a [BodyForce.md] alongside `FNSFHeatSource`; together they reproduce the exact
 right-hand side needed for $T$ to be an exact solution of the discretized problem.
 
 !listing test/tests/kernels/FNSFHeatSource/mms.i
 
 ## Results
 
-Following [!citep](Franklin2025), the discretization error is measured with an `ElementL2Error`
+Following [!citep](Franklin2025), the discretization error is measured with an [ElementL2Error.md]
 postprocessor against the manufactured solution, over a series of successively refined meshes, for
 both first- and second-order elements. As reported in [!citep](Franklin2025), the resulting $L_2$
 error converges at approximately the expected rates for each element order:

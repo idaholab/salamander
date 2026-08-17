@@ -4,7 +4,7 @@
 
 ## Overview
 
-`MultiAppMapNearestNodeTransfer` is a `MultiAppConservativeTransfer` that transfers field data
+`MultiAppMapNearestNodeTransfer` is a [MultiAppConservativeTransfer.md] that transfers field data
 between a 3D main application (e.g. a heat-conduction model of a blanket structure) and each of
 its 1D Thermal Hydraulics Module (THM) sub-applications (e.g. coolant channels) using a
 nearest-node search. This transfer, and the paired main/sub-application coupling strategy it
@@ -19,13 +19,15 @@ have hundreds of individual coolant channels sharing the same 3D domain, which m
 global nearest-node search over the full 3D mesh especially expensive.
 
 `MultiAppMapNearestNodeTransfer` addresses this by explicitly pairing each sub-application with
-the specific `source_boundary`/`target_boundary` of the main application it corresponds to
-(using `BlanketProblem::getMasterBoundaryName()` on the sub-application), so the nearest-node
+the specific [!param](/Transfers/MultiAppMapNearestNodeTransfer/source_boundary)/[!param](/Transfers/MultiAppMapNearestNodeTransfer/target_boundary)
+of the main application it corresponds to (using `BlanketProblem::getMasterBoundaryName()`, see
+[!param](/Problem/BlanketProblem/master_bdry_name), on the sub-application), so the nearest-node
 search only needs to consider nodes on that one paired boundary rather than the entire mesh. To
 keep the search reliable across MPI partitions, each processor's local bounding box is enlarged
-by the `bbox_extend_factor` parameter before candidate nodes are gathered, ensuring that a true
-nearest node located just across a partition boundary is not missed. When the source and target
-meshes do not move between transfers, setting `fixed_meshes = true` allows the nearest-node
+by the [!param](/Transfers/MultiAppMapNearestNodeTransfer/bbox_extend_factor) parameter before
+candidate nodes are gathered, ensuring that a true nearest node located just across a partition
+boundary is not missed. When the source and target meshes do not move between transfers, setting
+[!param](/Transfers/MultiAppMapNearestNodeTransfer/fixed_meshes) `= true` allows the nearest-node
 pairing to be computed once and cached, rather than recomputed on every call.
 
 ## Example Input File Syntax

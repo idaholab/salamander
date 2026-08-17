@@ -5,13 +5,14 @@
 ## Overview
 
 `INSFVInletVelocityNormalBC` derives from both [FVFunctionalNormalDirichletBC.md] and
-`INSFVFlowBC`, and additionally requires that `variable` be of type `INSFVVelocityVariable` (an
-error is raised otherwise). It inherits [FVFunctionalNormalDirichletBC.md]'s boundary value
-$-g(t, \vec{x}) \, \hat{n}_d$, where $g$ is the `function` parameter and $\hat{n}_d$ is the
-`direction` component of the face outward normal, unchanged; combining this with the
-`INSFVVelocityVariable` restriction makes it suitable for use as an inlet boundary condition for
-one Cartesian component of the velocity in an incompressible/weakly-compressible finite-volume
-Navier-Stokes (INSFV) simulation.
+`INSFVFlowBC`, and additionally requires that [!param](/FVBCs/INSFVInletVelocityNormalBC/variable)
+be of type [INSFVVelocityVariable.md] (an error is raised otherwise). It inherits
+[FVFunctionalNormalDirichletBC.md]'s boundary value $-g(t, \vec{x}) \, \hat{n}_d$, where $g$ is the
+[!param](/FVBCs/FVFunctionalNormalDirichletBC/function) parameter and $\hat{n}_d$ is the
+[!param](/FVBCs/FVFunctionalNormalDirichletBC/direction) component of the face outward normal,
+unchanged; combining this with the [INSFVVelocityVariable.md] restriction makes it suitable for
+use as an inlet boundary condition for one Cartesian component of the velocity in an
+incompressible/weakly-compressible finite-volume Navier-Stokes (INSFV) simulation.
 
 ## Example Input File Syntax
 
