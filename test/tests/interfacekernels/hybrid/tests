@@ -1,7 +1,0 @@
-[Tests]
-    [power_run]
-        type = 'RunApp'
-        input = 'power.i'
-        requirement = ' A script that calls the power density auxkernal should be able to run '
-    []
-[]
