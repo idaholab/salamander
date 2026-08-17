@@ -5,7 +5,7 @@
 [Mesh]
   [msh]
     type = FileMeshGenerator
-    file = '../FNSF_Blanket.msh'
+    file = 'FNSF_Blanket.msh'
   []
 []
 
