@@ -1,20 +1,29 @@
 # FNSFOBExpHeatSource
 
-!alert construction title=Undocumented Class
-The FNSFOBExpHeatSource has not been documented. The content listed below should be used as a starting point for
-documenting the class, which includes the typical automatic documentation associated with a
-MooseObject; however, what is contained is ultimately determined by what is necessary to make the
-documentation clear for users.
-
 !syntax description /Kernels/FNSFOBExpHeatSource
 
 ## Overview
 
-!! Replace these lines with information regarding the FNSFOBExpHeatSource object.
+`FNSFOBExpHeatSource` applies a volumetric heat source using the same analytic exponential-decay
+approximation to the nuclear heating profile of the outboard blanket of the Fusion Nuclear
+Science Facility (FNSF) as [FNSFOBExpHeatIC.md]:
+
+\begin{equation}
+R_i = -\int_{\Omega_e} \left( A \, e^{-k d} \right) \psi_i \, d\Omega,
+\end{equation}
+
+where $\psi_i$ is the test function, $d$ is the depth measured from the last closed flux surface
+in meters (computed via `find_xi_depth`, see [FNSFUtils.md]), and $A$ and $k$ are the scaling
+term and decay rate, defaulting to $A = 2.6464\times10^7$ and $k = 8.8698$.
+
+Unlike [FNSFOBExpHeatIC.md], which uses this exponential form only to set an initial value,
+`FNSFOBExpHeatSource` contributes it as a `Kernel` residual on every solve, analogous to how
+[FNSFHeatSource.md] contributes the full gridded neutronics heating profile. This closed-form
+approximation is only intended to be used for the outboard blanket of the FNSF model.
 
 ## Example Input File Syntax
 
-!! Describe and include an example of how to use the FNSFOBExpHeatSource object.
+!listing test/tests/kernels/FNSFOBExpHeatSource/FNSFOBExpHeatSource.i block=Kernels
 
 !syntax parameters /Kernels/FNSFOBExpHeatSource
 

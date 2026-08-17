@@ -1,20 +1,21 @@
 # FNSFHeatIC
 
-!alert construction title=Undocumented Class
-The FNSFHeatIC has not been documented. The content listed below should be used as a starting point for
-documenting the class, which includes the typical automatic documentation associated with a
-MooseObject; however, what is contained is ultimately determined by what is necessary to make the
-documentation clear for users.
-
 !syntax description /ICs/FNSFHeatIC
 
 ## Overview
 
-!! Replace these lines with information regarding the FNSFHeatIC object.
+`FNSFHeatIC` initializes a field directly from a gridded neutronics heating data set for the
+outboard blanket of the Fusion Nuclear Science Facility (FNSF) [!citep](Franklin2025), using the
+same $(\xi, d)$ grid-projection method as [FNSFHeatSource.md] (via `find_xi_depth`, see
+[FNSFUtils.md]) and the same grid parameters (`inner_xi`, `outer_xi`, `depth`, `heat`). Unlike
+`FNSFHeatSource`, which contributes this data as a `Kernel` residual on every solve, `FNSFHeatIC`
+simply sets the initial value of a field to the projected heating rate, which is useful for
+starting a transient simulation from a physically-motivated initial temperature distribution
+before other physics (e.g. conduction, convection) evolve the field.
 
 ## Example Input File Syntax
 
-!! Describe and include an example of how to use the FNSFHeatIC object.
+!listing test/tests/ics/FNSFHeatIC/FNSFHeatIC.i block=ICs
 
 !syntax parameters /ICs/FNSFHeatIC
 

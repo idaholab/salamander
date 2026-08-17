@@ -19,9 +19,9 @@ FNSFOBExpHeatSource::validParams()
 {
   InputParameters params = Kernel::validParams();
   params.addClassDescription(
-      "Sets values using the functional form y = A*exp(-k*d) where d is the depth measured from "
-      "the last closed flux surface in meters. This IC is only intended to be used for the "
-      "outboard blanket of the FNSF model.");
+      "Applies a volumetric source using the functional form y = A*exp(-k*d) where d is the "
+      "depth measured from the last closed flux surface in meters. This kernel is only intended "
+      "to be used for the outboard blanket of the FNSF model.");
   params.addParam<Real>("A", 2.6464e7, "The scaling term");
   params.addParam<Real>("k", 8.8698, "The decay rate");
   return params;

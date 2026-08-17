@@ -10,7 +10,7 @@
 #include "INSFVInletVelocityNormalBC.h"
 #include "INSFVVelocityVariable.h"
 
-registerMooseObject("NavierStokesApp", INSFVInletVelocityNormalBC);
+registerMooseObject("SalamanderApp", INSFVInletVelocityNormalBC);
 
 InputParameters
 INSFVInletVelocityNormalBC::validParams()
