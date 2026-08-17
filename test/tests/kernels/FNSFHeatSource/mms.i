@@ -52,11 +52,11 @@
 [Functions]
     [Forced]
         type = ParsedFunction
-        value = '3*pi^2*sin(x*pi)*sin(z*pi)*cos(y*pi)-1'
+        expression = '3*pi^2*sin(x*pi)*sin(z*pi)*cos(y*pi)-1'
     []
     [Exact]
         type = ParsedFunction
-        value = 'sin(x*pi)*sin(z*pi)*cos(y*pi)'
+        expression = 'sin(x*pi)*sin(z*pi)*cos(y*pi)'
     []
 []
 

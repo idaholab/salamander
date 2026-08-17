@@ -2,7 +2,7 @@
 
 This case verifies the grid-projection heat source implemented by [FNSFHeatSource.md] using the
 method of manufactured solutions (MMS), reproducing the convergence study of
-[!citep](Franklin2025).
+[!citep](Franklin2025) in Figure 7.
 
 ## Problem description
 
@@ -39,14 +39,16 @@ right-hand side needed for $T$ to be an exact solution of the discretized proble
 
 Following [!citep](Franklin2025), the discretization error is measured with an [ElementL2Error.md]
 postprocessor against the manufactured solution, over a series of successively refined meshes, for
-both first- and second-order elements. As reported in [!citep](Franklin2025), the resulting $L_2$
-error converges at approximately the expected rates for each element order:
+both first- and second-order elements. The resulting $L_2$ error convergence, shown in
+[fnsf_heat_source_mms_spatial], is close to the expected rates of 2 and 3 for first- and
+second-order elements, respectively, as reported in [!citep](Franklin2025).
 
-!table id=tab:fnsf_heat_source_mms_rates caption=Observed $L_2$ error convergence rates [!citep](Franklin2025).
-| Element order | Expected rate | Observed rate |
-| :- | :- | :- |
-| First  | 2 | 1.954 |
-| Second | 3 | 2.956 |
+!media mms_spatial.py
+       id=fnsf_heat_source_mms_spatial
+       image_name=mms_spatial.png style=width:60%;display:block;margin-left:auto;margin-right:auto;
+       caption=Spatial convergence of the $L_2$ error for first- and second-order elements,
+               reproducing [!citep](Franklin2025) Figure 7. The fitted convergence rate for each
+               element order is noted in the legend.
 
 These rates confirm that `FNSFHeatSource`'s $(\xi, \text{depth})$ grid-projection lookup (see
 [FNSFUtils.md]) does not degrade the underlying finite-element convergence behavior of the heat
