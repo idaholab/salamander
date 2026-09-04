@@ -161,17 +161,17 @@
     type = FullSolveMultiApp
     input_files = 'simple_channel_plate.i simple_channel_plate_bottom.i simple_channel_backwall.i'
     positions = '0 0 0
-                0 0 0
-                0 0 0'
+                 0 0 0
+                 0 0 0'
     cli_args = 'Components/channel/csv_file=csv_pipes/Top_Pipe.csv;GlobalParams/master_bdry_name=CH1
                 Components/channel/csv_file=csv_pipes/Bottom_Pipe.csv;GlobalParams/master_bdry_name=CH2
                 Components/channel/csv_file=csv_pipes/Back_Pipe.csv;GlobalParams/master_bdry_name=Back_Wall'
   []
-  [tritium]
-    type = FullSolveMultiApp
-    input_files = 'tritium_diffusion.i'
-    potsition = '0 0 0'
-  []
+  # [tritium]
+  #   type = FullSolveMultiApp
+  #   input_files = 'tritium_diffusion.i'
+  #   positions = '0 0 0'
+  # []
 []
 
 [Transfers]
@@ -196,10 +196,10 @@
     source_variable = Hw
   []
 
-  [temp_tritium]
-    type = MultiAppNearestNodeTransfer
-    to_multi_app = tritium
-    source_variable = temp
-    variable = temperature
-  []
+  # [temp_tritium]
+  #   type = MultiAppNearestNodeTransfer
+  #   to_multi_app = tritium
+  #   source_variable = temp
+  #   variable = temperature
+  # []
 []
