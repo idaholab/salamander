@@ -14,12 +14,6 @@ mfr = 0.1128
 D_h = ${fparse (4*area)/wetted_perimeter}
 #roughness = 2e-4
 
-[Closures]
-  [none_closure]
-    type = Closures1PhaseNone
-  []
-[]
-
 [Problem]
   type = BlanketProblem
 []
@@ -29,7 +23,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
   initial_T = ${T_in}
   initial_p = ${p_out}
   initial_vel = 0
-  closures = none_closure
+  closures = ''
 []
 
 [Functions]

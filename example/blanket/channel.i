@@ -13,12 +13,6 @@ mfr = 0.13267 # kg/s, Scale from the numbers at Page 1037, thermohydraulics of r
 D_h = ${fparse (4*area)/wetted_perimeter}
 roughness = 2e-4
 
-[Closures]
-  [none_closure]
-    type = Closures1PhaseNone
-  []
-[]
-
 [Problem]
   type = BlanketProblem
 []
@@ -28,7 +22,7 @@ roughness = 2e-4
   initial_T = ${T_in}
   initial_p = ${p_out}
   initial_vel = 0
-  closures = none_closure
+  closures = ''
 []
 
 [Functions]
