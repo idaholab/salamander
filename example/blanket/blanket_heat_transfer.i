@@ -88,26 +88,26 @@ BZ = 'OB_BZ_0 OB_BZ_1 OB_BZ_2 OB_BZ_3 OB_BZ_4 OB_BZ_5 OB_BZ_6 OB_BZ_7 OB_BZ_8'
   [breeder_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = breeder
-    temp = temp
+    temperature = temp
     block = "OB_BZ_1 OB_BZ_3 OB_BZ_5 OB_BZ_6 OB_BZ_7 OB_BZ_8"
   []
   [multiplier_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = multiplier
-    temp = temp
+    temperature = temp
     block = "OB_BZ_0 OB_BZ_2 OB_BZ_4"
   []
   [breeder_material_plate_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = F82H
-    temp = temp
+    temperature = temp
     block = "OB_radial_plate OB_shell OB_FW_SW"
   []
   [armor_material_conductivity]
     type = HeatConductionMaterial
 #    thermal_conductivity = 150.0 # W/m-K  at 400C
     thermal_conductivity_temperature_function = tungsten
-    temp = temp
+    temperature = temp
     block = "OB_Armor"
   []
 []

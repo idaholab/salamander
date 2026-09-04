@@ -111,25 +111,25 @@ Channels = 'CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10 CH11 CH12 CH13 CH14 CH15 CH
   [breeder_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = breeder
-    temp = temp
+   temperature = temp
     block = 'Breeder'
   []
   [multiplier_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = multiplier
-    temp = temp
+   temperature = temp
     block ='Multiplier'
   []
   [breeder_material_plate_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = F82H
-    temp = temp
+    temperature = temp
     block = 'First_Wall Toroidal_Plate1 Toroidal_Plate2'
   []
   [armor_material_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = tungsten
-    temp = temp
+    temperature = temp
     block = 'Shield'
   []
 []

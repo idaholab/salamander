@@ -74,25 +74,25 @@
   [breeder_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = breeder
-    temp = temperature
+    temperature = temperature
     block = 'Breeder'
   []
   [multiplier_material_BZ_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = multiplier
-    temp = temperature
+    temperature = temperature
     block ='Multiplier'
   []
   [breeder_material_plate_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = F82H
-    temp = temperature
+    temperature = temperature
     block = 'First_Wall Toroidal_Plate'
   []
   [armor_material_conductivity]
     type = HeatConductionMaterial
     thermal_conductivity_temperature_function = tungsten
-    temp = temperature
+    temperature = temperature
     block = 'Shield'
   []
 []
