@@ -8,12 +8,18 @@ area = ${fparse width * height} # area
 mfr = 0.1128
 D_h = ${fparse (4*area)/wetted_perimeter}
 
+[Closures]
+  [wall_temp]
+    type = WallTemperature1PhaseClosures
+  []
+[]
+
 [GlobalParams]
   gravity_vector = '0 0 -9.81'
   initial_T = ${T_in}
   initial_p = ${p_out}
   initial_vel = 0
-  closures = ''
+  closures = 'wall_temp'
 []
 
 [Functions]

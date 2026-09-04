@@ -14,6 +14,12 @@ mfr = 0.132
 D_h = ${fparse (4*area)/wetted_perimeter}
 #roughness = 2e-4
 
+[Closures]
+  [wall_temp]
+    type = WallTemperature1PhaseClosures
+  []
+[]
+
 [Problem]
   type = BlanketProblem
 []
@@ -23,7 +29,7 @@ D_h = ${fparse (4*area)/wetted_perimeter}
   initial_T = ${T_in}
   initial_p = ${p_out}
   initial_vel = 0
-  closures = ''
+  closures = wall_temp
 []
 
 [Functions]
