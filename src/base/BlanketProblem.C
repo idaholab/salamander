@@ -21,7 +21,7 @@ registerMooseObject("SalamanderApp", BlanketProblem);
 InputParameters
 BlanketProblem::validParams()
 {
-  InputParameters params = FEProblem::validParams();
+  InputParameters params = THMProblem::validParams();
   params.addParam<BoundaryName>("master_bdry_name",
                                 "Boundary name in master subapp wants to transfer data from/to. ");
 
@@ -32,7 +32,7 @@ BlanketProblem::validParams()
 }
 
 BlanketProblem::BlanketProblem(const InputParameters & parameters)
-  : FEProblem(parameters),
+  : THMProblem(parameters),
     _master_bdry_name(isParamValid("master_bdry_name") ? getParam<BoundaryName>("master_bdry_name")
                                                        : "")
 {

@@ -7,10 +7,6 @@
   []
 []
 
-[Problem]
-  type = BlanketProblem
-[]
-
 [Outputs]
   exodus = true
 []
@@ -167,9 +163,9 @@
     positions = '0 0 0
                 0 0 0
                 0 0 0'
-    cli_args = 'Components/channel/csv_file=csv_pipes/Top_Pipe.csv;Problem/master_bdry_name=CH1
-                Components/channel/csv_file=csv_pipes/Bottom_Pipe.csv;Problem/master_bdry_name=CH2
-                Components/channel/csv_file=csv_pipes/Back_Pipe.csv;Problem/master_bdry_name=Back_Wall'
+    cli_args = 'Components/channel/csv_file=csv_pipes/Top_Pipe.csv;GlobalParams/master_bdry_name=CH1
+                Components/channel/csv_file=csv_pipes/Bottom_Pipe.csv;GlobalParams/master_bdry_name=CH2
+                Components/channel/csv_file=csv_pipes/Back_Pipe.csv;GlobalParams/master_bdry_name=Back_Wall'
   []
   [tritium]
     type = FullSolveMultiApp

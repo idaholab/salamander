@@ -16,23 +16,19 @@
 
 #pragma once
 
-#include "THMProblem.h"
+#include "THMCreateMeshAction.h"
 
-/*
- * This special problem in order to handle a customized transfer, MultiAppConservativeTransfer.
- * This transfer tries to create map between a 3D channel boundary and a 1D THM application. In the
- * long term, we need to generalize MultiAppConservativeTransfer and move that to the MOOSE
- * framework.
+/**
+ * SALAMANDER override of THMCreateMeshAction that builds a BlanketProblem
+ * (a THMProblem subclass) in place of the stock THMProblem, without modifying
+ * MOOSE or the Thermal Hydraulics module.
  */
-class BlanketProblem : public THMProblem
+class BlanketCreateMeshAction : public THMCreateMeshAction
 {
 public:
   static InputParameters validParams();
 
-  BlanketProblem(const InputParameters & parameters);
+  BlanketCreateMeshAction(const InputParameters & parameters);
 
-  BoundaryName & getMasterBoundaryName() { return _master_bdry_name; }
-
-protected:
-  BoundaryName _master_bdry_name;
+  virtual void act() override;
 };
