@@ -1,1 +1,1 @@
-!include AddCriticalitySearchAction.md
+!include AddCriticalitySearchAction.md optional=True
