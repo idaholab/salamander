@@ -170,14 +170,14 @@ Additionally, the Leapfrog stepper produces these expected results as well.
 ## Input Files
 
 There are several input files used for this verification case.
-The two for the Boris stepper can be found at [/boris_stepper/cyclotron_motion.i] and [/boris_stepper/circular_e_field.i].
-The one for the Leapfrog stepper can be found at [/leapfrog_stepper/circular_e_field.i]
+The two for the Boris stepper can be found at [!file](/boris_stepper/cyclotron_motion.i) and [!file](/boris_stepper/circular_e_field.i).
+The one for the Leapfrog stepper can be found at [!file](/leapfrog_stepper/circular_e_field.i).
 Since the majority of the input file contents are the same for all cases, the files are broken up into several common files.
 
-- [/stepper_base.i] disables the field solver, so that particle motion tests are only conducted in fields that are known exactly, and sets up the PICStudy.
-- [/boris_base.i] adds magnetic field components to the list of AuxVariables and selects the [BorisStepper.md] as the particle stepper.
-- [/leapfrog_base.i] selects the [LeapFrogStepper.md] as the particle stepper.
-- [/boris_stepper/cyclotron_motion.i], [/boris_stepper/circular_e_field.i], and [/leapfrog_stepper/circular_e_field.i] set up the initial conditions for the particles and fields for each case.
+- [!file](/stepper_base.i) disables the field solver, so that particle motion tests are only conducted in fields that are known exactly, and sets up the PICStudy.
+- [!file](/boris_base.i) adds magnetic field components to the list of AuxVariables and selects the [BorisStepper.md] as the particle stepper.
+- [!file](/leapfrog_base.i) selects the [LeapFrogStepper.md] as the particle stepper.
+- [!file](/boris_stepper/cyclotron_motion.i), [!file](/boris_stepper/circular_e_field.i), and [!file](/leapfrog_stepper/circular_e_field.i) set up the initial conditions for the particles and fields for each case.
 
 To combine them into one input file when running the simulation, the `!include` feature within MOOSE is utilized.
 

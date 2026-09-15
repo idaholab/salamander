@@ -20,7 +20,7 @@ For all publications that use SALAMANDER, please cite the following.
 
 ## TMAP8
 
-Because SALAMANDER utilizes TMAP8, please refer to [citing_tmap8.md] for all TMAP8-specific citations.
+Because SALAMANDER utilizes TMAP8, please refer to [Citing TMAP8](https://tmap8.inl.gov/citing_tmap8.html) for all TMAP8-specific citations.
 
 ## Cardinal
 

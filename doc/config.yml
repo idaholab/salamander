@@ -5,36 +5,49 @@ Content:
         root_dir: ${MOOSE_DIR}/framework/doc/content
     chemical_reactions:
         root_dir: ${MOOSE_DIR}/modules/chemical_reactions/doc/content
+        external: true # optional dependency (TMAP8)
     electromagnetics:
         root_dir: ${MOOSE_DIR}/modules/electromagnetics/doc/content
     fluid_properties:
         root_dir: ${MOOSE_DIR}/modules/fluid_properties/doc/content
+        external: true # optional dependency (TMAP8)
     heat_transfer:
         root_dir: ${MOOSE_DIR}/modules/heat_transfer/doc/content
+        external: true # optional dependency (Cardinal and TMAP8)
     misc:
         root_dir: ${MOOSE_DIR}/modules/misc/doc/content
+        external: true # optional dependency (TMAP8)
     navier_stokes:
         root_dir: ${MOOSE_DIR}/modules/navier_stokes/doc/content
+        external: true # optional dependency (Cardinal and TMAP8)
     phase_field:
         root_dir: ${MOOSE_DIR}/modules/phase_field/doc/content
+        external: true # optional dependency (TMAP8)
     reactor:
         root_dir: ${MOOSE_DIR}/modules/reactor/doc/content
+        external: true # optional dependency (Cardinal)
     rdg:
         root_dir: ${MOOSE_DIR}/modules/rdg/doc/content
+        external: true # optional dependency (TMAP8)
     ray_tracing:
         root_dir: ${MOOSE_DIR}/modules/ray_tracing/doc/content
     scalar_transport:
         root_dir: ${MOOSE_DIR}/modules/scalar_transport/doc/content
+        external: true # optional dependency (TMAP8)
     solid_mechanics:
         root_dir: ${MOOSE_DIR}/modules/solid_mechanics/doc/content
+        external: true # optional dependency (Cardinal and TMAP8)
     solid_properties:
         root_dir: ${MOOSE_DIR}/modules/solid_properties/doc/content
+        external: true # optional dependency (Cardinal and TMAP8)
     stochastic_tools:
         root_dir: ${MOOSE_DIR}/modules/stochastic_tools/doc/content
     subchannel:
         root_dir: ${MOOSE_DIR}/modules/subchannel/doc/content
+        external: true # optional dependency (Cardinal)
     thermal_hydraulics:
         root_dir: ${MOOSE_DIR}/modules/thermal_hydraulics/doc/content
+        external: true # optional dependency (Cardinal and TMAP8)
     modules:
         root_dir: ${MOOSE_DIR}/modules/doc/content
         content:
@@ -59,8 +72,10 @@ Content:
             - python/TestHarness.md
     tmap8:
         root_dir: ${TMAP8_DIR}/doc/content
+        external: true # optional dependency
     cardinal:
         root_dir: ${CARDINAL_DIR}/doc/content
+        external: true # optional dependency
         content: !include ${ROOT_DIR}/doc/cardinal_nek_exclude.yml
 
 Renderer:
@@ -105,7 +120,7 @@ Extensions:
     MooseDocs.extensions.acronym:
         acronyms:
             framework: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
-            cardinal: !include ${CARDINAL_DIR}/doc/acronyms.yml
+            cardinal: !include? ${CARDINAL_DIR}/doc/acronyms.yml
             salamander:
                 SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research
                 PIC: particle-in-cell
@@ -132,8 +147,8 @@ Extensions:
             stochastic_tools: !include ${MOOSE_DIR}/modules/stochastic_tools/doc/sqa_stochastic_tools.yml
             subchannel: !include ${MOOSE_DIR}/modules/subchannel/doc/sqa_subchannel.yml
             thermal_hydraulics: !include ${MOOSE_DIR}/modules/thermal_hydraulics/doc/sqa_thermal_hydraulics.yml
-            tmap8: !include ${TMAP8_DIR}/doc/sqa_tmap8.yml
-            #cardinal: !include ${CARDINAL_DIR}/doc/sqa_cardinal.yml
+            tmap8: !include? ${TMAP8_DIR}/doc/sqa_tmap8.yml
+            #cardinal: !include? ${CARDINAL_DIR}/doc/sqa_cardinal.yml
         reports: !include ${ROOT_DIR}/doc/sqa_reports.yml
         repos:
             default: https://github.com/idaholab/salamander

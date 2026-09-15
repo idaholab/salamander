@@ -29,7 +29,7 @@ and
 
 where $q$ is the particle's charge, $m$ is the particle's mass, and  $\vec{E}$ and $\vec{B}$ are the electric and magnetic fields that the particle is subject to, respectively.
 
-In the Boris algorithm, \cref{eq:pos,eq:vel} are discretized with a central difference scheme and the acceleration due to the electric field and magnetic field are separated. First, half of the impulse due to the electric field is applied to the particle, as
+In the Boris algorithm, [eq:pos] and [eq:vel] are discretized with a central difference scheme and the acceleration due to the electric field and magnetic field are separated. First, half of the impulse due to the electric field is applied to the particle, as
 
 \begin{equation} \label{eq:e_half1}
   \vec{v}^{\,-}
@@ -114,7 +114,7 @@ and the final impulse due to the electric field is then applied to the particle 
   \frac{\Delta t}{2}.
 \end{equation}
 
-The implementation of the Boris algorithm was verified using several single particle motion tests: constant electric field ([boris_stepper/parallel_acceleration.i], [boris_stepper/projectile_motion.i]), cyclotron motion ([/cyclotron_motion.i]), and $\vec{E} \times \vec{B}$ drift motion ([/e_cross_b.i]).
+The implementation of the Boris algorithm was verified using several single particle motion tests: constant electric field ([!file](boris_stepper/parallel_acceleration.i), [!file](boris_stepper/projectile_motion.i)), cyclotron motion ([!file](/cyclotron_motion.i)), and $\vec{E} \times \vec{B}$ drift motion ([!file](/e_cross_b.i)).
 
 # Example Input Syntax
 
