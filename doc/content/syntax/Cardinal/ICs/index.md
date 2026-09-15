@@ -1,1 +1,1 @@
-!include syntax/Cardinal/index.md
+!include syntax/Cardinal/index.md optional=True
