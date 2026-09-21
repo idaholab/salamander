@@ -23,6 +23,7 @@ SALAMANDER couples with other MOOSE-based applications, such as [TMAP8](https://
 | ------- | ---------------------------------------------------------------------------------- |
 | 1 | [Particle in Cell - Particle Stepper](particle_stepping.md) |
 | 2 | [1D Slab verification: Neutron Transport Coupled With Thermal Conduction and Material Expansion](slab_benchmark.md) |
+| 3 | [Method of Manufactured Solutions Verification of FNSFHeatSource](fnsf_heat_source_mms.md) |
 
 
 # List of validation cases

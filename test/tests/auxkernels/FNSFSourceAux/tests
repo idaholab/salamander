@@ -1,0 +1,12 @@
+[Tests]
+  design = 'FNSFSourceAux.md'
+  issues = '#112'
+  [FNSF]
+    type = 'Exodiff'
+    input = 'FNSFSourceAux.i'
+    exodiff = 'FNSFSourceAux_out.e'
+    requirement = 'The system shall be able to write a projected neutronics field to an auxiliary
+                   variable for visualization and post-processing of a fusion blanket simulation
+                   of the Fusion Nuclear Science Facility.'
+  []
+[]

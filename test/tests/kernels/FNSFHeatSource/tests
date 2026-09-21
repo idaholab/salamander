@@ -1,0 +1,25 @@
+[Tests]
+  issues = '#112'
+  [FNSFHeatSource]
+    type = 'Exodiff'
+    input = 'FNSFHeatSource.i'
+    exodiff = 'FNSFHeatSource_out.e'
+    design = 'FNSFHeatSource.md'
+    requirement = 'The system shall be able to apply a volumetric nuclear heating source,
+                   projected from a gridded neutronics data set, to a heat conduction model of
+                   the outboard blanket of the Fusion Nuclear Science Facility.'
+  []
+  [FNSFHeatSourceMMS]
+    type = MMSTest
+    input = 'test.py'
+    test_case = TestMMS
+    heavy = true
+    # Needed for heaviest run (fourth uniform refinement, ~87K DOFs per proc. with min_parallel=8)
+    min_parallel = 8
+    design = 'FNSFHeatSource.md fnsf_heat_source_mms.md'
+    requirement = 'The system shall demonstrate first- and second-order spatial convergence,
+                   via the method of manufactured solutions, for a volumetric heat source
+                   projected from a gridded neutronics data set onto a heat conduction model of
+                   the outboard blanket of the Fusion Nuclear Science Facility.'
+  []
+[]
