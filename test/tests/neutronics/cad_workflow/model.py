@@ -9,20 +9,20 @@ mat1.add_element('W', 1.0)
 # Composition from UKAEA-CCFE-PR1863
 eurofer = openmc.Material(name='eurofer')
 eurofer_elements = {
-    'Al': 0.01,
-    'C':  0.11,
-    'Co': 0.01,
-    'Cr': 9.0,
-    'Cu': 0.01,
-    'Mn': 0.40,
-    'Mo': 0.005,
-    'N':  0.030,
-    'Nb': 0.005,
-    'Ni': 0.01,
-    'Si': 0.05,
-    'Ta': 0.12,
-    'Ti': 0.02,
-    'W':  1.1,
+    'Al': 0.0001,
+    'C':  0.0011,
+    'Co': 0.0001,
+    'Cr': 0.090,
+    'Cu': 0.0001,
+    'Mn': 0.0040,
+    'Mo': 0.00005,
+    'N':  0.00030,
+    'Nb': 0.00005,
+    'Ni': 0.0001,
+    'Si': 0.0005,
+    'Ta': 0.0012,
+    'Ti': 0.0002,
+    'W':  0.011,
 }
 for element, wt in eurofer_elements.items():
 	eurofer.add_element(element, wt, 'wo')
