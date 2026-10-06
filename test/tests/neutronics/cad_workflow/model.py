@@ -51,14 +51,14 @@ mat3 = openmc.Material.mix_materials([eurofer, beryllium, Li4SiO4, Helium], [0.1
 mats = openmc.Materials([mat1, eurofer, Helium,  mat2, beryllium, Li4SiO4,  mat3])
 mats.export_to_xml()
 
-pz = openmc.Plot()
+pz = openmc.SlicePlot()
 pz.basis = 'yz'
 pz.origin = (0.0, 0.0, 0.0)
 pz.width = (200.0, 200.0)
 pz.pixels = (500, 500)
 pz.color_by = 'material'
 
-px = openmc.Plot()
+px = openmc.SlicePlot()
 px.basis = 'xy'
 px.origin = (0.0, 0.0, 0.0)
 px.width = (200, 200)
@@ -69,7 +69,6 @@ plots = openmc.Plots([pz,px])
 plots.export_to_xml()
 
 settings = openmc.Settings()
-settings.dagmc = True
 settings.batches = 20
 settings.particles = 10000000
 settings.run_mode = 'fixed source'
@@ -79,7 +78,7 @@ settings.temperature = {'default': 800.0,
                         'range': (294.0, 3000.0),
                         'tolerance': 1000.0}
 
-source = openmc.Source()
+source = openmc.IndependentSource()
 
 r = openmc.stats.PowerLaw(55, 65, 1.0)
 phi = openmc.stats.Uniform(0.0, 2*math.pi)

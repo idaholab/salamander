@@ -3,10 +3,10 @@
   <run_mode>fixed source</run_mode>
   <particles>10000000</particles>
   <batches>20</batches>
-  <source particle="neutron" strength="1.0" type="independent">
-    <space origin="0.0 0.0 0.0" type="cylindrical">
-      <r parameters="55 65 1.0" type="powerlaw"/>
-      <phi parameters="0.0 6.283185307179586" type="uniform"/>
+  <source type="independent" strength="1.0" particle="neutron">
+    <space type="cylindrical">
+      <r type="powerlaw" parameters="55 65 1.0"/>
+      <phi type="uniform" parameters="0.0 6.283185307179586"/>
       <z type="discrete">
         <parameters>0.0 1.0</parameters>
       </z>
