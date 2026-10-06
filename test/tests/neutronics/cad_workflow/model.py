@@ -26,7 +26,7 @@ eurofer_elements = {
 }
 for element, wt in eurofer_elements.items():
 	eurofer.add_element(element, wt, 'wo')
-balance = sum(eurofer_elements.values())
+balance = 1.0 - sum(eurofer_elements.values())
 eurofer.add_element('Fe', balance, 'wo')
 eurofer.set_density('g/cm3', 7.798)
 
