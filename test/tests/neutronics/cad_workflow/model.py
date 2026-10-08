@@ -9,23 +9,23 @@ mat1.add_element('W', 1.0)
 # Composition from UKAEA-CCFE-PR1863
 eurofer = openmc.Material(name='eurofer')
 eurofer_elements = {
-    'Al': 0.0001,
-    'C':  0.0011,
-    'Co': 0.0001,
-    'Cr': 0.090,
-    'Cu': 0.0001,
-    'Mn': 0.0040,
-    'Mo': 0.00005,
-    'N':  0.00030,
-    'Nb': 0.00005,
-    'Ni': 0.0001,
-    'Si': 0.0005,
-    'Ta': 0.0012,
-    'Ti': 0.0002,
-    'W':  0.011,
+  'Al': 0.0001,
+  'C':  0.0011,
+  'Co': 0.0001,
+  'Cr': 0.090,
+  'Cu': 0.0001,
+  'Mn': 0.0040,
+  'Mo': 0.00005,
+  'N':  0.00030,
+  'Nb': 0.00005,
+  'Ni': 0.0001,
+  'Si': 0.0005,
+  'Ta': 0.0012,
+  'Ti': 0.0002,
+  'W':  0.011,
 }
 for element, wt in eurofer_elements.items():
-	eurofer.add_element(element, wt, 'wo')
+  eurofer.add_element(element, wt, 'wo')
 balance = 1.0 - sum(eurofer_elements.values())
 eurofer.add_element('Fe', balance, 'wo')
 eurofer.set_density('g/cm3', 7.798)
