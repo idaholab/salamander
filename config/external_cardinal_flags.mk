@@ -6,6 +6,10 @@ ifeq ($(ENABLE_CARDINAL),yes)
     CARDINAL_EXTERNAL_FLAGS += -lembree4 -ldd
   endif
 
+  ifeq ($(ENABLE_NEK),yes)
+    CARDINAL_EXTERNAL_FLAGS += -L$(NEKRS_LIBDIR) -lnekrs -locca $(CC_LINKER_SLFLAG)$(NEKRS_DIR)
+  endif
+
   # EXTERNAL_FLAGS is used in rules for app.mk
   $(app_LIB): EXTERNAL_FLAGS := $(CARDINAL_EXTERNAL_FLAGS)
   $(app_test_LIB): EXTERNAL_FLAGS := $(CARDINAL_EXTERNAL_FLAGS)

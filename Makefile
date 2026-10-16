@@ -10,9 +10,10 @@
 # OPENMC_DIR       - Root directory of OpenMC
 # DAGMC_DIR        - Root directory of DagMC
 # MOAB_DIR         - Root directory of MOAB
-#
 # EIGEN3_DIR       - Root directory of Eigen3 (should contain FindEigen3.cmake).
 #                    This is needed for DagMC.
+# ENABLE_NEK       - Set to yes to build with NekRS coupling (default: no).
+#                    NekRS must be built first, with "make build_nekrs" in CARDINAL_DIR.
 #
 # OpenMC uses HDF5; below are influential environment variables for that
 # installation. None of these need to be set if HDF5 is being pulled from
@@ -106,6 +107,9 @@ ifeq ($(ENABLE_CARDINAL),yes)
   ADDITIONAL_LIBS := -L$(CARDINAL_DIR)/lib $(CC_LINKER_SLFLAG)$(CARDINAL_DIR)/lib \
                      -L$(OPENMC_LIBDIR) -lopenmc -lhdf5_hl -ldagmc -lMOAB \
                      $(CC_LINKER_SLFLAG)$(OPENMC_LIBDIR)
+  ifeq ($(ENABLE_NEK),yes)
+    ADDITIONAL_LIBS += -L$(NEKRS_LIBDIR) -lnekrs -locca $(CC_LINKER_SLFLAG)$(NEKRS_DIR)
+  endif
 endif
 
 include            $(FRAMEWORK_DIR)/app.mk
