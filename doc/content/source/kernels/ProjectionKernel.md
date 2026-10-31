@@ -14,7 +14,7 @@ In general the projection of a function onto finite element basis functions is d
   = 0
 \end{equation}
 
-Where $f$ is the function being projected onto the finite element mesh, $f_h$ is the projection of $f$ onto the finite element mesh, and $v_h$ represents the finite element test functions. This equation can be expanded into
+where $f$ is the function being projected onto the finite element mesh, $f_h$ is the projection of $f$ onto the finite element mesh, and $v_h$ represents the finite element test functions. This equation can be expanded into
 
 \begin{equation}
   \underbrace{
@@ -30,7 +30,7 @@ Where $f$ is the function being projected onto the finite element mesh, $f_h$ is
     = 0
 \end{equation}
 
-This kernel represent the first term in the above equation and in SALAMANDER is generally used for solving for the projection of discrete - on particle - quantities onto the finite element mesh.
+This kernel represents the first term in the above equation and in SALAMANDER is generally used for solving for the projection of discrete (on-particle) quantities onto the finite element mesh.
 
 ## Example Input Syntax
 

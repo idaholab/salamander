@@ -20,9 +20,10 @@ InputParameters
 ParticleStepperBase::validParams()
 {
   auto params = GeneralUserObject::validParams();
-  params.addClassDescription("Base class for ParticleStepper. Provides the basic implementation"
-                             "for dimensional dependent velocity updating."
-                             "And the ability to sample vector fields for use in a particle step");
+  params.addClassDescription(
+      "Base class for ParticleStepper. Provides the basic implementation "
+      "for dimension-dependent velocity updating, and the ability to sample vector fields for "
+      "use in a particle step");
   return params;
 }
 
@@ -55,7 +56,7 @@ ParticleStepperBase::setMaxDistanceAndDirection(Ray & ray, const Point & v, cons
   if (_mesh_dimension == 3)
     velocity(2) = v(2);
 
-  // max distance is v^2 dt
+  // max distance is |v| dt
   const auto max_distance = std::sqrt(velocity * velocity) * dt;
 
   ray.setStartingMaxDistance(max_distance);

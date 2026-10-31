@@ -2,7 +2,7 @@
 
 This verification problem demonstrates the ability to couple neutron transport with thermal conduction and material expansion. The analytic benchmark slab problem [!citep](griesheimer2022analytical) describes a slab where S$_2$ neutron transport is coupled with thermal conduction, convective boundary conditions, Doppler-broadened cross sections, and nonlinear thermal expansion effects along the heated slab. The verification provides the analytic solutions for steady-state temperature, neutron flux, heating, multiplication factor, and the heated slab length.
 
-While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport  simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study on the interactions between multiphysics with an analytic solution.
+While the restriction to S$_2$ neutron transport would be considered overly simplistic for most radiation transport simulations, the objective here is to verify thermomechanical-OpenMC coupling using analytic solutions for three coupled solution fields (displacements, temperature, and flux). Simplifications of each individual physics included in this model are not imposed by inherent limitations of the moving-mesh capabilities and only aim to allow the study of the interactions between multiphysics with an analytic solution.
 
 This work was published in [!cite](ELTAWILA2026112068), where more details can be found.
 
@@ -188,10 +188,10 @@ The example set of model parameter values shown in [tab:params] are the suggeste
 | :- | :- | :- |
 | $\rho_0$                   | $1.2$                         | g.cm$^{-3}$                          |
 | $L_0$                      | $100$                         | cm                                  |
-| $A$                        | $180$                         | g/mol$^{-1}$                        |
+| $A$                        | $180$                         | g/mol                        |
 | $T_0$                      | $293$                         | K                                   |
 | $q$                        | $1.0 \times 10^{8}$                       | eV                                  |
-| $\kappa_0$               | $1.25 \times 10^{19}$                    | eV/s/cm/K$^{-2}$      |
+| $\kappa_0$               | $1.25 \times 10^{19}$                    | eV/s/cm/K$^{2}$      |
 | $\phi_0$                  | $2.5\times 10^{14}$                      | #/cm$^2$/s                  |
 | $\nu\Sigma_f/\Sigma_t$     | $1.5$                         | -                                   |
 | $\Sigma_s/\Sigma_t$        | $0.45$                        | -                                   |
@@ -200,7 +200,7 @@ The example set of model parameter values shown in [tab:params] are the suggeste
 # Problem model
 
 !alert! construction title=To run this model you need to build your application with the S$_2$ OpenMC patch
-This model is using S$_2$ neutron transport to compare with the 1D Analytic benchmark. To replicate
+This model uses S$_2$ neutron transport to compare with the 1D analytic benchmark. To replicate
 the results, you have to build your application with [this](https://github.com/meltawila/openmc_S2transport) patch of OpenMC. You can do this simply with:
 
 !listing language=bash
@@ -211,7 +211,7 @@ git cherry-pick d34189845b394895ed210008218c40bc754bce25
 !alert-end!
 
 Cardinal is used to couple OpenMC with MOOSE via Picard iteration. OpenMC tallies neutron flux, heating, and the multiplication factor. A conceptual depiction of the meshes used as well as the data transfers that occur on each Picard iteration is shown in [fig:schematic].
-Three different meshes/geometries are involved. The thermomechanics mesh is a simple 1D mesh of $N$ EDGE2 elements; the thermomechanical physics do not require higher dimensional (e.g. 2D or 3D) meshes for this problem. The OpenMC geometry is represented using DAGMC, where cells are bounded by a triangulated surface (TRI3 elements).
+Three different meshes/geometries are involved. The thermomechanics mesh is a simple 1D mesh of $N$ EDGE2 elements; the thermomechanical physics do not require higher dimensional (e.g., 2D or 3D) meshes for this problem. The OpenMC geometry is represented using DAGMC, where cells are bounded by a triangulated surface (TRI3 elements).
 To facilitate data transfers between OpenMC and MOOSE thermomechanics, there is also an intermediate volumetric data transfer mesh composed of TET4 elements; no physics solves happen on this intermediate mesh.
 [fig:schematic] highlights one element (for MOOSE and the Cardinal intermediate data transfer mesh) and one OpenMC cell each in blue, with adjacent portions of the geometry shown in gray for context.
 
@@ -220,9 +220,9 @@ To facilitate data transfers between OpenMC and MOOSE thermomechanics, there is 
   caption=Data transfers between OpenMC and MOOSE and conceptual depiction of the different meshes used.
   style=display:block;margin-left:auto;margin-right:auto;width:60%;
 
-We show the input files for a coarse mesh here with more details on results convergence shown in the next section.
+We show the input files for a coarse mesh here with more details on the convergence of results shown in the next section.
 
-The OpenMC input files is as follows:
+The OpenMC input file is as follows:
 
 !listing /test/tests/neutronics/expanding_slab/model.py language=python
 
@@ -236,7 +236,7 @@ The thermomechanics input file is as follows:
 
 It is important to note that incremental (hypoelastic) formulations of finite strain behavior inherently introduce inaccuracies arising from the time integration error. This limitation is inherent to this formulation and therefore exists in the MOOSE implementation and the implementations of other major commercial codes. The magnitude of these errors grows with increasing strain, so this typically becomes a practical issue only for very large strains, for which hyperelastic models are more appropriate [!citep](belytschko2003).
 
-The main sources of error in this coupled model are: (i) the statistical error from use of finite particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 K $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
+The main sources of error in this coupled model are: (i) the statistical error from use of a finite number of particles in OpenMC; (ii) the user-input cross-section data, which is defined with 1 K $\Delta$T spacings used in all cases while taking the nearest temperature point cross section; and (iii) discretization error from a finite spatial mesh in both OpenMC (temperature feedback resolution) and MOOSE thermomechanics. Additional sources of error are present, but anticipated to be negligible due to the use of fine settings for these simulation parameters: (i) finite Picard iterations, and (ii) nonzero nonlinear tolerances in the MOOSE thermomechanics model.
 
 ## Results
 
@@ -257,7 +257,7 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
   caption=Temperature result from MOOSE for N = 100 mesh elements compared against the analytic solution.
   style=display:block;margin-left:auto;margin-right:auto;width:40%;
 
-[tab:results] shows results convergence with mesh refinement.
+[tab:results] shows the convergence of results with mesh refinement.
 
 !table id=tab:results caption=Results and corresponding errors with different mesh sizes [!citep](ELTAWILA2026112068).
 | Resolution        | Heated length (cm) | Error (μm) | $k_{\text{eff}}$ | Error (pcm) |
@@ -270,7 +270,7 @@ We see the heating result in [fig:heatingsol] compared against the analytic solu
 | 100               | 106.4745               | 45             | 0.29549 ± 0.00001    | -8 ± 1          |
 | 200               | 106.4748               | 48             | 0.29556 ± 0.00001    | -1 ± 1          |
 
-In [fig:fluxconv] and [fig:tempconv], convergence of flux and temperature relative L$^2$ norms, defined as
+[fig:fluxconv] and [fig:tempconv] show the convergence of the flux and temperature relative L$^2$ norms, defined as
 
 \begin{equation}
   \varepsilon_\phi=\frac{||\phi_a-\phi_{sln.}||_2}{||\phi_a||_2}

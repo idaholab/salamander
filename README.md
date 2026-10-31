@@ -2,22 +2,22 @@
 Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) Framework
 =====
 
-SALAMANDER is an application for performing system-level, engineering scale (i.e., at the scale of
+SALAMANDER is an application for performing system-level, engineering-scale (i.e., at the scale of
 centimeters and meters), and microstructure-scale (i.e., at the scale of microns) multiphysics
 calculations related to magnetic confinement fusion energy systems.
 These models often include highly coupled systems of equations related to plasma physics,
 electromagnetics, heat conduction, scalar transport, thermal hydraulics, computational fluid dynamics,
-and thermomechanics, amongst others.
+and thermomechanics, among others.
 Interfaces to other MOOSE-based codes, including tritium transport ([TMAP8](https://mooseframework.inl.gov/tmap8))
-and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)) are also included to support SALAMANDER simulations.
+and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)), are also included to support SALAMANDER simulations.
 SALAMANDER will enable high-fidelity modeling of irradiation levels and plasma exposure
-conditions of plasma facing components and their impact on heat and tritium distributions, as well
-as the resulting mechanical constraints experienced by the plasma facing components.
+conditions of plasma-facing components and their impact on heat and tritium distributions, as well
+as the resulting mechanical constraints experienced by the plasma-facing components.
 
-The [SALAMANDER documentation](https://mooseframework.inl.gov/salamander/index.html) includes the code reference, a getting started guide, and details about verification, validation, and examples case, etc.
+The [SALAMANDER documentation](https://mooseframework.inl.gov/salamander/index.html) includes the code reference, a getting started guide, and details about verification, validation, and example cases.
 
 ### Other Software
-Idaho National Laboratory is a cutting edge research facility which is constantly producing high quality research and software. Feel free to take a look at our other software and scientific offerings at:
+Idaho National Laboratory is a cutting-edge research facility which is constantly producing high-quality research and software. Feel free to take a look at our other software and scientific offerings at:
 
 [Primary Technology Offerings Page](https://www.inl.gov/inl-initiatives/technology-deployment)
 

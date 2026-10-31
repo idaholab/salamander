@@ -13,7 +13,7 @@ class BorisCyclotronMagneticTest(unittest.TestCase):
     solution for the particle's path is known analytically.
     During the test, 4 different time steps are used, and the error in the particle
     path is compared to the known solution at each point in time.
-    Using all of the errors over the variety of time steps, the order or accuracy
+    Using all of the errors over the variety of time steps, the order of accuracy
     for the particle stepper is calculated.
     In this case, the stepper should demonstrate second order accuracy in time.
     """
@@ -29,11 +29,11 @@ class BorisTimeVarryingElectricTest(unittest.TestCase):
     The exact form of the electric field is calculated by propagating the solution for
     the particle's path that is provided by the cyclotron motion case through Newton's
     equations of motion with the assumption that only an electric field is present.
-    This allows us to use the same analytic solution for particle motion as the cycltron
+    This allows us to use the same analytic solution for particle motion as the cyclotron
     test while also testing a different part of the stepper.
     During the test, 4 different time steps are used, and the error in the particle
     path is compared to the known solution at each point in time.
-    Using all of the errors over the variety of time steps, the order or accuracy
+    Using all of the errors over the variety of time steps, the order of accuracy
     for the particle stepper is calculated.
     In this case, the stepper should demonstrate second order accuracy in time.
     """

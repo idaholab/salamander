@@ -20,7 +20,7 @@
 #include "AccumulatorBase.h"
 
 /**
- * UserObject for testing the AuxAccumulator
+ * UserObject for testing the AccumulatorBase
  */
 class TestAccumulatorBase : public GeneralUserObject
 {

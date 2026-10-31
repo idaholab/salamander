@@ -24,12 +24,12 @@ PICStudyBase::validParams()
 {
   auto params = RayTracingStudy::validParams();
   params.addClassDescription("Base class for PIC studies. Provides some of the basic ray data "
-                             "needed for particle tracking."
+                             "needed for particle tracking. "
                              "Basic logic for resetting rays to be used as particles after the "
                              "original generation is complete is also provided");
   params.addRequiredParam<UserObjectName>(
       "stepper",
-      "The ParticleStepper UserObject that has the rules for how particle"
+      "The ParticleStepper UserObject that has the rules for how particle "
       "velocities should be updated");
   // We're not going to use registration because we don't care to name our rays because
   // we will have a lot of them
@@ -178,7 +178,7 @@ PICStudyBase::reinitializeParticles()
 void
 PICStudyBase::postExecuteStudy()
 {
-  // we are going to be re using the same rays which just took a step so
+  // we are going to be reusing the same rays which just took a step so
   // we store them here to reset them in the generateRays method
   _banked_rays = rayBank();
   // removing all of the rays which were killed during their tracing

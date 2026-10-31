@@ -1,9 +1,9 @@
 # Particle Steppers
 
-Within the particle-in-cell capabilities in SALAMANDER, two main particle steppers are provided, the [Leapfrog](LeapFrogStepper.md) stepper and the [Boris](BorisStepper.md) stepper. Both of these particle steppers are second order accurate in time.
-In order to verify that these steppers work properly, a convergence study can be utilized to ensure that second order accuracy is observed.
+Within the particle-in-cell capabilities in SALAMANDER, two main particle steppers are provided, the [Leapfrog](LeapFrogStepper.md) stepper and the [Boris](BorisStepper.md) stepper. Both of these particle steppers are second-order accurate in time.
+In order to verify that these steppers work properly, a convergence study can be utilized to ensure that second-order accuracy is observed.
 
-# Demonstration Problems
+## Demonstration Problems
 
 To verify and demonstrate the implementation of the particle steppers, a classic example of single particle motion, cyclotron motion, is utilized.
 While cyclotron motion requires a magnetic field, we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same particle paths.
@@ -11,7 +11,7 @@ While cyclotron motion requires a magnetic field, we will utilize the analytic s
 ## Cyclotron Motion
 
 The problem setup of cyclotron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
-For this example, the particle is traveling within the `xy` plane, and the magentic field is aligned along the positive `z` direction:
+For this example, the particle is traveling within the `xy` plane, and the magnetic field is aligned along the positive `z` direction:
 
 \begin{equation}
   \vec{B} \left(\vec{r}, t \right)
@@ -31,7 +31,7 @@ Starting from Newton's equation of motion
 
 where $\vec{v}$ is the particle's velocity, $q$ is the particle's charge, and $m$ is the particle's mass.
 
-The analytic solution to these equations are given by
+The analytic solution to these equations is given by
 
 \begin{equation}
   x(t) = r_L \sin \left( \omega_c t \right),
@@ -46,7 +46,7 @@ where $r_L$, the Larmor radius, is given by
   r_L = \frac{v_\perp}{\omega_c}.
 \end{equation}
 
-Here, $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyro frequency.
+Here, $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyrofrequency.
 The gyrofrequency is defined as
 
 \begin{equation}
@@ -70,7 +70,7 @@ Doing so yields the electric field:
 
 \begin{equation}
   \vec{E} \left( \vec{r}, t \right) =
-  - \frac{m}{q} \omega_c^2 r_L \sin \left( \omega_c t \right) \hat{x} +
+  - \frac{m}{q} \omega_c^2 r_L \sin \left( \omega_c t \right) \hat{x}
   - \frac{m}{q} \omega_c^2 r_L \cos \left( \omega_c t \right) \hat{y}.
 \end{equation}
 
@@ -79,13 +79,13 @@ Doing so yields the electric field:
 For the sake of simplicity, all particle properties are set to unity, in S.I. units, and the magnetic field magnitude, $B_0$, is set to 1 T.
 Four time steps are used, each one an order of magnitude smaller than the last, $\Delta t \in [1, 10^{-1}, 10^{-2}, 10^{-3}]$ seconds.
 After a simulation at a given time step is completed, the relative $l_2$ and $l_\infty$ norms of the error between the analytic and simulated solutions are taken.
-Plotting these errors on a log-log plot and then calculating the slope reveals the order of accuracy of the time integration; both implemented steppers are second order accurate in time, so the slope of each line should be two.
+Plotting these errors on a log-log plot and then calculating the slope reveals the order of accuracy of the time integration; both implemented steppers are second-order accurate in time, so the slope of each line should be two.
 
 ### Boris Stepper: Cyclotron Motion
 
 This test specifically tests the part of the stepper which calculates the force on the particle due to the magnetic field.
 The relative $l_2$ and $l_\infty$ errors seen in [boris_cyclotron_l2] and [boris_cyclotron_linf], respectively, show the error over the course of the convergence study.
-Both errors indicate that the implementation of the Boris Stepper achieves the expected second order accuracy in time when moving a particle through a magnetic field.
+Both errors indicate that the implementation of the Boris Stepper achieves the expected second-order accuracy in time when moving a particle through a magnetic field.
 Second order accuracy is observed for both particle position and velocity.
 
 !row! style=display:inline-flex;
@@ -113,7 +113,7 @@ Second order accuracy is observed for both particle position and velocity.
 
 In this example, the part of the Boris stepper which handles the acceleration on the particle due to the electric field is tested.
 Both the relative $l_2$, [boris_efield_l2], and $l_\infty$, [boris_efield_linf], errors are examined.
-The errors show that the implementation of the Boris stepper achieves the expected second order accuracy in time when moving a particle through an electric field.
+The errors show that the implementation of the Boris stepper achieves the expected second-order accuracy in time when moving a particle through an electric field.
 
 !row! style=display:inline-flex;
 !col! small=12 medium=6 large=6
@@ -121,8 +121,8 @@ The errors show that the implementation of the Boris stepper achieves the expect
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_l2.png
        id=boris_efield_l2
-       style=width:100
-       caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time varying electric field via the Boris Stepper for four different time step sizes.
+       style=width:100%
+       caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time-varying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!
 
@@ -131,8 +131,8 @@ The errors show that the implementation of the Boris stepper achieves the expect
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_linf.png
        id=boris_efield_linf
-       style=width:100
-       caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time varying electric field via the Boris Stepper for four different time step sizes.
+       style=width:100%
+       caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time-varying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!
 !row-end!
@@ -164,7 +164,7 @@ In examining the relative $l_2$, [leap_efield_l2], and $l_\infty$, [leap_efield_
 !row-end!
 
 Through this verification test both the Boris and the Leapfrog steppers have been verified.
-Both portions of the Boris stepper, that which handles the acceleration due to a magnetic field and that which handles the acceleration due to an electric field, produce results which are, as expected, second order accurate in time.
+Both portions of the Boris stepper, that which handles the acceleration due to a magnetic field and that which handles the acceleration due to an electric field, produce results which are, as expected, second-order accurate in time.
 Additionally, the Leapfrog stepper produces these expected results as well.
 
 ## Input Files

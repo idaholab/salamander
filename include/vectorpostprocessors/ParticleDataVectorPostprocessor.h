@@ -45,7 +45,7 @@ public:
 protected:
   /// the study that we are collecting data from
   const PICStudyBase & _study;
-  /// location where the ray data indicies will be stored
+  /// location where the ray data indices will be stored
   std::vector<RayDataIndex> _ray_data_indices;
   /// vector postprocessor values
   std::vector<VectorPostprocessorValue *> _data_values;
