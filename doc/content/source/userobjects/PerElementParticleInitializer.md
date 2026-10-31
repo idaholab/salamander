@@ -4,10 +4,10 @@
 
 ## Overview
 
-Because the charge density in SALAMANDER is defined by Dirac delta functions and each computational particle represents some number of physical particles, computational particles are assigned a weight $\omega_i$. In cartesian geometry this weight represents the number of physical particles per \[m$^{3-d}$\] where $d$ is the dimension of the problem.
+Because the charge density in SALAMANDER is defined by Dirac delta functions and each computational particle represents some number of physical particles, computational particles are assigned a weight $\omega_i$. In Cartesian geometry this weight represents the number of physical particles per \[m$^{3-d}$\] where $d$ is the dimension of the problem.
 
 !alert warning Using Non-Cartesian Geometries
-The weight calculation for particles has only been implemented for Cartesian domains and may not be valid for Non-Cartesian domains.
+The weight calculation for particles has only been implemented for Cartesian domains and may not be valid for non-Cartesian domains.
 
 In this object the weight of the $j^\text{th}$ particle is given by
 

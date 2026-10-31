@@ -1,5 +1,5 @@
 # The stepper base file provides the basic objects that are required for both
-# the LeapFrogStepper and the BorisSteper tests
+# the LeapFrogStepper and the BorisStepper tests
 !include ../stepper_base.i
 # The rest of this file adds the AuxVariables for the magnetic field, sets type of
 # the particle stepper to be the BorisStepper and tells the stepper to sample the

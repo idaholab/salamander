@@ -6,7 +6,7 @@ SALAMANDER is an application for performing system-level, engineering scale (i.e
 centimeters and meters), and microstructure-scale (i.e., at the scale of microns) multiphysics
 calculations related to magnetic confinement fusion energy systems. These models often include highly coupled systems of
 equations related to plasma physics, electromagnetics, heat conduction, scalar transport, thermal
-hydraulics, [!ac](CFD), and thermomechanics, amongst others. Interfaces to other MOOSE-based codes,
+hydraulics, [!ac](CFD), and thermomechanics, among others. Interfaces to other MOOSE-based codes,
 including tritium transport (TMAP8) and neutronics (Cardinal) are also included to support SALAMANDER
 simulations. SALAMANDER will enable high-fidelity modeling of irradiation levels and plasma exposure
 conditions of plasma facing components and their impact on heat and tritium distributions, as well

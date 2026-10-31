@@ -11,7 +11,7 @@ While cyclotron motion requires a magnetic field, we will utilize the analytic s
 ## Cyclotron Motion
 
 The problem setup of cyclotron motion starts with a static magnetic field perpendicular to the plane in which the particle is traveling.
-For this example, the particle is traveling within the `xy` plane, and the magentic field is aligned along the positive `z` direction:
+For this example, the particle is traveling within the `xy` plane, and the magnetic field is aligned along the positive `z` direction:
 
 \begin{equation}
   \vec{B} \left(\vec{r}, t \right)
@@ -46,7 +46,7 @@ where $r_L$, the Larmor radius, is given by
   r_L = \frac{v_\perp}{\omega_c}.
 \end{equation}
 
-Here, $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyro frequency.
+Here, $v_\perp$ is the initial speed of the particle in the plane perpendicular to the magnetic field, and $\omega_c$ is the gyrofrequency.
 The gyrofrequency is defined as
 
 \begin{equation}

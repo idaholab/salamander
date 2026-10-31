@@ -48,7 +48,7 @@ ElementSampler::sampleElement(const Elem * elem, const unsigned int samples)
     if (!((p(0) - std::abs(p(2)) < 0.0) && (-p(0) - std::abs(p(2)) < 0.0) &&
           (p(1) - std::abs(p(2)) < 0.0) && (-p(1) - std::abs(p(2)) < 0.0)))
     {
-      // checking out the pyramids with the
+      // checking out the pyramids with
       // the x axis going through the center
       if (((p(0) - p(1) > 0.0) && (-p(0) - p(1) > 0.0)) ||
           ((p(0) + p(1) > 0.0) && (-p(0) + p(1) > 0.0)))
@@ -57,7 +57,7 @@ ElementSampler::sampleElement(const Elem * elem, const unsigned int samples)
         p(1) = p(2);
         p(2) = temporary;
       }
-      // all the rest of the points are pyramids with the
+      // all the rest of the points are pyramids with
       // the y axis going through the center
       else
       {
@@ -93,7 +93,7 @@ ElementSampler::sampleElement(const Elem * elem, const unsigned int samples)
         reference_points[i](0) = 2.0 * _generator.rand() - 1.0;
       break;
     }
-    // 2D trianglular element where the vertices are at
+    // 2D triangular element where the vertices are at
     // (0,0)  (0,1), (0, 1)
     case TRI3:
     {

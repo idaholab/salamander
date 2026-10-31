@@ -28,7 +28,7 @@ mark-up resulting from the displayed console text colors.
 Many test input files also create an output file with the name format
 `example_input_out.e` that contains all the simulation results that have been
 selected for output. These results are best viewed using a visualization tool
-like [Paraview](http://www.paraview.org/download/).
+like [ParaView](http://www.paraview.org/download/).
 
 ## SALAMANDER Tests, Verification and Validation Cases, and Examples
 
