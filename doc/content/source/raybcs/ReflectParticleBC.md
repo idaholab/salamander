@@ -8,7 +8,7 @@ This requires storing each component of the velocity vector as a separate piece 
 As a result it will not be updated properly by the [ReflectRayBC.md].
 This boundary condition performs the same operation as [ReflectRayBC.md] and then updates the particle's velocity data ensuring it is consistent with the particle's direction after reflection.
 
-# Example Input Syntax
+## Example Input Syntax
 
 !listing test/tests/raybcs/1d.i block=RayBCs
 

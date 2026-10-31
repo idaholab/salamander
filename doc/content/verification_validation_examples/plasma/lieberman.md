@@ -10,7 +10,7 @@ Consider a line $x\in[0, l]$ of length $l = 0.1$ \[m\] between two grounded poin
   \nabla^2 \phi = \frac{\rho}{\varepsilon_0}
 \end{equation}
 
-where $rho$ is the charge density and $\varepsilon_0$ is the permittivity of free space. In 1D, this can be written as
+where $\rho$ is the charge density and $\varepsilon_0$ is the permittivity of free space. In 1D, this can be written as
 
 \begin{equation}
   \frac{\partial^2  \phi}{\partial x^2} = \frac{\rho}{\varepsilon_0}.
@@ -96,7 +96,7 @@ Since computational particles in SALAMANDER are assumed to be point particles, t
 
 Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [MatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
 
-!alert note title=
+!alert note
 Since SALAMANDER does not apply the factor $\varepsilon_0^{-1}$ directly when evaluating the inner product of the particle charge density and the test function, the quantity $\varepsilon_0$ is passed to the Laplacian operator via the `diffusivity` parameter.
 
 The variable `n` utilizes the [ProjectionKernel.md] to enable visualization of the particle number density as a field variable. See [ProjectionKernel.md] for more detail.

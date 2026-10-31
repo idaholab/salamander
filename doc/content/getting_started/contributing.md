@@ -37,7 +37,7 @@ SALAMANDER development follows a "Fork & Pull" development process. See more inf
 1. Navigate to [the SALAMANDER repository](https://github.com/idaholab/salamander)
 1. Click the "Fork" button on the upper right of the code file tree to have a copy of SALAMANDER in your own account
 1. Clone your new fork to your local machine using the following command (this assumes you
-   [have SSH set up on your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account))):
+   [have SSH set up on your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)):
 
    ```
    cd ~/projects
@@ -174,7 +174,7 @@ any new capabilities. Templates for object documents can be generated with the [
 using the "generate" sub-command. To generate templates for new objects, run:
 
 ```
-cd ~/projects/salamander
+cd ~/projects/salamander/doc
 ./moosedocs.py generate app_types SalamanderApp
 ```
 

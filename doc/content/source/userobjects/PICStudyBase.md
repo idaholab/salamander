@@ -10,4 +10,4 @@ A base class for the PIC simulations utilizing the RayTracing module. The base s
 | X Velocity Component | `"v_x"` | `_v_x_index` |
 | Y Velocity Component | `"v_y"` | `_v_y_index` |
 | Z Velocity Component | `"v_z"` | `_v_z_index` |
-| Particle Weight | `"weight"` | `_weight_index`
+| Particle Weight | `"weight"` | `_weight_index` |
