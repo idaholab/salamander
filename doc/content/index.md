@@ -83,7 +83,7 @@ SALAMANDER started as a project led by Idaho National Laboratory in collaboratio
 
 !col! small=12 medium=4 large=3
 
-!media figures/University-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/University-Wordmark-Reversed-Orange-RGB.png alt=The University of Illinois at Urbana-Champaign logo. style=width:100%;padding:20px 0;display:block;
+!media figures/UIUC-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/UIUC-Wordmark-Reversed-Orange-RGB.png alt=The University of Illinois at Urbana-Champaign logo. style=width:100%;padding:20px 0;display:block;
 
 !col-end!
 
