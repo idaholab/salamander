@@ -75,13 +75,13 @@ ParticleDataVectorPostprocessor::execute()
     _data_values[0]->push_back(_t);
     // storing the time at which the particle velocity is known
     _data_values[1]->push_back(_t - _dt / 2);
-    // storing each of the coordinates of the particle's current position as seperate columns;
+    // storing each of the coordinates of the particle's current position as separate columns;
     // the indexing into _data_values starts at 2 since there are 2 columns, one for each of the
     // times already
     const auto & point = ray->currentPoint();
     for (const auto i : make_range(2, 5))
       _data_values[i]->push_back(point(i - 2));
-    // storing each of the components of the particle's velocity as seperate columns as well;
+    // storing each of the components of the particle's velocity as separate columns as well;
     // the indexing into _data_values starts at 5 since there are 2 columns for the different times,
     // and 3 columns for the particle's position in physical space
     for (const auto i : make_range(0, 3))
