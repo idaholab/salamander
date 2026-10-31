@@ -7,25 +7,25 @@ This benchmark case is based on the example presented in [!cite](lieberman1994pr
 Consider a line $x\in[0, l]$ of length $l = 0.1$ \[m\] between two grounded points, where $\phi$ is the electrostatic potential. Between these two points, there exists a uniform singly-charged positive argon ion population of density, $n = 10^{16}$ \[m$^{-3}$\] where all of the ions are initially stationary, and particles do not interact with each other. In this scenario the resulting electrostatic electric field dictates the particle motion. To solve for the electrostatic potential, Poisson's equation is used:
 
 \begin{equation}
-  \nabla^2 \phi = \frac{\rho}{\varepsilon_0}
+  \nabla^2 \phi = -\frac{\rho}{\varepsilon_0}
 \end{equation}
 
 where $\rho$ is the charge density and $\varepsilon_0$ is the permittivity of free space. In 1D, this can be written as
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{\rho}{\varepsilon_0}.
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{\rho}{\varepsilon_0}.
 \end{equation}
 
 Accounting for the charge density present yields
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{en}{\varepsilon_0}
 \end{equation}
 
 where $e$ is the elementary charge. Specifying the boundary conditions leads to the following boundary value problem:
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{en}{\varepsilon_0}
 \end{equation}
 
 with
@@ -170,7 +170,7 @@ Results of the SALAMANDER simulation are directly compared to those reported in 
 
 !row-end!
 
-!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.5 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.6 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
 
 ## Running the Case
