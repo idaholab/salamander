@@ -17,11 +17,11 @@ Advanced manual installation instructions for this environment are available
 [via the MOOSE website](https://mooseframework.inl.gov/getting_started/installation/index.html).
 
 If an error or other issue is experienced while using the conda environment,
-please see [the MOOSE troubleshooting guide for Conda](https://mooseframework.inl.gov/help/troubleshooting.html#condaissues)
+please see [the MOOSE troubleshooting guide for Conda](https://mooseframework.inl.gov/help/troubleshooting.html#condaissues).
 
 !alert! note title=Interested in SALAMANDER on HPC?
-Those users & developers interested in running SALAMANDER on an HPC cluster environment can find more
-information about that user case in our [getting_started/hpc.md] instructions.
+Those users and developers interested in running SALAMANDER on an HPC cluster environment can find more
+information about that use case in our [getting_started/hpc.md] instructions.
 !alert-end!
 
 ## Step Two: Clone SALAMANDER
@@ -29,8 +29,8 @@ information about that user case in our [getting_started/hpc.md] instructions.
 !style halign=left
 SALAMANDER is hosted on [GitHub](https://github.com/idaholab/SALAMANDER), and should be
 cloned directly from there using [git](https://git-scm.com/). As in the MOOSE
-directions, it is recommended that users create a directory named "projects" to
-put all of your MOOSE-related work.
+directions, it is recommended that users create a directory named "projects" in which to
+put all of their MOOSE-related work.
 
 To clone SALAMANDER, run the following commands in Terminal:
 
@@ -84,7 +84,7 @@ git submodule update --init contrib/moab
 ```
 
 !alert! tip title=Using Cardinal/DAGMC with Double-Down and Embree
-Double-Down (and Embree) enable mixed precision ray tracing within DAGMC. While turned off by default
+Double-Down (and Embree) enable mixed-precision ray tracing within DAGMC. While turned off by default
 for now, it can be enabled by adding the following to the above commands:
 
 ```bash
@@ -112,12 +112,12 @@ export OPENMC_CROSS_SECTIONS=~/projects/SALAMANDER/cross_sections/endfb-vii.1-hd
 !alert! warning
 This variable +must+ be set in your environment anytime you wish to run SALAMANDER input files that
 utilize the OpenMC functionality within Cardinal! This can be done either using `export` on the
-command line, or placing this command within a shell config file (`.bashrc`, `.zshrc`, etc.).
+command line, or by placing this command within a shell config file (`.bashrc`, `.zshrc`, etc.).
 !alert-end!
 
 !alert! note
 The copies of MOOSE, TMAP8, and Cardinal provided with SALAMANDER have been fully tested against the current
-SALAMANDER version, and is guaranteed to work with all current SALAMANDER tests.
+SALAMANDER version, and are guaranteed to work with all current SALAMANDER tests.
 !alert-end!
 
 !alert! tip title=Disabling TMAP8
@@ -182,7 +182,7 @@ conda create -n moose moose-dev=__MOOSE_DEV__
 conda activate moose
 !package-end!
 
-To update your SALAMANDER repository as a SALAMANDER user, use the following commands, which provide to general users the content of the most stable branch (`upstream/main`):
+To update your SALAMANDER repository as a SALAMANDER user, use the following commands, which provide general users with the content of the most stable branch (`upstream/main`):
 
 ```bash
 cd ~/projects/SALAMANDER
@@ -224,7 +224,7 @@ capabilities are not needed. This can be done by simply not downloading the TMAP
 !alert! tip title=Disabling Cardinal
 Cardinal is an optional dependency of SALAMANDER and can be disabled to speed up build times, if Cardinal
 capabilities are not needed. This can be done by simply not downloading the Cardinal submodule
-(i.e., not performing the `git submodule update cardinal` command as well as the following Cardinal
+(i.e., not performing the `git submodule update cardinal` command as well as the subsequent Cardinal
 dependency update commands above.)
 !alert-end!
 

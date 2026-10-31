@@ -1,8 +1,8 @@
 # CAD-based Workflow for Multiphysics Fusion Neutronics Problems Using SALAMANDER
 
-This example describes a workflow for modeling fusion problems in SALAMANDER through [Cardinal](https://cardinal.cels.anl.gov/) which wraps OpenMC Monte Carlo particle transport code within [MOOSE framework](https://mooseframework.inl.gov) [!citep](giudicelli2024moose). This example demonstrates using a computer aided design (CAD)-based geometry workflow. It is based on the work published in [!cite](Eltawila2024PBNC).
+This example describes a workflow for modeling fusion problems in SALAMANDER through [Cardinal](https://cardinal.cels.anl.gov/) which wraps the OpenMC Monte Carlo particle transport code within the [MOOSE framework](https://mooseframework.inl.gov) [!citep](giudicelli2024moose). This example demonstrates using a computer-aided design (CAD)-based geometry workflow. It is based on the work published in [!cite](Eltawila2024PBNC).
 
-Fusion system designs are complex and require intricate and accurate models that can be best represented using CAD-based geometry. An example is the Paramak python package [!citep](shimwell2021paramak) which allows production of 3D CAD models of fusion reactors. The model shown in [paramak] is based on the same generic workflow described in this tutorial.
+Fusion system designs are complex and require intricate and accurate models that can be best represented using CAD-based geometry. An example is the Paramak Python package [!citep](shimwell2021paramak) which allows production of 3D CAD models of fusion reactors. The model shown in [paramak] is based on the same generic workflow described in this tutorial.
 
 !media figures/cad_workflow_paramakmodel.png
   id=paramak
@@ -32,7 +32,7 @@ We preview below the results of the coupled neutronics and heat transfer model f
 This example demonstrates, on a simple mesh that can be made much more complex, how to:
 
 - Generate meshes for a coupled multiphysics SALAMANDER model.
-- Couple OpenMC [!citep](openmc) and SALAMANDER using Cardinal for fixed source Monte Carlo calculations.
+- Couple OpenMC [!citep](openmc) and SALAMANDER using Cardinal for fixed-source Monte Carlo calculations.
 - Use Cardinal [!citep](novak2022_cardinal) to tally values of interest such as tritium production and heating which would be used in SALAMANDER to solve for the temperature and tritium distributions.
 
 We describe this workflow for a generic CAD model which is extremely simplified for the purpose of the demonstration. Nonetheless, the same workflow is applicable to more complex CAD geometries. This model was also used in [!cite](Eltawila2024PBNC) to perform mesh refinement studies to investigate how the mesh refinement level affects multiphysics results. The meshed geometry was prepared using direct accelerated geometry Monte Carlo (DAGMC) for particle transport, and a volumetric mesh was also prepared to be used in SALAMANDER’s finite element solver and to tally OpenMC results for heat source distribution and tritium production. Cardinal was used to run OpenMC Monte Carlo particle transport within SALAMANDER. The data transfer system transferred heat source and temperature distribution between OpenMC and SALAMANDER as shown in [transfers], with coupling between neutron transport and heat conduction achieved via Picard iteration.
@@ -72,13 +72,13 @@ In this example, `tmesh_1.e` ([volumetric_mesh]) is the finite element mesh used
 
 ## OpenMC
 
-The OpenMC input files is as follows:
+The OpenMC input file is as follows:
 
 !listing /test/tests/neutronics/cad_workflow/model.py language=python
 
 ## Cardinal
 
-The Cardinal input files is shown below. The ([MoabSkinner](https://cardinal.cels.anl.gov/source/userobjects/MoabSkinner.html)) was chosen in this model to update the DAGMC geometry from SALAMANDER mesh directly ensuring meshes matching which is further discussed in [!cite](Eltawila2024PBNC) as well as the use of cell tallies.
+The Cardinal input file is shown below. The [MoabSkinner](https://cardinal.cels.anl.gov/source/userobjects/MoabSkinner.html) was chosen in this model to update the DAGMC geometry from SALAMANDER mesh directly, ensuring that the meshes match, which is further discussed in [!cite](Eltawila2024PBNC) as well as the use of cell tallies.
 
 !listing /test/tests/neutronics/cad_workflow/openmc.i
 
@@ -90,7 +90,7 @@ The SALAMANDER input file is as follows:
 
 ## Execution
 
-To generate OpenMC xml files, run:
+To generate OpenMC XML files, run:
 
 ```
 python model.py

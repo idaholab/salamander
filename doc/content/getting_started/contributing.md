@@ -66,7 +66,7 @@ git fetch upstream
 
 ## Creating a new branch
 
-Before make any changes locally (which would require having a working version of the application),
+Before making any changes locally (which would require having a working version of the application),
 we will need to create a new branch.
 
 1. In your terminal, go to your application:
@@ -81,7 +81,7 @@ we will need to create a new branch.
    git checkout devel
    ```
 
-1. Fetch and reset devel to get it up to date (make sure you do not have any changes on devel, because you would lose that):
+1. Fetch and reset devel to get it up to date (make sure you do not have any changes on devel, because you would lose them):
 
    ```
    git fetch upstream && git reset --hard upstream/devel && git submodule update --init
@@ -170,7 +170,7 @@ unrelated changes all at once.
 
 During the course of development, especially during the creation of new SALAMANDER objects (e.g., kernels,
 boundary conditions, interface conditions, etc.), it is important to create documentation outlining
-any new capabilities. Templates for object documents can be generated using the [MooseDocs system](MooseDocs/index.md)
+any new capabilities. Templates for object documents can be generated with the [MooseDocs system](MooseDocs/index.md)
 using the "generate" sub-command. To generate templates for new objects, run:
 
 ```
@@ -229,7 +229,7 @@ Again, make sure to commit these changes using the instructions above before pus
 ## Pushing and submitting SALAMANDER changes
 
 At some point, you'll be ready to push your work to your fork and submit the changes as a pull request
-(PR). To do this follow the following steps.
+(PR). To do this, follow these steps.
 
 1. To push your work to your fork (remember, it has the remote name `origin`) run:
 

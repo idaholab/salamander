@@ -39,7 +39,7 @@ TestParticleDataVectorPostprocessor::execute()
   // This does end up looping over the rays twice,
   // but since it will only be for testing, this is fine.
   // It helps to test the behavior of the object people will actually
-  // use without requiring it to store meta data that is not important for them.
+  // use without requiring it to store metadata that is not important for them.
   ParticleDataVectorPostprocessor::execute();
   const auto rays = _study.particles();
   for (const auto & ray : rays)

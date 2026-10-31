@@ -20,9 +20,10 @@ InputParameters
 ParticleStepperBase::validParams()
 {
   auto params = GeneralUserObject::validParams();
-  params.addClassDescription("Base class for ParticleStepper. Provides the basic implementation"
-                             "for dimensional dependent velocity updating."
-                             "And the ability to sample vector fields for use in a particle step");
+  params.addClassDescription(
+      "Base class for ParticleStepper. Provides the basic implementation "
+      "for dimension-dependent velocity updating, and the ability to sample vector fields for "
+      "use in a particle step");
   return params;
 }
 
