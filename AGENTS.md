@@ -26,7 +26,7 @@ against a documented reference. When in doubt, stop and ask the user.
 
 ## Before writing any code or input file
 - Browse `src/`, `include/` and `doc/content/` and the relevant MOOSE modules (ray_tracing,
-  electromagnetics, heat_transfer, scalar_transport, TMAP8, Cardinal) to find existing
+  electromagnetics, heat_transfer, scalar_transport, TMAP8, Cardinal - check the Makefile for currently-enabled modules) to find existing
   functionality. Reuse it instead of reimplementing it.
 - Documentation can lag the code. Before using an object in an input file, read its C++
   `validParams()` and implementation to confirm it does what you expect.
@@ -36,9 +36,9 @@ against a documented reference. When in doubt, stop and ask the user.
   `scripts/fixup_headers.py` fixes headers).
 - Every new object requires (a) a TestHarness test in `test/tests/<category>/` and (b) a
   MooseDocs page in `doc/content/source/<category>/`. Register the object in `SalamanderApp`.
-- Never hardcode physical constants or parameters. Use the constants provided by TMAP8, MOOSE, or
-  libMesh, or expose the value through `addParam` with its units documented. Code is
-  unit-agnostic; units live in input files only.
+- Before hardcoding physical constants or parameters, check the constants provided by TMAP8, MOOSE, or
+  libMesh. If unavailable, ask if you should add notable physical constants to the central file or expose the value through `addParam` with its units documented. 
+  Code is mostly unit-agnostic; units live in input files whenever possible.
 
 ## Input files
 - State the unit system in a comment block at the top of every input file.
@@ -86,7 +86,7 @@ Refs #<issue-number>
 AI-assisted: true
 AI-model: <model name>
 AI-version: <model version>
-Co-Authored-By: <model name> <noreply@anthropic.com>
+Co-Authored-By: <model name> <email>
 ```
 - Never force-push or rewrite published history without explicit instruction.
 
