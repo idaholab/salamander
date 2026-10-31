@@ -117,6 +117,10 @@ framework/contrib/libtorch
 !**/gold/*.xml*
 !**/gold/*.json*
 
+# AI agent session logs must never be tracked (see AGENTS.md). Keep this after the gold-file
+# exceptions above so that gold/*.jsonl is also ignored.
+*.jsonl
+
 peacock_run_tmp.i
 yaml_dump*
 test/tests/outputs/format/dump.i
