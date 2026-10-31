@@ -3,7 +3,7 @@
 `ParticleStepperBase` is the abstract class from which all steppers should be derived. `ParticleStepperBase` provides the basic method to update a particle's direction and maximum distance based on the velocity stored in ray data, the current time step, and dimension of the mesh. In the provided method `setMaxDistanceAndDirection` the direction is set based on the dimension of the mesh, and the maximum distance is set with the following rule:
 
 \begin{equation}
-  d_\text{max} = \vec{v} \cdot \vec{v} \: dt,
+  d_\text{max} = \left| \vec{v} \right| \: dt,
 \end{equation}
 
 where $d_\text{max}$ is the maximum distance the particle is allowed to travel during the next time step, and $\vec{v}$ is the particle's velocity.

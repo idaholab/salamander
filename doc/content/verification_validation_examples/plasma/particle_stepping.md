@@ -70,7 +70,7 @@ Doing so yields the electric field:
 
 \begin{equation}
   \vec{E} \left( \vec{r}, t \right) =
-  - \frac{m}{q} \omega_c^2 r_L \sin \left( \omega_c t \right) \hat{x} +
+  - \frac{m}{q} \omega_c^2 r_L \sin \left( \omega_c t \right) \hat{x}
   - \frac{m}{q} \omega_c^2 r_L \cos \left( \omega_c t \right) \hat{y}.
 \end{equation}
 

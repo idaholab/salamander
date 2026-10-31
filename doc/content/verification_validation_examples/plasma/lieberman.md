@@ -22,7 +22,7 @@ Accounting for the charge density present yields
   \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
 \end{equation}
 
-where $e$ is the elemental charge. Specifying the boundary conditions leads to the following boundary value problem:
+where $e$ is the elementary charge. Specifying the boundary conditions leads to the following boundary value problem:
 
 \begin{equation}
   \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
@@ -67,7 +67,7 @@ where $V$ is the volume of the element in which the particle exists, and $PPE$ i
 
 ## Transient Conditions
 
-In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.5\times10^{-9}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
+In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.6\times10^{-8}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
 
 ## Input file
 

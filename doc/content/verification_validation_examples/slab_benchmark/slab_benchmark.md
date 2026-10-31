@@ -188,10 +188,10 @@ The example set of model parameter values shown in [tab:params] are the suggeste
 | :- | :- | :- |
 | $\rho_0$                   | $1.2$                         | g.cm$^{-3}$                          |
 | $L_0$                      | $100$                         | cm                                  |
-| $A$                        | $180$                         | g/mol$^{-1}$                        |
+| $A$                        | $180$                         | g/mol                        |
 | $T_0$                      | $293$                         | K                                   |
 | $q$                        | $1.0 \times 10^{8}$                       | eV                                  |
-| $\kappa_0$               | $1.25 \times 10^{19}$                    | eV/s/cm/K$^{-2}$      |
+| $\kappa_0$               | $1.25 \times 10^{19}$                    | eV/s/cm/K$^{2}$      |
 | $\phi_0$                  | $2.5\times 10^{14}$                      | #/cm$^2$/s                  |
 | $\nu\Sigma_f/\Sigma_t$     | $1.5$                         | -                                   |
 | $\Sigma_s/\Sigma_t$        | $0.45$                        | -                                   |
