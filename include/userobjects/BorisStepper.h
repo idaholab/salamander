@@ -48,12 +48,12 @@ private:
   ///@}
 
   /**
-   * Rotates the particle throught the magnetic field using the Boris Algorithms method
+   * Rotates the particle through the magnetic field using the Boris algorithm
    * @param v the current particle velocity
    * @param B the magnetic field
    * @param q_m_ratio the charge to mass ratio of the particle
    * @param dt the time step over which the particle is going to be rotated through
-   * @returns the particles velocity after rotation through the magnetic field
+   * @returns the particle's velocity after rotation through the magnetic field
    */
   Point
   magneticImpulse(const Point & v, const Point & B, const Real q_m_ratio, const Real dt) const;

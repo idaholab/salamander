@@ -2,7 +2,7 @@
 
 &nbsp;
 
-!media figures/SALAMANDER_logo/SALAMANDER_vertical_blue.png dark_src=figures/SALAMANDER_logo/SALAMANDER_vertical_white.png alt=The SALAMANDER logo showing a crawling salamander whose tail morphs into two fusion devices, a tokamak and then a stellerator. style=display:block;margin-left:auto;margin-right:auto;width:50%;
+!media figures/SALAMANDER_logo/SALAMANDER_vertical_blue.png dark_src=figures/SALAMANDER_logo/SALAMANDER_vertical_white.png alt=The SALAMANDER logo showing a crawling salamander whose tail morphs into two fusion devices, a tokamak and then a stellarator. style=display:block;margin-left:auto;margin-right:auto;width:50%;
 
 # Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering & Research (SALAMANDER) class=center style=font-weight:200;font-size:200%
 
@@ -11,11 +11,11 @@ SALAMANDER is designed as an open-source, fully integrated, multiphysics, multis
 
 !style halign=center
 SALAMANDER is an application based on the
-[MOOSE framework](https://mooseframework.inl.gov) performing system-level, engineering scale (i.e., at the scale of
+[MOOSE framework](https://mooseframework.inl.gov) performing system-level, engineering-scale (i.e., at the scale of
 centimeters and meters), and microstructure-scale (i.e., at the scale of microns) multiphysics
 calculations related to magnetic confinement fusion energy systems.
 Interfaces to other MOOSE-based codes, including tritium transport ([TMAP8](https://mooseframework.inl.gov/tmap8))
-and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)) are also included to support SALAMANDER simulations.
+and neutronics ([Cardinal](https://cardinal.cels.anl.gov/)), are also included to support SALAMANDER simulations.
 
 !row!
 !col! small=12 medium=4 large=4 icon=get_app
@@ -51,16 +51,16 @@ and ensuring its accuracy.
 SALAMANDER is based on [MOOSE], an extremely flexible framework and simulation environment
 that permits the solution of coupled physics problems of varying size and dimensionality.
 These can be solved using computer hardware appropriate for the model size, ranging from
-laptops and workstations to large high performance computers.
+laptops and workstations to large high-performance computers.
 
 Code reliability is a central principle in code development, and this project
 employs a well-defined development and testing strategy.  Code changes are only
 merged into the repository after both a manual code review and the automated
 regression test system have been completed.  The testing process and status of
-SALAMANDER is available at [civet.inl.gov](https://civet.inl.gov/repo/530/).
+SALAMANDER are available at [civet.inl.gov](https://civet.inl.gov/repo/530/).
 
 SALAMANDER and MOOSE are developed at Idaho National Laboratory by a team of
-computer scientists and engineers and is supported by various funding agencies,
+computer scientists and engineers and are supported by various funding agencies,
 including the [United States Department of Energy](http://energy.gov).  Development
 of these codes is ongoing at [INL](https://www.inl.gov) and by collaborators
 throughout the world.
@@ -68,7 +68,7 @@ throughout the world.
 ## SALAMANDER results from a collaboration across several institutions style=clear:both;
 
 !style halign=left
-SALAMANDER started as a project lead by Idaho National laboratory in collaboration with North Carolina State University, the University of Illinois Urbana-Champaign, and the United Kingdom Atomic Energy Authority. We are always looking for new collaborations and encourage everyone to [get started](getting_started/installation.html), start [contributing](getting_started/contributing.html), and connect with the team on [the SALAMANDER GitHub discussion](https://github.com/idaholab/salamander/discussions).
+SALAMANDER started as a project led by Idaho National Laboratory in collaboration with North Carolina State University, the University of Illinois Urbana-Champaign, and the United Kingdom Atomic Energy Authority. We are always looking for new collaborations and encourage everyone to [get started](getting_started/installation.html), start [contributing](getting_started/contributing.html), and connect with the team on [the SALAMANDER GitHub discussion](https://github.com/idaholab/salamander/discussions).
 
 !media large_media/framework/inl_blue.png link=https://www.inl.gov alt=The Idaho National Laboratory logo. style=display:block;margin:auto;width:30%;
 
@@ -83,7 +83,7 @@ SALAMANDER started as a project lead by Idaho National laboratory in collaborati
 
 !col! small=12 medium=4 large=3
 
-!media figures/University-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/University-Wordmark-Reversed-Orange-RGB.png alt=The University of Illinois at Urbana-Champaign logo. style=width:100%;padding:20px 0;display:block;
+!media figures/UIUC-Wordmark-Full-Color-RGB.png link=https://illinois.edu/ dark_src=figures/UIUC-Wordmark-Reversed-Orange-RGB.png alt=The University of Illinois at Urbana-Champaign logo. style=width:100%;padding:20px 0;display:block;
 
 !col-end!
 

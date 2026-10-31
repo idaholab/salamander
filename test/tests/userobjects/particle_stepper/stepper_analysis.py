@@ -15,7 +15,7 @@ import pandas as pd
 
 # magnitude of the velocity perpendicular to the field in m/s
 v_mag = 1
-# chage of the particles in C
+# charge of the particles in C
 q = 1
 # mass of the particle in kg
 m = 1
@@ -39,7 +39,7 @@ def analytic_r_L(v_perp: float, m: float, q: float, B: float) -> float:
     """ Computes the gyro radius of a particle subject to cyclotron motion in m
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -53,7 +53,7 @@ def analytic_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray) -> np
     """ Computes the analytic solution for the x component of a particle's position subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -68,14 +68,14 @@ def analytic_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray) -> np
 
 
 def analytic_v_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
-    """ Computes the analytic solution for the x component of a particles velocity subject to cyclotron motion given a positive magnetic along the z direction
+    """ Computes the analytic solution for the x component of a particle's velocity subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
-        t (np.ndarray[float]): The times at which particle positions will be computed
+        t (np.ndarray[float]): The times at which particle velocities will be computed
     Returns:
         np.ndarray[float]: The x velocities of the particle at the times provided by the argument t
     """
@@ -88,7 +88,7 @@ def analytic_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
     """ Computes the analytic solution for the y component of a particle's position subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -105,11 +105,11 @@ def analytic_v_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
     """ Computes the analytic solution for the y component of a particle's velocity subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
-        t (np.ndarray[float]): The times at which particle positions will be computed
+        t (np.ndarray[float]): The times at which particle velocities will be computed
     Returns:
         np.ndarray[float]: The y velocities of the particle at the times provided by the argument t
     """
@@ -119,7 +119,7 @@ def analytic_v_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
 
 
 def error_analysis(files: list[str], dt: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """ Computes the relative l_2 and l_\infty errors for particle position and velocity and the order of accuracy given a list of files and time steps
+    r""" Computes the relative l_2 and l_\infty errors for particle position and velocity and the order of accuracy given a list of files and time steps
 
     Args:
         files (list[str]): The files which contain the particle motion data
@@ -174,7 +174,7 @@ def test_case(input_file : str) -> None:
     """ Test for particle steppers which performs a convergence study for particle motion and velocity using four different time steps: 1, 10^-1, 10^-2, and 10^-3.
 
     Args:
-        input_file (str): The name of the file which will be used to run convergence study
+        input_file (str): The name of the file which will be used to run the convergence study
 
     Returns:
         Nothing is returned but two csv files are created which contain the order of accuracy of the stepper and the relative errors at each time step size

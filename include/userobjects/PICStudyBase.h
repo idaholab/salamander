@@ -115,7 +115,7 @@ protected:
   const RayDataIndex _species_index;
 
   /// the velocity updater object which we will hold the rules for how our
-  /// particles velocities are updated
+  /// particles' velocities are updated
   const ParticleStepperBase & _stepper;
 
   /// temporary variable used when resetting particles
@@ -133,11 +133,11 @@ protected:
   virtual void reinitializeParticles();
 
   /**
-   * Sets up the given ray object with the contained with in the InitialParticleData struct
+   * Sets up the given ray object with the data contained within the InitialParticleData struct
    * @param particle The acquired ray to which the data will be assigned
    * @param assigned_data The data that will be set by the study and not directly stored in the
    * InitialParticleData struct
-   * @param data the initial particle data that will be given to the day
+   * @param data the initial particle data that will be given to the ray
    */
   virtual void setInitialParticleData(std::shared_ptr<Ray> & particle,
                                       const AssignedParticleData & assigned_data,
