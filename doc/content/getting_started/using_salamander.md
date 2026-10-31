@@ -4,13 +4,13 @@
 
 !style halign=left
 After SALAMANDER is installed and tested, you should now be able to run input files
-using the `salamander-opt` executable located at `~/projects/SALAMANDER`. Input files
-demonstrating the capabilities of SALAMANDER can be found in `~/projects/SALAMANDER/test/tests`.
+using the `salamander-opt` executable located at `~/projects/salamander`. Input files
+demonstrating the capabilities of SALAMANDER can be found in `~/projects/salamander/test/tests`.
 Any input file (say, one called `example_input.i`) can be run with the following
 basic syntax:
 
 ```bash
-~/projects/SALAMANDER/salamander-opt -i example_input.i
+~/projects/salamander/salamander-opt -i example_input.i
 ```
 
 Information about the simulation and its progress will then be displayed on the
@@ -18,7 +18,7 @@ screen. If a log file of the iterative solution process is also desired, the
 console output can be sent to a text file:
 
 ```bash
-~/projects/SALAMANDER/salamander-opt -i example_input.i --color off 2>&1 | tee log.txt
+~/projects/salamander/salamander-opt -i example_input.i --color off 2>&1 | tee log.txt
 ```
 
 !alert note
