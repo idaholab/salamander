@@ -94,7 +94,7 @@ ElementSampler::sampleElement(const Elem * elem, const unsigned int samples)
       break;
     }
     // 2D triangular element where the vertices are at
-    // (0,0)  (0,1), (0, 1)
+    // (0,0), (1,0), (0,1)
     case TRI3:
     {
       for (const auto i : make_range(samples))

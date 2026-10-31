@@ -17,7 +17,7 @@ class LeapFrogTimeVarryingElectricTest(unittest.TestCase):
     test while also testing a different part of the stepper.
     During the test, 4 different time steps are used, and the error in the particle
     path is compared to the known solution at each point in time.
-    Using all of the errors over the variety of time steps, the order or accuracy
+    Using all of the errors over the variety of time steps, the order of accuracy
     for the particle stepper is calculated.
     In this case, the stepper should demonstrate second order accuracy in time.
     """
