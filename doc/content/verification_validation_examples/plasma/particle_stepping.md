@@ -3,7 +3,7 @@
 Within the particle-in-cell capabilities in SALAMANDER, two main particle steppers are provided, the [Leapfrog](LeapFrogStepper.md) stepper and the [Boris](BorisStepper.md) stepper. Both of these particle steppers are second-order accurate in time.
 In order to verify that these steppers work properly, a convergence study can be utilized to ensure that second-order accuracy is observed.
 
-# Demonstration Problems
+## Demonstration Problems
 
 To verify and demonstrate the implementation of the particle steppers, a classic example of single particle motion, cyclotron motion, is utilized.
 While cyclotron motion requires a magnetic field, we will utilize the analytic solution for particle motion to configure electric fields to reproduce the same particle paths.
@@ -121,7 +121,7 @@ The errors show that the implementation of the Boris stepper achieves the expect
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_l2.png
        id=boris_efield_l2
-       style=width:100
+       style=width:100%
        caption=Relative $l_2$ error for particle position and velocity for a particle being moved in a time-varying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!
@@ -131,7 +131,7 @@ The errors show that the implementation of the Boris stepper achieves the expect
 !media plot_circular_e_field_boris.py
        image_name=boris_circular_e_field_linf.png
        id=boris_efield_linf
-       style=width:100
+       style=width:100%
        caption=Relative $l_\infty$ error for particle position and velocity for a particle being moved in a time-varying electric field via the Boris Stepper for four different time step sizes.
 
 !col-end!

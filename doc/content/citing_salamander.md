@@ -31,8 +31,8 @@ Because SALAMANDER utilizes Cardinal, please refer to [Citing Cardinal](https://
 Because SALAMANDER is based on MOOSE and several MOOSE-based systems and physics modules,
 please refer to [citing.md] for all MOOSE-specific citations.
 
-# SALAMANDER logos
+## SALAMANDER Logos
 
 If you want to use the SALAMANDER logo in figures, presentations, website, or other media,
-you can find the SALAMANDER logos in `.png` and `.eps` formats in `~/projects/salamander/doc/content/figures`.
+you can find the SALAMANDER logos in `.png` and `.eps` formats in `~/projects/salamander/doc/content/figures/SALAMANDER_logo`.
 These logos include horizontal and vertical alignments, and are available in black, white, and blue.

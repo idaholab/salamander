@@ -36,7 +36,7 @@ where $\vec{r}_{n}$ is the particle's position at the time corresponding to the 
 
 The implementation of the leapfrog scheme was verified using single particle motion tests: parallel acceleration in an electric field ([!file](leapfrog_stepper/parallel_acceleration.i)), and projectile motion ([!file](leapfrog_stepper/projectile_motion.i)).
 
-# Example Input Syntax
+## Example Input Syntax
 
 !listing test/tests/userobjects/particle_stepper/leapfrog_stepper/projectile_motion.i block=UserObjects
 
