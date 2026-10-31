@@ -48,8 +48,8 @@ void
 LeapFrogStepper::setupStep(Ray & ray, Point & v, const Real q_m_ratio, const Real distance) const
 {
 
-  // if it is the particles first step we need to take a half step
-  // for the velocity other wise we take a full step
+  // if it is the particle's first step we need to take a half step
+  // for the velocity otherwise we take a full step
   Point F = sampleField(_field_samplers, ray);
 
   const auto dt = distance == 0 ? _dt / 2 : _dt;

@@ -45,7 +45,7 @@ TestSingleParticleDataVectorPostprocessor::finalize()
 
   comm().gather(0, rank_data);
 
-  // if the rank is not 0 then it there is no work to be done
+  // if the rank is not 0 then there is no work to be done
   // if the rank is 0 and there is data on this rank then the most recent particle data
   // was already added to the VPP data during the execute function
   if (comm().rank() != 0 || !_study.particles().empty())

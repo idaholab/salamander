@@ -58,7 +58,7 @@ BorisStepper::setupStep(Ray & ray, Point & v, const Real q_m_ratio, const Real d
 {
 
   Real dt = _dt;
-  // if it is the particles first step we need to take a half step
+  // if it is the particle's first step we need to take a half step
   // otherwise we take a full step
   if (distance == 0)
     dt /= 2;
@@ -69,7 +69,7 @@ BorisStepper::setupStep(Ray & ray, Point & v, const Real q_m_ratio, const Real d
   v = linearImpulse(v, E, q_m_ratio, dt / 2);
   // calculate v^+
   v = magneticImpulse(v, B, q_m_ratio, dt);
-  // calculate the final velocity and setup the particle for the step
+  // calculate the final velocity and set up the particle for the step
   v = linearImpulse(v, E, q_m_ratio, dt / 2);
   setMaxDistanceAndDirection(ray, v, _dt);
 }

@@ -4,7 +4,7 @@ The `ResidualAccumulator` is a utility that enables the accumulation of pointwis
 into a residual as a point source. The accumulation is done similarly to how Dirac points
 would contribute to a field.
 
-It is designed to be constructed and destructed on use. That is - you should
+It is designed to be constructed and destructed on use. That is, you should
 instantiate a `ResidualAccumulator` when you want to contribute to the field, and then
 call `ResidualAccumulator::finalize()` and destruct it once you are done contributing
 to the residual.

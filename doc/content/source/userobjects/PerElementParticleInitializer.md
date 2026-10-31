@@ -20,7 +20,7 @@ In this object the weight of the $j^\text{th}$ particle is given by
   },
 \end{equation}
 
-where $N$ is the requested number density, $V_j$ is the dimension dependent "volume" (length in 1D, area in 2D and volume in 3D) of the element the particle is being placed in and ppe is the requested number of particles per element.
+where $N$ is the requested number density, $V_j$ is the dimension-dependent "volume" (length in 1D, area in 2D and volume in 3D) of the element the particle is being placed in and ppe is the requested number of particles per element.
 
 ## Example Input Syntax
 

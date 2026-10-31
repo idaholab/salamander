@@ -79,7 +79,7 @@ The first section of the input file declares some constants and problem paramete
 
 ### Mesh
 
-The mesh block creates a one dimensional domain $x\in[0, l]$ split up evenly into 100 different elements.
+The mesh block creates a one-dimensional domain $x\in[0, l]$ split up evenly into 100 different elements.
 
 !listing test/tests/benchmarking/lieberman.i block=Mesh
 

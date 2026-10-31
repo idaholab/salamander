@@ -22,7 +22,7 @@ class ParticleInitializerBase;
 /**
  * Test study of initializing rays with an initializer that will
  * give all of the data needed for rays and ensure that results are parallel consistent
- * assuming that element ids do not change as a function of the number processes being
+ * assuming that element ids do not change as a function of the number of processes being
  * used to solve this
  */
 class TestInitializedPICStudy : public PICStudyBase
