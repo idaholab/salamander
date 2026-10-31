@@ -56,7 +56,7 @@ ParticleStepperBase::setMaxDistanceAndDirection(Ray & ray, const Point & v, cons
   if (_mesh_dimension == 3)
     velocity(2) = v(2);
 
-  // max distance is v^2 dt
+  // max distance is |v| dt
   const auto max_distance = std::sqrt(velocity * velocity) * dt;
 
   ray.setStartingMaxDistance(max_distance);

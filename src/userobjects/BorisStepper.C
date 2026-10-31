@@ -29,7 +29,7 @@ BorisStepper::validParams()
       "A list of 3 variables which represent the 3 components of the electric field");
   params.addRequiredParam<std::vector<VariableName>>(
       "bfield_components",
-      "A list of 3 variables which represent the 3 components of the electric field");
+      "A list of 3 variables which represent the 3 components of the magnetic field");
   return params;
 }
 
