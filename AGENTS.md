@@ -36,7 +36,7 @@ against a documented reference. When in doubt, stop and ask the user.
   `scripts/fixup_headers.py` fixes headers).
 - Every new object requires (a) a TestHarness test in `test/tests/<category>/` and (b) a
   MooseDocs page in `doc/content/source/<category>/`. Register the object in `SalamanderApp`.
-- Never hardcode physical constants or parameters. Use the constants provided by MOOSE or
+- Never hardcode physical constants or parameters. Use the constants provided by TMAP8, MOOSE, or
   libMesh, or expose the value through `addParam` with its units documented. Code is
   unit-agnostic; units live in input files only.
 
