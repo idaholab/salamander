@@ -10,7 +10,7 @@ the instructions until you are done with the step named "Install MOOSE" (note th
 you do not need to follow the steps from the section titled "Cloning MOOSE" and below). Then,
 return to this page and continue with Step Two.
 
-- [Linux and MacOS](https://mooseframework.inl.gov/getting_started/installation/conda.html)
+- [Linux and macOS](https://mooseframework.inl.gov/getting_started/installation/conda.html)
 - [Windows (experimental)](https://mooseframework.inl.gov/getting_started/installation/windows.html)
 
 Advanced manual installation instructions for this environment are available
@@ -167,7 +167,7 @@ SALAMANDER is ready to be used and further developed.
 
 SALAMANDER (and its underlying dependencies MOOSE, TMAP8, and Cardinal) is under heavy development and is
 updated on a continuous basis. Therefore, it is important that the local copy of SALAMANDER be periodically
-updated to obtain new capabilities, improvements, and bugfixes. Weekly updates are recommended as,
+updated to obtain new capabilities, improvements, and bug fixes. Weekly updates are recommended as,
 at minimum, the MOOSE submodule within SALAMANDER is updated up to several times a week.
 
 !alert note title=Always update SALAMANDER and the Conda packages together.

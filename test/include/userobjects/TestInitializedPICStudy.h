@@ -34,7 +34,7 @@ public:
 
 protected:
   /**
-   * Overridenn in order to base ray indexes on element ids if
+   * Overridden in order to base ray indexes on element ids if
    * allow_renumbering=false then this allows for consistent
    * ray ids across a range of processor counts
    */

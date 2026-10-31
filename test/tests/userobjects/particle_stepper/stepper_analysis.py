@@ -39,7 +39,7 @@ def analytic_r_L(v_perp: float, m: float, q: float, B: float) -> float:
     """ Computes the gyro radius of a particle subject to cyclotron motion in m
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -53,7 +53,7 @@ def analytic_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray) -> np
     """ Computes the analytic solution for the x component of a particle's position subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -71,7 +71,7 @@ def analytic_v_x(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
     """ Computes the analytic solution for the x component of a particles velocity subject to cyclotron motion given a positive magnetic along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -88,7 +88,7 @@ def analytic_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
     """ Computes the analytic solution for the y component of a particle's position subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg
@@ -105,7 +105,7 @@ def analytic_v_y(v_perp: float, m: float, q: float, B: float, t: np.ndarray):
     """ Computes the analytic solution for the y component of a particle's velocity subject to cyclotron motion given a positive magnetic field along the z direction
 
     Args:
-        v_perp (float): The speed of the partcle in the plane perpendicular to the magnetic field
+        v_perp (float): The speed of the particle in the plane perpendicular to the magnetic field
         q (float): The charge of the particle in C
         B (float): The strength of the magnetic field in T
         m (float): The mass of the particle in kg

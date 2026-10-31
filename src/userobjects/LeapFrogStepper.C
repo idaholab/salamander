@@ -22,7 +22,7 @@ InputParameters
 LeapFrogStepper::validParams()
 {
   auto params = ParticleStepperBase::validParams();
-  params.addClassDescription("Particle Stepper which implements a simple leap frog update where "
+  params.addClassDescription("Particle Stepper which implements a simple leapfrog update where "
                              "the velocity and position are updated with a 1/2 dt offset.");
   params.addRequiredParam<std::vector<VariableName>>(
       "field_components",
