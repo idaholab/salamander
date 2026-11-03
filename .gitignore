@@ -335,3 +335,4 @@ cross_sections
 
 # Salamander
 doc/content/verification_validation_examples/plasma/figures/*.png
+doc/content/verification_validation_examples/blanket/figures/*.png

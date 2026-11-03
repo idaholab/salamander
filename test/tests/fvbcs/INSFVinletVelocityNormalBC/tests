@@ -1,0 +1,11 @@
+[Tests]
+  design = 'INSFVInletVelocityNormalBC.md'
+  issues = '#112'
+  [INFVInletVelocityNormalBC]
+    type = 'Exodiff'
+    input = 'INFVInletVelocityNormalBC.i'
+    exodiff = 'INFVInletVelocityNormalBC_out.e'
+    requirement = 'The system shall be able to prescribe an inlet superficial velocity normal to
+                   the boundary for an incompressible finite-volume Navier-Stokes simulation.'
+  []
+[]

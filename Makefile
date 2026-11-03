@@ -83,7 +83,7 @@ SCALAR_TRANSPORT            := no
 SOLID_MECHANICS             := no
 SOLID_PROPERTIES            := no
 STOCHASTIC_TOOLS            := yes
-THERMAL_HYDRAULICS          := no
+THERMAL_HYDRAULICS          := yes
 XFEM                        := no
 
 # Enable modules required by optional dependencies
