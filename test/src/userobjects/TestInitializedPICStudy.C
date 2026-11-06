@@ -34,7 +34,7 @@ TestInitializedPICStudy::validParams()
   params.addParam<bool>(
       "use_custom_rayids",
       true,
-      "Wether or not to use the implemented ray id generation scheme or the default one");
+      "Whether or not to use the implemented ray id generation scheme or the default one");
   params.addParam<bool>(
       "single_particle", false, "Whether or not this is a single particle motion test");
   return params;

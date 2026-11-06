@@ -4,7 +4,7 @@
 
 Verification of the Boris stepper implementation is detailed [here](particle_stepping.md).
 
-In magnetized (or electromagnetic) PIC simulations, the de facto standard particle stepping algorithm is commonly known as the Boris algorithm [!cite](boris1970relativistic,Birdsall_Langdon_1991, qin2013boris). This algorithm is similar to a [Leap Frog method](userobjects/LeapFrogStepper.md) and has second order accuracy in time when solving the equations of motion for a charged particle, given by
+In magnetized (or electromagnetic) PIC simulations, the de facto standard particle stepping algorithm is commonly known as the Boris algorithm [!cite](boris1970relativistic,Birdsall_Langdon_1991, qin2013boris). This algorithm is similar to a [leapfrog method](userobjects/LeapFrogStepper.md) and has second-order accuracy in time when solving the equations of motion for a charged particle, given by
 
 \begin{equation} \label{eq:pos}
   \frac{\partial \vec{r}}{\partial t}
@@ -29,7 +29,7 @@ and
 
 where $q$ is the particle's charge, $m$ is the particle's mass, and  $\vec{E}$ and $\vec{B}$ are the electric and magnetic fields that the particle is subject to, respectively.
 
-In the Boris algorithm, [eq:pos] and [eq:vel] are discretized with a central difference scheme and the acceleration due to the electric field and magnetic field are separated. First, half of the impulse due to the electric field is applied to the particle, as
+In the Boris algorithm, [eq:pos] and [eq:vel] are discretized with a central difference scheme and the accelerations due to the electric field and magnetic field are separated. First, half of the impulse due to the electric field is applied to the particle, as
 
 \begin{equation} \label{eq:e_half1}
   \vec{v}^{\,-}
@@ -116,7 +116,7 @@ and the final impulse due to the electric field is then applied to the particle 
 
 The implementation of the Boris algorithm was verified using several single particle motion tests: constant electric field ([!file](boris_stepper/parallel_acceleration.i), [!file](boris_stepper/projectile_motion.i)), cyclotron motion ([!file](/cyclotron_motion.i)), and $\vec{E} \times \vec{B}$ drift motion ([!file](/e_cross_b.i)).
 
-# Example Input Syntax
+## Example Input Syntax
 
 !listing test/tests/userobjects/particle_stepper/boris_stepper/cyclotron_motion.i block=UserObjects
 

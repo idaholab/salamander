@@ -10,7 +10,7 @@ For all publications that use SALAMANDER, please cite the following.
 ```tex
 @misc{SALAMANDER,
     title = {{Software for Advanced Large-scale Analysis of MAgnetic confinement for Numerical Design, Engineering \& Research (SALAMANDER)}},
-    author = {Pierre-Clément A. Simon and Casey T. Icenhour and Logan Harbour and Guillaume Giudicelli and Corey DeChant and Lin Yang and Derek Gaston and Masashi Shimada and Helen Brooks and April J. Novak and Mahmoud Eltawila and Amanda M. Lietz and and Grayson Gall},
+    author = {Pierre-Clément A. Simon and Casey T. Icenhour and Logan Harbour and Guillaume Giudicelli and Corey DeChant and Lin Yang and Derek Gaston and Masashi Shimada and Helen Brooks and April J. Novak and Mahmoud Eltawila and Amanda M. Lietz and Grayson Gall},
     url = {https://github.com/idaholab/salamander},
     institution = {{Idaho National Laboratory and United States Department of Energy, Office of Science (DOE-OS)}},
     year = {2025},
@@ -31,8 +31,8 @@ Because SALAMANDER utilizes Cardinal, please refer to [Citing Cardinal](https://
 Because SALAMANDER is based on MOOSE and several MOOSE-based systems and physics modules,
 please refer to [citing.md] for all MOOSE-specific citations.
 
-# SALAMANDER logos
+## SALAMANDER Logos
 
 If you want to use the SALAMANDER logo in figures, presentations, website, or other media,
-you can find the SALAMANDER logos in `.png` and `.eps` formats in `~/projects/salamander/doc/content/figures`.
+you can find the SALAMANDER logos in `.png` and `.eps` formats in `~/projects/salamander/doc/content/figures/SALAMANDER_logo`.
 These logos include horizontal and vertical alignments, and are available in black, white, and blue.

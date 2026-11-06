@@ -1,7 +1,7 @@
 # List of Publications supporting SALAMANDER
 
-Below is a known list of publications supporting SALAMANDER development, and might be incomplete. If
-your work should be included on this list, please create an issue on
+Below is a list of known publications supporting SALAMANDER development, which might be incomplete. If
+your work should be included on this list, please create an issue on the
 [SALAMANDER GitHub](https://github.com/idaholab/salamander/issues).
 
 ## Journal Articles

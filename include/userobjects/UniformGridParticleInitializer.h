@@ -32,7 +32,7 @@ public:
   virtual std::vector<InitialParticleData> getParticleData() const override;
 
 protected:
-  /// The uniform charge density that the particle weights will be based off of
+  /// The uniform charge density that the particle weights will be based on
   const Real _number_density;
   /// The number of particles that will be placed in each element
   const unsigned int _total_particles;

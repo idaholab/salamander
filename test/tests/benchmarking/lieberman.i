@@ -1,4 +1,4 @@
-# The input reproduces the results in Principles of Plasma Discharge and Material Processing
+# The input reproduces the results in Principles of Plasma Discharges and Materials Processing
 # ISBN 0-471-72001-1 chapter 1, pages 26-27
 # the initial uniform number density to represent
 # with particles

@@ -27,7 +27,7 @@ public:
   static InputParameters validParams();
 
   /**
-   * Stepper using a leap frog scheme for stepping
+   * Stepper using a leapfrog scheme for stepping
    */
   virtual void setupStep(Ray & ray,
                          Point & v,
