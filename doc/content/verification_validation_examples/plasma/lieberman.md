@@ -49,8 +49,8 @@ The solution to which is
 \end{equation}
 
 !alert note title=Formula Difference
-The formula above differs from the one provided in the text.
-This is becuase the formula in the text assumes a domain where $x \in [-l/2, l/2]$ and the simulation domain used in this input has a domain such that $x \in [0, l]$.
+The formula above differs from the one provided in the text in [!cite](lieberman1994principles).
+This is because the formula in the text assumes a domain where $x \in [-l/2, l/2]$ and the simulation domain used in this input has a domain such that $x \in [0, l]$.
 However, the figures in the text are presented on the domain $x \in [0, l]$, so this convention is used here for consistency.
 
 The initial maximum electrostatic potential is located at the point $x=l/2$ and has a value of $2.3\times10^5$ \[V\].
