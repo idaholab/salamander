@@ -48,6 +48,11 @@ The solution to which is
   \right].
 \end{equation}
 
+!alert note title=Formula Difference
+The formula above differs from the one provided in the text.
+This is becuase the formula in the text assumes a domain where $x \in [-l/2, l/2]$ and the simulation domain used in this input has a domain such that $x \in [0, l]$.
+However, the figures in the text are presented on the domain $x \in [0, l]$, so this convention is used here for consistency.
+
 The initial maximum electrostatic potential is located at the point $x=l/2$ and has a value of $2.3\times10^5$ \[V\].
 
 ## Particle Representation
@@ -67,7 +72,7 @@ where $V$ is the volume of the element in which the particle exists, and $PPE$ i
 
 ## Transient Conditions
 
-In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.6\times10^{-8}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
+In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.5\times10^{-8}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
 
 ## Input file
 
@@ -164,13 +169,13 @@ Results of the SALAMANDER simulation are directly compared to those reported in 
 
 !row! style=display:inline-flex;
 
-!media figures/lieberman_vdf_comparison.png caption=$v_x - x$ ion phase space, showing ion trajectories. style=width:90%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_vdf_comparison.png caption=$v_x - x$ ion phase space, showing ion trajectories. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
-!media figures/lieberman_population_comparison.png caption=Number $\mathcal{N}$ of ion sheets versus time. style=width:88%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_population_comparison.png caption=Number $\mathcal{N}$ of ion sheets versus time. style=width:46%;display:block;margin-left:auto;margin-right:auto;
 
 !row-end!
 
-!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.6 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.5 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
 
 ## Running the Case
