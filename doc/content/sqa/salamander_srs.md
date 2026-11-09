@@ -2,15 +2,15 @@
 
 !template! item key=system-scope
 !! system-scope-begin
-SALAMANDER is an application for performing system-level, engineering scale (i.e., at the scale of
+SALAMANDER is an application for performing system-level, engineering-scale (i.e., at the scale of
 centimeters and meters), and microstructure-scale (i.e., at the scale of microns) multiphysics
 calculations related to magnetic confinement fusion energy systems. These models often include highly coupled systems of
 equations related to plasma physics, electromagnetics, heat conduction, scalar transport, thermal
-hydraulics, [!ac](CFD), and thermomechanics, amongst others. Interfaces to other MOOSE-based codes,
-including tritium transport (TMAP8) and neutronics (Cardinal) are also included to support SALAMANDER
+hydraulics, [!ac](CFD), and thermomechanics, among others. Interfaces to other MOOSE-based codes,
+including tritium transport (TMAP8) and neutronics (Cardinal), are also included to support SALAMANDER
 simulations. SALAMANDER will enable high-fidelity modeling of irradiation levels and plasma exposure
-conditions of plasma facing components and their impact on heat and tritium distributions, as well
-as the resulting mechanical constraints experienced by the plasma facing components. The [syntax/MultiApps/index.md]
+conditions of plasma-facing components and their impact on heat and tritium distributions, as well
+as the resulting mechanical constraints experienced by the plasma-facing components. The [syntax/MultiApps/index.md]
 is leveraged to allow for the multiscale, multiphysics coupling. Further, other MOOSE capabilities
 (such as the stochastic tools module) will eventually enable engineering studies, allowing for extended
 uncertainty quantification and risk analysis studies for particular system designs. Interfaces for

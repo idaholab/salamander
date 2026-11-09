@@ -2,7 +2,7 @@
   design = 'ParticleInitializerBase.md PerElementParticleInitializer.md ElementSampler.md'
   issues = '#36'
   [errors]
-    requirement = "The system return a useful error when the user"
+    requirement = "The system shall return a useful error when the user"
     [unsupported_element]
       type = 'RunException'
       input = 'errors.i'

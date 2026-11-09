@@ -14,7 +14,7 @@ for the couplings that may occur between them. This document describes the syste
 
 !template! item key=dependencies-and-limitations
 {{app}} inherits the [software dependencies of the MOOSE framework](framework_sdd.md#dependencies-and-limitations),
-with no additional dependencies.
+and additionally depends on TMAP8 and, optionally, Cardinal (which brings in OpenMC).
 !template-end!
 
 !template! item key=design-stakeholders

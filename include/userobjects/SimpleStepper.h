@@ -1,5 +1,5 @@
 //* This file is part of SALAMANDER: Software for Advanced Large-scale Analysis of MAgnetic
-// confinement for Numerical Design, Engineering & Research,
+//* confinement for Numerical Design, Engineering & Research,
 //* A multiphysics application for modeling plasma facing components
 //* https://github.com/idaholab/salamander
 //* https://mooseframework.inl.gov/salamander
@@ -27,7 +27,7 @@ public:
 
   /**
    * A simple particle stepper which will not modify the velocity of the particle
-   * it will simply update the velocity with the rule v^2 * dt
+   * it will simply update the velocity with the rule |v| * dt
    */
   virtual void
   setupStep(Ray & ray, Point & v, const Real q_m_ratio, const Real distance = 0) const override;
