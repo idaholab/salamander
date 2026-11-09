@@ -5,7 +5,7 @@
 ## Overview
 
 This velocity initializer provides particles with velocities from the provided list.
-When more velocities are requested from this initializer than are provided as input, the list of velocities will be repeated until the total number of velocities requested have been provided.
+When more velocities are requested from this initializer than are provided as input, the list of velocities will be repeated until the total number of velocities requested has been provided.
 
 ## Example Input File Syntax
 

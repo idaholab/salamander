@@ -22,7 +22,7 @@ InputParameters
 LeapFrogStepper::validParams()
 {
   auto params = ParticleStepperBase::validParams();
-  params.addClassDescription("Particle Stepper which implements a simple leap frog update where "
+  params.addClassDescription("Particle Stepper which implements a simple leapfrog update where "
                              "the velocity and position are updated with a 1/2 dt offset.");
   params.addRequiredParam<std::vector<VariableName>>(
       "field_components",
@@ -48,8 +48,8 @@ void
 LeapFrogStepper::setupStep(Ray & ray, Point & v, const Real q_m_ratio, const Real distance) const
 {
 
-  // if it is the particles first step we need to take a half step
-  // for the velocity other wise we take a full step
+  // if it is the particle's first step we need to take a half step
+  // for the velocity otherwise we take a full step
   Point F = sampleField(_field_samplers, ray);
 
   const auto dt = distance == 0 ? _dt / 2 : _dt;

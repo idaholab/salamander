@@ -35,7 +35,7 @@ protected:
   /// The Point object constructed from the x1, y1, z1 components for the bottom left BB corner
   const Point _bottom_left;
 
-  /// The Point object constructed from the x2, y2, z2 components for the bottom left BB corner
+  /// The Point object constructed from the x2, y2, z2 components for the top right BB corner
   const Point _top_right;
   /// Holds the coefficients for each of the planes which are required for checking if an element is contained within the bounding box
   const std::vector<std::vector<Real>> _planes;

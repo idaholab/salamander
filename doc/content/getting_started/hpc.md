@@ -75,12 +75,12 @@ fellow users!
 !! Re-use the bulk of the update section from the main getting started instructions here
 
 !style halign=left
-!include getting_started/installation.md start=SALAMANDER (and the underlying MOOSE Framework) end=updated up to several times a week. include-end=True
+!include getting_started/installation.md start=SALAMANDER (and its underlying dependencies MOOSE, TMAP8, and Cardinal) end=updated up to several times a week. include-end=True
 
 !alert! note
 While the SALAMANDER source code should be manually updated, the HPC modules (unlike the
 [MOOSE conda packages](https://mooseframework.inl.gov/getting_started/installation/conda.html)) do
-not need to be kept up-to-date by the end user/developer. These are updated automatically for you by
+not need to be kept up to date by the end user/developer. These are updated automatically for you by
 the [!ac](HPC) system administrators.
 !alert-end!
 
@@ -100,7 +100,7 @@ and then select `Linux Desktop with Visualization`. Next, select your cluster (s
 the amount of time you believe you need, and then click `Launch`.
 
 It may take some time before your 'Visualization Job' becomes available. When it does, simply click
-on it, and you will be presented a [!ac](GUI) desktop within your web browser. From here, you can
+on it, and you will be presented with a [!ac](GUI) desktop within your web browser. From here, you can
 open visualization applications (such as [ParaView](https://www.paraview.org/)), and open your
 results file.
 

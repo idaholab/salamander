@@ -1,5 +1,5 @@
 # The stepper base file provides the basic objects that are required for both
-# the LeapFrogStepper and the BorisSteper tests
+# the LeapFrogStepper and the BorisStepper tests
 !include ../stepper_base.i
 # The rest of this file simply sets the type of stepper to be the LeapFrogStepper
 # and tells the stepper which field variables to sample.

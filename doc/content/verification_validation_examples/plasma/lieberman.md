@@ -7,25 +7,25 @@ This benchmark case is based on the example presented in [!cite](lieberman1994pr
 Consider a line $x\in[0, l]$ of length $l = 0.1$ \[m\] between two grounded points, where $\phi$ is the electrostatic potential. Between these two points, there exists a uniform singly-charged positive argon ion population of density, $n = 10^{16}$ \[m$^{-3}$\] where all of the ions are initially stationary, and particles do not interact with each other. In this scenario the resulting electrostatic electric field dictates the particle motion. To solve for the electrostatic potential, Poisson's equation is used:
 
 \begin{equation}
-  \nabla^2 \phi = \frac{\rho}{\varepsilon_0}
+  \nabla^2 \phi = -\frac{\rho}{\varepsilon_0}
 \end{equation}
 
-where $rho$ is the charge density and $\varepsilon_0$ is the permittivity of free space. In 1D, this can be written as
+where $\rho$ is the charge density and $\varepsilon_0$ is the permittivity of free space. In 1D, this can be written as
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{\rho}{\varepsilon_0}.
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{\rho}{\varepsilon_0}.
 \end{equation}
 
 Accounting for the charge density present yields
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{en}{\varepsilon_0}
 \end{equation}
 
-where $e$ is the elemental charge. Specifying the boundary conditions leads to the following boundary value problem:
+where $e$ is the elementary charge. Specifying the boundary conditions leads to the following boundary value problem:
 
 \begin{equation}
-  \frac{\partial^2  \phi}{\partial x^2} = \frac{en}{\varepsilon_0}
+  \frac{\partial^2  \phi}{\partial x^2} = -\frac{en}{\varepsilon_0}
 \end{equation}
 
 with
@@ -67,7 +67,7 @@ where $V$ is the volume of the element in which the particle exists, and $PPE$ i
 
 ## Transient Conditions
 
-In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.5\times10^{-9}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
+In Figure 2.2 of [!cite](lieberman1994principles), there is inconsistent information about the time step selected and the total simulation time. We were able to replicate the results presented in this figure using a total simulation time of $2.6\times10^{-8}$ \[s\] with a constant time step of $\Delta t = 10^{-10}$ \[s\]. Additionally, the example input file uses 100 elements, 1 for each particle. This was selected arbitrarily.
 
 ## Input file
 
@@ -79,7 +79,7 @@ The first section of the input file declares some constants and problem paramete
 
 ### Mesh
 
-The mesh block creates a one dimensional domain $x\in[0, l]$ split up evenly into 100 different elements.
+The mesh block creates a one-dimensional domain $x\in[0, l]$ split up evenly into 100 different elements.
 
 !listing test/tests/benchmarking/lieberman.i block=Mesh
 
@@ -96,7 +96,7 @@ Since computational particles in SALAMANDER are assumed to be point particles, t
 
 Each variable only needs a single kernel. For the electrostatic potential, `phi`, the [MatDiffusion.md] kernel can be used to provide the Laplacian operator, which enables the system to solve Poisson's equation.
 
-!alert note title=
+!alert note
 Since SALAMANDER does not apply the factor $\varepsilon_0^{-1}$ directly when evaluating the inner product of the particle charge density and the test function, the quantity $\varepsilon_0$ is passed to the Laplacian operator via the `diffusivity` parameter.
 
 The variable `n` utilizes the [ProjectionKernel.md] to enable visualization of the particle number density as a field variable. See [ProjectionKernel.md] for more detail.
@@ -170,7 +170,7 @@ Results of the SALAMANDER simulation are directly compared to those reported in 
 
 !row-end!
 
-!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.5 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
+!media figures/lieberman_potential_comparison.png caption=The potential $\Theta$ versus $x$ during the first $2.6 \times 10^{-8}$ seconds of ion loss. style=width:50%;display:block;margin-left:auto;margin-right:auto;
 
 
 ## Running the Case

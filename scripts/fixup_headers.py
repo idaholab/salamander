@@ -137,7 +137,7 @@ def checkAndUpdatePython(filename):
                 shebang = m.group(0)
                 text = re.sub(r'^.*\n', '', text)
 
-            # Save off any pytlint disable directives
+            # Save off any pylint disable directives
             m = re.match(r'\A#pylint:\s+disable.*\n', text)
             pylint_disable = ''
             if m:

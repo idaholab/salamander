@@ -21,9 +21,10 @@ InputParameters
 ParticleInitializerBase::validParams()
 {
   auto params = GeneralUserObject::validParams();
-  params.addClassDescription("Base class for ParticleStepper. Provides the basic implementation"
-                             "for dimensional dependent velocity updating."
-                             "And the ability to sample vector fields for use in a particle step");
+  params.addClassDescription(
+      "Base class for particle initializers. Provides the common particle parameters (mass, "
+      "charge, species and seed) and the velocity initializer used to generate the initial "
+      "particle data for PIC studies");
   params.addParam<unsigned int>("seed", 0, "An additional seed for the random number generators");
   params.addRangeCheckedParam<Real>(
       "mass", 1.0, "mass > 0.0", "The mass of the particles being placed in the mesh");

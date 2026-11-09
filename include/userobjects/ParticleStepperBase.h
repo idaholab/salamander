@@ -49,10 +49,10 @@ public:
 
 protected:
   /**
-   * Method for a simple dimension-dependent update of the rays max distance and
+   * Method for a simple dimension-dependent update of the ray's max distance and
    * direction based on the dimension of the problem
-   * for a 1D problem only the x value of the velocity stored ray data will be used
-   * for a 2D problem only the x and y values of the velocity store in ray data will be used
+   * for a 1D problem only the x value of the velocity stored in ray data will be used
+   * for a 2D problem only the x and y values of the velocity stored in ray data will be used
    * for a 3D problem all components of the velocity will be used
    * @param ray the ray whose velocity is being set
    * @param v the new ray velocity
@@ -79,6 +79,6 @@ protected:
    * @param dt the time step
    */
   Point linearImpulse(const Point & v, const Point & F, const Real q_m_ratio, const Real dt) const;
-  /// the dimension of the mesh being using used for dimension-dependent velocity updates
+  /// the dimension of the mesh being used for dimension-dependent velocity updates
   const unsigned int _mesh_dimension;
 };
