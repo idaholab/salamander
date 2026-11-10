@@ -193,8 +193,7 @@ num_samples = ${fparse num_elem + 1}
   automatic_scaling = true
   compute_scaling_once = false
   dt = 1e-10
-  end_time = 2.6e-8
-  # num_steps = 1
+  end_time = 2.5e-8
 []
 [Outputs]
   exodus = true
