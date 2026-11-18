@@ -25,6 +25,12 @@ ifeq ($(ENABLE_CARDINAL),yes)
   # This also turns off Embree by default, below.
   ENABLE_DOUBLE_DOWN ?= no
 
+  # Add NekRS flags (opt-in with ENABLE_NEK=yes, see config/configure_cardinal.mk)
+  ifeq ($(ENABLE_NEK)), yes)
+    ADDITIONAL_CPPFLAGS += $(NEKRS_INCLUDES)
+    libmesh_CXXFLAGS    += -DENABLE_NEK_COUPLING
+  endif
+
   # Configure and build MOAB, DagMC, and then OpenMC
   include          $(CARDINAL_DIR)/config/moab.mk
          ifeq ($(ENABLE_DOUBLE_DOWN), yes)
