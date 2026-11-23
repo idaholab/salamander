@@ -94,25 +94,6 @@ c_p = ${units 0.3 J/g/K}
     order = CONSTANT
     initial_condition = '${fparse P*eV_to_J/L0 }'
   []
-  [temperature_praux]
-    family = MONOMIAL
-    order = CONSTANT
-  []
-  [disp_praux]
-  []
-[]
-
-[AuxKernels]
-  [temperature_projection]
-    type = ProjectionAux
-    variable = temperature_praux
-    v = temperature
-  []
-  [disp_projection]
-    type = ProjectionAux
-    variable = disp_praux
-    v = disp_x
-  []
 []
 
 [Materials]
@@ -174,15 +155,18 @@ c_p = ${units 0.3 J/g/K}
 
 [Executioner]
   type = Transient
-  solve_type = 'PJFNK'
+  solve_type = 'Newton'
   verbose = true
-  nl_abs_tol = 1e-9
-  nl_rel_tol = 1e-9
+  nl_abs_tol = 1e-10
+  nl_rel_tol = 1e-10
   petsc_options = '-ksp_snes_ew'
   petsc_options_iname = '-pc_type -pc_factor_mat_solver_package'
   petsc_options_value = 'lu       superlu_dist'
   snesmf_reuse_base = false
   line_search = 'none'
+
+  automatic_scaling = true
+
   nl_max_its = 100
   [TimeStepper]
     type = IterationAdaptiveDT
@@ -191,6 +175,8 @@ c_p = ${units 0.3 J/g/K}
     growth_factor = 1.25
     cutback_factor = 0.8
   []
+
+  nl_forced_its = 1
 []
 
 [Preconditioning]
