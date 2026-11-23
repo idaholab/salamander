@@ -60,6 +60,20 @@ SalamanderApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
 #endif
 
   /* register custom execute flags, action syntax, etc. here */
+
+  // THM binds THMCreateMeshAction to [Components] for BOTH setup_mesh and uniform_refine_mesh
+  // inside the ModulesApp registration above. We take over both bindings so no stock THMProblem
+  // is ever built and there is no execution-order race.
+  //
+  // NOTE: replaceActionSyntax() clears ALL actions on the syntax, then adds the one named. So it
+  // must be called EXACTLY ONCE — a second replace would wipe the first. We use it to clear THM
+  // and claim setup_mesh, then use plain registerActionSyntax() (which appends without clearing)
+  // to also bind uniform_refine_mesh. Order matters: replace first, then register.
+  //
+  // Route B (upstream fix) would make all of this unnecessary; see BlanketCreateMeshAction.C.
+  s.replaceActionSyntax("BlanketCreateMeshAction", "Components", "setup_mesh", __FILE__, __LINE__);
+  s.registerActionSyntax(
+      "BlanketCreateMeshAction", "Components", "uniform_refine_mesh", __FILE__, __LINE__);
 }
 
 void
